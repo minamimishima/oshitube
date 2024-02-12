@@ -1,2 +1,7 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<%= @user.name %><br>
+<%= @user.profile %><br>
+<% if @user.icon.present? %>
+  <%= image_tag @user.icon %>
+<% end %><br>
+<%= @user.id %><br>
+<%= link_to "編集", profile_edit_path %>

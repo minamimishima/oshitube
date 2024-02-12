@@ -14,7 +14,7 @@
  *= require_self
  */
 
- /* shared/header */
+ /* ヘッダー */
  .header-container {
   display: flex;
   justify-content: space-between;
@@ -24,14 +24,20 @@
   height: 70px
  }
 
- /* home#index */
+ /* ファーストビュー */
  .firstview-title {
   text-align: center;
  }
 
+ /* 新規登録・ログイン・ユーザー情報変更 */
  .registrations-sessions-container {
   margin-inline: auto;
   align-items: center;
   width: fit-content;
  }
 
+/* プロフィール */
+.profile-icon {
+  width: 150px;
+  height: auto;
+}

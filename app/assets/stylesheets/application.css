@@ -13,3 +13,13 @@
  *= require_tree .
  *= require_self
  */
+
+ /* shared/header */
+ .header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding:0 50px;
+  background-color: #FE5E5E;
+  height: 70px
+ }

@@ -28,3 +28,10 @@
  .firstview-title {
   text-align: center;
  }
+
+ .registrations-sessions-container {
+  margin-inline: auto;
+  align-items: center;
+  width: fit-content;
+ }
+

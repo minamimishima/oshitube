@@ -1,0 +1,8 @@
+<div class="profile-container container">
+  <% if @user.icon.present? %>
+    <%= image_tag @user.icon, class: "profile-icon" %>
+  <% end %>
+  <p><%= @user.name %></p>
+  <p><%= @user.profile %></p>
+  <%= link_to "プロフィール編集", profile_edit_path %> / <%= link_to "ユーザー情報変更", edit_user_registration_path %>
+</div>

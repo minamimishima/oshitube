@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'bookmarks/index'
   devise_for :users
   get "users/show", to: "users#show"
   get "profile/edit", to: "users#profile_edit"

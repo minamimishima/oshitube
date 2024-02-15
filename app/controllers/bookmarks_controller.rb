@@ -1,5 +1,6 @@
 class BookmarksController < ApplicationController
   before_action :authenticate_user!
+  before_action :get_current_user
 
   def index
     @bookmarks = Bookmark.all
@@ -7,12 +8,10 @@ class BookmarksController < ApplicationController
 
   def new
     @bookmark = Bookmark.new
-    @user = current_user
   end
 
   def create
     @bookmark = Bookmark.new(bookmark_params)
-    @user = current_user
     if @bookmark.save
       flash[:notice] = "登録完了しました"
       redirect_to bookmarks_path
@@ -28,12 +27,10 @@ class BookmarksController < ApplicationController
 
   def edit
     @bookmark = Bookmark.find(params[:id])
-    @user = current_user
   end
 
   def update
     @bookmark = Bookmark.find(params[:id])
-    @user = current_user
     if @bookmark.update(bookmark_params)
       flash[:notice] = "編集完了しました"
       redirect_to bookmark_path(@bookmark.id)
@@ -51,7 +48,10 @@ class BookmarksController < ApplicationController
   end
 
   private
-    
+  def get_current_user
+    @user = current_user
+  end  
+
   def bookmark_params
     params.require(:bookmark).permit(:user_id, :url, :description, :is_public)
   end

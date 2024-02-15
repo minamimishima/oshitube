@@ -26,6 +26,23 @@ class BookmarksController < ApplicationController
     @bookmark = Bookmark.find(params[:id])
   end
 
+  def edit
+    @bookmark = Bookmark.find(params[:id])
+    @user = current_user
+  end
+
+  def update
+    @bookmark = Bookmark.find(params[:id])
+    @user = current_user
+    if @bookmark.update(bookmark_params)
+      flash[:notice] = "編集完了しました"
+      redirect_to bookmark_path(@bookmark.id)
+    else
+      flash[:notice] = @bookmark.errors.full_messages.join(", ")
+      render 'edit', status: :unprocessable_entity
+    end
+  end
+
   private
     
   def bookmark_params

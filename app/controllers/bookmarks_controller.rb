@@ -48,12 +48,12 @@ class BookmarksController < ApplicationController
   end
 
   private
+
   def get_current_user
     @user = current_user
-  end  
+  end
 
   def bookmark_params
     params.require(:bookmark).permit(:user_id, :url, :description, :is_public)
   end
-
 end

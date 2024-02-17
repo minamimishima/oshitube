@@ -63,6 +63,9 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+
+  gem 'rubocop',  '~> 1.32.0'
+  gem 'rubocop-airbnb', '~> 6.0'
 end
 
 group :test do

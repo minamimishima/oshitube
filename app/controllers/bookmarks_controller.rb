@@ -12,6 +12,7 @@ class BookmarksController < ApplicationController
 
   def create
     @bookmark = Bookmark.new(bookmark_params)
+    @bookmark.video_id = @bookmark.url.match(/[\w-]{11}/)[0]
     if @bookmark.save
       flash[:notice] = "登録完了しました"
       redirect_to bookmarks_path
@@ -54,6 +55,6 @@ class BookmarksController < ApplicationController
   end
 
   def bookmark_params
-    params.require(:bookmark).permit(:user_id, :url, :description, :is_public)
+    params.require(:bookmark).permit(:user_id, :url, :description, :is_public, :video_id)
   end
 end

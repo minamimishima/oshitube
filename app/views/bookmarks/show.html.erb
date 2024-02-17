@@ -1,6 +1,6 @@
 <div class="bookmark-container container">
   <h2>動画タイトル</h2>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= @bookmark.url.last(11) %>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= @bookmark.video_id %>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     <p><%= @bookmark.description %></p>
     <%= link_to "編集", edit_bookmark_path(@bookmark.id) %> / <%= link_to "削除", bookmark_path(@bookmark.id), data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" } %>
     </ul>

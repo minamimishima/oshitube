@@ -3,7 +3,7 @@
 
   <% @bookmarks.each do |bookmark| %>
     <ul class="list-group mt-5 mb-5">
-      <li class="list-group-item"><iframe width="560" height="315" src="https://www.youtube.com/embed/<%= bookmark.url.last(11) %>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></li>
+      <li class="list-group-item"><iframe width="560" height="315" src="https://www.youtube.com/embed/<%= bookmark.video_id %>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></li>
       <li class="list-group-item"><%= link_to "タイトル", bookmark_path(bookmark.id) %></li>
       <li class="list-group-item"><%= bookmark.description %></li>
     </ul>

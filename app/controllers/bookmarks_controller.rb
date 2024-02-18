@@ -12,7 +12,8 @@ class BookmarksController < ApplicationController
 
   def create
     @bookmark = Bookmark.new(bookmark_params)
-    @bookmark.video_id = @bookmark.url.match(/[\w-]{11}/)[0]
+    video_id_pattern = /(?:https:\/\/www\.youtube\.com(?:\/embed\/|\/watch\?v=)|https:\/\/youtu\.be\/|https:\/\/m\.youtube\.com\/watch\?v=)([\w-]{11})/
+    @bookmark.video_id = @bookmark.url.match(video_id_pattern)[1]
     if @bookmark.save
       flash[:notice] = "登録完了しました"
       redirect_to bookmarks_path

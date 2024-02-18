@@ -48,6 +48,7 @@ gem "devise"
 gem "pry-rails"
 gem "rails-i18n"
 gem "devise-i18n"
+gem "kaminari"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

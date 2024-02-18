@@ -15,37 +15,48 @@
  */
 
  /* ヘッダー */
- .header-container {
+.header-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding:0 50px;
   background-color: #FE5E5E;
   height: 70px
- }
+}
 
  /* フラッシュメッセージ */
- .flashmessage {
+.flashmessage {
   text-align: center;
   display: block;
   margin: 10px;
   margin-inline: auto;
- }
+}
 
  /* ファーストビュー */
- .firstview-title {
+.firstview-title {
   text-align: center;
- }
+}
 
  /* 新規登録・ログイン・ユーザー情報変更 */
- .registrations-sessions-container {
+.registrations-sessions-container {
   margin-inline: auto;
   align-items: center;
   width: fit-content;
- }
+}
 
 /* プロフィール */
 .profile-icon {
   width: 150px;
   height: auto;
+}
+
+/* ページネーション */
+.pagination li a {
+  border: none;
+  color: black;
+}
+
+.page-item.active .page-link {
+  color: black;
+  background-color: #fff;
 }

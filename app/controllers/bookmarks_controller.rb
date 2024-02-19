@@ -25,11 +25,6 @@ class BookmarksController < ApplicationController
 
   def show
     @bookmark = Bookmark.find(params[:id])
-    youtube = Google::Apis::YoutubeV3::YouTubeService.new
-    youtube.key =  ENV['YOUTUBE_API_KEY']
-    @video = Rails.cache.fetch("video_#{@bookmark.id}", expires_in: 12.hours) do
-      youtube.list_videos('snippet', id: @bookmark.video_id, max_results: 1)
-    end.items.first
   end
 
   def edit

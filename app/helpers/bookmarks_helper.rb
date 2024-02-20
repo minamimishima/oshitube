@@ -4,7 +4,7 @@ module BookmarksHelper
 
     youtube = Google::Apis::YoutubeV3::YouTubeService.new
     youtube.key = ENV['YOUTUBE_API_KEY']
-    bookmark_video = Rails.cache.fetch("bookmark_#{video_id}", expires_in: 12.hours) do
+    bookmark_video = Rails.cache.fetch("bookmark_#{video_id}", expires_in: 1.days) do
       youtube.list_videos('snippet', id: video_id)
     end.items.first
     bookmark_video.snippet.send(attribute)

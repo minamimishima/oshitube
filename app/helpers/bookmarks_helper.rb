@@ -18,4 +18,11 @@ module BookmarksHelper
     video_attribute(video_id, :description)
   end
 
+  def video_thumbnail(video_id)
+    thumbnails = video_attribute(video_id, :thumbnails)
+    thumbnails_resolutions = [:maxres, :high, :standard, :medium, :default]
+    thumbnails_resolutions.each do |resolution|
+      return thumbnails.send(resolution).url if thumbnails.send(resolution)
+    end
+  end
 end

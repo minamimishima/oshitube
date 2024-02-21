@@ -10,18 +10,30 @@ module BookmarksHelper
   end
 
   def video_title(video_id)
-    get_video_data(video_id).snippet.title
+    if get_video_data(video_id)
+      get_video_data(video_id).snippet.title
+    else
+      "Video Not Found"
+    end
   end
 
   def video_description(video_id)
-    get_video_data(video_id).snippet.description
+    if get_video_data(video_id)
+      get_video_data(video_id).snippet.description
+    else
+      "Video Not Found"
+    end
   end
 
   def video_thumbnail(video_id)
-    thumbnails = get_video_data(video_id).snippet.thumbnails
-    thumbnails_resolutions = [:maxres, :high, :standard, :medium, :default]
-    thumbnails_resolutions.each do |resolution|
-      return thumbnails.send(resolution).url if thumbnails.send(resolution)
+    if get_video_data(video_id)
+      thumbnails = get_video_data(video_id).snippet.thumbnails
+      thumbnails_resolutions = [:maxres, :high, :standard, :medium, :default]
+      thumbnails_resolutions.each do |resolution|
+        return thumbnails.send(resolution).url if thumbnails.send(resolution)
+      end
+    else
+      "not_found.png"
     end
   end
 end

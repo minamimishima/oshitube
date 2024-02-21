@@ -1,6 +1,9 @@
 class Bookmark < ApplicationRecord
   belongs_to :user
 
-  validates :url, presence: true
+  with_options presence: true do
+    validates :url
+    validates :video_id
+  end
   validates :description, length: { maximum: 300 }
 end

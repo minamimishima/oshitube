@@ -13,7 +13,7 @@ class BookmarksController < ApplicationController
 
   def create
     @bookmark = Bookmark.new(bookmark_params)
-    @bookmark.video_id = @bookmark.url.match(VIDEO_ID_PATTERN)[1]
+    @bookmark.video_id = extract_video_id(@bookmark.url)
     if @bookmark.valid? && get_video_data(@bookmark.video_id).present?
       @bookmark.save
       flash[:notice] = "登録完了しました"
@@ -34,7 +34,7 @@ class BookmarksController < ApplicationController
 
   def update
     @bookmark = Bookmark.find(params[:id])
-    @bookmark.video_id = params[:bookmark][:url].match(VIDEO_ID_PATTERN)[1]
+    @bookmark.video_id = extract_video_id(params[:bookmark][:url])
     if @bookmark.valid? && get_video_data(@bookmark.video_id).present?
       @bookmark.update(bookmark_params)
       flash[:notice] = "編集完了しました"
@@ -62,7 +62,11 @@ class BookmarksController < ApplicationController
     params.require(:bookmark).permit(:user_id, :url, :description, :is_public, :video_id)
   end
 
-  def video_id_pattern
-    /(?:https:\/\/www\.youtube\.com(?:\/embed\/|\/watch\?v=)|https:\/\/youtu\.be\/|https:\/\/m\.youtube\.com\/watch\?v=)([\w-]{11})/
+  def extract_video_id(url)
+    if url.match(VIDEO_ID_PATTERN)
+      url.match(VIDEO_ID_PATTERN)[1]
+    else
+      nil
+    end
   end
 end

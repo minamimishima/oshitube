@@ -1,7 +1,7 @@
 class BookmarksController < ApplicationController
   before_action :authenticate_user!
   before_action :get_current_user
-  VIDEO_ID_PATTERN =  /(?:https:\/\/www\.youtube\.com(?:\/embed\/|\/watch\?v=)|https:\/\/youtu\.be\/|https:\/\/m\.youtube\.com\/watch\?v=)([\w-]{11})/
+  VIDEO_ID_PATTERN = /(?:https:\/\/www\.youtube\.com(?:\/embed\/|\/watch\?v=)|https:\/\/youtu\.be\/|https:\/\/m\.youtube\.com\/watch\?v=)([\w-]{11})/
 
   def index
     @bookmarks = Bookmark.all.order(created_at: :desc).page(params[:page])

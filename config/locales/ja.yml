@@ -2,6 +2,7 @@ ja:
   activerecord:
     models:
       user: ユーザー
+      bookmark: ブックマーク
     attributes:
       user: 
         name: 名前
@@ -9,6 +10,12 @@ ja:
         password: パスワード
         profile: プロフィール
         icon: アイコン
+      bookmark:
+        user_id: ユーザーID
+        url: URL
+        video_id: 動画ID
+        description: 動画の説明
+        is_public: 公開設定
   views:
     pagination:
       first: <i class="bi bi-chevron-double-left"></i>

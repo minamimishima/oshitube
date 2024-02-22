@@ -1,5 +1,6 @@
 <div class="container">
   <h2>ブックマーク編集</h2>
+  <%= render 'shared/bookmark_error_messages', obj: @bookmark %>
   <%= form_with model: @bookmark do |f| %>
     <div class="field">
       <%= f.label :url, "URL" %><br />

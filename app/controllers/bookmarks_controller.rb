@@ -19,7 +19,6 @@ class BookmarksController < ApplicationController
       flash[:notice] = "登録完了しました"
       redirect_to bookmarks_path
     else
-      flash[:notice] = @bookmark.errors.full_messages.join(", ")
       render 'new', status: :unprocessable_entity
     end
   end
@@ -40,7 +39,6 @@ class BookmarksController < ApplicationController
       flash[:notice] = "編集完了しました"
       redirect_to bookmark_path(@bookmark.id)
     else
-      flash[:notice] = @bookmark.errors.full_messages.join(", ")
       render 'edit', status: :unprocessable_entity
     end
   end

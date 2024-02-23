@@ -15,5 +15,8 @@
         </div>
       </div>
     </div>
+    <div>
+      <%= @bookmark.description %>
+    </div>
     <%= link_to "編集", edit_bookmark_path(@bookmark.id) %> / <%= link_to "削除", bookmark_path(@bookmark.id), data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" } %>
 </div>

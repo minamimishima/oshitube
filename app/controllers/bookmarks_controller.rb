@@ -13,7 +13,6 @@ class BookmarksController < ApplicationController
 
   def create
     @bookmark = Bookmark.new(bookmark_params)
-    @bookmark.url = params[:bookmark][:url].match(VIDEO_ID_PATTERN)[0]
     @bookmark.video_id = extract_video_id(@bookmark.url)
     if @bookmark.save
       flash[:notice] = "登録完了しました"

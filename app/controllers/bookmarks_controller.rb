@@ -14,8 +14,7 @@ class BookmarksController < ApplicationController
   def create
     @bookmark = Bookmark.new(bookmark_params)
     @bookmark.video_id = extract_video_id(@bookmark.url)
-    if @bookmark.valid? && get_video_data(@bookmark.video_id).present?
-      @bookmark.save
+    if @bookmark.save
       flash[:notice] = "登録完了しました"
       redirect_to bookmarks_path
     else
@@ -34,8 +33,7 @@ class BookmarksController < ApplicationController
   def update
     @bookmark = Bookmark.find(params[:id])
     @bookmark.video_id = extract_video_id(params[:bookmark][:url])
-    if @bookmark.valid? && get_video_data(@bookmark.video_id).present?
-      @bookmark.update(bookmark_params)
+    if @bookmark.update(bookmark_params)
       flash[:notice] = "編集完了しました"
       redirect_to bookmark_path(@bookmark.id)
     else

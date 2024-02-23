@@ -13,9 +13,15 @@ ja:
       bookmark:
         user_id: ユーザーID
         url: URL
-        video_id: 動画ID
+        video_id: ID
         description: 動画の説明
         is_public: 公開設定
+    errors:
+      models:
+        bookmark:
+          attributes:
+            video_id:
+              format: "指定された%{attribute}の動画は存在しません"
   views:
     pagination:
       first: <i class="bi bi-chevron-double-left"></i>

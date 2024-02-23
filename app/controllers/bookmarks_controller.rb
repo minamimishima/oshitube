@@ -63,18 +63,12 @@ class BookmarksController < ApplicationController
   end
 
   def extract_video_url(url)
-    if url.match(VIDEO_ID_PATTERN)
-      url.match(VIDEO_ID_PATTERN)[1]
-    else
-      nil
-    end
+    match = url.match(VIDEO_ID_PATTERN)
+    match ? match[1] : nil
   end
 
   def extract_video_id(url)
-    if url.match(VIDEO_ID_PATTERN)
-      url.match(VIDEO_ID_PATTERN)[2]
-    else
-      nil
-    end
+    match = url.match(VIDEO_ID_PATTERN)
+    match ? match[2] : nil
   end
 end

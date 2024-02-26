@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-ruby "3.3.0"
+ruby "3.2.3"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.1.3"
@@ -48,6 +48,11 @@ gem "devise"
 gem "pry-rails"
 gem "rails-i18n"
 gem "devise-i18n"
+gem "kaminari"
+gem "bootstrap5-kaminari-views"
+gem "dotenv-rails"
+gem 'google-api-client'
+gem 'google-apis-youtube_v3'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -63,6 +68,9 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+
+  gem 'rubocop',  '~> 1.32.0'
+  gem 'rubocop-airbnb', '~> 6.0'
 end
 
 group :test do

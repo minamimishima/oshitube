@@ -72,4 +72,7 @@ yarn-debug.log*
 !/storage/.keep
 /public/uploads
 
+# Ignore .DS_Store
+.DS_Store
+
 # End of https://www.toptal.com/developers/gitignore/api/rails

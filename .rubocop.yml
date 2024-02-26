@@ -1,0 +1,19 @@
+inherit_from:
+  - .rubocop_airbnb.yml
+
+Rails:
+  Enabled: true
+
+LineLength:
+  Max: 130
+
+AllCops:
+  NewCops: enable
+  Exclude:
+    - '.ruby-version'
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'bin/*'
+    - '**/Gemfile'
+    - 'vendor/**/*'
+    - '.git/**/*'

@@ -1,0 +1,22 @@
+<div class="bookmark-container container">
+  <h2><%= video_title(@bookmark.video_id) %></h2>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= @bookmark.video_id %>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    <div class="accordion" id="accordionExample">
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            概要欄
+          </button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <%= simple_format(h(video_description(@bookmark.video_id))) %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <%= @bookmark.description %>
+    </div>
+    <%= link_to "編集", edit_bookmark_path(@bookmark.id) %> / <%= link_to "削除", bookmark_path(@bookmark.id), data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" } %>
+</div>

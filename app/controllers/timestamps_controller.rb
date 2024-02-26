@@ -1,0 +1,2 @@
+class TimestampsController < ApplicationController
+end

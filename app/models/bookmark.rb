@@ -1,5 +1,6 @@
 class Bookmark < ApplicationRecord
   belongs_to :user
+  has_many :timestamps
 
   validates :url, presence: true
   validates :video_id, length: { is: 11 }

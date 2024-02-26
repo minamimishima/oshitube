@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   resources :bookmarks
+  resources :timestamps
   get "users/show", to: "users#show"
   get "profile/edit", to: "users#profile_edit"
   post "profile/edit", to: "users#profile_update"

@@ -24,6 +24,7 @@ class BookmarksController < ApplicationController
 
   def show
     @bookmark = Bookmark.find(params[:id])
+    @timestamp = Timestamp.new
   end
 
   def edit

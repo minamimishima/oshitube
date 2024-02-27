@@ -3,6 +3,7 @@ ja:
     models:
       user: ユーザー
       bookmark: ブックマーク
+      timestamp: タイムスタンプ
     attributes:
       user: 
         name: 名前
@@ -16,6 +17,12 @@ ja:
         video_id: ID
         description: 動画の説明
         is_public: 公開設定
+      timestamp:
+        hour: 時間
+        minute: 分
+        second: 秒
+        start_time: 開始時間
+        comment: メモ
     errors:
       models:
         bookmark:

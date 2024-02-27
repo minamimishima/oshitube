@@ -1,0 +1,10 @@
+<% if timestamps.present? %>
+  <% timestamps.each do |t| %>
+    <table>
+      <tr>
+        <td><%= t.hour %> : <%= t.minute %> : <%= t.second %></td>
+        <td><%= t.comment %></td>
+      </tr>
+    </table>
+  <% end %>
+<% end %>

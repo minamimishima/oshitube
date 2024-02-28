@@ -60,6 +60,13 @@ class BookmarksController < ApplicationController
   end
 
   def bookmark_params
-    params.require(:bookmark).permit(:user_id, :url, :description, :is_public, :video_id)
+    params.require(:bookmark).permit(
+      :user_id,
+      :url,
+      :description,
+      :is_public,
+      :video_id,
+      timestamps_attributes: [:id, :bookmark_id, :hour, :minute, :second, :start_time, :comment]
+    )
   end
 end

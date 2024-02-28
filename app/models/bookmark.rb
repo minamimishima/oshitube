@@ -1,6 +1,7 @@
 class Bookmark < ApplicationRecord
   belongs_to :user
   has_many :timestamps, dependent: :destroy
+  accepts_nested_attributes_for :timestamps
 
   validates :url, presence: true
   validates :video_id, length: { is: 11 }

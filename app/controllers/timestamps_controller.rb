@@ -1,6 +1,7 @@
 class TimestampsController < ApplicationController
   def create
     @timestamp = Timestamp.new(timestamp_params)
+    @timestamps = Timestamp.where(bookmark_id: @timestamp.bookmark_id)
     @bookmark = Bookmark.find(@timestamp.bookmark_id)
     @timestamp.start_time = @timestamp.hour * 3600 + @timestamp.minute * 60 + @timestamp.second
     if @timestamp.save

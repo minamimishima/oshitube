@@ -1,23 +1,35 @@
 <div class="container">
   <h2>ブックマーク編集</h2>
   <%= render 'shared/error_messages', obj: @bookmark %>
-  <%= form_with model: @bookmark do |f| %>
-    <div class="field">
-      <%= f.label :url, "URL" %><br />
-      <%= f.text_field :url, autofocus: true %>
-    </div> 
-    <div class="field">
-      <%= f.label :description, "動画の説明" %><br />
-      <%= f.text_area :description %>
-    </div>
-    <div class="field">
-      <%= f.label :is_public, "おすすめ動画として公開する" %>
-      <%= f.check_box :is_public %>
-    </div>
-    <%= f.hidden_field :user_id, value: @user.id %>
 
-    <div class="actions">
+    <%= form_with model: @bookmark do |f| %>
+      <%= f.label :url, "URL" %><br />
+      <%= f.text_field :url, autofocus: true %><br />
+
+      <%= f.label :description, "動画の説明" %><br />
+      <%= f.text_area :description %><br />
+
+      <%= f.label :is_public, "おすすめ動画として公開する" %>
+      <%= f.check_box :is_public %><br />
+
+      <%= f.hidden_field :user_id, value: @user.id %>
+
+        <%= f.fields_for :timestamps do |timestamp| %>
+          <%= timestamp.label :hour, "時間" %>
+          <%= timestamp.number_field :hour %>
+
+          <%= timestamp.label :minute, "分" %>
+          <%= timestamp.number_field :minute %>
+
+          <%= timestamp.label :second, "秒" %>
+          <%= timestamp.number_field :second %>
+
+          <%= timestamp.label :comment, "メモ" %>
+          <%= timestamp.text_field :comment %><br />
+
+          <%= timestamp.hidden_field :bookmark, value: @bookmark.id %>
+        <% end %>
+
       <%= f.submit "登録" %>
-    </div>
-  <% end %>
+    <% end %>
 </div>

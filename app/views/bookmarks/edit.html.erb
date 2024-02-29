@@ -27,7 +27,7 @@
           <%= timestamp.label :comment, "メモ" %>
           <%= timestamp.text_field :comment %><br />
 
-          <%= timestamp.hidden_field :bookmark, value: @bookmark.id %>
+          <%= timestamp.hidden_field :bookmark_id, value: @bookmark.id %>
         <% end %>
 
       <%= f.submit "登録" %>

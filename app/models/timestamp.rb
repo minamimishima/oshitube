@@ -8,6 +8,10 @@ class Timestamp < ApplicationRecord
   end
   validate :bookmark_has_ten_or_less_timestamps
 
+  def calculate_start_time
+    hour * 3600 + minute * 60 + second
+  end
+
   private
 
   def bookmark_has_ten_or_less_timestamps

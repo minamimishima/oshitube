@@ -3,7 +3,7 @@ class TimestampsController < ApplicationController
     @timestamp = Timestamp.new(timestamp_params)
     @bookmark = @timestamp.bookmark
     @timestamps = @bookmark.timestamps.sort_by(&:start_time)
-    @timestamp.start_time = @timestamp.hour * 3600 + @timestamp.minute * 60 + @timestamp.second
+    @timestamp.start_time = @timestamp.calculate_start_time
     if @timestamp.save
       flash[:notice] = "登録完了しました"
       redirect_to bookmark_path(@timestamp.bookmark_id)

@@ -1,4 +1,6 @@
 class TimestampsController < ApplicationController
+  before_action :authenticate_user!
+
   def create
     @timestamp = Timestamp.new(timestamp_params)
     @bookmark = @timestamp.bookmark

@@ -2,7 +2,7 @@ class TimestampsController < ApplicationController
   def create
     @timestamp = Timestamp.new(timestamp_params)
     @bookmark = @timestamp.bookmark
-    @timestamps = @bookmark.timestamps
+    @timestamps = @bookmark.timestamps.sort_by(&:start_time)
     @timestamp.start_time = @timestamp.hour * 3600 + @timestamp.minute * 60 + @timestamp.second
     if @timestamp.save
       flash[:notice] = "登録完了しました"

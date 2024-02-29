@@ -25,7 +25,7 @@ class BookmarksController < ApplicationController
   def show
     @bookmark = Bookmark.find(params[:id])
     @timestamp = Timestamp.new
-    @timestamps = @bookmark.timestamps
+    @timestamps = @bookmark.timestamps.sort_by(&:start_time)
   end
 
   def edit

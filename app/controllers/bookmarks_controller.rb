@@ -66,7 +66,7 @@ class BookmarksController < ApplicationController
       :description,
       :is_public,
       :video_id,
-      timestamps_attributes: [:id, :bookmark_id, :hour, :minute, :second, :start_time, :comment]
+      timestamps_attributes: [:id, :bookmark_id, :hour, :minute, :second, :start_time, :comment, :_destroy]
     )
   end
 end

@@ -26,6 +26,7 @@ class BookmarksController < ApplicationController
     @bookmark = Bookmark.find(params[:id])
     @timestamp = Timestamp.new
     @timestamps = @bookmark.timestamps.sort_by(&:start_time)
+    gon.video_id = @bookmark.video_id
   end
 
   def edit

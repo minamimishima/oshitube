@@ -14,7 +14,7 @@
 
       <%= f.hidden_field :user_id, value: @user.id %>
 
-        <%= f.fields_for :timestamps do |timestamp| %>
+        <%= f.fields_for :timestamps, @bookmark.timestamps.sort_by(&:start_time) do |timestamp| %>
           <%= timestamp.label :hour, "時間" %>
           <%= timestamp.number_field :hour %>
 

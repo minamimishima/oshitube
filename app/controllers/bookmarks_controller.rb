@@ -37,11 +37,24 @@ class BookmarksController < ApplicationController
 
   def update
     @bookmark = Bookmark.find(params[:id])
+    new_params = bookmark_params
     url = @bookmark.extract_video_url(params[:bookmark][:url])
     video_id = @bookmark.extract_video_id(params[:bookmark][:url])
     params[:bookmark][:url] = url
     params[:bookmark][:video_id] = video_id
-    if @bookmark.update(bookmark_params)
+
+    if new_params[:timestamps_attributes].present?
+      (0..9).each do |i|
+        if new_params[:timestamps_attributes][i.to_s].present?
+          new_params[:timestamps_attributes][i.to_s][:start_time] =
+            new_params[:timestamps_attributes][i.to_s][:hour].to_i * 3600 +
+            new_params[:timestamps_attributes][i.to_s][:minute].to_i * 60 +
+            new_params[:timestamps_attributes][i.to_s][:second].to_i
+        end
+      end
+    end
+
+    if @bookmark.update(new_params)
       flash[:notice] = "編集完了しました"
       redirect_to bookmark_path(@bookmark.id)
     else

@@ -1,5 +1,10 @@
 <div class="container">
   <h2>ブックマーク編集</h2>
+  <div id="bookmark-video">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= @bookmark.video_id %>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    <h3><%= video_title(@bookmark.video_id) %></h3>
+  </div>
+
   <%= render 'shared/error_messages', obj: @bookmark %>
 
     <%= form_with model: @bookmark do |f| %>

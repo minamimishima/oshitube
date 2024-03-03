@@ -11,11 +11,11 @@ class Bookmark < ApplicationRecord
 
   def extract_video_url(url)
     match = url.match(VIDEO_ID_PATTERN)
-    match ? self.url = match[1] : self.url = nil
+    match ? match[1] : nil
   end
 
   def extract_video_id(url)
     match = url.match(VIDEO_ID_PATTERN)
-    match ? self.video_id = match[2] : self.url = nil
+    match ? match[2] : nil
   end
 end

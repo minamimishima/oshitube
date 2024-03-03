@@ -38,10 +38,8 @@ class BookmarksController < ApplicationController
   def update
     @bookmark = Bookmark.find(params[:id])
     new_params = bookmark_params
-    url = @bookmark.extract_video_url(params[:bookmark][:url])
-    video_id = @bookmark.extract_video_id(params[:bookmark][:url])
-    params[:bookmark][:url] = url
-    params[:bookmark][:video_id] = video_id
+    new_params[:url] = @bookmark.extract_video_url(params[:bookmark][:url])
+    new_params[:video_id] = @bookmark.extract_video_id(params[:bookmark][:url])
 
     if new_params[:timestamps_attributes].present?
       (0..9).each do |i|

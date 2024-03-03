@@ -17,6 +17,12 @@ ja:
         video_id: ID
         description: 動画の説明
         is_public: 公開設定
+      bookmark/timestamps:
+        hour: 時間
+        minute: 分
+        second: 秒
+        start_time: 開始時間
+        comment: メモ
       timestamp:
         hour: 時間
         minute: 分
@@ -29,6 +35,10 @@ ja:
           attributes:
             video_id:
               format: "指定された%{attribute}の動画は存在しません"
+        timestamp:
+          attributes:
+            start_time:
+              format: "指定された%{attribute}のタイムスタンプはすでに登録されています"
   views:
     pagination:
       first: <i class="bi bi-chevron-double-left"></i>

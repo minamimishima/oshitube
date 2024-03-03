@@ -6,6 +6,11 @@
   </div>
 
   <%= render 'shared/error_messages', obj: @bookmark %>
+  <% if flash[:edit_error_message].present? %>
+    <ul>
+      <li><%= flash[:edit_error_message] %></li>
+    </ul>
+  <% end %>
 
     <%= form_with model: @bookmark do |f| %>
       <%= f.label :url, "URL" %><br />

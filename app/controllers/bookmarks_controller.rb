@@ -56,6 +56,7 @@ class BookmarksController < ApplicationController
       flash[:notice] = "編集完了しました"
       redirect_to bookmark_path(@bookmark.id)
     else
+      @bookmark = Bookmark.find(params[:id])
       render 'edit', status: :unprocessable_entity
     end
   end

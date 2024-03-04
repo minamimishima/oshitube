@@ -27,8 +27,7 @@ class BookmarksController < ApplicationController
     @timestamp = Timestamp.new
     @timestamps = @bookmark.timestamps.sort_by(&:start_time)
     gon.video_id = @bookmark.video_id
-    start_time_list = @timestamps.pluck(:start_time)
-    gon.start_time_list = start_time_list
+    gon.start_time_list = @timestamps.pluck(:start_time)
   end
 
   def edit

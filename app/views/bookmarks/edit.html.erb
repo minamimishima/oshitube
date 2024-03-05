@@ -1,23 +1,48 @@
 <div class="container">
   <h2>ブックマーク編集</h2>
-  <%= render 'shared/bookmark_error_messages', obj: @bookmark %>
-  <%= form_with model: @bookmark do |f| %>
-    <div class="field">
-      <%= f.label :url, "URL" %><br />
-      <%= f.text_field :url, autofocus: true %>
-    </div> 
-    <div class="field">
-      <%= f.label :description, "動画の説明" %><br />
-      <%= f.text_area :description %>
-    </div>
-    <div class="field">
-      <%= f.label :is_public, "おすすめ動画として公開する" %>
-      <%= f.check_box :is_public %>
-    </div>
-    <%= f.hidden_field :user_id, value: @user.id %>
+  <div id="bookmark-video">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= @bookmark.video_id %>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    <h3><%= video_title(@bookmark.video_id) %></h3>
+  </div>
 
-    <div class="actions">
-      <%= f.submit "登録" %>
-    </div>
+  <%= render 'shared/error_messages', obj: @bookmark %>
+  <% if flash[:edit_error_message].present? %>
+    <ul>
+      <li><%= flash[:edit_error_message] %></li>
+    </ul>
   <% end %>
+
+    <%= form_with model: @bookmark do |f| %>
+      <%= f.label :url, "URL" %><br />
+      <%= f.text_field :url, autofocus: true %><br />
+
+      <%= f.label :description, "動画の説明" %><br />
+      <%= f.text_area :description %><br />
+
+      <%= f.label :is_public, "おすすめ動画として公開する" %>
+      <%= f.check_box :is_public %><br />
+
+      <%= f.hidden_field :user_id, value: @user.id %>
+
+        <%= f.fields_for :timestamps, @bookmark.timestamps.sort_by(&:start_time) do |timestamp| %>
+          <%= timestamp.label :hour, "時間" %>
+          <%= timestamp.number_field :hour %>
+
+          <%= timestamp.label :minute, "分" %>
+          <%= timestamp.number_field :minute %>
+
+          <%= timestamp.label :second, "秒" %>
+          <%= timestamp.number_field :second %>
+
+          <%= timestamp.label :comment, "メモ" %>
+          <%= timestamp.text_field :comment %><br />
+
+          削除
+          <%= timestamp.check_box :_destroy %><br />
+
+          <%= timestamp.hidden_field :bookmark_id, value: @bookmark.id %>
+        <% end %>
+
+      <%= f.submit "登録" %>
+    <% end %>
 </div>

@@ -24,6 +24,10 @@ class BookmarksController < ApplicationController
 
   def show
     @bookmark = Bookmark.find(params[:id])
+    @timestamp = Timestamp.new
+    @timestamps = @bookmark.timestamps.sort_by(&:start_time)
+    gon.video_id = @bookmark.video_id
+    gon.start_time_list = @timestamps.pluck(:start_time)
   end
 
   def edit
@@ -32,14 +36,27 @@ class BookmarksController < ApplicationController
 
   def update
     @bookmark = Bookmark.find(params[:id])
-    url = @bookmark.extract_video_url(params[:bookmark][:url])
-    video_id = @bookmark.extract_video_id(params[:bookmark][:url])
-    params[:bookmark][:url] = url
-    params[:bookmark][:video_id] = video_id
-    if @bookmark.update(bookmark_params)
+    new_params = bookmark_params
+    new_params[:url] = @bookmark.extract_video_url(params[:bookmark][:url])
+    new_params[:video_id] = @bookmark.extract_video_id(params[:bookmark][:url])
+
+    if new_params[:timestamps_attributes].present?
+      (0..9).each do |i|
+        if new_params[:timestamps_attributes][i.to_s].present?
+          new_params[:timestamps_attributes][i.to_s][:start_time] =
+            new_params[:timestamps_attributes][i.to_s][:hour].to_i * 3600 +
+            new_params[:timestamps_attributes][i.to_s][:minute].to_i * 60 +
+            new_params[:timestamps_attributes][i.to_s][:second].to_i
+        end
+      end
+    end
+
+    if @bookmark.update(new_params)
       flash[:notice] = "編集完了しました"
       redirect_to bookmark_path(@bookmark.id)
     else
+      flash[:edit_error_message] = "登録内容を確認してください"
+      @bookmark = Bookmark.find(params[:id])
       render 'edit', status: :unprocessable_entity
     end
   end
@@ -58,6 +75,13 @@ class BookmarksController < ApplicationController
   end
 
   def bookmark_params
-    params.require(:bookmark).permit(:user_id, :url, :description, :is_public, :video_id)
+    params.require(:bookmark).permit(
+      :user_id,
+      :url,
+      :description,
+      :is_public,
+      :video_id,
+      timestamps_attributes: [:id, :bookmark_id, :hour, :minute, :second, :start_time, :comment, :_destroy]
+    )
   end
 end

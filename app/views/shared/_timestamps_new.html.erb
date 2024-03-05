@@ -1,0 +1,18 @@
+<%= form_with model: timestamp do |f| %>
+  <%= f.label :hour, "時間" %>
+  <%= f.number_field :hour %>
+
+  <%= f.label :minute, "分" %>
+  <%= f.number_field :minute %>
+
+  <%= f.label :second, "秒" %>
+  <%= f.number_field :second %><br />
+
+  <%= f.label :comment, "メモ" %>
+  <%= f.text_field :comment %>
+
+  <%= f.hidden_field :bookmark_id, value: bookmark.id %>
+
+  <%= f.submit "登録" %>
+<% end %>
+

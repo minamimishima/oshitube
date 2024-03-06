@@ -1,7 +1,7 @@
 <div>
   <% if categories.present? %>
     <% categories.each do |category| %>
-      <%= link_to category_path(category.id), category.name %>
+      <%= link_to category.category_name, root_path %>
     <% end %>
   <% end %>
 </div>

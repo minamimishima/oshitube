@@ -3,7 +3,7 @@ class BookmarksController < ApplicationController
   before_action :get_current_user
 
   def index
-    @bookmarks = Bookmark.all.order(created_at: :desc).page(params[:page])
+    @bookmarks = @user.bookmarks.order(created_at: :desc).page(params[:page])
   end
 
   def new

@@ -1,6 +1,7 @@
 <div class="bookmark-container container">
   <h1>ブックマーク一覧</h1>
   <%= render 'shared/categories', { categories: @categories } %>
+  <%= render 'shared/categories_new', { category: @category, user: @user } %>
   <% @bookmarks.each do |bookmark| %>
     <ul class="list-group mt-5 mb-5">
       <li class="list-group-item"><%= image_tag video_thumbnail(bookmark.video_id), height: "315", width: "auto" %></li>

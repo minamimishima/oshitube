@@ -1,6 +1,7 @@
 class BookmarksController < ApplicationController
   before_action :authenticate_user!
   before_action :get_current_user
+  before_action :correct_user, except: [:index, :show]
 
   def index
     @bookmarks = @user.bookmarks.order(created_at: :desc).page(params[:page])
@@ -75,6 +76,13 @@ class BookmarksController < ApplicationController
 
   def get_current_user
     @user = current_user
+  end
+
+  def correct_user
+    bookmark = Bookmark.find(params[:id])
+    unless bookmark.user_id == current_user.id
+      redirect_to root_path
+    end
   end
 
   def bookmark_params

@@ -19,6 +19,11 @@ class CategoriesController < ApplicationController
     end
   end
 
+  def show
+    @category = Category.find(params[:id])
+    @bookmarks = @category.bookmarks
+  end
+
   private
 
   def get_current_user

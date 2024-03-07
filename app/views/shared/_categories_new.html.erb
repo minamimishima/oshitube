@@ -1,8 +1,8 @@
 <div>
   <%= form_with model: category do |f| %>
     <div class="field">
-      <%= f.label :category_name, "カテゴリー名" %><br />
-      <%= f.text_field :category_name %>
+      <%= f.label :name, "カテゴリー名" %><br />
+      <%= f.text_field :name %>
     </div> 
     <%= f.hidden_field :user_id, value: user.id %>
     <%= f.submit "作成" %>

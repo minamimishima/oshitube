@@ -21,7 +21,7 @@ class CategoriesController < ApplicationController
 
   def show
     @category = Category.find(params[:id])
-    @bookmarks = @category.bookmarks
+    @bookmarks = @category.bookmarks.order(created_at: :desc).page(params[:page])
   end
 
   private

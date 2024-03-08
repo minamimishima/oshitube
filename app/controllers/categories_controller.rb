@@ -24,6 +24,15 @@ class CategoriesController < ApplicationController
     @bookmarks = @category.bookmarks.order(created_at: :desc).page(params[:page])
   end
 
+  def update
+    @category = Category.find(params[:id])
+    if @category.update(category_params)
+      redirect_to category_path(params[:id])
+    else
+      render 'categories/index'
+    end
+  end
+
   private
 
   def get_current_user

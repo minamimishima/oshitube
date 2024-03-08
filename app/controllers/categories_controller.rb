@@ -33,6 +33,13 @@ class CategoriesController < ApplicationController
     end
   end
 
+  def destroy
+    @category = Category.find(params[:id])
+    @category.destroy
+    flash[:notice] = "カテゴリーを削除しました"
+    redirect_to bookmarks_path, status: :see_other
+  end
+
   private
 
   def get_current_user

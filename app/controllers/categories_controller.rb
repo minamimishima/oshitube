@@ -2,10 +2,6 @@ class CategoriesController < ApplicationController
   before_action :authenticate_user!
   before_action :get_current_user
 
-  def index
-    @categories = @user.categories
-  end
-
   def new
     @category = Category.new(category_params)
   end

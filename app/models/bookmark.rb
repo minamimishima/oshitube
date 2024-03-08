@@ -4,6 +4,7 @@ class Bookmark < ApplicationRecord
   has_many :category_bookmark
   has_many :categories, through: :category_bookmark
   accepts_nested_attributes_for :timestamps, allow_destroy: true
+  accepts_nested_attributes_for :categories
 
   validates :url, presence: true
   validates :video_id, length: { is: 11 }

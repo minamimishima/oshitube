@@ -1,5 +1,6 @@
 <div class="bookmark-container container">
   <h1><%= @category.name %></h1>
+  <%= link_to "削除", category_path(@category.id), data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" } %>
   <% if @bookmarks.present? %>
     <%= render 'shared/categories', { categories: @categories } %>
     <%= render 'shared/categories_new', { category: @category, user: @user } %>

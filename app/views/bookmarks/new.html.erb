@@ -12,7 +12,7 @@
     </div>
     <div class="field">
       <%= f.label :category, "カテゴリー" %><br />
-      <%= f.collection_check_boxes(:category_ids, Category.all, :id, :name) do |category| %>
+      <%= f.collection_check_boxes(:category_ids, @user.categories, :id, :name) do |category| %>
         <%= category.label do %>
           <%= category.check_box %>
           <%= category.text %>

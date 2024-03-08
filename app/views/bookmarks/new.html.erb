@@ -20,6 +20,13 @@
       <% end %>
     </div>
     <div class="field">
+      <%= f.fields_for :categories do |category| %>
+        <%= category.label :name, "カテゴリーを作成する" %>
+        <%= category.text_field :name %>
+        <%= category.hidden_field :user_id, value: @user.id %>
+      <% end %>
+    </div>
+    <div class="field">
       <%= f.label :is_public, "おすすめ動画として公開する" %>
       <%= f.check_box :is_public %>
     </div>

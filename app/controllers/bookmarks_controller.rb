@@ -1,7 +1,7 @@
 class BookmarksController < ApplicationController
   before_action :authenticate_user!
   before_action :get_current_user
-  before_action :correct_user, except: [:index, :show]
+  before_action :correct_user, only: [:edit, :update, :destroy]
 
   def index
     @bookmarks = @user.bookmarks.order(created_at: :desc).page(params[:page])

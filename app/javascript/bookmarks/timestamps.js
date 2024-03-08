@@ -1,23 +1,21 @@
+function jumpToStartTime (i) {
+  let timestamp = document.getElementById(`timestamp-${i}`);
+  if (timestamp) {
+    timestamp.addEventListener('click', function() {
+    let video = document.getElementById('bookmark-video');
+    video.innerHTML = `<iframe width="560" height="315" src="https://www.youtube.com/embed/${gon.video_id}?start=${gon.start_time_list[i]}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`;
+    });
+  }
+}
+
 document.addEventListener("turbo:render", function() {
   for (let i = 0; i <= 9; i++) {
-    let timestamp = document.getElementById(`timestamp-${i}`);
-    if (timestamp) {
-      timestamp.addEventListener('click', function() {
-      let video = document.getElementById('bookmark-video');
-      video.innerHTML = `<iframe width="560" height="315" src="https://www.youtube.com/embed/${gon.video_id}?start=${gon.start_time_list[i]}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`;
-      });
-    }
+    jumpToStartTime(i);
   }
 });
 
 document.addEventListener("turbo:load", function() {
   for (let i = 0; i <= 9; i++) {
-    let timestamp = document.getElementById(`timestamp-${i}`);
-    if (timestamp) {
-      timestamp.addEventListener('click', function() {
-      let video = document.getElementById('bookmark-video');
-      video.innerHTML = `<iframe width="560" height="315" src="https://www.youtube.com/embed/${gon.video_id}?start=${gon.start_time_list[i]}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`;
-      });
-    }
+    jumpToStartTime(i);
   }
 });

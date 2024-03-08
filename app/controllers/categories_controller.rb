@@ -1,6 +1,7 @@
 class CategoriesController < ApplicationController
   before_action :authenticate_user!
   before_action :get_current_user
+  before_action :correct_user, only: [:show, :update, :destroy]
 
   def new
     @category = Category.new(category_params)
@@ -41,6 +42,13 @@ class CategoriesController < ApplicationController
 
   def get_current_user
     @user = current_user
+  end
+
+  def correct_user
+    category = Category.find(params[:id])
+    unless category.user_id == current_user.id
+      redirect_to root_path
+    end
   end
 
   def category_params

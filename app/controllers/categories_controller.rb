@@ -9,6 +9,7 @@ class CategoriesController < ApplicationController
 
   def create
     @category = Category.new(category_params)
+    @bookmarks = @category.bookmarks.order(created_at: :desc).page(params[:page])
     if @category.save
       redirect_to bookmarks_path
     else

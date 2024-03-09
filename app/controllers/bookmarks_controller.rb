@@ -39,6 +39,7 @@ class BookmarksController < ApplicationController
 
   def edit
     @bookmark = Bookmark.find(params[:id])
+    @category = @bookmark.categories.new
   end
 
   def update

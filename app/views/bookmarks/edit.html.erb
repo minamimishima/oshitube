@@ -27,6 +27,12 @@
           <% end %>
         <% end %><br />
 
+        <%= f.fields_for :categories, @bookmark.categories.last do |category| %>
+          <%= category.label :name, "カテゴリーを作成する" %>
+          <%= category.text_field :name %><br />
+          <%= category.hidden_field :user_id, value: @user.id %>
+        <% end %>
+
       <%= f.label :is_public, "おすすめ動画として公開する" %>
       <%= f.check_box :is_public %><br />
 

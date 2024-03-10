@@ -2,7 +2,8 @@ class UsersController < ApplicationController
   before_action :authenticate_user!, only: [:profile_edit, :profile_update]
 
   def show
-    @user = current_user
+    @user = User.find(params[:id])
+    @bookmarks = @user.bookmarks.where(is_public: true).sort_by(&:created_at).reverse
   end
 
   def profile_edit

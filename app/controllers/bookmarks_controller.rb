@@ -28,12 +28,13 @@ class BookmarksController < ApplicationController
 
   def show
     @bookmark = Bookmark.find(params[:id])
-    @timestamp = Timestamp.new
-    @timestamps = @bookmark.timestamps.sort_by(&:start_time)
-    gon.video_id = @bookmark.video_id
-    gon.start_time_list = @timestamps.pluck(:start_time)
     if @bookmark.user.id != @user.id && @bookmark.is_public == false
       redirect_to root_path
+    else
+      @timestamp = Timestamp.new
+      @timestamps = @bookmark.timestamps.sort_by(&:start_time)
+      gon.video_id = @bookmark.video_id
+      gon.start_time_list = @timestamps.pluck(:start_time)
     end
   end
 

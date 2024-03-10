@@ -1,5 +1,5 @@
 class BookmarksController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:show]
   before_action :get_current_user
   before_action :correct_user, only: [:edit, :update, :destroy]
 
@@ -28,13 +28,24 @@ class BookmarksController < ApplicationController
 
   def show
     @bookmark = Bookmark.find(params[:id])
-    if @bookmark.user.id != @user.id && @bookmark.is_public == false
-      redirect_to root_path
+    if user_signed_in?
+      if @bookmark.user.id != @user.id && @bookmark.is_public == false
+        redirect_to root_path
+      else
+        @timestamp = Timestamp.new
+        @timestamps = @bookmark.timestamps.sort_by(&:start_time)
+        gon.video_id = @bookmark.video_id
+        gon.start_time_list = @timestamps.pluck(:start_time)
+      end
     else
-      @timestamp = Timestamp.new
-      @timestamps = @bookmark.timestamps.sort_by(&:start_time)
-      gon.video_id = @bookmark.video_id
-      gon.start_time_list = @timestamps.pluck(:start_time)
+      if @bookmark.is_public == true
+        @timestamp = Timestamp.new
+        @timestamps = @bookmark.timestamps.sort_by(&:start_time)
+        gon.video_id = @bookmark.video_id
+        gon.start_time_list = @timestamps.pluck(:start_time)
+      else
+        redirect_to root_path
+      end
     end
   end
 

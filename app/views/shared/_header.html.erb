@@ -10,7 +10,7 @@
       <% if user_signed_in? %>
         <li><%= link_to "ブックマーク追加", new_bookmark_path %></li>
         <li><%= link_to "ブックマーク一覧", bookmarks_path %></li>
-        <li><%= link_to "プロフィール", users_show_path %></li>
+        <li><%= link_to "プロフィール", user_path(@user.id) %></li>
         <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: { turbo_method: :delete } %></li>
       <% else %>
         <li><%= link_to "新規登録", new_user_registration_path %></li>

@@ -9,7 +9,7 @@
     </ul>
   <% end %>
   
-  <%= form_with(model: @user, url: profile_edit_path, local: true, method: :post) do |f| %>
+  <%= form_with(model: @user, url: profile_edit_path, method: :post) do |f| %>
   
     <div class="field">
       <%= f.label :name, "名前" %><br />

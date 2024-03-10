@@ -6,7 +6,7 @@
   
     <div class="field">
       <%= f.label :email, "メールアドレス" %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      <%= f.email_field :email, autofocus: true %>
     </div>
   
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -15,17 +15,17 @@
   
     <div class="field">
       <%= f.label :password, "新しいパスワード" %><br />
-      <%= f.password_field :password, autocomplete: "new-password" %>
+      <%= f.password_field :password %>
     </div>
   
     <div class="field">
       <%= f.label :password_confirmation, "新しいパスワード（確認）" %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+      <%= f.password_field :password_confirmation %>
     </div>
   
     <div class="field">
       <%= f.label :current_password, "現在のパスワード" %><br />
-      <%= f.password_field :current_password, autocomplete: "current-password" %>
+      <%= f.password_field :current_password %>
     </div>
   
     <div class="actions">

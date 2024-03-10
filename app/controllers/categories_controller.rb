@@ -11,6 +11,7 @@ class CategoriesController < ApplicationController
     @category = Category.new(category_params)
     @bookmarks = @category.bookmarks.order(created_at: :desc).page(params[:page])
     if @category.save
+      flash[:notice] = "カテゴリーを作成しました"
       redirect_to bookmarks_path
     else
       render 'bookmarks/index'

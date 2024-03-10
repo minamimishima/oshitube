@@ -1,12 +1,7 @@
 <div class="bookmark-container container">
   <h1>ブックマーク一覧</h1>
-
-  <% @bookmarks.each do |bookmark| %>
-    <ul class="list-group mt-5 mb-5">
-      <li class="list-group-item"><%= image_tag video_thumbnail(bookmark.video_id), height: "315", width: "auto" %></li>
-      <li class="list-group-item"><%= link_to video_title(bookmark.video_id), bookmark_path(bookmark.id) %></li>
-      <li class="list-group-item"><%= bookmark.description %></li>
-    </ul>
-  <% end %>
+  <%= render 'shared/categories', { categories: @categories } %>
+  <%= render 'shared/categories_new', { category: @category, user: @user } %>
+  <%= render partial: 'shared/bookmark', collection: @bookmarks %>
   <%= paginate @bookmarks, theme: 'bootstrap-5' %>
 </div>

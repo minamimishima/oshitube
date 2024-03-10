@@ -1,13 +1,17 @@
 class BookmarksController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:show]
   before_action :get_current_user
+  before_action :correct_user, only: [:edit, :update, :destroy]
 
   def index
-    @bookmarks = Bookmark.all.order(created_at: :desc).page(params[:page])
+    @bookmarks = @user.bookmarks.order(created_at: :desc).page(params[:page])
+    @categories = @user.categories
+    @category = Category.new
   end
 
   def new
     @bookmark = Bookmark.new
+    @bookmark.categories.new
   end
 
   def create
@@ -24,14 +28,30 @@ class BookmarksController < ApplicationController
 
   def show
     @bookmark = Bookmark.find(params[:id])
-    @timestamp = Timestamp.new
-    @timestamps = @bookmark.timestamps.sort_by(&:start_time)
-    gon.video_id = @bookmark.video_id
-    gon.start_time_list = @timestamps.pluck(:start_time)
+    if user_signed_in?
+      if @bookmark.user.id != @user.id && @bookmark.is_public == false
+        redirect_to root_path
+      else
+        @timestamp = Timestamp.new
+        @timestamps = @bookmark.timestamps.sort_by(&:start_time)
+        gon.video_id = @bookmark.video_id
+        gon.start_time_list = @timestamps.pluck(:start_time)
+      end
+    else
+      if @bookmark.is_public == true
+        @timestamp = Timestamp.new
+        @timestamps = @bookmark.timestamps.sort_by(&:start_time)
+        gon.video_id = @bookmark.video_id
+        gon.start_time_list = @timestamps.pluck(:start_time)
+      else
+        redirect_to root_path
+      end
+    end
   end
 
   def edit
     @bookmark = Bookmark.find(params[:id])
+    @category = @bookmark.categories.new
   end
 
   def update
@@ -74,6 +94,13 @@ class BookmarksController < ApplicationController
     @user = current_user
   end
 
+  def correct_user
+    bookmark = Bookmark.find(params[:id])
+    unless bookmark.user_id == current_user.id
+      redirect_to root_path
+    end
+  end
+
   def bookmark_params
     params.require(:bookmark).permit(
       :user_id,
@@ -81,7 +108,9 @@ class BookmarksController < ApplicationController
       :description,
       :is_public,
       :video_id,
-      timestamps_attributes: [:id, :bookmark_id, :hour, :minute, :second, :start_time, :comment, :_destroy]
+      timestamps_attributes: [:id, :bookmark_id, :hour, :minute, :second, :start_time, :comment, :_destroy],
+      categories_attributes: [:id, :user_id, :name],
+      category_ids: [],
     )
   end
 end

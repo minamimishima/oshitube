@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :bookmarks
+  has_many :categories
   has_one_attached :icon
 
   validates :name, presence: true

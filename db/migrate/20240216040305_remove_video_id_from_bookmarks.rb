@@ -1,5 +1,7 @@
 class RemoveVideoIdFromBookmarks < ActiveRecord::Migration[7.1]
-  def change
+  if column_exists?(:bookmarks, :video_id)
+    def change
     remove_column :bookmarks, :video_id, :string
+    end
   end
 end

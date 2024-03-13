@@ -1,0 +1,43 @@
+name: Run rubocop-airbnb
+on: [push]
+jobs:
+  rubocop-airbnb:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: .
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.2.3
+          bundler-cache: true
+
+      - name: Bundler and gem install
+        run: |
+          gem install bundler
+          bundle install 
+
+      - name: Run rubocop-airbnb
+        run: bundle exec rubocop --require rubocop-airbnb
+
+name: Deploy to heroku
+on: [push]
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    needs: [rubocop-airbnb]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Deploy
+      - uses: akhileshns/heroku-deploy@v3.13.15
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "oshitube"
+          heroku_email: ${{secrets.HEROKU_EMAIL}}

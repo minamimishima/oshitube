@@ -76,10 +76,6 @@ class BookmarksController < ApplicationController
 
   private
 
-  def get_current_user
-    @user = current_user
-  end
-
   def correct_user
     bookmark = Bookmark.find(params[:id])
     unless bookmark.user_id == current_user.id

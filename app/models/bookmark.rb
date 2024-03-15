@@ -37,7 +37,7 @@ class Bookmark < ApplicationRecord
   end
 
   def extract_video_id(url)
-    match = url.match(VIDEO_ID_PATTERN)
+    match = url&.match(VIDEO_ID_PATTERN)
     match ? match[2] : nil
   end
 end

@@ -19,13 +19,15 @@
       <%= f.label :description, "動画の説明" %><br />
       <%= f.text_area :description %><br />
 
+      <% if Category.where(user_id:@user.id).present? %>
         <%= f.label :category, "カテゴリー" %><br />
         <%= f.collection_check_boxes(:category_ids, @user.categories, :id, :name) do |category| %>
           <%= category.label do %>
             <%= category.check_box %>
             <%= category.text %>
           <% end %>
-        <% end %><br />
+        <% end %>
+      <% end %><br />
 
         <%= f.fields_for :categories, @bookmark.categories.last do |category| %>
           <%= category.label :name, "カテゴリーを作成する" %>

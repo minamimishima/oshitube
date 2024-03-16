@@ -43,10 +43,6 @@ class CategoriesController < ApplicationController
 
   private
 
-  def get_current_user
-    @user = current_user
-  end
-
   def correct_user
     category = Category.find(params[:id])
     unless category.user_id == current_user.id

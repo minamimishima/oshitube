@@ -1,12 +1,10 @@
-name: Run rubocop-airbnb
+name: CI/CD
 
 on: [push]
+
 jobs:
   rubocop-airbnb:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: .
 
     steps:
       - name: Checkout code

@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, only: [:profile_edit, :profile_update]
+  before_action :prevent_guest_user_data_changes, only: [:profile_update]
 
   def show
     @user = User.find(params[:id])
@@ -16,6 +17,15 @@ class UsersController < ApplicationController
       redirect_to user_path(@user.id)
     else
       render 'profile_edit', status: :unprocessable_entity
+    end
+  end
+
+  private
+
+  def prevent_guest_user_data_changes
+    if current_user.email == "guest@example.com"
+      flash[:notice] = "ゲストユーザーは編集できません"
+      redirect_to user_path(current_user.id)
     end
   end
 

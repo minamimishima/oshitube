@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, only: [:profile_edit, :profile_update, :confirm, :withdrawal]
+  before_action :get_current_user, except: [:show]
   before_action :prevent_guest_user_data_changes, only: [:profile_update]
 
   def show
@@ -8,11 +9,9 @@ class UsersController < ApplicationController
   end
 
   def profile_edit
-    @user = current_user
   end
 
   def profile_update
-    @user = current_user
     if @user.update(profile_params)
       redirect_to user_path(@user.id)
     else
@@ -21,11 +20,9 @@ class UsersController < ApplicationController
   end
 
   def confirm
-    @user = current_user
   end
 
   def withdrawal
-    @user = current_user
     @user.update(is_deleted: true)
     reset_session
     flash[:notice] = "退会しました"

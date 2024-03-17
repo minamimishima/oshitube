@@ -4,12 +4,14 @@ Rails.application.routes.draw do
     post "users/guest_sign_in", to: "users/sessions#guest_sign_in"
   end
 
+  get "profile/edit", to: "users#profile_edit"
+  post "profile/edit", to: "users#profile_update"
+  get "users/confirm", to: "users#confirm"
+
   resources :users, only: [:show]
   resources :categories, only: [:new, :create, :show, :update, :destroy]
   resources :bookmarks
   resources :timestamps, only: [:create]
-  get "profile/edit", to: "users#profile_edit"
-  post "profile/edit", to: "users#profile_update"
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

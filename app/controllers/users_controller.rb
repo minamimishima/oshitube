@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, only: [:profile_edit, :profile_update]
+  before_action :authenticate_user!, only: [:profile_edit, :profile_update, :confirm]
   before_action :prevent_guest_user_data_changes, only: [:profile_update]
 
   def show
@@ -18,6 +18,10 @@ class UsersController < ApplicationController
     else
       render 'profile_edit', status: :unprocessable_entity
     end
+  end
+
+  def confirm
+    @user = current_user
   end
 
   private

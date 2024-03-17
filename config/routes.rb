@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get "profile/edit", to: "users#profile_edit"
   post "profile/edit", to: "users#profile_update"
   get "users/confirm", to: "users#confirm"
+  patch "users/withdrawal", to: "users#withdrawal"
 
   resources :users, only: [:show]
   resources :categories, only: [:new, :create, :show, :update, :destroy]

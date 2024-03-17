@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user!, except: [:show]
   before_action :get_current_user, except: [:show]
   before_action :prevent_guest_user_data_changes, only: [:profile_update]
+  before_action :prevent_guest_user_data_deletion, only: [:withdrawal]
 
   def show
     @user = User.find(params[:id])
@@ -34,6 +35,13 @@ class UsersController < ApplicationController
   def prevent_guest_user_data_changes
     if current_user.email == "guest@example.com"
       flash[:notice] = "ゲストユーザーは編集できません"
+      redirect_to user_path(current_user.id)
+    end
+  end
+
+  def prevent_guest_user_data_deletion
+    if current_user.email == "guest@example.com"
+      flash[:notice] = "ゲストユーザーは削除できません"
       redirect_to user_path(current_user.id)
     end
   end

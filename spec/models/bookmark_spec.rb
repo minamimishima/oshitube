@@ -6,7 +6,7 @@ RSpec.describe Bookmark, type: :model do
   describe "バリデーションの検証" do
     it "URL・動画IDがあれば有効であること" do
       bookmark = FactoryBot.build(:bookmark, user_id: user.id)
-      expect(user).to be_valid
+      expect(bookmark).to be_valid
     end
 
     it "URLがなければ無効であること" do

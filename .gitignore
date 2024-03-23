@@ -75,4 +75,7 @@ yarn-debug.log*
 # Ignore .DS_Store
 .DS_Store
 
+#Ignore spec/examples.txt
+spec/examples.txt
+
 # End of https://www.toptal.com/developers/gitignore/api/rails

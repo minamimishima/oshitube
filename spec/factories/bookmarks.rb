@@ -1,6 +1,7 @@
 FactoryBot.define do
   factory :bookmark do
-    url { "https://www.youtube.com/watch?v=ABCDEFGHIJK" }
-    video_id { "ABCDEFGHIJK" }
+    video_id = Faker::Alphanumeric.alphanumeric(number: 11)
+    url { "https://www.youtube.com/watch?v=#{video_id}" }
+    video_id { video_id }
   end
 end

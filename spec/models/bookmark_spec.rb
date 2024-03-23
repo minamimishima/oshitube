@@ -20,12 +20,12 @@ RSpec.describe Bookmark, type: :model do
     end
 
     it "動画IDが11文字より長ければ無効であること" do
-      bookmark = FactoryBot.build(:bookmark, user_id: user.id, video_id: "ABCDEFGHIJKL")
+      bookmark = FactoryBot.build(:bookmark, user_id: user.id, video_id: Faker::Alphanumeric.alphanumeric(number: 12))
       expect(bookmark).to be_invalid
     end
 
     it "動画IDが11文字より短ければ無効であること" do
-      bookmark = FactoryBot.build(:bookmark, user_id: user.id, video_id: "ABCDEFGHIJ")
+      bookmark = FactoryBot.build(:bookmark, user_id: user.id, video_id: Faker::Alphanumeric.alphanumeric(number: 10))
       expect(bookmark).to be_invalid
     end
 

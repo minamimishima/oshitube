@@ -149,6 +149,8 @@ GEM
     factory_bot_rails (6.4.3)
       factory_bot (~> 6.4)
       railties (>= 5.0.0)
+    faker (3.2.3)
+      i18n (>= 1.8.11, < 2)
     faraday (2.9.0)
       faraday-net_http (>= 2.0, < 3.2)
     faraday-net_http (3.1.0)
@@ -450,6 +452,7 @@ DEPENDENCIES
   devise-i18n
   dotenv-rails
   factory_bot_rails
+  faker
   gon
   google-apis-youtube_v3
   importmap-rails

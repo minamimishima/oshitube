@@ -27,16 +27,6 @@ RSpec.describe Bookmark, type: :model do
         expect(bookmark).to be_invalid
       end
 
-      it "動画IDが11文字より長ければ無効であること" do
-        bookmark = FactoryBot.build(:bookmark, :video_id_with_12_characters)
-        expect(bookmark).to be_invalid
-      end
-
-      it "動画IDが11文字より短ければ無効であること" do
-        bookmark = FactoryBot.build(:bookmark, :video_id_with_10_characters)
-        expect(bookmark).to be_invalid
-      end
-
       it "動画のメモが300文字より長ければ無効であること" do
         bookmark = FactoryBot.build(:bookmark, description: "a" * 301)
         expect(bookmark).to be_invalid

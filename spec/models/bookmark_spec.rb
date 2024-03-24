@@ -1,8 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Bookmark, type: :model do
-  let(:user) { create(:user) }
-
   describe "バリデーションの検証" do
     context "有効な場合" do
       it "URL・動画IDがあれば有効であること" do

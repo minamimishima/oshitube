@@ -1,10 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  let(:user) { FactoryBot.build(:user) }
-  let(:user_with_no_name) { FactoryBot.build(:user, name: nil) }
-  let(:user_with_over_300_characters_profile) { FactoryBot.build(:user, profile: "a" * 301) }
-  let(:user_with_300_charactets_profile) { FactoryBot.build(:user, profile: "a" * 300) }
+  let(:user) { build(:user) }
+  let(:user_with_no_name) { build(:user, name: nil) }
+  let(:user_with_over_300_characters_profile) { build(:user, profile: "a" * 301) }
+  let(:user_with_300_charactets_profile) { build(:user, profile: "a" * 300) }
 
   describe "バリデーションの検証" do
     it "メールアドレス・パスワード・名前があれば有効であること" do

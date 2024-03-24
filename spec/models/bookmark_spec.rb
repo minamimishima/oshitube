@@ -35,6 +35,68 @@ RSpec.describe Bookmark, type: :model do
   end
 
   describe "インスタンスメソッドの検証" do
+    context "extract_video_urlの検証" do
+      context "通常のURLの場合" do
+        it "通常のURLをそのまま返すこと" do
+          bookmark = FactoryBot.build(:bookmark)
+          url = bookmark.extract_video_url(bookmark.url)
+          expect(url).to eq bookmark.url
+        end
+
+        it "動画IDの後に余分な文字列がある場合は削除してURLを返すこと" do
+          bookmark = FactoryBot.build(:bookmark_with_12_characters_video_id)
+          url = bookmark.extract_video_url(bookmark.url)
+          expect(url).to eq bookmark.url.chop
+        end
+
+        it "動画IDが11桁より短い場合はnilを返すこと" do
+          bookmark = FactoryBot.build(:bookmark_with_10_characters_video_id)
+          url = bookmark.extract_video_url(bookmark.url)
+          expect(url).to eq nil
+        end
+      end
+
+      context "短縮URLの場合" do
+        it "短縮URLをそのまま返すこと" do
+          bookmark = FactoryBot.build(:short_url_bookmark)
+          url = bookmark.extract_video_url(bookmark.url)
+          expect(url).to eq bookmark.url
+        end
+
+        it "動画IDの後に余分な文字列がある場合は削除してURLを返すこと" do
+          bookmark = FactoryBot.build(:short_url_bookmark_with_12_characters_video_id)
+          url = bookmark.extract_video_url(bookmark.url)
+          expect(url).to eq bookmark.url.chop
+        end
+
+        it "動画IDが11桁より短い場合はnilを返すこと" do
+          bookmark = FactoryBot.build(:short_url_bookmark_with_10_characters_video_id)
+          url = bookmark.extract_video_url(bookmark.url)
+          expect(url).to eq nil
+        end
+      end
+
+      context "モバイル版URLの場合" do
+        it "モバイル版URLをそのまま返すこと" do
+          bookmark = FactoryBot.build(:mobile_url_bookmark)
+          url = bookmark.extract_video_url(bookmark.url)
+          expect(url).to eq bookmark.url
+        end
+
+        it "動画IDの後に余分な文字列がある場合は削除してURLを返すこと" do
+          bookmark = FactoryBot.build(:mobile_url_bookmark_with_12_characters_video_id)
+          url = bookmark.extract_video_url(bookmark.url)
+          expect(url).to eq bookmark.url.chop
+        end
+
+        it "動画IDが11桁より短い場合はnilを返すこと" do
+          bookmark = FactoryBot.build(:mobile_url_bookmark_with_10_characters_video_id)
+          url = bookmark.extract_video_url(bookmark.url)
+          expect(url).to eq nil
+        end
+      end
+    end
+
     context "extract_video_idの検証" do
       context "通常のURLの場合" do
         it "通常のURLから動画IDが取得できること" do
@@ -44,13 +106,13 @@ RSpec.describe Bookmark, type: :model do
         end
 
         it "動画IDの後に余分な文字列があっても11桁の動画IDを取得できること" do
-          bookmark = FactoryBot.build(:bookmark, :video_id_with_12_characters)
+          bookmark = FactoryBot.build(:bookmark_with_12_characters_video_id)
           video_id = bookmark.extract_video_id(bookmark.url)
           expect(video_id).to eq bookmark.video_id
         end
 
         it "動画IDが11桁より短ければnilを返すこと" do
-          bookmark = FactoryBot.build(:bookmark, :video_id_with_10_characters)
+          bookmark = FactoryBot.build(:bookmark_with_10_characters_video_id)
           video_id = bookmark.extract_video_id(bookmark.url)
           expect(video_id).to eq nil
         end
@@ -58,19 +120,19 @@ RSpec.describe Bookmark, type: :model do
 
       context "短縮URLの場合" do
         it "短縮URLから動画IDが取得できること" do
-          bookmark = FactoryBot.build(:bookmark_with_short_url)
+          bookmark = FactoryBot.build(:short_url_bookmark)
           video_id = bookmark.extract_video_id(bookmark.url)
           expect(video_id).to eq bookmark.video_id
         end
 
         it "動画IDの後に余分な文字列があっても11桁の動画IDを取得できること" do
-          bookmark = FactoryBot.build(:bookmark_with_short_url, :video_id_with_12_characters)
+          bookmark = FactoryBot.build(:short_url_bookmark_with_12_characters_video_id)
           video_id = bookmark.extract_video_id(bookmark.url)
           expect(video_id).to eq bookmark.video_id
         end
 
         it "動画IDが11桁より短ければnilを返すこと" do
-          bookmark = FactoryBot.build(:bookmark_with_short_url, :video_id_with_10_characters)
+          bookmark = FactoryBot.build(:short_url_bookmark_with_10_characters_video_id)
           video_id = bookmark.extract_video_id(bookmark.url)
           expect(video_id).to eq nil
         end
@@ -78,19 +140,19 @@ RSpec.describe Bookmark, type: :model do
 
       context "モバイル版URLの場合" do
         it "モバイル版URLから動画IDが取得できること" do
-          bookmark = FactoryBot.build(:bookmark_with_mobile_url)
+          bookmark = FactoryBot.build(:mobile_url_bookmark)
           video_id = bookmark.extract_video_id(bookmark.url)
           expect(video_id).to eq bookmark.video_id
         end
 
         it "動画IDの後に余分な文字列があっても11桁の動画IDを取得できること" do
-          bookmark = FactoryBot.build(:bookmark_with_mobile_url, :video_id_with_12_characters)
+          bookmark = FactoryBot.build(:mobile_url_bookmark_with_12_characters_video_id)
           video_id = bookmark.extract_video_id(bookmark.url)
           expect(video_id).to eq bookmark.video_id
         end
 
         it "動画IDが11桁より短ければnilを返すこと" do
-          bookmark = FactoryBot.build(:bookmark_with_mobile_url, :video_id_with_10_characters)
+          bookmark = FactoryBot.build(:mobile_url_bookmark_with_10_characters_video_id)
           video_id = bookmark.extract_video_id(bookmark.url)
           expect(video_id).to eq nil
         end

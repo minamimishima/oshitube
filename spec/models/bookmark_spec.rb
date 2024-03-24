@@ -1,10 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe Bookmark, type: :model do
+  let(:bookmark) { create(:bookmark) }
+
   describe "バリデーションの検証" do
     context "有効な場合" do
       it "URL・動画IDがあれば有効であること" do
-        bookmark = build(:bookmark)
         expect(bookmark).to be_valid
       end
 
@@ -34,125 +35,113 @@ RSpec.describe Bookmark, type: :model do
 
   describe "インスタンスメソッドの検証" do
     context "extract_video_urlの検証" do
-      context "通常のURLの場合" do
-        it "通常のURLをそのまま返すこと" do
-          bookmark = build(:bookmark)
-          url = bookmark.extract_video_url(bookmark.url)
-          expect(url).to eq bookmark.url
+      context "動画IDが11桁の場合" do
+        let(:video_id_params) { Faker::Alphanumeric.alphanumeric(number: 11) }
+        it "通常のURLの場合はURLをそのまま返すこと" do
+          extracted_url = bookmark.extract_video_url("https://www.youtube.com/watch?v=#{video_id_params}")
+          expect(extracted_url).to eq "https://www.youtube.com/watch?v=#{video_id_params}"
         end
 
-        it "動画IDの後に余分な文字列がある場合は削除してURLを返すこと" do
-          bookmark = build(:bookmark_with_12_characters_video_id)
-          url = bookmark.extract_video_url(bookmark.url)
-          expect(url).to eq bookmark.url.chop
+        it "短縮URLの場合はURLをそのまま返すこと" do
+          extracted_url = bookmark.extract_video_url("https://youtu.be/#{video_id_params}")
+          expect(extracted_url).to eq "https://youtu.be/#{video_id_params}"
         end
 
-        it "動画IDが11桁より短い場合はnilを返すこと" do
-          bookmark = build(:bookmark_with_10_characters_video_id)
-          url = bookmark.extract_video_url(bookmark.url)
-          expect(url).to eq nil
+        it "モバイル版URLの場合はURLをそのまま返すこと" do
+          extracted_url = bookmark.extract_video_url("https://m.youtube.com/watch?v=#{video_id_params}")
+          expect(extracted_url).to eq "https://m.youtube.com/watch?v=#{video_id_params}"
         end
       end
 
-      context "短縮URLの場合" do
-        it "短縮URLをそのまま返すこと" do
-          bookmark = build(:short_url_bookmark)
-          url = bookmark.extract_video_url(bookmark.url)
-          expect(url).to eq bookmark.url
+      context "動画URLのあとに余分な文字列がある場合" do
+        let(:video_id_params) { Faker::Alphanumeric.alphanumeric(number: 12) }
+        it "通常のURLの場合は余分な文字列を削除してURLを返すこと" do
+          extracted_url = bookmark.extract_video_url("https://www.youtube.com/watch?v=#{video_id_params}")
+          expect(extracted_url).to eq "https://www.youtube.com/watch?v=#{video_id_params}".chop
         end
 
-        it "動画IDの後に余分な文字列がある場合は削除してURLを返すこと" do
-          bookmark = build(:short_url_bookmark_with_12_characters_video_id)
-          url = bookmark.extract_video_url(bookmark.url)
-          expect(url).to eq bookmark.url.chop
+        it "短縮URLの場合は余分な文字列を削除してURLを返すこと" do
+          extracted_url = bookmark.extract_video_url("https://youtu.be/#{video_id_params}")
+          expect(extracted_url).to eq "https://youtu.be/#{video_id_params}".chop
         end
 
-        it "動画IDが11桁より短い場合はnilを返すこと" do
-          bookmark = build(:short_url_bookmark_with_10_characters_video_id)
-          url = bookmark.extract_video_url(bookmark.url)
-          expect(url).to eq nil
+        it "モバイル版URLの場合は余分な文字列を削除してURLを返すこと" do
+          extracted_url = bookmark.extract_video_url("https://m.youtube.com/watch?v=#{video_id_params}")
+          expect(extracted_url).to eq "https://m.youtube.com/watch?v=#{video_id_params}".chop
         end
       end
 
-      context "モバイル版URLの場合" do
-        it "モバイル版URLをそのまま返すこと" do
-          bookmark = build(:mobile_url_bookmark)
-          url = bookmark.extract_video_url(bookmark.url)
-          expect(url).to eq bookmark.url
+      context "動画IDが11桁より短い場合" do
+        let(:video_id_params) { Faker::Alphanumeric.alphanumeric(number: 10) }
+        it "通常URLの場合はnilを返すこと" do
+          extracted_url = bookmark.extract_video_url("https://www.youtube.com/watch?v=#{video_id_params}")
+          expect(extracted_url).to eq nil
         end
 
-        it "動画IDの後に余分な文字列がある場合は削除してURLを返すこと" do
-          bookmark = build(:mobile_url_bookmark_with_12_characters_video_id)
-          url = bookmark.extract_video_url(bookmark.url)
-          expect(url).to eq bookmark.url.chop
+        it "短縮URLの場合はnilを返すこと" do
+          extracted_url = bookmark.extract_video_url("https://youtu.be/#{video_id_params}")
+          expect(extracted_url).to eq nil
         end
 
-        it "動画IDが11桁より短い場合はnilを返すこと" do
-          bookmark = build(:mobile_url_bookmark_with_10_characters_video_id)
-          url = bookmark.extract_video_url(bookmark.url)
-          expect(url).to eq nil
+        it "モバイル版URLの場合はnilを返すこと" do
+          extracted_url = bookmark.extract_video_url("https://m.youtube.com/watch?v=#{video_id_params}")
+          expect(extracted_url).to eq nil
         end
       end
     end
 
     context "extract_video_idの検証" do
-      context "通常のURLの場合" do
-        it "通常のURLから動画IDが取得できること" do
-          bookmark = build(:bookmark)
-          video_id = bookmark.extract_video_id(bookmark.url)
-          expect(video_id).to eq bookmark.video_id
+      context "動画IDが11桁の場合" do
+        let(:video_id_params) { Faker::Alphanumeric.alphanumeric(number: 11) }
+        it "通常のURLの場合は動画IDを取得できること" do
+          extracted_video_id = bookmark.extract_video_id("https://www.youtube.com/watch?v=#{video_id_params}")
+          expect(extracted_video_id).to eq video_id_params
         end
 
-        it "動画IDの後に余分な文字列がある場合は削除して11桁の動画IDを取得できること" do
-          bookmark = build(:bookmark_with_12_characters_video_id)
-          video_id = bookmark.extract_video_id(bookmark.url)
-          expect(video_id).to eq bookmark.video_id
+        it "短縮URLの場合は動画IDを取得できること" do
+          extracted_video_id = bookmark.extract_video_id("https://youtu.be/#{video_id_params}")
+          expect(extracted_video_id).to eq video_id_params
         end
 
-        it "動画IDが11桁より短い場合はnilを返すこと" do
-          bookmark = build(:bookmark_with_10_characters_video_id)
-          video_id = bookmark.extract_video_id(bookmark.url)
-          expect(video_id).to eq nil
+        it "モバイル版URLの場合は動画IDを取得できること" do
+          extracted_video_id = bookmark.extract_video_id("https://m.youtube.com/watch?v=#{video_id_params}")
+          expect(extracted_video_id).to eq video_id_params
         end
       end
 
-      context "短縮URLの場合" do
-        it "短縮URLから動画IDが取得できること" do
-          bookmark = build(:short_url_bookmark)
-          video_id = bookmark.extract_video_id(bookmark.url)
-          expect(video_id).to eq bookmark.video_id
+      context "動画URLのあとに余分な文字列がある場合" do
+        let(:video_id_params) { Faker::Alphanumeric.alphanumeric(number: 12) }
+        it "通常のURLの場合は削除して11桁の動画IDを返すこと" do
+          extracted_video_id = bookmark.extract_video_id("https://www.youtube.com/watch?v=#{video_id_params}")
+          expect(extracted_video_id).to eq video_id_params.chop
         end
 
-        it "動画IDの後に余分な文字列がある場合は削除して11桁の動画IDを取得できること" do
-          bookmark = build(:short_url_bookmark_with_12_characters_video_id)
-          video_id = bookmark.extract_video_id(bookmark.url)
-          expect(video_id).to eq bookmark.video_id
+        it "短縮URLの場合は削除して11桁の動画IDを返すこと" do
+          extracted_video_id = bookmark.extract_video_id("https://youtu.be/#{video_id_params}")
+          expect(extracted_video_id).to eq video_id_params.chop
         end
 
-        it "動画IDが11桁より短い場合はnilを返すこと" do
-          bookmark = build(:short_url_bookmark_with_10_characters_video_id)
-          video_id = bookmark.extract_video_id(bookmark.url)
-          expect(video_id).to eq nil
+        it "モバイル版URLの場合は削除して11桁の動画IDを返すこと" do
+          extracted_video_id = bookmark.extract_video_id("https://m.youtube.com/watch?v=#{video_id_params}")
+          expect(extracted_video_id).to eq video_id_params.chop
         end
       end
 
-      context "モバイル版URLの場合" do
-        it "モバイル版URLから動画IDが取得できること" do
-          bookmark = build(:mobile_url_bookmark)
-          video_id = bookmark.extract_video_id(bookmark.url)
-          expect(video_id).to eq bookmark.video_id
+      context "動画IDが11桁より短い場合" do
+        let(:video_id_params) { Faker::Alphanumeric.alphanumeric(number: 10) }
+        it "通常のURLの場合はnilを返すこと" do
+          extracted_video_id = bookmark.extract_video_id("https://www.youtube.com/watch?v=#{video_id_params}")
+          expect(extracted_video_id).to eq nil
         end
 
-        it "動画IDの後に余分な文字列がある場合は削除して11桁の動画IDを取得できること" do
-          bookmark = build(:mobile_url_bookmark_with_12_characters_video_id)
-          video_id = bookmark.extract_video_id(bookmark.url)
-          expect(video_id).to eq bookmark.video_id
+        it "短縮URLの場合はnilを返すこと" do
+          extracted_video_id = bookmark.extract_video_id("https://youtu.be/#{video_id_params}")
+          expect(extracted_video_id).to eq nil
         end
 
-        it "動画IDが11桁より短い場合はnilを返すこと" do
-          bookmark = build(:mobile_url_bookmark_with_10_characters_video_id)
-          video_id = bookmark.extract_video_id(bookmark.url)
-          expect(video_id).to eq nil
+        it "モバイル版URLの場合はnilを返すこと" do
+          extracted_video_id = bookmark.extract_video_id("https://m.youtube.com/watch?v=#{video_id_params}")
+          expect(extracted_video_id).to eq nil
         end
       end
     end

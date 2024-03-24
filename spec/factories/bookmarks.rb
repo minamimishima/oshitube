@@ -5,25 +5,49 @@ FactoryBot.define do
     association :user
   end
 
-  factory :bookmark_with_short_url, class: "Bookmark" do
+  factory :bookmark_with_12_characters_video_id, class: "Bookmark" do
+    params = Faker::Alphanumeric.alphanumeric(number: 12) # rubocop:disable all
+    url { "https://www.youtube.com/watch?v=#{params}" }
+    video_id { params.slice(0, 11) }
+  end
+
+  factory :bookmark_with_10_characters_video_id, class: "Bookmark" do
+    params = Faker::Alphanumeric.alphanumeric(number: 10) # rubocop:disable all
+    url { "https://www.youtube.com/watch?v=#{params}" }
+    video_id { nil }
+  end
+
+  factory :short_url_bookmark, class: "Bookmark" do
     video_id { Faker::Alphanumeric.alphanumeric(number: 11) }
     url { "https://youtu.be/#{video_id}" }
   end
 
-  factory :bookmark_with_mobile_url, class: "Bookmark" do
-    video_id { Faker::Alphanumeric.alphanumeric(number: 11) }
-    url { "https://m.youtube.com/watch?v=#{video_id}" }
-  end
-
-  trait :video_id_with_12_characters do
+  factory :short_url_bookmark_with_12_characters_video_id, class: "Bookmark" do
     params = Faker::Alphanumeric.alphanumeric(number: 12) # rubocop:disable all
     url { "https://youtu.be/#{params}" }
     video_id { params.slice(0, 11) }
   end
 
-  trait :video_id_with_10_characters do
+  factory :short_url_bookmark_with_10_characters_video_id, class: "Bookmark" do
     params = Faker::Alphanumeric.alphanumeric(number: 10) # rubocop:disable all
     url { "https://youtu.be/#{params}" }
+    video_id { nil }
+  end
+
+  factory :mobile_url_bookmark, class: "Bookmark" do
+    video_id { Faker::Alphanumeric.alphanumeric(number: 11) }
+    url { "https://m.youtube.com/watch?v=#{video_id}" }
+  end
+
+  factory :mobile_url_bookmark_with_12_characters_video_id, class: "Bookmark" do
+    params = Faker::Alphanumeric.alphanumeric(number: 12) # rubocop:disable all
+    url { "https://m.youtube.com/watch?v=#{params}" }
+    video_id { params.slice(0, 11) }
+  end
+
+  factory :mobile_url_bookmark_with_10_characters_video_id, class: "Bookmark" do
+    params = Faker::Alphanumeric.alphanumeric(number: 10) # rubocop:disable all
+    url { "https://m.youtube.com/watch?v=#{params}" }
     video_id { nil }
   end
 end

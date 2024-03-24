@@ -1,5 +1,6 @@
 class TimestampsController < ApplicationController
   before_action :authenticate_user!
+  before_action :get_current_user
 
   def create
     @timestamp = Timestamp.new(timestamp_params)

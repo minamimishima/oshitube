@@ -105,13 +105,13 @@ RSpec.describe Bookmark, type: :model do
           expect(video_id).to eq bookmark.video_id
         end
 
-        it "動画IDの後に余分な文字列があっても11桁の動画IDを取得できること" do
+        it "動画IDの後に余分な文字列がある場合は削除して11桁の動画IDを取得できること" do
           bookmark = FactoryBot.build(:bookmark_with_12_characters_video_id)
           video_id = bookmark.extract_video_id(bookmark.url)
           expect(video_id).to eq bookmark.video_id
         end
 
-        it "動画IDが11桁より短ければnilを返すこと" do
+        it "動画IDが11桁より短い場合はnilを返すこと" do
           bookmark = FactoryBot.build(:bookmark_with_10_characters_video_id)
           video_id = bookmark.extract_video_id(bookmark.url)
           expect(video_id).to eq nil
@@ -125,13 +125,13 @@ RSpec.describe Bookmark, type: :model do
           expect(video_id).to eq bookmark.video_id
         end
 
-        it "動画IDの後に余分な文字列があっても11桁の動画IDを取得できること" do
+        it "動画IDの後に余分な文字列がある場合は削除して11桁の動画IDを取得できること" do
           bookmark = FactoryBot.build(:short_url_bookmark_with_12_characters_video_id)
           video_id = bookmark.extract_video_id(bookmark.url)
           expect(video_id).to eq bookmark.video_id
         end
 
-        it "動画IDが11桁より短ければnilを返すこと" do
+        it "動画IDが11桁より短い場合はnilを返すこと" do
           bookmark = FactoryBot.build(:short_url_bookmark_with_10_characters_video_id)
           video_id = bookmark.extract_video_id(bookmark.url)
           expect(video_id).to eq nil
@@ -145,13 +145,13 @@ RSpec.describe Bookmark, type: :model do
           expect(video_id).to eq bookmark.video_id
         end
 
-        it "動画IDの後に余分な文字列があっても11桁の動画IDを取得できること" do
+        it "動画IDの後に余分な文字列がある場合は削除して11桁の動画IDを取得できること" do
           bookmark = FactoryBot.build(:mobile_url_bookmark_with_12_characters_video_id)
           video_id = bookmark.extract_video_id(bookmark.url)
           expect(video_id).to eq bookmark.video_id
         end
 
-        it "動画IDが11桁より短ければnilを返すこと" do
+        it "動画IDが11桁より短い場合はnilを返すこと" do
           bookmark = FactoryBot.build(:mobile_url_bookmark_with_10_characters_video_id)
           video_id = bookmark.extract_video_id(bookmark.url)
           expect(video_id).to eq nil

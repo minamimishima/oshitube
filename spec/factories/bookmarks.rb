@@ -16,13 +16,13 @@ FactoryBot.define do
   end
 
   trait :video_id_with_12_characters do
-    params = Faker::Alphanumeric.alphanumeric(number: 12)
+    params = Faker::Alphanumeric.alphanumeric(number: 12) # rubocop:disable all
     url { "https://youtu.be/#{params}" }
     video_id { params.slice(0, 11) }
   end
 
   trait :video_id_with_10_characters do
-    params = Faker::Alphanumeric.alphanumeric(number: 10)
+    params = Faker::Alphanumeric.alphanumeric(number: 10) # rubocop:disable all
     url { "https://youtu.be/#{params}" }
     video_id { nil }
   end

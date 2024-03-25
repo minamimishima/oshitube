@@ -34,7 +34,7 @@ RSpec.describe Bookmark, type: :model do
   end
 
   describe "インスタンスメソッドの検証" do
-    context "extract_video_urlの検証" do
+    describe "extract_video_urlの検証" do
       context "動画IDが11桁の場合" do
         let(:video_id_params) { Faker::Alphanumeric.alphanumeric(number: 11) }
         it "通常のURLの場合はURLをそのまま返すこと" do
@@ -90,7 +90,7 @@ RSpec.describe Bookmark, type: :model do
       end
     end
 
-    context "extract_video_idの検証" do
+    describe "extract_video_idの検証" do
       context "動画IDが11桁の場合" do
         let(:video_id_params) { Faker::Alphanumeric.alphanumeric(number: 11) }
         it "通常のURLの場合は動画IDを取得できること" do

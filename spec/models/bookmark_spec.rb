@@ -41,6 +41,7 @@ RSpec.describe Bookmark, type: :model do
           "https://www.youtube.com/watch?v=#{video_id}",
           "https://youtu.be/#{video_id}",
           "https://m.youtube.com/watch?v=#{video_id}",
+          "https://www.youtube.com/embed/#{video_id}",
         ]
         aggregate_failures do
           urls.each do |url|
@@ -54,6 +55,7 @@ RSpec.describe Bookmark, type: :model do
           "https://www.youtube.com/watch?v=#{video_id}extra_characters",
           "https://youtu.be/#{video_id}extra_characters",
           "https://m.youtube.com/watch?v=#{video_id}extra_characters",
+          "https://www.youtube.com/embed/#{video_id}extra_characters",
         ]
         aggregate_failures do
           urls.each do |url|
@@ -67,6 +69,7 @@ RSpec.describe Bookmark, type: :model do
           "https://www.youtube.com/watch?v=#{video_id.chop}",
           "https://youtu.be/#{video_id.chop}",
           "https://m.youtube.com/watch?v=#{video_id.chop}",
+          "https://www.youtube.com/embed/#{video_id.chop}",
         ]
         aggregate_failures do
           urls.each do |url|
@@ -87,6 +90,7 @@ RSpec.describe Bookmark, type: :model do
           "https://www.youtube.com/watch?v=#{video_id}",
           "https://youtu.be/#{video_id}",
           "https://m.youtube.com/watch?v=#{video_id}",
+          "https://www.youtube.com/embed/#{video_id}",
         ]
         aggregate_failures do
           urls.each do |url|
@@ -100,6 +104,7 @@ RSpec.describe Bookmark, type: :model do
           "https://www.youtube.com/watch?v=#{video_id}extra_characters",
           "https://youtu.be/#{video_id}extra_characters",
           "https://m.youtube.com/watch?v=#{video_id}extra_characters",
+          "https://www.youtube.com/embed/#{video_id}extra_characters",
         ]
         aggregate_failures do
           urls.each do |url|
@@ -113,6 +118,7 @@ RSpec.describe Bookmark, type: :model do
           "https://www.youtube.com/watch?v=#{video_id.chop}",
           "https://youtu.be/#{video_id.chop}",
           "https://m.youtube.com/watch?v=#{video_id.chop}",
+          "https://www.youtube.com/embed/#{video_id.chop}",
         ]
         aggregate_failures do
           urls.each do |url|

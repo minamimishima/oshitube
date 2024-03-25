@@ -74,6 +74,11 @@ RSpec.describe Bookmark, type: :model do
           end
         end
       end
+
+      it "正規表現と一致しないURLの場合はnilを返すこと" do
+        url = Faker::Internet.url
+        expect(bookmark.extract_video_url(url)).to eq nil
+      end
     end
 
     describe "extract_video_idの検証" do
@@ -114,6 +119,11 @@ RSpec.describe Bookmark, type: :model do
             expect(bookmark.extract_video_id(url)).to eq nil
           end
         end
+      end
+
+      it "正規表現と一致しないURLの場合はnilを返すこと" do
+        url = Faker::Internet.url
+        expect(bookmark.extract_video_id(url)).to eq nil
       end
     end
   end

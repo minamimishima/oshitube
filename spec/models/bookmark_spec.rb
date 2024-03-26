@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Bookmark, type: :model do
-  let(:bookmark) { create(:bookmark) }
+  let(:bookmark) { build(:bookmark) }
 
   describe "バリデーションの検証" do
     context "有効な場合" do

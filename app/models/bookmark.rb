@@ -17,17 +17,7 @@ class Bookmark < ApplicationRecord
     new_params = params
     new_params[:url] = extract_video_url(params[:url])
     new_params[:video_id] = extract_video_id(params[:url])
-
-    if new_params[:timestamps_attributes].present?
-      (0..9).each do |i|
-        if new_params[:timestamps_attributes][i.to_s].present?
-          new_params[:timestamps_attributes][i.to_s][:start_time] =
-            new_params[:timestamps_attributes][i.to_s][:hour].to_i * 3600 +
-            new_params[:timestamps_attributes][i.to_s][:minute].to_i * 60 +
-            new_params[:timestamps_attributes][i.to_s][:second].to_i
-        end
-      end
-    end
+    calculate_start_time(params)
     new_params
   end
 
@@ -39,5 +29,19 @@ class Bookmark < ApplicationRecord
   def extract_video_id(url)
     match = url&.match(VIDEO_ID_PATTERN)
     match ? match[2] : nil
+  end
+
+  def calculate_start_time(params)
+    if params[:timestamps_attributes].present?
+      (0..9).each do |i|
+        if params[:timestamps_attributes][i.to_s].present?
+          params[:timestamps_attributes][i.to_s][:start_time] =
+            params[:timestamps_attributes][i.to_s][:hour].to_i * 3600 +
+            params[:timestamps_attributes][i.to_s][:minute].to_i * 60 +
+            params[:timestamps_attributes][i.to_s][:second].to_i
+        end
+      end
+    end
+    params
   end
 end

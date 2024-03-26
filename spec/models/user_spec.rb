@@ -8,6 +8,16 @@ RSpec.describe User, type: :model do
       expect(user).to be_valid
     end
 
+    it "メールアドレスがなければ無効であること" do
+      user = build(:user, email: nil)
+      expect(user).to be_invalid
+    end
+
+    it "パスワードがなければ無効であること" do
+      user = build(:user, password: nil)
+      expect(user).to be_invalid
+    end
+
     it "名前がなければ無効であること" do
       user = build(:user, name: nil)
       expect(user).to be_invalid

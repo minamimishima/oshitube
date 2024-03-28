@@ -12,7 +12,7 @@ module BookmarksHelper
   end
 
   def video_title(video_id)
-    if get_video_data(video_id)
+    if get_video_data(video_id).present?
       get_video_data(video_id).snippet.title
     else
       "Video Not Found"
@@ -20,7 +20,7 @@ module BookmarksHelper
   end
 
   def video_description(video_id)
-    if get_video_data(video_id)
+    if get_video_data(video_id).present?
       get_video_data(video_id).snippet.description
     else
       "Video Not Found"
@@ -28,7 +28,7 @@ module BookmarksHelper
   end
 
   def video_thumbnail(video_id)
-    if get_video_data(video_id)
+    if get_video_data(video_id).present?
       thumbnails = get_video_data(video_id).snippet.thumbnails
       thumbnails_resolutions = [:maxres, :standard, :high, :medium, :default]
       thumbnails_resolutions.each do |resolution|

@@ -1,9 +1,27 @@
 require 'rails_helper'
 
 RSpec.describe "Users", type: :system do
-  before do
-    driven_by(:rack_test)
+  it "新規登録する" do
   end
 
-  pending "add some scenarios (or delete) #{__FILE__}"
+  it "退会する" do
+  end
+
+  it "ログインする" do
+  end
+
+  it "ログアウトする" do
+  end
+
+  it "プロフィールを表示する" do
+  end
+
+  it "プロフィールを編集する" do
+  end
+
+  it "ゲストユーザーのプロフィールは編集できないこと" do
+  end
+
+  it "ゲストユーザーは退会できないこと" do
+  end
 end

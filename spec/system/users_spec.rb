@@ -12,7 +12,14 @@ RSpec.describe "Users", type: :system do
     expect(page).to have_selector ".notice", text: "アカウント登録が完了しました。"
   end
 
-  it "退会する" do
+  it "退会する", js: true do
+    user = create(:user)
+    login_as(user, :scope => :user)
+    visit users_confirm_path
+    page.accept_confirm do
+      click_on "退会する"
+    end
+    expect(page).to have_selector ".notice", text: "退会しました"
   end
 
   it "ログインする" do

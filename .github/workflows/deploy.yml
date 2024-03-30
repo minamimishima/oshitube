@@ -37,8 +37,12 @@ jobs:
       - name: db create
         run: bundle exec rails db:create db:schema:load
         env:
-          POSTGRES_HOST: localhost
-          POSTGRES_PORT: 5432
+          PG_DATABASE: postgres
+          PG_HOST: localhost
+          PG_PORT: 5432
+          PG_USER: postgres
+          PG_PASSWORD: postgres
+          RAILS_ENV: test
 
       - name: Run tests
         run: bundle exec rspec

@@ -47,6 +47,13 @@ jobs:
 
       - name: Run tests
         run: bundle exec rspec
+        env:
+          PG_DATABASE: postgres
+          PG_HOST: localhost
+          PG_PORT: 5432
+          PG_USER: postgres
+          PG_PASSWORD: postgres
+          RAILS_ENV: test
 
 
   rubocop-airbnb:

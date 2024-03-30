@@ -8,5 +8,4 @@ RSpec.configure do |config|
   end
 
   config.include Warden::Test::Helpers
-
 end

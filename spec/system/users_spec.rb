@@ -41,10 +41,19 @@ RSpec.describe "Users", type: :system do
     expect(page).to have_selector ".notice", text: "ログアウトしました。"
   end
 
-  it "プロフィールを表示する" do
+  it "自分のプロフィールを表示する" do
   end
 
-  it "プロフィールを編集する" do
+  it "自分のプロフィールを編集する" do
+  end
+
+  it "自分以外のユーザーのプロフィールを表示する" do
+  end
+
+  it "自分以外のユーザーのプロフィール画面には編集ページへのリンクがないこと" do
+  end
+
+  it "自分以外のユーザーのプロフィールは編集できないこと" do
   end
 
   it "ゲストユーザーのプロフィールは編集できないこと" do

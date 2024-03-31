@@ -41,9 +41,23 @@ RSpec.describe "Users", type: :system do
   end
 
   it "自分のプロフィールを表示する" do
+    login_as(user, :scope => :user)
+    visit user_path(user)
+    expect(page).to have_content user.name
   end
 
   it "自分のプロフィールを編集する" do
+    user = create(:user, name: "元の名前", profile: "元のプロフィール")
+    login_as(user, :scope => :user)
+    visit user_path(user)
+    click_on "プロフィール編集"
+    fill_in "名前", with: "新しい名前"
+    fill_in "プロフィール", with: "新しいプロフィール"
+    click_on "変更"
+    aggregate_failures do
+      expect(user.reload.name).to eq "新しい名前"
+      expect(user.reload.profile).to eq "新しいプロフィール"
+    end
   end
 
   it "自分以外のユーザーのプロフィールを表示する" do

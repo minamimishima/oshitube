@@ -23,9 +23,22 @@ RSpec.describe "Users", type: :system do
   end
 
   it "ログインする" do
+    user = create(:user)
+    visit user_session_path
+    fill_in "メールアドレス", with: user.email
+    fill_in "パスワード", with: user.password
+    within ".actions" do
+      click_on "ログイン"
+    end
+    expect(page).to have_selector ".notice", text: "ログインしました。"
   end
 
   it "ログアウトする" do
+    user = create(:user)
+    login_as(user, :scope => :user)
+    visit root_path
+    click_on "ログアウト"
+    expect(page).to have_selector ".notice", text: "ログアウトしました。"
   end
 
   it "プロフィールを表示する" do

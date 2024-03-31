@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe "Users", type: :system do
+  let(:user) { create(:user) }
+
   it "新規登録する" do
     user = build(:user)
     visit new_user_registration_path
@@ -13,7 +15,6 @@ RSpec.describe "Users", type: :system do
   end
 
   it "退会する", js: true do
-    user = create(:user)
     login_as(user, :scope => :user)
     visit users_confirm_path
     page.accept_confirm do
@@ -23,7 +24,6 @@ RSpec.describe "Users", type: :system do
   end
 
   it "ログインする" do
-    user = create(:user)
     visit user_session_path
     fill_in "メールアドレス", with: user.email
     fill_in "パスワード", with: user.password
@@ -34,7 +34,6 @@ RSpec.describe "Users", type: :system do
   end
 
   it "ログアウトする" do
-    user = create(:user)
     login_as(user, :scope => :user)
     visit root_path
     click_on "ログアウト"

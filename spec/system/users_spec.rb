@@ -82,9 +82,34 @@ RSpec.describe "Users", type: :system do
   it "自分以外のユーザーのプロフィールは編集できないこと" do
   end
 
-  it "ゲストユーザーのプロフィールは編集できないこと" do
+  it "ゲストユーザーとしてログインできること" do
+    visit root_path
+    click_on "ゲストログイン"
+    expect(page).to have_selector ".notice", text: "ゲストユーザーとしてログインしました"
   end
 
-  it "ゲストユーザーは退会できないこと" do
+  it "ゲストユーザーのプロフィールは編集できないこと" do
+    visit root_path
+    click_on "ゲストログイン"
+    click_on "プロフィール"
+    click_on "プロフィール編集"
+    fill_in "名前", with: "新しい名前"
+    fill_in "プロフィール", with: "新しいプロフィール"
+    click_on "変更"
+    expect(page).to have_selector ".notice", text: "ゲストユーザーは編集できません"
+  end
+
+  it "ゲストユーザーは退会できないこと", js: true do
+    visit root_path
+    click_on "ゲストログイン"
+    click_on "メニュー"
+    click_on "プロフィール"
+    click_on "ユーザー情報変更"
+    click_on "退会する"
+    visit users_confirm_path
+    page.accept_confirm do
+      click_on "退会する"
+    end
+    expect(page).to have_selector ".notice", text: "ゲストユーザーは退会できません"
   end
 end

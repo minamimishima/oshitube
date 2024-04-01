@@ -43,7 +43,10 @@ RSpec.describe "Users", type: :system do
   it "自分のプロフィールを表示する" do
     login_as(user, :scope => :user)
     visit user_path(user)
-    expect(page).to have_content user.name
+    aggregate_failures do
+      expect(page).to have_content user.name
+      expect(page).to have_content user.profile
+    end
   end
 
   it "自分のプロフィールを編集する" do

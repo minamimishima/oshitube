@@ -73,6 +73,10 @@ RSpec.describe "Users", type: :system do
   end
 
   it "自分以外のユーザーのプロフィール画面には編集ページへのリンクがないこと" do
+    other_user = create(:user)
+    login_as(user, :scope => :user)
+    visit user_path(other_user)
+    expect(page).to_not have_content "プロフィール編集"
   end
 
   it "自分以外のユーザーのプロフィールは編集できないこと" do

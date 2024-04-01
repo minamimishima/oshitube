@@ -109,4 +109,15 @@ RSpec.describe "Users", type: :system do
     end
     expect(page).to have_selector ".notice", text: "ゲストユーザーは退会できません"
   end
+
+  it "退会済みのユーザーが元のメールアドレス・パスワードでログインできないこと" do
+    user = create(:user, is_deleted: true)
+    visit new_user_session_path
+    fill_in "メールアドレス", with: user.email
+    fill_in "パスワード", with: user.password
+    within ".actions" do
+      click_on "ログイン"
+    end
+    expect(page).to have_content "退会済みです。"
+  end
 end

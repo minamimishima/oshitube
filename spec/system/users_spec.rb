@@ -79,9 +79,6 @@ RSpec.describe "Users", type: :system do
     expect(page).to_not have_content "プロフィール編集"
   end
 
-  it "自分以外のユーザーのプロフィールは編集できないこと" do
-  end
-
   it "ゲストユーザーとしてログインできること" do
     visit root_path
     click_on "ゲストログイン"

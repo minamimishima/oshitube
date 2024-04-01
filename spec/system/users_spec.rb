@@ -60,7 +60,16 @@ RSpec.describe "Users", type: :system do
     end
   end
 
-  it "自分以外のユーザーのプロフィールを表示する" do
+  it "ログインしている状態で自分以外のユーザーのプロフィールを表示する" do
+    other_user = create(:user)
+    login_as(user, :scope => :user)
+    visit user_path(other_user)
+    expect(page).to have_content other_user.name
+  end
+
+  it "ログアウトしている状態で自分以外のユーザーのプロフィールを表示する" do
+    visit user_path(user)
+    expect(page).to have_content user.name
   end
 
   it "自分以外のユーザーのプロフィール画面には編集ページへのリンクがないこと" do

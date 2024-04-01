@@ -53,10 +53,12 @@ RSpec.describe "Users", type: :system do
     click_on "プロフィール編集"
     fill_in "名前", with: "新しい名前"
     fill_in "プロフィール", with: "新しいプロフィール"
+    attach_file "アイコン画像", "#{Rails.root}/spec/fixtures/test.png"
     click_on "変更"
     aggregate_failures do
       expect(user.reload.name).to eq "新しい名前"
       expect(user.reload.profile).to eq "新しいプロフィール"
+      expect(user.reload.icon.filename.to_s).to eq "test.png"
     end
   end
 

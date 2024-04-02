@@ -4,9 +4,12 @@ RSpec.describe "Users", type: :system do
   let(:user) { create(:user) }
 
   context "ログインしている状態" do
+    before do
+      login_as(user, :scope => :user)
+    end
+
     context "ユーザー自身に関する処理" do
       it "自分のプロフィールを表示できること" do
-        login_as(user, :scope => :user)
         visit user_path(user)
         aggregate_failures do
           expect(page).to have_content user.name
@@ -31,7 +34,6 @@ RSpec.describe "Users", type: :system do
       end
 
       it "退会できること", js: true do
-        login_as(user, :scope => :user)
         visit users_confirm_path
         page.accept_confirm do
           click_on "退会する"
@@ -40,7 +42,6 @@ RSpec.describe "Users", type: :system do
       end
 
       it "ログアウトできること" do
-        login_as(user, :scope => :user)
         visit root_path
         click_on "ログアウト"
         expect(page).to have_selector ".notice", text: "ログアウトしました。"
@@ -50,14 +51,12 @@ RSpec.describe "Users", type: :system do
     context "自分以外のユーザーに関する処理" do
       it "自分以外のユーザーのプロフィールを表示できること" do
         other_user = create(:user)
-        login_as(user, :scope => :user)
         visit user_path(other_user)
         expect(page).to have_content other_user.name
       end
 
       it "自分以外のユーザーのプロフィール画面には編集ページへのリンクがないこと" do
         other_user = create(:user)
-        login_as(user, :scope => :user)
         visit user_path(other_user)
         expect(page).to_not have_content "プロフィール編集"
       end

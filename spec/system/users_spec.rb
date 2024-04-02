@@ -65,6 +65,21 @@ RSpec.describe "Users", type: :system do
   end
 
   context "ゲストユーザーとしてログインしている状態" do
+    it "ゲストユーザーのプロフィールを表示できること" do
+      visit root_path
+      click_on "ゲストログイン"
+      click_on "プロフィール"
+      expect(page).to have_content "ゲスト"
+    end
+
+    it "ゲスト以外のユーザーのプロフィールを表示できること" do
+      user = create(:user)
+      visit root_path
+      click_on "ゲストログイン"
+      visit user_path(user)
+      expect(page).to have_content user.name
+    end
+
     it "ゲストユーザーのプロフィールは編集できないこと" do
       visit root_path
       click_on "ゲストログイン"

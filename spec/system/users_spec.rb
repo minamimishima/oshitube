@@ -80,6 +80,7 @@ RSpec.describe "Users", type: :system do
       visit root_path
       click_on "ゲストログイン"
       click_on "メニュー"
+      find "li", text: "プロフィール"
       click_on "プロフィール"
       click_on "ユーザー情報変更"
       click_on "退会する"

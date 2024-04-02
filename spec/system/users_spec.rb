@@ -64,24 +64,23 @@ RSpec.describe "Users", type: :system do
   end
 
   context "ゲストユーザーとしてログインしている状態" do
-    it "ゲストユーザーのプロフィールを表示できること" do
+    before do
       visit root_path
       click_on "ゲストログイン"
+    end
+
+    it "ゲストユーザーのプロフィールを表示できること" do
       click_on "プロフィール"
       expect(page).to have_content "ゲスト"
     end
 
     it "ゲスト以外のユーザーのプロフィールを表示できること" do
       user = create(:user)
-      visit root_path
-      click_on "ゲストログイン"
       visit user_path(user)
       expect(page).to have_content user.name
     end
 
     it "ゲストユーザーのプロフィールは編集できないこと" do
-      visit root_path
-      click_on "ゲストログイン"
       click_on "プロフィール"
       click_on "プロフィール編集"
       fill_in "名前", with: "新しい名前"
@@ -91,8 +90,6 @@ RSpec.describe "Users", type: :system do
     end
 
     it "ゲストユーザーは退会できないこと", js: true do
-      visit root_path
-      click_on "ゲストログイン"
       click_on "メニュー"
       find "li", text: "プロフィール"
       click_on "プロフィール"

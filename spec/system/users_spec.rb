@@ -91,7 +91,7 @@ RSpec.describe "Users", type: :system do
 
     it "ゲストユーザーは退会できないこと", js: true do
       click_on "メニュー"
-      find "li", text: "プロフィール"
+      expect(page).to have_content "プロフィール"
       click_on "プロフィール"
       click_on "ユーザー情報変更"
       click_on "退会する"

@@ -33,6 +33,21 @@ RSpec.describe "Users", type: :system do
         end
       end
 
+      it "メールアドレス・パスワードを変更できること" do
+        new_email = Faker::Internet.email
+        new_password = Faker::Internet.password
+        visit edit_user_registration_path
+        fill_in "メールアドレス", with: new_email
+        fill_in "新しいパスワード", with: new_password
+        fill_in "新しいパスワード（確認）", with: new_password
+        fill_in "現在のパスワード", with: user.password
+        click_on "変更"
+        aggregate_failures do
+          expect(user.reload.email).to eq new_email
+          expect(user.reload.valid_password?(new_password)).to be_truthy
+        end
+      end
+
       it "退会できること", js: true do
         visit users_confirm_path
         page.accept_confirm do

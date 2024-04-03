@@ -1,15 +1,27 @@
 require 'rails_helper'
 
-# Specs in this file have access to a helper object that includes
-# the BookmarksHelper. For example:
-#
-# describe BookmarksHelper do
-#   describe "string concat" do
-#     it "concats two strings with spaces" do
-#       expect(helper.concat_strings("this","that")).to eq("this that")
-#     end
-#   end
-# end
 RSpec.describe BookmarksHelper, type: :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "video_titleの検証" do
+    it "渡された動画IDを持つ動画が存在する場合に動画タイトルを返すこと" do
+    end
+
+    it "渡された動画IDを持つ動画が存在しない場合にVideo Not Foundを返すこと" do
+    end
+  end
+
+  describe "video_descriptionの検証" do
+    it "渡された動画IDを持つ動画が存在する場合に概要欄を返すこと" do
+    end
+
+    it "渡された動画IDを持つ動画が存在しない場合にVideo Not Foundを返すこと" do
+    end
+  end
+
+  describe "video_thumbnailの検証" do
+    it "渡された動画IDを持つ動画が存在する場合に、最も解像度の高いサムネイルのURLを返すこと" do
+    end
+
+    it "渡された動画IDを持つ動画が存在しない場合にnot_found.pngを返すこと" do
+    end
+  end
 end

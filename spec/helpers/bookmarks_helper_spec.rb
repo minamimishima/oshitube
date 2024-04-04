@@ -14,11 +14,13 @@ RSpec.describe BookmarksHelper, type: :helper do
     end
   end
 
-  describe "video_descriptionの検証" do
+  describe "video_descriptionの検証", :vcr => "youtube_success" do
     it "渡されたIDを持つ動画が存在する場合に概要欄を返すこと" do
+      expect(helper.video_description(valid_id)).to include "The official lyric video for Bruno Mars"
     end
 
-    it "渡されたIDを持つ動画が存在しない場合にVideo Not Foundを返すこと" do
+    it "渡されたIDを持つ動画が存在しない場合にVideo Not Foundを返すこと", :vcr => "youtube_failure" do
+      expect(helper.video_description(invalid_id)).to eq "Video Not Found"
     end
   end
 

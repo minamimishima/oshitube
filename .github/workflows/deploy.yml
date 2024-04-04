@@ -12,6 +12,7 @@ jobs:
       PG_USER: postgres
       PG_PASSWORD: postgres
       RAILS_ENV: test
+      YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
 
     services:
       postgres:

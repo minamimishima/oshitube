@@ -1,11 +1,16 @@
 require 'rails_helper'
 
 RSpec.describe BookmarksHelper, type: :helper do
+  let(:valid_id) { "HIgvP7B3Hg8" }
+  let(:invalid_id) { "ABCDEFGHIJK" }
+
   describe "video_titleの検証" do
-    it "渡されたIDを持つ動画が存在する場合にタイトルを返すこと" do
+    it "渡されたIDを持つ動画が存在する場合にタイトルを返すこと", :vcr => "youtube_success" do
+      expect(helper.video_title(valid_id)).to include "Runaway Baby"
     end
 
-    it "渡されたIDを持つ動画が存在しない場合にVideo Not Foundを返すこと" do
+    it "渡されたIDを持つ動画が存在しない場合にVideo Not Foundを返すこと", :vcr => "youtube_failure" do
+      expect(helper.video_title(invalid_id)).to eq "Video Not Found"
     end
   end
 

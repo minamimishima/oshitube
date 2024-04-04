@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://youtube.googleapis.com/youtube/v3/videos?id=ABCDEFGHIJK&key=<YOUTUBE_API_KEY>&part=snippet
+    uri: https://youtube.googleapis.com/youtube/v3/videos?id=ABCDEFGHIJK&key=<%= ENV['YOUTUBE_API_KEY'] %>&part=snippet
     body:
       encoding: UTF-8
       string: ''

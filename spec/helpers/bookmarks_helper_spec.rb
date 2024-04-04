@@ -4,6 +4,16 @@ RSpec.describe BookmarksHelper, type: :helper do
   let(:valid_id) { "HIgvP7B3Hg8" }
   let(:invalid_id) { "ABCDEFGHIJK" }
 
+  describe "get_video_dataの検証" do
+    it "渡されたIDを持つ動画が存在する場合に動画の情報を返すこと", :vcr => "youtube_success" do
+      expect(helper.get_video_data(valid_id)).to be_present
+    end
+
+    it "渡されたIDを持つ動画が存在しない場合にnilを返すこと", :vcr => "youtube_failure" do
+      expect(helper.get_video_data(invalid_id)).to be_nil
+    end
+  end
+
   describe "video_titleの検証" do
     it "渡されたIDを持つ動画が存在する場合にタイトルを返すこと", :vcr => "youtube_success" do
       expect(helper.video_title(valid_id)).to include "Runaway Baby"

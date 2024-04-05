@@ -12,6 +12,7 @@ RSpec.describe "Users", type: :system do
       it "自分のプロフィールを表示できること" do
         visit user_path(user)
         aggregate_failures do
+          expect(current_path).to eq user_path(user)
           expect(page).to have_content user.name
           expect(page).to have_content user.profile
         end
@@ -67,7 +68,10 @@ RSpec.describe "Users", type: :system do
       it "自分以外のユーザーのプロフィールを表示できること" do
         other_user = create(:user)
         visit user_path(other_user)
-        expect(page).to have_content other_user.name
+        aggregate_failures do
+          expect(current_path).to eq user_path(other_user)
+          expect(page).to have_content other_user.name
+        end
       end
 
       it "自分以外のユーザーのプロフィール画面には編集ページへのリンクがないこと" do
@@ -92,7 +96,10 @@ RSpec.describe "Users", type: :system do
     it "ゲスト以外のユーザーのプロフィールを表示できること" do
       user = create(:user)
       visit user_path(user)
-      expect(page).to have_content user.name
+      aggregate_failures do
+        expect(current_path).to eq user_path(user)
+        expect(page).to have_content user.name
+      end
     end
 
     it "ゲストユーザーのプロフィールは編集できないこと" do
@@ -148,7 +155,10 @@ RSpec.describe "Users", type: :system do
 
     it "ユーザーのプロフィールを表示できること" do
       visit user_path(user)
-      expect(page).to have_content user.name
+      aggregate_failures do
+        expect(current_path).to eq user_path(user)
+        expect(page).to have_content user.name
+      end
     end
 
     it "退会済みのユーザーが元のメールアドレス・パスワードでログインできないこと" do

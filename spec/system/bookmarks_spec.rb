@@ -96,17 +96,17 @@ RSpec.describe "Bookmarks", type: :system do
     end
 
     context "自分以外のユーザーのデータに関する処理" do
-      let(:bookmark) { create(:bookmark) }
+      let(:bookmark) { create(:bookmark, is_public: true) }
       let(:other_user) { bookmark.user }
       let(:user) { create(:user) }
 
       it "公開設定のブックマークが閲覧できること" do
-        bookmark = create(:bookmark, is_public: true, user: other_user)
         visit bookmark_path(bookmark)
         expect(current_path).to eq bookmark_path(bookmark)
       end
 
       it "非公開設定のブックマークは閲覧できないこと" do
+        bookmark = create(:bookmark, is_public: false)
         visit bookmark_path(bookmark)
         expect(current_path).to eq root_path
       end

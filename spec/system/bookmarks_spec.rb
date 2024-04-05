@@ -3,6 +3,13 @@ require 'rails_helper'
 RSpec.describe "Bookmarks", type: :system do
   context "ログインしている状態" do
     context "ユーザー自身のデータに関する処理" do
+
+      it "ブックマーク一覧ページにサムネイル・動画タイトル・メモが表示されること" do
+      end
+
+      it "ブックマーク詳細ページに動画フレーム・概要欄・動画タイトル・メモが表示されること" do
+      end
+
       it "ブックマーク作成ページが表示できること" do
       end
 
@@ -38,6 +45,9 @@ RSpec.describe "Bookmarks", type: :system do
       it "非公開設定のブックマークは閲覧できないこと" do
       end
 
+      it "ブックマーク詳細ページに動画フレーム・概要欄・動画タイトル・メモが表示されること" do
+      end
+
       it "編集ページへのリンクが表示されないこと" do
       end
 
@@ -61,6 +71,9 @@ RSpec.describe "Bookmarks", type: :system do
       end
 
       it "非公開設定のブックマークが閲覧できること" do
+      end
+
+      it "ブックマーク詳細ページに動画フレーム・概要欄・動画タイトル・メモが表示されること" do
       end
 
       it "編集ページへのリンクが表示されること" do
@@ -102,6 +115,9 @@ RSpec.describe "Bookmarks", type: :system do
     end
 
     it "非公開設定のブックマークは閲覧できないこと" do
+    end
+
+    it "ブックマーク詳細ページに動画フレーム・概要欄・動画タイトル・メモが表示されること" do
     end
 
     it "編集ページへのリンクが表示されないこと" do

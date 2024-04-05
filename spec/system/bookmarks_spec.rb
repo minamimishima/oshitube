@@ -1,15 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe "Bookmarks", type: :system do
-  let(:bookmark) { create(:bookmark) }
-  let(:user) { bookmark.user }
-
   context "ログインしている状態" do
-    before do
-      login_as(user, :scope => :user)
-    end
-
     context "ユーザー自身のデータに関する処理" do
+      let(:bookmark) { create(:bookmark) }
+      let(:user) { bookmark.user }
+
+      before do
+        login_as(user, :scope => :user)
+      end
+
       it "ブックマーク一覧ページにサムネイル・動画タイトル・メモが表示されること" do
         visit bookmarks_path
         aggregate_failures do

@@ -1,5 +1,5 @@
 <ul class="list-group mt-5 mb-5">
-  <li class="list-group-item"><%= image_tag video_thumbnail(bookmark.video_id), height: "315", width: "auto", class: "video_thumbnail" %></li>
-  <li class="list-group-item"><%= link_to video_title(bookmark.video_id), bookmark_path(bookmark.id), class: "video_title" %></li>
+  <li class="list-group-item"><%= image_tag video_thumbnail(bookmark.video_id), height: "315", width: "auto", class: "video-thumbnail" %></li>
+  <li class="list-group-item"><%= link_to video_title(bookmark.video_id), bookmark_path(bookmark.id), class: "video-title" %></li>
   <li class="list-group-item"><%= bookmark.description %></li>
 </ul>

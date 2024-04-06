@@ -100,6 +100,10 @@ RSpec.describe "Bookmarks", type: :system do
       let(:other_user) { bookmark.user }
       let(:user) { create(:user) }
 
+      before do
+        login_as(user, :scope => :user)
+      end
+
       it "公開設定のブックマークが閲覧できること" do
         visit bookmark_path(bookmark)
         expect(current_path).to eq bookmark_path(bookmark)

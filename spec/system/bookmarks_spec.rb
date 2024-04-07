@@ -289,10 +289,17 @@ RSpec.describe "Bookmarks", type: :system do
   end
 
   context "ログインしていない状態" do
+    let(:bookmark) { create(:bookmark, is_public: true) }
+
     it "公開設定のブックマークが閲覧できること" do
+      visit bookmark_path(bookmark)
+      expect(current_path).to eq bookmark_path(bookmark)
     end
 
     it "非公開設定のブックマークは閲覧できないこと" do
+      bookmark = create(:bookmark, is_public: false)
+      visit bookmark_path(bookmark)
+      expect(current_path).to eq root_path
     end
 
     it "ブックマーク詳細ページに動画フレーム・概要欄・動画タイトル・メモが表示されること" do

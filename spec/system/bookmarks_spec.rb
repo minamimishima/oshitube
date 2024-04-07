@@ -282,6 +282,8 @@ RSpec.describe "Bookmarks", type: :system do
       end
 
       it "削除リンクが表示されないこと" do
+        visit bookmark_path(bookmark)
+        expect(page).to_not have_content "削除"
       end
     end
   end

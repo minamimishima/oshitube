@@ -215,9 +215,20 @@ RSpec.describe "Bookmarks", type: :system do
       end
 
       it "削除リンクが表示されること" do
+        bookmark = create(:bookmark, user: user)
+        visit bookmark_path(bookmark)
+        expect(page).to have_content "削除"
       end
 
-      it "ブックマークを削除できること" do
+      it "ブックマークを削除できること", js: true do
+        bookmark = create(:bookmark, user: user)
+        expect do
+          visit bookmark_path(bookmark)
+          page.accept_confirm do
+            click_on "削除"
+          end
+          find ".notice", text: "ブックマークを削除しました"
+        end.to change { user.bookmarks.count }.by(-1)
       end
     end
 

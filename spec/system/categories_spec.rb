@@ -40,9 +40,22 @@ RSpec.describe "Categories", type: :system do
       end
 
       it "ブックマーク作成時にカテゴリーを作成できること" do
+        visit new_bookmark_path
+        fill_in "URL", with: "https://www.youtube.com/watch?v=ABCDEFGHIJK"
+        fill_in "動画の説明", with: "動画の説明"
+        fill_in "カテゴリーを作成する", with: "新しいカテゴリー"
+        click_on "登録"
+        expect(page).to have_selector ".category", text: "新しいカテゴリー"
       end
 
       it "ブックマーク作成時にカテゴリーを登録できること" do
+        expect do
+          visit new_bookmark_path
+          fill_in "URL", with: "https://www.youtube.com/watch?v=ABCDEFGHIJK"
+          fill_in "動画の説明", with: "動画の説明"
+          check category.name
+          click_on "登録"
+        end.to change { category.bookmarks.count }.by(1)
       end
 
       it "ブックマーク編集時にカテゴリーを作成できること" do

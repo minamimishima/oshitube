@@ -303,6 +303,13 @@ RSpec.describe "Bookmarks", type: :system do
     end
 
     it "ブックマーク詳細ページに動画フレーム・概要欄・動画タイトル・メモが表示されること" do
+      visit bookmark_path(bookmark)
+      aggregate_failures do
+        expect(page).to have_selector ".youtube-video-player"
+        expect(page).to have_selector ".video-description"
+        expect(page).to have_selector ".video-title"
+        expect(page).to have_content bookmark.description
+      end
     end
 
     it "編集ページへのリンクが表示されないこと" do

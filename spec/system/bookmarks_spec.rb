@@ -44,7 +44,7 @@ RSpec.describe "Bookmarks", type: :system do
       end
 
       it "公開設定のブックマークが閲覧できること" do
-        bookmark = create(:bookmark, is_public: true)
+        bookmark = create(:bookmark, is_public: true, user: user)
         visit bookmark_path(bookmark)
         expect(current_path).to eq bookmark_path(bookmark)
       end

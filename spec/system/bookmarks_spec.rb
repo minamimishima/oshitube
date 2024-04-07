@@ -177,11 +177,22 @@ RSpec.describe "Bookmarks", type: :system do
         expect(current_path).to eq bookmark_path(bookmark)
       end
 
-      it "ブックマーク詳細ページに動画フレーム・概要欄・動画タイトル・メモが表示されること" do
+      it "ブックマーク一覧ページにサムネイル・動画タイトル・メモが表示されること" do
         bookmark = create(:bookmark, user: user)
         visit bookmarks_path
         aggregate_failures do
           expect(page).to have_selector ".video-thumbnail"
+          expect(page).to have_selector ".video-title"
+          expect(page).to have_content bookmark.description
+        end
+      end
+
+      it "ブックマーク詳細ページに動画フレーム・概要欄・動画タイトル・メモが表示されること" do
+        bookmark = create(:bookmark, user: user)
+        visit bookmark_path(bookmark)
+        aggregate_failures do
+          expect(page).to have_selector ".youtube-video-player"
+          expect(page).to have_selector ".video-description"
           expect(page).to have_selector ".video-title"
           expect(page).to have_content bookmark.description
         end

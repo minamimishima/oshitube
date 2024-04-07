@@ -166,9 +166,15 @@ RSpec.describe "Bookmarks", type: :system do
       end
 
       it "公開設定のブックマークが閲覧できること" do
+        bookmark = create(:bookmark, is_public: true, user: user)
+        visit bookmark_path(bookmark)
+        expect(current_path).to eq bookmark_path(bookmark)
       end
 
       it "非公開設定のブックマークが閲覧できること" do
+        bookmark = create(:bookmark, is_public: false, user: user)
+        visit bookmark_path(bookmark)
+        expect(current_path).to eq bookmark_path(bookmark)
       end
 
       it "ブックマーク詳細ページに動画フレーム・概要欄・動画タイトル・メモが表示されること" do

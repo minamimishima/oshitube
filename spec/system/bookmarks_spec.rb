@@ -145,6 +145,7 @@ RSpec.describe "Bookmarks", type: :system do
   context "ゲストユーザーとしてログインしている状態" do
     context "ゲストユーザー自身のデータに関する処理" do
       let!(:user) { create(:user, email: "guest@example.com", password: SecureRandom.urlsafe_base64, name: "ゲスト") }
+      let(:bookmark) { create(:bookmark, user: user) }
 
       before do
         visit root_path
@@ -188,7 +189,6 @@ RSpec.describe "Bookmarks", type: :system do
       end
 
       it "ブックマーク詳細ページに動画フレーム・概要欄・動画タイトル・メモが表示されること" do
-        bookmark = create(:bookmark, user: user)
         visit bookmark_path(bookmark)
         aggregate_failures do
           expect(page).to have_selector ".youtube-video-player"
@@ -199,13 +199,11 @@ RSpec.describe "Bookmarks", type: :system do
       end
 
       it "編集ページへのリンクが表示されること" do
-        bookmark = create(:bookmark, user: user)
         visit bookmark_path(bookmark)
         expect(page).to have_content "編集"
       end
 
       it "編集ページが表示できること" do
-        bookmark = create(:bookmark, user: user)
         visit edit_bookmark_path(bookmark)
         aggregate_failures do
           expect(current_path).to eq edit_bookmark_path(bookmark)
@@ -214,7 +212,6 @@ RSpec.describe "Bookmarks", type: :system do
       end
 
       it "ブックマークを編集できること" do
-        bookmark = create(:bookmark, user: user)
         visit edit_bookmark_path(bookmark)
         fill_in "URL", with: "https://www.youtube.com/watch?v=ABCDEFGHIJK"
         fill_in "動画の説明", with: "新しい動画メモ"
@@ -226,7 +223,6 @@ RSpec.describe "Bookmarks", type: :system do
       end
 
       it "削除リンクが表示されること" do
-        bookmark = create(:bookmark, user: user)
         visit bookmark_path(bookmark)
         expect(page).to have_content "削除"
       end

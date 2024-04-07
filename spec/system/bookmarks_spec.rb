@@ -144,10 +144,25 @@ RSpec.describe "Bookmarks", type: :system do
 
   context "ゲストユーザーとしてログインしている状態" do
     context "ゲストユーザー自身のデータに関する処理" do
+      let!(:user) { create(:user, email: "guest@example.com", password: SecureRandom.urlsafe_base64, name: "ゲスト") }
+
+      before do
+        visit root_path
+        click_on "ゲストログイン"
+      end
+
       it "ブックマーク作成ページが表示できること" do
+        visit new_bookmark_path
+        expect(page). to have_content "ブックマーク登録"
       end
 
       it "ブックマークが作成できること" do
+        visit new_bookmark_path
+        expect do
+          fill_in "URL", with: "https://www.youtube.com/watch?v=ABCDEFGHIJK"
+          fill_in "動画の説明", with: "どんな動画であるかの説明"
+          click_on "登録"
+        end.to change { user.bookmarks.count }.by(1)
       end
 
       it "公開設定のブックマークが閲覧できること" do

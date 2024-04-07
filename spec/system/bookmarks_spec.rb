@@ -313,9 +313,13 @@ RSpec.describe "Bookmarks", type: :system do
     end
 
     it "編集ページへのリンクが表示されないこと" do
+      visit bookmark_path(bookmark)
+      expect(page).to_not have_content "編集"
     end
 
     it "編集ページは表示できないこと" do
+      visit edit_bookmark_path(bookmark)
+      expect(current_path).to eq new_user_session_path
     end
 
     it "削除リンクが表示されないこと" do

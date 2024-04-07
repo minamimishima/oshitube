@@ -188,12 +188,30 @@ RSpec.describe "Bookmarks", type: :system do
       end
 
       it "編集ページへのリンクが表示されること" do
+        bookmark = create(:bookmark, user: user)
+        visit bookmark_path(bookmark)
+        expect(page).to have_content "編集"
       end
 
       it "編集ページが表示できること" do
+        bookmark = create(:bookmark, user: user)
+        visit edit_bookmark_path(bookmark)
+        aggregate_failures do
+          expect(current_path).to eq edit_bookmark_path(bookmark)
+          expect(page).to have_content "ブックマーク編集"
+        end
       end
 
       it "ブックマークを編集できること" do
+        bookmark = create(:bookmark, user: user)
+        visit edit_bookmark_path(bookmark)
+        fill_in "URL", with: "https://www.youtube.com/watch?v=ABCDEFGHIJK"
+        fill_in "動画の説明", with: "新しい動画メモ"
+        click_on "登録"
+        aggregate_failures do
+          expect(bookmark.reload.url).to eq "https://www.youtube.com/watch?v=ABCDEFGHIJK"
+          expect(bookmark.reload.description).to eq "新しい動画メモ"
+        end
       end
 
       it "削除リンクが表示されること" do

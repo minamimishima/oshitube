@@ -242,7 +242,7 @@ RSpec.describe "Bookmarks", type: :system do
     context "ゲストユーザー以外のユーザーのデータに関する処理" do
       let!(:user) { create(:user, email: "guest@example.com", password: SecureRandom.urlsafe_base64, name: "ゲスト") }
       let!(:other_user) { create(:user) }
-      let(:bookmark) { create(:bookmark, user: other_user) }
+      let(:bookmark) { create(:bookmark, is_public: true, user: other_user) }
 
       before do
         visit root_path
@@ -259,6 +259,16 @@ RSpec.describe "Bookmarks", type: :system do
         bookmark = create(:bookmark, is_public: false, user: other_user)
         visit bookmark_path(bookmark)
         expect(current_path).to eq root_path
+      end
+
+      it "ブックマーク詳細ページに動画フレーム・概要欄・動画タイトル・メモが表示されること" do
+        visit bookmark_path(bookmark)
+        aggregate_failures do
+          expect(page).to have_selector ".youtube-video-player"
+          expect(page).to have_selector ".video-description"
+          expect(page).to have_selector ".video-title"
+          expect(page).to have_content bookmark.description
+        end
       end
 
       it "編集ページへのリンクが表示されないこと" do

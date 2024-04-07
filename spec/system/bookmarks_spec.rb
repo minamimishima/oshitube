@@ -178,6 +178,13 @@ RSpec.describe "Bookmarks", type: :system do
       end
 
       it "ブックマーク詳細ページに動画フレーム・概要欄・動画タイトル・メモが表示されること" do
+        bookmark = create(:bookmark, user: user)
+        visit bookmarks_path
+        aggregate_failures do
+          expect(page).to have_selector ".video-thumbnail"
+          expect(page).to have_selector ".video-title"
+          expect(page).to have_content bookmark.description
+        end
       end
 
       it "編集ページへのリンクが表示されること" do

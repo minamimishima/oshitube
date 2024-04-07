@@ -3,16 +3,40 @@ require 'rails_helper'
 RSpec.describe "Categories", type: :system do
   context "ログインしている状態" do
     context "ユーザー自身のデータに関する処理" do
-      it "カテゴリーを作成できること" do
+      let(:category) { create(:category) }
+      let(:user) { category.user }
+
+      before do
+        login_as(user, :scope => :user)
       end
 
-      it "カテゴリーを表示できること" do
+      it "カテゴリーを作成できること" do
+        visit bookmarks_path
+        fill_in "カテゴリー名", with: "新しいカテゴリー"
+        click_on "作成"
+        expect(page).to have_content "新しいカテゴリー"
+      end
+
+      it "カテゴリーページを表示できること" do
+        visit category_path(category)
+        expect(current_path).to eq category_path(category)
       end
 
       it "カテゴリー名を編集できること" do
+        visit category_path(category)
+        fill_in "カテゴリー名", with: "新しいカテゴリー名"
+        click_on "作成"
+        expect(page).to have_selector "h1", text: "新しいカテゴリー名"
       end
 
-      it "カテゴリーを削除できること" do
+      it "カテゴリーを削除できること", js: true do
+        expect do
+          visit category_path(category)
+          page.accept_confirm do
+            click_on "削除"
+          end
+          find ".notice", text: "カテゴリーを削除しました"
+        end.to change { user.categories.count }.by(-1)
       end
 
       it "ブックマーク作成時にカテゴリーを作成できること" do

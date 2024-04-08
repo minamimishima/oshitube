@@ -192,6 +192,17 @@ RSpec.describe "Categories", type: :system do
     end
 
     context "ゲストユーザー以外のユーザーのデータに関する処理" do
+      let!(:user) { create(:user, email: "guest@example.com", password: SecureRandom.urlsafe_base64, name: "ゲスト") }
+      let(:category) { create(:category) }
+
+      before do
+        login_as(user, :scope => :user)
+      end
+
+      it "他のユーザーのカテゴリーページは表示できないこと" do
+        visit category_path(category)
+        expect(current_path).to eq root_path
+      end
     end
   end
 

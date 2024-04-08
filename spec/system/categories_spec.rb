@@ -207,5 +207,11 @@ RSpec.describe "Categories", type: :system do
   end
 
   context "ログインしていない状態" do
+    let(:category) { create(:category) }
+
+    it "カテゴリーページは表示できないこと" do
+      visit category_path(category)
+      expect(current_path).to eq new_user_session_path
+    end
   end
 end

@@ -163,12 +163,31 @@ RSpec.describe "Categories", type: :system do
       end
 
       it "ブックマーク編集時にカテゴリーを作成できること" do
+        bookmark = create(:bookmark, user: user)
+        expect do
+          visit edit_bookmark_path(bookmark)
+          fill_in "カテゴリーを作成する", with: "新しいカテゴリー"
+          click_on "登録"
+        end.to change { user.categories.count }.by(1)
       end
 
       it "ブックマーク編集時に、ブックマークにカテゴリーを登録できること" do
+        bookmark = create(:bookmark, user: user)
+        visit edit_bookmark_path(bookmark)
+        expect do
+          check "bookmark_category_ids_#{category.id}"
+          click_on "登録"
+        end.to change { category.bookmarks.count }.by(1)
       end
 
       it "ブックマーク編集時にカテゴリーを登録解除できること" do
+        bookmark = create(:bookmark, user: user)
+        category.bookmarks << bookmark
+        visit edit_bookmark_path(bookmark)
+        expect do
+          uncheck "bookmark_category_ids_#{category.id}"
+          click_on "登録"
+        end.to change { category.bookmarks.count }.by(-1)
       end
     end
 

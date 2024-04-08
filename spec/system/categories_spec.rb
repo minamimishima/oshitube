@@ -47,7 +47,7 @@ RSpec.describe "Categories", type: :system do
           fill_in "動画の説明", with: "動画の説明"
           fill_in "カテゴリーを作成する", with: "新しいカテゴリー"
           click_on "登録"
-        end.to change { user.categories.count }.by(0)
+        end.to change { user.categories.count }.by(1)
       end
 
       it "ブックマーク作成時にカテゴリーを登録できること" do

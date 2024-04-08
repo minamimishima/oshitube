@@ -88,6 +88,17 @@ RSpec.describe "Categories", type: :system do
     end
 
     context "自分以外のユーザーのデータに関する処理" do
+      let(:category) { create(:category) }
+      let(:user) { create(:user) }
+
+      before do
+        login_as(user, :scope => :user)
+      end
+
+      it "他のユーザーのカテゴリーページは表示できないこと" do
+        visit category_path(category)
+        expect(current_path).to eq root_path
+      end
     end
   end
 

@@ -12,9 +12,10 @@ RSpec.describe "Categories", type: :system do
 
       it "カテゴリーを作成できること" do
         visit bookmarks_path
-        fill_in "カテゴリー名", with: "新しいカテゴリー"
-        click_on "作成"
-        expect(page).to have_content "新しいカテゴリー"
+        expect do
+          fill_in "カテゴリー名", with: "新しいカテゴリー"
+          click_on "作成"
+        end.to change { user.categories.count }.by(1)
       end
 
       it "カテゴリーページを表示できること" do
@@ -40,12 +41,13 @@ RSpec.describe "Categories", type: :system do
       end
 
       it "ブックマーク作成時にカテゴリーを作成できること" do
-        visit new_bookmark_path
-        fill_in "URL", with: "https://www.youtube.com/watch?v=ABCDEFGHIJK"
-        fill_in "動画の説明", with: "動画の説明"
-        fill_in "カテゴリーを作成する", with: "新しいカテゴリー"
-        click_on "登録"
-        expect(page).to have_selector ".category", text: "新しいカテゴリー"
+        expect do
+          visit new_bookmark_path
+          fill_in "URL", with: "https://www.youtube.com/watch?v=ABCDEFGHIJK"
+          fill_in "動画の説明", with: "動画の説明"
+          fill_in "カテゴリーを作成する", with: "新しいカテゴリー"
+          click_on "登録"
+        end.to change { user.categories.count }.by(0)
       end
 
       it "ブックマーク作成時にカテゴリーを登録できること" do

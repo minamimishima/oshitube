@@ -24,6 +24,7 @@ RSpec.describe "Categories", type: :system do
       end
 
       it "カテゴリー名を編集できること" do
+        category = create(:category, name: "元のカテゴリー名", user: user)
         visit category_path(category)
         fill_in "カテゴリー名", with: "新しいカテゴリー名"
         click_on "作成"
@@ -126,6 +127,7 @@ RSpec.describe "Categories", type: :system do
       end
 
       it "カテゴリー名を編集できること" do
+        category = create(:category, name: "元のカテゴリー名", user: user)
         visit category_path(category)
         fill_in "カテゴリー名", with: "新しいカテゴリー名"
         click_on "作成"

@@ -1,6 +1,18 @@
 require 'rails_helper'
 
 RSpec.describe "Bookmarks", type: :system do
+  let(:bookmark) { create(:bookmark, is_public: true) }
+
+  it "ブックマーク詳細ページに動画フレーム・概要欄・動画タイトル・メモが表示されること" do
+    visit bookmark_path(bookmark)
+    aggregate_failures do
+      expect(page).to have_selector ".youtube-video-player"
+      expect(page).to have_selector ".video-description"
+      expect(page).to have_selector ".video-title"
+      expect(page).to have_content bookmark.description
+    end
+  end
+
   context "ログインしている状態" do
     context "ユーザー自身のデータに関する処理" do
       let(:bookmark) { create(:bookmark) }
@@ -40,16 +52,6 @@ RSpec.describe "Bookmarks", type: :system do
         visit bookmarks_path
         aggregate_failures do
           expect(page).to have_selector ".video-thumbnail"
-          expect(page).to have_selector ".video-title"
-          expect(page).to have_content bookmark.description
-        end
-      end
-
-      it "ブックマーク詳細ページに動画フレーム・概要欄・動画タイトル・メモが表示されること" do
-        visit bookmark_path(bookmark)
-        aggregate_failures do
-          expect(page).to have_selector ".youtube-video-player"
-          expect(page).to have_selector ".video-description"
           expect(page).to have_selector ".video-title"
           expect(page).to have_content bookmark.description
         end
@@ -115,16 +117,6 @@ RSpec.describe "Bookmarks", type: :system do
         expect(current_path).to eq root_path
       end
 
-      it "ブックマーク詳細ページに動画フレーム・概要欄・動画タイトル・メモが表示されること" do
-        visit bookmark_path(bookmark)
-        aggregate_failures do
-          expect(page).to have_selector ".youtube-video-player"
-          expect(page).to have_selector ".video-description"
-          expect(page).to have_selector ".video-title"
-          expect(page).to have_content bookmark.description
-        end
-      end
-
       it "編集ページへのリンクが表示されないこと" do
         visit bookmark_path(bookmark)
         expect(page).to_not have_content "編集"
@@ -183,16 +175,6 @@ RSpec.describe "Bookmarks", type: :system do
         visit bookmarks_path
         aggregate_failures do
           expect(page).to have_selector ".video-thumbnail"
-          expect(page).to have_selector ".video-title"
-          expect(page).to have_content bookmark.description
-        end
-      end
-
-      it "ブックマーク詳細ページに動画フレーム・概要欄・動画タイトル・メモが表示されること" do
-        visit bookmark_path(bookmark)
-        aggregate_failures do
-          expect(page).to have_selector ".youtube-video-player"
-          expect(page).to have_selector ".video-description"
           expect(page).to have_selector ".video-title"
           expect(page).to have_content bookmark.description
         end
@@ -261,16 +243,6 @@ RSpec.describe "Bookmarks", type: :system do
         expect(current_path).to eq root_path
       end
 
-      it "ブックマーク詳細ページに動画フレーム・概要欄・動画タイトル・メモが表示されること" do
-        visit bookmark_path(bookmark)
-        aggregate_failures do
-          expect(page).to have_selector ".youtube-video-player"
-          expect(page).to have_selector ".video-description"
-          expect(page).to have_selector ".video-title"
-          expect(page).to have_content bookmark.description
-        end
-      end
-
       it "編集ページへのリンクが表示されないこと" do
         visit bookmark_path(bookmark)
         expect(page).to_not have_content "編集"
@@ -300,16 +272,6 @@ RSpec.describe "Bookmarks", type: :system do
       bookmark = create(:bookmark, is_public: false)
       visit bookmark_path(bookmark)
       expect(current_path).to eq root_path
-    end
-
-    it "ブックマーク詳細ページに動画フレーム・概要欄・動画タイトル・メモが表示されること" do
-      visit bookmark_path(bookmark)
-      aggregate_failures do
-        expect(page).to have_selector ".youtube-video-player"
-        expect(page).to have_selector ".video-description"
-        expect(page).to have_selector ".video-title"
-        expect(page).to have_content bookmark.description
-      end
     end
 
     it "編集ページへのリンクが表示されないこと" do

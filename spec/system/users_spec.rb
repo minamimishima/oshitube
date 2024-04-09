@@ -83,12 +83,12 @@ RSpec.describe "Users", type: :system do
   end
 
   context "ゲストユーザーとしてログインしている状態" do
+    before do
+      visit root_path
+      click_on "ゲストログイン"
+    end
+
     context "ゲストユーザー自身に関する処理" do
-      before do
-        visit root_path
-        click_on "ゲストログイン"
-      end
-  
       it "プロフィールを表示できること" do
         click_on "プロフィール"
         expect(page).to have_content "ゲスト"

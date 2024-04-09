@@ -31,7 +31,7 @@ RSpec.describe "Bookmarks", type: :system do
         visit new_bookmark_path
         expect do
           fill_in "URL", with: "https://www.youtube.com/watch?v=ABCDEFGHIJK"
-          fill_in "動画の説明", with: "どんな動画であるかの説明"
+          fill_in "動画の説明", with: "動画についてのメモ"
           click_on "登録"
         end.to change { user.bookmarks.count }.by(1)
       end

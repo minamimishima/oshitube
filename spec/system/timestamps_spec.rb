@@ -1,9 +1,22 @@
 require 'rails_helper'
 
 RSpec.describe "Timestamps", type: :system do
-  before do
-    driven_by(:rack_test)
+  context "ログインしている状態" do
+    context "ユーザー自身のデータに関する処理" do
+    end
+
+    context "自分以外のユーザーのデータに関する処理" do
+    end
   end
 
-  pending "add some scenarios (or delete) #{__FILE__}"
+  context "ゲストユーザーとしてログインしている状態" do
+    context "ゲストユーザー自身のデータに関する処理" do
+    end
+
+    context "ゲストユーザー以外のユーザーのデータに関する処理" do
+    end
+  end
+
+  context "ログインしていない状態" do
+  end
 end

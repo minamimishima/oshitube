@@ -124,8 +124,8 @@ RSpec.describe "Users", type: :system do
     end
 
     context "ゲストユーザー以外のユーザーに関する処理" do
+      let(:user) { create(:user) }
       it "ゲストユーザー以外のユーザーのプロフィールを表示できること" do
-        user = create(:user)
         visit user_path(user)
         aggregate_failures do
           expect(current_path).to eq user_path(user)
@@ -134,6 +134,8 @@ RSpec.describe "Users", type: :system do
       end
 
       it "ゲストユーザー以外のプロフィール画面には編集ページへのリンクがないこと" do
+        visit user_path(user)
+        expect(page).to_not have_content "プロフィール編集"
       end
     end
   end

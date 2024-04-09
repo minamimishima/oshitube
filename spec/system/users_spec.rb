@@ -117,6 +117,9 @@ RSpec.describe "Users", type: :system do
       end
 
       it "ログアウトできること" do
+        visit root_path
+        click_on "ログアウト"
+        expect(page).to have_selector ".notice", text: "ログアウトしました。"
       end
     end
 

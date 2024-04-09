@@ -235,7 +235,7 @@ RSpec.describe "Bookmarks", type: :system do
 
     context "ゲストユーザー以外のユーザーのデータに関する処理" do
       let!(:user) { create(:user, email: "guest@example.com", password: SecureRandom.urlsafe_base64, name: "ゲスト") }
-      let!(:other_user) { create(:user) }
+      let(:other_user) { create(:user) }
       let(:bookmark) { create(:bookmark, is_public: true, user: other_user) }
 
       before do

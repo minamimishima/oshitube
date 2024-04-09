@@ -175,6 +175,7 @@ RSpec.describe "Categories", type: :system do
       end
 
       it "ブックマーク編集時に、ブックマークにカテゴリーを登録できること" do
+        category
         bookmark = create(:bookmark, user: user)
         visit edit_bookmark_path(bookmark)
         expect do

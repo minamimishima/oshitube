@@ -107,7 +107,7 @@ RSpec.describe "Categories", type: :system do
 
   context "ゲストユーザーとしてログインしている状態" do
     let!(:user) { create(:user, email: "guest@example.com", password: SecureRandom.urlsafe_base64, name: "ゲスト") }
-    let!(:category) { create(:category, user: user) }
+    let(:category) { create(:category, user: user) }
 
     before do
       login_as(user, :scope => :user)
@@ -135,6 +135,7 @@ RSpec.describe "Categories", type: :system do
       end
 
       it "カテゴリーを削除できること", js: true do
+        category
         expect do
           visit category_path(category)
           page.accept_confirm do

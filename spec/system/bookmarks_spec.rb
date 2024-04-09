@@ -71,6 +71,12 @@ RSpec.describe "Bookmarks", type: :system do
       end
 
       it "ブックマークを編集できること" do
+        bookmark = create(
+          :bookmark,
+          url: "https://www.youtube.com/watch?v=abcdefghijk",
+          description: "元の動画メモ",
+          user: user,
+        )
         visit edit_bookmark_path(bookmark)
         fill_in "URL", with: "https://www.youtube.com/watch?v=ABCDEFGHIJK"
         fill_in "動画の説明", with: "新しい動画メモ"
@@ -194,6 +200,12 @@ RSpec.describe "Bookmarks", type: :system do
       end
 
       it "ブックマークを編集できること" do
+        bookmark = create(
+          :bookmark,
+          url: "https://www.youtube.com/watch?v=abcdefghijk",
+          description: "元の動画メモ",
+          user: user,
+        )
         visit edit_bookmark_path(bookmark)
         fill_in "URL", with: "https://www.youtube.com/watch?v=ABCDEFGHIJK"
         fill_in "動画の説明", with: "新しい動画メモ"

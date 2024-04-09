@@ -83,45 +83,55 @@ RSpec.describe "Users", type: :system do
   end
 
   context "ゲストユーザーとしてログインしている状態" do
-    before do
-      visit root_path
-      click_on "ゲストログイン"
-    end
-
-    it "ゲストユーザーのプロフィールを表示できること" do
-      click_on "プロフィール"
-      expect(page).to have_content "ゲスト"
-    end
-
-    it "ゲスト以外のユーザーのプロフィールを表示できること" do
-      user = create(:user)
-      visit user_path(user)
-      aggregate_failures do
-        expect(current_path).to eq user_path(user)
-        expect(page).to have_content user.name
+    context "ゲストユーザー自身に関する処理" do
+      before do
+        visit root_path
+        click_on "ゲストログイン"
       end
-    end
+  
+      it "プロフィールを表示できること" do
+        click_on "プロフィール"
+        expect(page).to have_content "ゲスト"
+      end
 
-    it "ゲストユーザーのプロフィールは編集できないこと" do
-      click_on "プロフィール"
-      click_on "プロフィール編集"
-      fill_in "名前", with: "新しい名前"
-      fill_in "プロフィール", with: "新しいプロフィール"
-      click_on "変更"
-      expect(page).to have_selector ".notice", text: "ゲストユーザーは編集できません"
-    end
+      it "プロフィールは編集できないこと" do
+        click_on "プロフィール"
+        click_on "プロフィール編集"
+        fill_in "名前", with: "新しい名前"
+        fill_in "プロフィール", with: "新しいプロフィール"
+        click_on "変更"
+        expect(page).to have_selector ".notice", text: "ゲストユーザーは編集できません"
+      end
 
-    it "ゲストユーザーは退会できないこと", js: true do
-      click_on "メニュー"
-      expect(page).to have_content "プロフィール"
-      click_on "プロフィール"
-      click_on "ユーザー情報変更"
-      click_on "退会する"
-      visit users_confirm_path
-      page.accept_confirm do
+      it "退会できないこと", js: true do
+        click_on "メニュー"
+        expect(page).to have_content "プロフィール"
+        click_on "プロフィール"
+        click_on "ユーザー情報変更"
         click_on "退会する"
+        visit users_confirm_path
+        page.accept_confirm do
+          click_on "退会する"
+        end
+        expect(page).to have_selector ".notice", text: "ゲストユーザーは退会できません"
       end
-      expect(page).to have_selector ".notice", text: "ゲストユーザーは退会できません"
+
+      it "ログアウトできること" do
+      end
+    end
+
+    context "ゲストユーザー以外のユーザーに関する処理" do
+      it "ゲストユーザー以外のユーザーのプロフィールを表示できること" do
+        user = create(:user)
+        visit user_path(user)
+        aggregate_failures do
+          expect(current_path).to eq user_path(user)
+          expect(page).to have_content user.name
+        end
+      end
+
+      it "ゲストユーザー以外のプロフィール画面には編集ページへのリンクがないこと" do
+      end
     end
   end
 

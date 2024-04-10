@@ -58,7 +58,7 @@ RSpec.describe "Timestamps", type: :system do
           visit edit_bookmark_path(bookmark)
           find("#bookmark_timestamps_attributes_0__destroy").check
           click_on "登録"
-        end.to change { bookmark.timestamps.count }.by(0)
+        end.to change { bookmark.timestamps.count }.by(-1)
       end
     end
 

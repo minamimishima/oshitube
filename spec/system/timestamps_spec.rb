@@ -85,14 +85,15 @@ RSpec.describe "Timestamps", type: :system do
 
   context "ゲストユーザーとしてログインしている状態" do
     let!(:user) { create(:user, email: "guest@example.com", password: SecureRandom.urlsafe_base64, name: "ゲスト") }
-    let(:bookmark) { create(:bookmark, is_public: true, user: user) }
-    let!(:timestamp) { create(:timestamp, bookmark: bookmark) }
 
     before do
       login_as(user, :scope => :user)
     end
 
     context "ゲストユーザー自身のデータに関する処理" do
+      let(:bookmark) { create(:bookmark, is_public: true, user: user) }
+      let!(:timestamp) { create(:timestamp, bookmark: bookmark) }
+
       it "ブックマークの詳細ページにタイムスタンプ登録フォームが表示されること" do
         visit bookmark_path(bookmark)
         expect(page).to have_selector ".timestamps-new"
@@ -137,6 +138,10 @@ RSpec.describe "Timestamps", type: :system do
     end
 
     context "ゲストユーザー以外のユーザーのデータに関する処理" do
+      let(:other_user) { create(:user) }
+      let(:bookmark) { create(:bookmark, is_public: true, user: other_user) }
+      let!(:timestamp) { create(:timestamp, bookmark: bookmark) }
+
       it "ブックマークの詳細ページにタイムスタンプ登録フォームが表示されないこと" do
       end
 

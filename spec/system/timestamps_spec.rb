@@ -35,13 +35,30 @@ RSpec.describe "Timestamps", type: :system do
         end.to change { bookmark.timestamps.count }.by(1)
       end
 
-      it "作成したタイムスタンプが表示されること" do
+      it "タイムスタンプが表示されること" do
+        visit bookmark_path(bookmark)
+        expect(page).to have_selector "#timestamp-0"
       end
 
       it "タイムスタンプを編集できること" do
+        visit edit_bookmark_path(bookmark)
+        find("#bookmark_timestamps_attributes_0_hour").fill_in with: 0
+        find("#bookmark_timestamps_attributes_0_minute").fill_in with: 0
+        find("#bookmark_timestamps_attributes_0_second").fill_in with: 0
+        click_on "登録"
+        aggregate_failures do
+          expect(bookmark.timestamps[0].reload.hour).to eq 0
+          expect(bookmark.timestamps[0].reload.minute).to eq 0
+          expect(bookmark.timestamps[0].reload.second).to eq 0
+        end
       end
 
       it "タイムスタンプを削除できること" do
+        expect do
+          visit edit_bookmark_path(bookmark)
+          find("#bookmark_timestamps_attributes_0__destroy").check
+          click_on "登録"
+        end.to change { bookmark.timestamps.count }.by(0)
       end
     end
 

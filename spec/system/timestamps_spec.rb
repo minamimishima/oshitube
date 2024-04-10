@@ -63,6 +63,13 @@ RSpec.describe "Timestamps", type: :system do
     end
 
     context "自分以外のユーザーのデータに関する処理" do
+      it "ブックマークの詳細ページにタイムスタンプ登録フォームが表示されないこと" do
+      end
+
+      it "タイムスタンプが表示されること" do
+      end
+
+      # タイムスタンプの編集・削除を実行するブックマーク編集ページは表示できないことをspec/system/bookmarks_spec.rbで確認しているためここでは省略
     end
   end
 

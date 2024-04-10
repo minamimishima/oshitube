@@ -5,6 +5,7 @@ RSpec.describe "Timestamps", type: :system do
   let!(:timestamp) { create(:timestamp, bookmark: bookmark) }
 
   it "タイムスタンプが正常に作動すること", js: true do
+    create(:timestamp, hour: 1, minute: 1, second: 1, start_time: 3661, bookmark: bookmark)
     visit bookmark_path(bookmark)
     find("#timestamp-0").click
     video = find(".youtube-video-player")

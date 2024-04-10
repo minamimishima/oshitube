@@ -52,6 +52,7 @@ RSpec.describe "Timestamps", type: :system do
           expect(bookmark.timestamps[0].reload.hour).to eq 0
           expect(bookmark.timestamps[0].reload.minute).to eq 0
           expect(bookmark.timestamps[0].reload.second).to eq 0
+          expect(bookmark.timestamps[0].reload.start_time).to eq 0
         end
       end
 
@@ -128,6 +129,7 @@ RSpec.describe "Timestamps", type: :system do
           expect(bookmark.timestamps[0].reload.hour).to eq 0
           expect(bookmark.timestamps[0].reload.minute).to eq 0
           expect(bookmark.timestamps[0].reload.second).to eq 0
+          expect(bookmark.timestamps[0].reload.start_time).to eq 0
         end
       end
 

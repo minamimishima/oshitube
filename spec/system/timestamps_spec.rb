@@ -42,6 +42,7 @@ RSpec.describe "Timestamps", type: :system do
       end
 
       it "タイムスタンプを編集できること" do
+        create(:timestamp, hour: 1, minute: 1, second: 1, start_time: 3661, bookmark: bookmark)
         visit edit_bookmark_path(bookmark)
         find("#bookmark_timestamps_attributes_0_hour").fill_in with: 0
         find("#bookmark_timestamps_attributes_0_minute").fill_in with: 0
@@ -117,6 +118,7 @@ RSpec.describe "Timestamps", type: :system do
       end
 
       it "タイムスタンプを編集できること" do
+        create(:timestamp, hour: 1, minute: 1, second: 1, start_time: 3661, bookmark: bookmark)
         visit edit_bookmark_path(bookmark)
         find("#bookmark_timestamps_attributes_0_hour").fill_in with: 0
         find("#bookmark_timestamps_attributes_0_minute").fill_in with: 0

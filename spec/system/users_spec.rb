@@ -20,17 +20,18 @@ RSpec.describe "Users", type: :system do
 
       it "自分のプロフィールを編集できること" do
         user = create(:user, name: "元の名前", profile: "元のプロフィール")
+        user.icon.attach(io: File.open("#{Rails.root}/spec/fixtures/test.png"), filename: "test.png", content_type: "image/png")
         login_as(user, :scope => :user)
         visit user_path(user)
         click_on "プロフィール編集"
         fill_in "名前", with: "新しい名前"
         fill_in "プロフィール", with: "新しいプロフィール"
-        attach_file "アイコン画像", "#{Rails.root}/spec/fixtures/test.png"
+        attach_file "アイコン画像", "#{Rails.root}/spec/fixtures/test2.png"
         click_on "変更"
         aggregate_failures do
           expect(user.reload.name).to eq "新しい名前"
           expect(user.reload.profile).to eq "新しいプロフィール"
-          expect(user.reload.icon.filename.to_s).to eq "test.png"
+          expect(user.reload.icon.filename.to_s).to eq "test2.png"
         end
       end
 

@@ -85,6 +85,20 @@ RSpec.describe "Timestamps", type: :system do
 
   context "ゲストユーザーとしてログインしている状態" do
     context "ゲストユーザー自身のデータに関する処理" do
+      it "ブックマークの詳細ページにタイムスタンプ登録フォームが表示されること" do
+      end
+
+      it "タイムスタンプを作成できること" do
+      end
+
+      it "タイムスタンプが表示されること" do
+      end
+
+      it "タイムスタンプを編集できること" do
+      end
+
+      it "タイムスタンプを削除できること" do
+      end
     end
 
     context "ゲストユーザー以外のユーザーのデータに関する処理" do

@@ -84,20 +84,55 @@ RSpec.describe "Timestamps", type: :system do
   end
 
   context "ゲストユーザーとしてログインしている状態" do
+    let!(:user) { create(:user, email: "guest@example.com", password: SecureRandom.urlsafe_base64, name: "ゲスト") }
+    let(:bookmark) { create(:bookmark, is_public: true, user: user) }
+    let!(:timestamp) { create(:timestamp, bookmark: bookmark) }
+
+    before do
+      login_as(user, :scope => :user)
+    end
+
     context "ゲストユーザー自身のデータに関する処理" do
       it "ブックマークの詳細ページにタイムスタンプ登録フォームが表示されること" do
+        visit bookmark_path(bookmark)
+        expect(page).to have_selector ".timestamps-new"
       end
 
       it "タイムスタンプを作成できること" do
+        expect do
+          visit bookmark_path(bookmark)
+          fill_in "時間", with: 0
+          fill_in "分", with: 0
+          fill_in "秒", with: 0
+          fill_in "メモ", with: "タイムスタンプ作成"
+          click_on "登録"
+        end.to change { bookmark.timestamps.count }.by(1)
       end
 
       it "タイムスタンプが表示されること" do
+        visit bookmark_path(bookmark)
+        expect(page).to have_selector "#timestamp-0"
       end
 
       it "タイムスタンプを編集できること" do
+        visit edit_bookmark_path(bookmark)
+        find("#bookmark_timestamps_attributes_0_hour").fill_in with: 0
+        find("#bookmark_timestamps_attributes_0_minute").fill_in with: 0
+        find("#bookmark_timestamps_attributes_0_second").fill_in with: 0
+        click_on "登録"
+        aggregate_failures do
+          expect(bookmark.timestamps[0].reload.hour).to eq 0
+          expect(bookmark.timestamps[0].reload.minute).to eq 0
+          expect(bookmark.timestamps[0].reload.second).to eq 0
+        end
       end
 
       it "タイムスタンプを削除できること" do
+        expect do
+          visit edit_bookmark_path(bookmark)
+          find("#bookmark_timestamps_attributes_0__destroy").check
+          click_on "登録"
+        end.to change { bookmark.timestamps.count }.by(-1)
       end
     end
 

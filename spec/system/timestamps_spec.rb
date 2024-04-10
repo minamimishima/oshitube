@@ -12,11 +12,27 @@ RSpec.describe "Timestamps", type: :system do
   end
 
   context "ログインしている状態" do
+    let(:user) { bookmark.user }
+
+    before do
+      login_as(user, :scope => :user)
+    end
+
     context "ユーザー自身のデータに関する処理" do
       it "ブックマークの詳細ページにタイムスタンプ登録フォームが表示されること" do
+        visit bookmark_path(bookmark)
+        expect(page).to have_selector ".timestamps-new"
       end
 
       it "タイムスタンプを作成できること" do
+        expect do
+          visit bookmark_path(bookmark)
+          fill_in "時間", with: 0
+          fill_in "分", with: 0
+          fill_in "秒", with: 0
+          fill_in "メモ", with: "タイムスタンプ作成"
+          click_on "登録"
+        end.to change { bookmark.timestamps.count }.by(1)
       end
 
       it "作成したタイムスタンプが表示されること" do

@@ -158,9 +158,13 @@ RSpec.describe "Timestamps", type: :system do
 
   context "ログインしていない状態" do
     it "ブックマークの詳細ページにタイムスタンプ登録フォームが表示されないこと" do
+      visit bookmark_path(bookmark)
+      expect(page).to_not have_selector ".timestamps-new"
     end
 
     it "タイムスタンプが表示されること" do
+      visit bookmark_path(bookmark)
+      expect(page).to have_selector "#timestamp-0"
     end
 
     # タイムスタンプの編集・削除を実行するブックマーク編集ページは表示できないことをspec/system/bookmarks_spec.rbで確認しているためここでは省略

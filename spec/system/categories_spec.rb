@@ -61,7 +61,7 @@ RSpec.describe "Categories", type: :system do
         end.to change { category.bookmarks.count }.by(1)
       end
 
-      it "ブックマーク編集時にカテゴリーを作成できること" do
+      it "ブックマーク編集時に新しいカテゴリーを作成できること" do
         bookmark = create(:bookmark, user: user)
         expect do
           visit edit_bookmark_path(bookmark)
@@ -70,7 +70,7 @@ RSpec.describe "Categories", type: :system do
         end.to change { user.categories.count }.by(1)
       end
 
-      it "ブックマーク編集時に、ブックマークにカテゴリーを登録できること" do
+      it "ブックマーク編集時に既存のカテゴリーの中から選んで登録できること" do
         bookmark = create(:bookmark, user: user)
         visit edit_bookmark_path(bookmark)
         expect do
@@ -165,7 +165,7 @@ RSpec.describe "Categories", type: :system do
         end.to change { category.bookmarks.count }.by(1)
       end
 
-      it "ブックマーク編集時にカテゴリーを作成できること" do
+      it "ブックマーク編集時に新しいカテゴリーを作成できること" do
         bookmark = create(:bookmark, user: user)
         expect do
           visit edit_bookmark_path(bookmark)
@@ -174,7 +174,7 @@ RSpec.describe "Categories", type: :system do
         end.to change { user.categories.count }.by(1)
       end
 
-      it "ブックマーク編集時に、ブックマークにカテゴリーを登録できること" do
+      it "ブックマーク編集時に既存のカテゴリーの中から選んで登録できること" do
         category
         bookmark = create(:bookmark, user: user)
         visit edit_bookmark_path(bookmark)

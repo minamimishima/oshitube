@@ -53,7 +53,7 @@
           <%= timestamp.label :comment, "メモ" %>
           <%= timestamp.text_field :comment %><br />
 
-          削除
+          <%= timestamp.label :_destroy, "削除" %>
           <%= timestamp.check_box :_destroy %><br />
 
           <%= timestamp.hidden_field :bookmark_id, value: @bookmark.id %>

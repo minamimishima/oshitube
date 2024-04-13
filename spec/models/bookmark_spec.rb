@@ -34,7 +34,7 @@ RSpec.describe Bookmark, type: :model do
   end
 
   describe "インスタンスメソッドの検証" do
-    let(:video_id) { Faker::Alphanumeric.alphanumeric(number: 11) }
+    let(:video_id) { "ABCDEFGHIJK" }
     describe "extract_video_urlの検証" do
       it "URLが正しい場合はURLをそのまま返すこと" do
         urls = [

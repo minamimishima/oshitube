@@ -41,7 +41,7 @@ class UsersController < ApplicationController
 
   def prevent_guest_user_data_deletion
     if current_user.email == "guest@example.com"
-      flash[:notice] = "ゲストユーザーは削除できません"
+      flash[:notice] = "ゲストユーザーは退会できません"
       redirect_to user_path(current_user.id)
     end
   end

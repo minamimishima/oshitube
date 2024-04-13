@@ -1,11 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  let(:user) { build(:user) }
-
   describe "バリデーションの検証" do
     context "有効な場合" do
       it "メールアドレス・パスワード・名前があれば有効であること" do
+        user = build(:user, profile: nil)
         expect(user).to be_valid
       end
 

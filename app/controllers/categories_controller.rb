@@ -9,7 +9,7 @@ class CategoriesController < ApplicationController
 
   def create
     @category = Category.new(category_params)
-    @bookmarks = @category.bookmarks.order(created_at: :desc).page(params[:page])
+    @bookmarks = @user.bookmarks.order(created_at: :desc).page(params[:page])
     if @category.valid? && @category.user_id == @user.id
       @category.save
       flash[:notice] = "カテゴリーを作成しました"

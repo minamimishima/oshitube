@@ -12,9 +12,9 @@ RSpec.describe "Bookmarks", type: :request do
 
     it "他のユーザーのデータとしてブックマークを作成できないこと" do
       bookmark_params = {
-        :user_id => other_user.id,
-        :video_id => "abcdefghijk",
-        :url => "https://www.youtube.com/watch?v=abcdefghijk",
+        user_id: other_user.id,
+        video_id: "abcdefghijk",
+        url: "https://www.youtube.com/watch?v=abcdefghijk",
       }
       expect do
         post bookmarks_path, params: { bookmark: bookmark_params }
@@ -23,10 +23,10 @@ RSpec.describe "Bookmarks", type: :request do
 
     it "他のユーザーのブックマークは編集できないこと" do
       bookmark_params = {
-        :video_id => "abcdefghijk",
-        :url => "https://www.youtube.com/watch?v=abcdefghijk",
-        :description => "新しいメモ",
-        :is_public => true,
+        video_id: "abcdefghijk",
+        url: "https://www.youtube.com/watch?v=abcdefghijk",
+        description: "新しいメモ",
+        is_public: true,
       }
       patch bookmark_path(bookmark), params: { bookmark: bookmark_params }
       aggregate_failures do
@@ -50,9 +50,9 @@ RSpec.describe "Bookmarks", type: :request do
 
     it "他のユーザーのデータとしてブックマークを作成できないこと" do
       bookmark_params = {
-        :user_id => user.id,
-        :video_id => "abcdefghijk",
-        :url => "https://www.youtube.com/watch?v=abcdefghijk",
+        user_id: user.id,
+        video_id: "abcdefghijk",
+        url: "https://www.youtube.com/watch?v=abcdefghijk",
       }
       expect do
         post bookmarks_path, params: { bookmark: bookmark_params }
@@ -61,10 +61,10 @@ RSpec.describe "Bookmarks", type: :request do
 
     it "他のユーザーのブックマークは編集できないこと" do
       bookmark_params = {
-        :video_id => "abcdefghijk",
-        :url => "https://www.youtube.com/watch?v=abcdefghijk",
-        :description => "新しいメモ",
-        :is_public => true,
+        video_id: "abcdefghijk",
+        url: "https://www.youtube.com/watch?v=abcdefghijk",
+        description: "新しいメモ",
+        is_public: true,
       }
       patch bookmark_path(bookmark), params: { bookmark: bookmark_params }
       aggregate_failures do

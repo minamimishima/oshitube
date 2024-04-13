@@ -18,10 +18,12 @@ class BookmarksController < ApplicationController
     @bookmark = Bookmark.new(bookmark_params)
     @bookmark.url = @bookmark.extract_video_url(params[:bookmark][:url])
     @bookmark.video_id = @bookmark.extract_video_id(params[:bookmark][:url])
-    if @bookmark.save
+    if @bookmark.valid? && @bookmark.user_id == @user.id
+      @bookmark.save
       flash[:notice] = "登録完了しました"
       redirect_to bookmarks_path
     else
+      flash[:notice] = "登録に失敗しました"
       render 'new', status: :unprocessable_entity
     end
   end

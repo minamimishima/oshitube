@@ -10,7 +10,7 @@ RSpec.describe "Bookmarks", type: :request do
       sign_in user
     end
 
-    it "自分以外のユーザーのデータとしてブックマークを作成できないこと" do
+    it "他のユーザーのデータとしてブックマークを作成できないこと" do
       bookmark_params = {
         :user_id => other_user.id,
         :video_id => "abcdefghijk",
@@ -21,7 +21,7 @@ RSpec.describe "Bookmarks", type: :request do
       end.to change { other_user.bookmarks.count }.by(0)
     end
 
-    it "自分以外のユーザーのブックマークは編集できないこと" do
+    it "他のユーザーのブックマークは編集できないこと" do
       bookmark_params = {
         :video_id => "abcdefghijk",
         :url => "https://www.youtube.com/watch?v=abcdefghijk",
@@ -37,7 +37,7 @@ RSpec.describe "Bookmarks", type: :request do
       end
     end
 
-    it "自分以外のユーザーのブックマークは削除できないこと" do
+    it "他のユーザーのブックマークは削除できないこと" do
       expect do
         delete bookmark_path(bookmark)
       end.to change { other_user.bookmarks.count }.by(0)
@@ -48,7 +48,7 @@ RSpec.describe "Bookmarks", type: :request do
     let(:bookmark) { create(:bookmark) }
     let(:user) { bookmark.user }
 
-    it "自分以外のユーザーのデータとしてブックマークを作成できないこと" do
+    it "他のユーザーのデータとしてブックマークを作成できないこと" do
       bookmark_params = {
         :user_id => user.id,
         :video_id => "abcdefghijk",
@@ -59,7 +59,7 @@ RSpec.describe "Bookmarks", type: :request do
       end.to change { user.bookmarks.count }.by(0)
     end
 
-    it "自分以外のユーザーのブックマークは編集できないこと" do
+    it "他のユーザーのブックマークは編集できないこと" do
       bookmark_params = {
         :video_id => "abcdefghijk",
         :url => "https://www.youtube.com/watch?v=abcdefghijk",
@@ -75,7 +75,7 @@ RSpec.describe "Bookmarks", type: :request do
       end
     end
 
-    it "自分以外のユーザーのブックマークは削除できないこと" do
+    it "他のユーザーのブックマークは削除できないこと" do
       expect do
         delete bookmark_path(bookmark)
       end.to change { user.bookmarks.count }.by(0)

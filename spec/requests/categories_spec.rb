@@ -10,7 +10,7 @@ RSpec.describe "Categories", type: :request do
       sign_in user
     end
 
-    it "自分以外のユーザーのデータとしてカテゴリーを作成できないこと" do
+    it "他のユーザーのデータとしてカテゴリーを作成できないこと" do
       category_params = {
         :user_id => other_user.id,
         :name => "新しいカテゴリー",
@@ -20,7 +20,7 @@ RSpec.describe "Categories", type: :request do
       end.to change { other_user.categories.count }.by(0)
     end
 
-    it "自分以外のユーザーのカテゴリー名は編集できないこと" do
+    it "他のユーザーのカテゴリー名は編集できないこと" do
       category_params = {
         :user_id => other_user.id,
         :name => "新しいカテゴリー名",
@@ -29,7 +29,7 @@ RSpec.describe "Categories", type: :request do
       expect(category.reload.name).to_not eq "新しいカテゴリー名"
     end
 
-    it "自分以外のユーザーのカテゴリーを削除できないこと" do
+    it "他のユーザーのカテゴリーを削除できないこと" do
       expect do
         delete category_path(category)
       end.to change { other_user.categories.count }.by(0)

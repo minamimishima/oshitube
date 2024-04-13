@@ -32,7 +32,7 @@ RSpec.describe "Bookmarks", type: :request do
       aggregate_failures do
         expect(bookmark.reload.video_id).to_not eq "abcdefghijk"
         expect(bookmark.reload.url).to_not eq "https://www.youtube.com/watch?v=abcdefghijk"
-        expect(bookmark.reload.description).to_not eq "abcdefghijk"
+        expect(bookmark.reload.description).to_not eq "新しいメモ"
         expect(bookmark.reload.is_public).to_not eq true
       end
     end

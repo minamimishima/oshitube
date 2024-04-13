@@ -44,9 +44,6 @@ RSpec.describe "Bookmarks", type: :request do
     end
   end
 
-  context "ゲストユーザーとしてログインしている状態" do
-  end
-
   context "ログインしていない状態" do
   end
 end

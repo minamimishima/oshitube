@@ -15,6 +15,7 @@ RSpec.describe "Bookmarks", type: :request do
         user_id: other_user.id,
         video_id: "abcdefghijk",
         url: "https://www.youtube.com/watch?v=abcdefghijk",
+        description: "動画のメモ",
       }
       expect do
         post bookmarks_path, params: { bookmark: bookmark_params }
@@ -53,6 +54,7 @@ RSpec.describe "Bookmarks", type: :request do
         user_id: user.id,
         video_id: "abcdefghijk",
         url: "https://www.youtube.com/watch?v=abcdefghijk",
+        description: "動画のメモ",
       }
       expect do
         post bookmarks_path, params: { bookmark: bookmark_params }

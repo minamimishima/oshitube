@@ -5,7 +5,6 @@ class TimestampsController < ApplicationController
   def create
     @timestamp = Timestamp.new(timestamp_params)
     @bookmark = @timestamp.bookmark
-    @timestamps = @bookmark.timestamps.sort_by(&:start_time)
     @timestamp.start_time = @timestamp.calculate_start_time
     if @timestamp.valid? && @timestamp.bookmark.user_id == @user.id
       @timestamp.save

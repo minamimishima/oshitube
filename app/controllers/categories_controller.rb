@@ -9,12 +9,14 @@ class CategoriesController < ApplicationController
 
   def create
     @category = Category.new(category_params)
-    @bookmarks = @category.bookmarks.order(created_at: :desc).page(params[:page])
-    if @category.save
+    @bookmarks = @user.bookmarks.order(created_at: :desc).page(params[:page])
+    if @category.valid? && @category.user_id == @user.id
+      @category.save
       flash[:notice] = "カテゴリーを作成しました"
       redirect_to bookmarks_path
     else
-      render 'bookmarks/index'
+      flash[:notice] = "カテゴリーの作成に失敗しました"
+      render 'bookmarks/index', status: :unprocessable_entity
     end
   end
 

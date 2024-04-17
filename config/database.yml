@@ -59,10 +59,8 @@ development:
 test:
   <<: *default
   database: <%= ENV.fetch('PG_DATABASE', 'oshitube_test') %> 
-  host: <%= ENV.fetch('PG_HOST', 'localhost') %>
+  host: <%= ENV.fetch('PG_HOST', 'db') %>
   port: <%= ENV.fetch('PG_PORT', 5432) %>
-  username: <%= ENV.fetch('PG_USER', nil) %>
-  password: <%= ENV.fetch('PG_PASSWORD', nil) %>
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is

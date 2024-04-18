@@ -1,7 +1,7 @@
 <div class="bookmark-container container">
   <h1>ブックマーク一覧</h1>
-  <%= render 'shared/categories', { categories: @categories } %>
-  <%= render 'shared/categories_new', { category: @category, user: @user } %>
+  <%= render 'shared/categories', { categories: @user.categories } %>
+  <%= render 'shared/categories_new', { category: Category.new, user: @user } %>
   <%= render partial: 'shared/bookmark', collection: @bookmarks %>
   <%= paginate @bookmarks, theme: 'bootstrap-5' %>
 </div>

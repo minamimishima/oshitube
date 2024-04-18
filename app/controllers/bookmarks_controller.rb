@@ -5,8 +5,6 @@ class BookmarksController < ApplicationController
 
   def index
     @bookmarks = @user.bookmarks.order(created_at: :desc).page(params[:page])
-    @categories = @user.categories
-    @category = Category.new
   end
 
   def new

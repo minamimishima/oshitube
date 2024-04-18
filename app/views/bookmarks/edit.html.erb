@@ -19,7 +19,7 @@
       <%= f.label :description, "動画の説明" %><br />
       <%= f.text_area :description %><br />
 
-      <% if Category.where(user_id:@user.id).present? %>
+      <% if Category.where(user_id: @user.id).present? %>
         <%= f.label :category, "カテゴリー" %><br />
         <%= f.collection_check_boxes(:category_ids, @user.categories, :id, :name) do |category| %>
           <%= category.label do %>

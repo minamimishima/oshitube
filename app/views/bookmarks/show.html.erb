@@ -1,5 +1,5 @@
 <div class="bookmark-container container">
-  <%= render 'shared/error_messages', obj: @timestamp %>
+  <%= render 'shared/error_messages', obj: Timestamp.new %>
   <div id="bookmark-video">
     <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= @bookmark.video_id %>" class="youtube-video-player" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
   </div>
@@ -20,9 +20,9 @@
   <div>
     <h2 class="video-title"><%= video_title(@bookmark.video_id) %></h2>
     <%= @bookmark.description %>
-    <%= render partial: 'shared/timestamps_list', collection: @timestamps, as: :timestamp, locals: { timestamps: @timestamps} %>
+    <%= render partial: 'shared/timestamps_list', collection: @bookmark.timestamps.sort_by(&:start_time), as: :timestamp, locals: { timestamps: @bookmark.timestamps.sort_by(&:start_time)} %>
     <% if @user.present? && @bookmark.user_id == @user.id %>
-      <%= render 'shared/timestamps_new', { timestamp: @timestamp, bookmark: @bookmark } %>
+      <%= render 'shared/timestamps_new', { timestamp: Timestamp.new, bookmark: @bookmark } %>
       <%= link_to "編集", edit_bookmark_path(@bookmark) %> / <%= link_to "削除", bookmark_path(@bookmark), data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" } %>
     <% end %>
     </div>

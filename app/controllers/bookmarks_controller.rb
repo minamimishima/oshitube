@@ -32,17 +32,13 @@ class BookmarksController < ApplicationController
       if @bookmark.user.id != @user.id && @bookmark.is_public == false
         redirect_to root_path
       else
-        @timestamp = Timestamp.new
-        @timestamps = @bookmark.timestamps.sort_by(&:start_time)
         gon.video_id = @bookmark.video_id
-        gon.start_time_list = @timestamps.pluck(:start_time)
+        gon.start_time_list = @bookmark.timestamps.sort_by(&:start_time).pluck(:start_time)
       end
     else
       if @bookmark.is_public == true
-        @timestamp = Timestamp.new
-        @timestamps = @bookmark.timestamps.sort_by(&:start_time)
         gon.video_id = @bookmark.video_id
-        gon.start_time_list = @timestamps.pluck(:start_time)
+        gon.start_time_list = @bookmark.timestamps.sort_by(&:start_time).pluck(:start_time)
       else
         redirect_to root_path
       end

@@ -6,5 +6,5 @@
     本当に退会してよろしいですか？
   </p>
   <%= link_to "退会する", users_withdrawal_path, data: { turbo_method: :patch, turbo_confirm: "本当に退会しますか？" } %>
-  <%= link_to "退会しない", user_path(@user.id) %>
+  <%= link_to "退会しない", user_path(@user) %>
 </div>

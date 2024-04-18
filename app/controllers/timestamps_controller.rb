@@ -9,7 +9,7 @@ class TimestampsController < ApplicationController
       @timestamp.start_time = @timestamp.calculate_start_time
       @timestamp.save
       flash[:notice] = "登録完了しました"
-      redirect_to bookmark_path(@timestamp.bookmark_id)
+      redirect_to bookmark_path(@timestamp.bookmark)
     else
       flash[:notice] = "登録に失敗しました"
       render 'bookmarks/show', status: :unprocessable_entity

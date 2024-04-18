@@ -30,7 +30,7 @@ class CategoriesController < ApplicationController
     @category = Category.find(params[:id])
     if @category.update(category_params)
       flash[:notice] = "カテゴリーを編集しました"
-      redirect_to category_path(params[:id])
+      redirect_to category_path(@category)
     else
       render 'categories/index'
     end

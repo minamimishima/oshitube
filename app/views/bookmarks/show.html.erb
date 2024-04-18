@@ -23,7 +23,7 @@
     <%= render partial: 'shared/timestamps_list', collection: @timestamps, as: :timestamp, locals: { timestamps: @timestamps} %>
     <% if @user.present? && @bookmark.user_id == @user.id %>
       <%= render 'shared/timestamps_new', { timestamp: @timestamp, bookmark: @bookmark } %>
-      <%= link_to "編集", edit_bookmark_path(@bookmark.id) %> / <%= link_to "削除", bookmark_path(@bookmark.id), data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" } %>
+      <%= link_to "編集", edit_bookmark_path(@bookmark) %> / <%= link_to "削除", bookmark_path(@bookmark), data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" } %>
     <% end %>
     </div>
 </div>

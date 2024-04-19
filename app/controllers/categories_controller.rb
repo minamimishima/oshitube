@@ -9,7 +9,6 @@ class CategoriesController < ApplicationController
 
   def create
     @category = Category.new(category_params)
-    @bookmarks = @user.bookmarks.order(created_at: :desc).page(params[:page])
     if @category.valid? && @category.user_id == @user.id
       @category.save
       flash[:notice] = "カテゴリーを作成しました"
@@ -23,14 +22,13 @@ class CategoriesController < ApplicationController
   def show
     @category = Category.find(params[:id])
     @categories = @user.categories
-    @bookmarks = @category.bookmarks.order(created_at: :desc).page(params[:page])
   end
 
   def update
     @category = Category.find(params[:id])
     if @category.update(category_params)
       flash[:notice] = "カテゴリーを編集しました"
-      redirect_to category_path(params[:id])
+      redirect_to category_path(@category)
     else
       render 'categories/index'
     end

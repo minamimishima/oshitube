@@ -1,10 +1,10 @@
 <div class="bookmark-container container">
   <h1><%= @category.name %></h1>
   <%= render 'shared/categories', { categories: @categories } %>
-  <%= link_to "削除", category_path(@category.id), data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" } %>
+  <%= link_to "削除", category_path(@category), data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" } %>
   <%= render 'shared/categories_new', { category: @category, user: @user } %>
-  <% if @bookmarks.present? %>
-    <%= render partial: 'shared/bookmark', collection: @bookmarks %>
-    <%= paginate @bookmarks, theme: 'bootstrap-5' %>
+  <% if @category.bookmarks.present? %>
+    <%= render partial: 'shared/bookmark', collection: @category.bookmarks.order(created_at: :desc).page(params[:page]) %>
+    <%= paginate @category.bookmarks.order(created_at: :desc).page(params[:page]), theme: 'bootstrap-5' %>
   <% end %>
 </div>

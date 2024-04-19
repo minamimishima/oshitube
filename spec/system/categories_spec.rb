@@ -23,6 +23,19 @@ RSpec.describe "Categories", type: :system do
         expect(current_path).to eq category_path(category)
       end
 
+      it "カテゴリーに属するブックマークが表示されること" do
+        bookmark = create(:bookmark)
+        category.bookmarks << bookmark
+        visit category_path(category)
+        expect(page).to have_css ".bookmark-#{bookmark.id}"
+      end
+
+      it "カテゴリーに属さないブックマークは表示されないこと" do
+        bookmark = create(:bookmark)
+        visit category_path(category)
+        expect(page).to_not have_css ".bookmark-#{bookmark.id}"
+      end
+
       it "カテゴリー名を編集できること" do
         category = create(:category, name: "元のカテゴリー名", user: user)
         visit category_path(category)

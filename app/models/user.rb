@@ -2,11 +2,20 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable
 
   has_many :bookmarks
   has_many :categories
   has_one_attached :icon
+
+  validates :email, presence: true, if: :devise_will_save_change_to_email?
+  validates :email, uniqueness: { scope: :is_deleted, if: -> { is_deleted == false } } # rubocop:disable Rails/UniqueValidationWithoutIndex
+  validates :email,
+    format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/, case_sensitive: true, if: :devise_will_save_change_to_email? }
+
+  validates :password, presence: true, if: :password_required?
+  validates :password, confirmation: true, if: :password_required?
+  validates :password, length: { within: 8..30 }, if: :password_required?
 
   validates :name, presence: true
   validates :profile, length: { maximum: 300 }
@@ -20,5 +29,15 @@ class User < ApplicationRecord
 
   def active_for_authentication?
     super && (is_deleted == false)
+  end
+
+  protected
+
+  def password_required?
+    !persisted? || !password.nil? || !password_confirmation.nil?
+  end
+
+  def email_required?
+    true
   end
 end

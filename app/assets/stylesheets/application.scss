@@ -15,14 +15,58 @@
  */
 @import "bootstrap";
 
+body {
+  color: #333333;
+  font-family: sans-serif;
+}
+
+a {
+  color: #333333;
+}
+
  /* ヘッダー */
-.header-container {
+.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding:0 50px;
-  background-color: #FE5E5E;
+  background-color: #fff;
   height: 70px
+}
+
+.btn-check:checked + .btn, :not(.btn-check) + .btn:active, .btn:first-child:active, .btn.active, .btn.show {
+  background-color: #EFE6DD;
+  outline: none;
+  box-shadow: none;
+  border-color: #fff;
+}
+
+.header__dropdown-menu-button {
+  background-color: #EFE6DD;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.header__dropdown-menu-button:hover {
+  background-color: #E1B5AD;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.header__registration-button {
+  background-color: #E1B5AD;
+}
+
+.header__registration-button:hover {
+  background-color: #D39388;
+}
+
+.header__login-button {
+  background-color: #EFE6DD;
+}
+
+.header__login-button:hover {
+  background-color: #DFCDBA;
 }
 
  /* フラッシュメッセージ */

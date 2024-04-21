@@ -70,6 +70,11 @@ a {
   background-color: #DFCDBA;
 }
 
+.header__link {
+  display: flex;
+  width: fit-content;
+}
+
  /* フラッシュメッセージ */
 .flashmessage {
   text-align: center;

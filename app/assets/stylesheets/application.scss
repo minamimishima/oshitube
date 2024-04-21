@@ -83,11 +83,29 @@ a {
   text-align: center;
 }
 
- /* 新規登録・ログイン・ユーザー情報変更 */
-.registrations-sessions-container {
-  margin-inline: auto;
-  align-items: center;
-  width: fit-content;
+/* ログイン */
+#login .container #login__row #login__column #login__box {
+  margin-top: 20px;
+  max-width: 600px;
+  height: 350px;
+  border: 1px solid #ABA8B1;
+  background-color: #F0F0F1;
+}
+
+#login .container #login__row #login__column #login__box #login__form {
+  padding: 20px;
+}
+
+#login__box {
+  border-radius: 8px;
+}
+
+.login__button {
+  background-color: #E1B5AD;
+}
+
+.login__button:hover {
+  background-color: #D39388;
 }
 
 /* プロフィール */

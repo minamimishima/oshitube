@@ -111,6 +111,29 @@ a {
   background-color: #CFB497;
 }
 
+/* 新規登録 */
+#registration__box {
+  margin-top: 20px;
+  max-width: 600px;
+  margin-inline: auto;
+  height: 410px;
+  border: 1px solid #ABA8B1;
+  border-radius: 8px;
+  background-color: #F0F0F1;
+}
+
+#registration__form {
+  padding: 20px;
+}
+
+.registration__button {
+  background-color: #DFCDBA;
+}
+
+.registration__button:hover {
+  background-color: #CFB497;
+}
+
 /* プロフィール */
 .profile-icon {
   width: 150px;

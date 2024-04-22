@@ -1,37 +1,39 @@
-<div class="registrations-sessions-container container">
-  <h2>ユーザー情報の変更</h2>
-  
-  <%= form_with model: @user, url: user_registration_path do |f| %>
-    <%= render "devise/shared/error_messages", resource: resource %>
-  
-    <div class="field">
-      <%= f.label :email, "メールアドレス" %><br />
-      <%= f.email_field :email, autofocus: true %>
-    </div>
-  
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-    <% end %>
-  
-    <div class="field">
-      <%= f.label :password, "新しいパスワード" %><br />
-      <%= f.password_field :password %>
-    </div>
-  
-    <div class="field">
-      <%= f.label :password_confirmation, "新しいパスワード（確認）" %><br />
-      <%= f.password_field :password_confirmation %>
-    </div>
-  
-    <div class="field">
-      <%= f.label :current_password, "現在のパスワード" %><br />
-      <%= f.password_field :current_password %>
-    </div>
-  
-    <div class="actions">
-      <%= f.submit "変更" %>
-    </div>
-  <% end %>
+<div id="user-edit">
+  <h3 class="text-center pt-5">ユーザー情報変更</h3>
+  <%= render "devise/shared/error_messages", resource: resource %>
+  <div class="container">
+    <div id="user-edit__row" class="row justify-content-center align-items-center">
+      <div id="user-edit__column" class="col-md-6">
+        <div id="user-edit__box" class="col-md-12">
+          <%= form_with model: @user, id: "user-edit__form", url: user_registration_path do |f| %>
 
-  <%= link_to "退会する", users_confirm_path %>
+            <div class="user-edit__form-group mb-3">
+              <%= f.label :email, "メールアドレス" %><br>
+              <%= f.email_field :email, class: "form-control", autofocus: true %>
+            </div>
+
+            <div class="user-edit__form-group mb-3">
+              <%= f.label :password, "新しいパスワード" %> <span class="registration__password-validation">※8〜30文字</span><br>
+              <%= f.password_field :password, class: "form-control" %>
+            </div>
+
+            <div class="user-edit__form-group mb-3">
+              <%= f.label :password_confirmation, "新しいパスワード（確認）" %><br>
+              <%= f.password_field :password_confirmation, class: "form-control" %>
+            </div>
+
+            <div class="user-edit__form-group mb-3">
+              <%= f.label :current_password, "現在のパスワード" %><br>
+              <%= f.password_field :current_password, class: "form-control" %>
+            </div>
+
+            <div class="user-edit__form-group-action">
+              <%= f.submit "登録", class: "btn mt-2 mb-1 user-edit__button" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+

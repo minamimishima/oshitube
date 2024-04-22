@@ -36,20 +36,20 @@ a {
 }
 
 .btn-check:checked + .btn, :not(.btn-check) + .btn:active, .btn:first-child:active, .btn.active, .btn.show {
-  background-color: #EFE6DD;
+  background-color: #DFCDBA;
   outline: none;
   box-shadow: none;
   border-color: #fff;
 }
 
 .header__dropdown-menu-button {
-  background-color: #EFE6DD;
+  background-color: #DFCDBA;
   outline: none !important;
   box-shadow: none !important;
 }
 
 .header__dropdown-menu-button:hover {
-  background-color: #DFCDBA;
+  background-color: #CFB497;
   outline: none !important;
   box-shadow: none !important;
 }

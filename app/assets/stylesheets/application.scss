@@ -89,21 +89,18 @@ a {
 }
 
 /* ログイン */
-#login .container #login__row #login__column #login__box {
+#login__box {
   margin-top: 20px;
   max-width: 600px;
+  margin-inline: auto;
   height: 350px;
   border: 1px solid #ABA8B1;
-  background-color: #F0F0F1;
-  margin-inline: auto;
-}
-
-#login .container #login__row #login__column #login__box #login__form {
-  padding: 20px;
-}
-
-#login__box {
   border-radius: 8px;
+  background-color: #F0F0F1;
+}
+
+#login__form {
+  padding: 20px;
 }
 
 .login__button {

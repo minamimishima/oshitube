@@ -134,6 +134,29 @@ a {
   background-color: #CFB497;
 }
 
+/* プロフィール編集 */
+#profile-edit__box {
+  margin-top: 20px;
+  max-width: 600px;
+  margin-inline: auto;
+  height: 360px;
+  border: 1px solid #ABA8B1;
+  border-radius: 8px;
+  background-color: #F0F0F1;
+}
+
+#profile-edit__form {
+  padding: 20px;
+}
+
+.profile-edit__button {
+  background-color: #DFCDBA;
+}
+
+.profile-edit__button:hover {
+  background-color: #CFB497;
+}
+
 /* プロフィール */
 .profile-icon {
   width: 150px;

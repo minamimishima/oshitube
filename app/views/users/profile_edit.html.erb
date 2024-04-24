@@ -1,4 +1,4 @@
-<div id="profile-edit">
+<div id="profile-edit" class="container">
   <h3 class="text-center pt-5">プロフィール編集</h3>
 
   <% if @user.errors.any? %>
@@ -9,33 +9,30 @@
     </ul>
   <% end %>
 
-  <div class="container">
-    <div id="profile-edit__row" class="row justify-content-center align-items-center">
-      <div id="profile-edit__column" class="col-md-6">
-        <div id="profile-edit__box" class="col-md-12">
-          <%= form_with(model: @user, id: "profile-edit__form", class: "form", url: profile_edit_path, method: :post) do |f| %>
+  <div id="profile-edit__row" class="row justify-content-center align-items-center">
+    <div id="profile-edit__column" class="col-md-6">
+      <div id="profile-edit__box">
+        <%= form_with(model: @user, id: "profile-edit__form", class: "form", url: profile_edit_path, method: :post) do |f| %>
 
-            <div class="profile-edit__form-group mb-3">
-              <%= f.label :name, "名前" %><br>
-              <%= f.text_field :name, class: "form-control", autofocus: true %>
-            </div>
+          <div class="profile-edit__form-group mb-3">
+            <%= f.label :name, "名前" %><br>
+            <%= f.text_field :name, class: "form-control", autofocus: true %>
+          </div>
 
-            <div class="profile-edit__form-group mb-3">
-              <%= f.label :profile, "プロフィール" %><br>
-              <%= f.text_area :profile, class: "form-control" %>
-            </div>
+          <div class="profile-edit__form-group mb-3">
+            <%= f.label :profile, "プロフィール" %><br>
+            <%= f.text_area :profile, class: "form-control" %>
+          </div>
 
-            <div class="profile-edit__form-group mb-3">
-              <%= f.label :icon, "アイコン画像" %><br>
-              <%= f.file_field :icon, class: "form-control" %>
-            </div>
+          <div class="profile-edit__form-group mb-3">
+            <%= f.label :icon, "アイコン画像" %><br>
+            <%= f.file_field :icon, class: "form-control" %>
+          </div>
 
-            <div class="profile-edit__form-group-action">
-              <%= f.submit "変更", class: "btn mt-2 mb-1 profile-edit__button" %>
-            </div>
-
-          <% end %>
-        </div>
+          <div class="profile-edit__form-group-action">
+            <%= f.submit "変更", class: "btn mt-2 mb-1 profile-edit__button" %>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>

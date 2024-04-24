@@ -13,13 +13,13 @@
         <div class="accordion video-description mt-1 mb-3" id="accordionExample">
           <div class="accordion-item">
             <h2 class="accordion-header">
-              <button class="accordion-button bookmark__video-title-description" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                <%= video_title(@bookmark.video_id) %>
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                <span class="bookmark__video-title"><%= video_title(@bookmark.video_id) %></span>
               </button>
             </h2>
             <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
               <div class="accordion-body">
-                <%= simple_format(h(video_description(@bookmark.video_id))) %>
+                <span class="bookmark__video-description"><%= simple_format(h(video_description(@bookmark.video_id))) %></span>
               </div>
             </div>
           </div>

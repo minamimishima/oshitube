@@ -188,6 +188,7 @@ a {
 .bookmark__timestamps-list {
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
   height: 310px;
   overflow-y: scroll;
   margin-left: 8px;

@@ -9,7 +9,7 @@
           </div>
           <%= render partial: 'shared/timestamps_list', collection: @bookmark.timestamps.sort_by(&:start_time), as: :timestamp, locals: { timestamps: @bookmark.timestamps.sort_by(&:start_time)} %>
         </div>
-  
+
         <div class="accordion video-description mt-1 mb-3" id="accordionExample">
           <div class="accordion-item">
             <h2 class="accordion-header">
@@ -24,6 +24,7 @@
             </div>
           </div>
         </div>
+
         <div>
           <%= @bookmark.description %>
           <% if @user.present? && @bookmark.user_id == @user.id %>
@@ -32,5 +33,6 @@
           <% end %>
         </div>
       </div>
+    </div>
   </div>
 </div>

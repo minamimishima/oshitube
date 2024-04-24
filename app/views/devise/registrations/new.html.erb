@@ -1,8 +1,8 @@
 <div id="registration" class="container">
   <h3 class="text-center pt-5">新規登録</h3>
-  <%= render "devise/shared/error_messages", resource: resource %>
   <div id="registration__row" class="row justify-content-center align-items-center">
     <div id="registration__column" class="col-md-6">
+      <%= render "devise/shared/error_messages", resource: resource %>
       <div id="registration__box">
         <%= form_with model: @user, id: "registration__form", url: user_registration_path do |f| %>
           <div class="registration__form-group mb-3">

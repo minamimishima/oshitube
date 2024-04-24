@@ -5,12 +5,12 @@
       <div id="login__box">
         <%= form_with model: @user, id: "login__form", class: "form", url: user_session_path do |f| %>
           <div class="login__form-group mb-3">
-            <%= f.label :email, "メールアドレス" %><br>
+            <%= f.label :email, "メールアドレス" %>
             <%= f.email_field :email, class: "form-control", autofocus: true %>
           </div>
 
           <div class="login__form-group mb-3">
-            <%= f.label :password, "パスワード" %><br>
+            <%= f.label :password, "パスワード" %>
             <%= f.password_field :password, class: "form-control" %>
           </div>
 

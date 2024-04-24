@@ -14,17 +14,17 @@
         <%= form_with(model: @user, id: "profile-edit__form", class: "form", url: profile_edit_path, method: :post) do |f| %>
 
           <div class="profile-edit__form-group mb-3">
-            <%= f.label :name, "名前" %><br>
+            <%= f.label :name, "名前" %>
             <%= f.text_field :name, class: "form-control", autofocus: true %>
           </div>
 
           <div class="profile-edit__form-group mb-3">
-            <%= f.label :profile, "プロフィール" %><br>
+            <%= f.label :profile, "プロフィール" %>
             <%= f.text_area :profile, class: "form-control" %>
           </div>
 
           <div class="profile-edit__form-group mb-3">
-            <%= f.label :icon, "アイコン画像" %><br>
+            <%= f.label :icon, "アイコン画像" %>
             <%= f.file_field :icon, class: "form-control" %>
           </div>
 

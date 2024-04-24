@@ -7,22 +7,22 @@
         <%= form_with model: @user, id: "user-edit__form", url: user_registration_path do |f| %>
 
           <div class="user-edit__form-group mb-3">
-            <%= f.label :email, "メールアドレス" %><br>
+            <%= f.label :email, "メールアドレス" %>
             <%= f.email_field :email, class: "form-control", autofocus: true %>
           </div>
 
           <div class="user-edit__form-group mb-3">
-            <%= f.label :password, "新しいパスワード" %> <span class="registration__password-validation">※8〜30文字</span><br>
+            <%= f.label :password, "新しいパスワード" %> <span class="registration__password-validation">※8〜30文字</span>
             <%= f.password_field :password, class: "form-control" %>
           </div>
 
           <div class="user-edit__form-group mb-3">
-            <%= f.label :password_confirmation, "新しいパスワード（確認）" %><br>
+            <%= f.label :password_confirmation, "新しいパスワード（確認）" %>
             <%= f.password_field :password_confirmation, class: "form-control" %>
           </div>
 
           <div class="user-edit__form-group mb-3">
-            <%= f.label :current_password, "現在のパスワード" %><br>
+            <%= f.label :current_password, "現在のパスワード" %>
             <%= f.password_field :current_password, class: "form-control" %>
           </div>
 

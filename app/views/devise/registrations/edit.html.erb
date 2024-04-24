@@ -28,7 +28,8 @@
             </div>
 
             <div class="user-edit__form-group-action">
-              <%= f.submit "登録", class: "btn mt-2 mb-1 user-edit__button" %>
+              <%= f.submit "変更", class: "btn mt-2 mb-2 user-edit__button" %>
+              <%= link_to "退会する", users_confirm_path %>
             </div>
           <% end %>
         </div>

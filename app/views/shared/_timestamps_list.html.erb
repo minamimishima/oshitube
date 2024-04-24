@@ -1,8 +1,6 @@
-<div class="timestamps-list">
-  <table>
-    <tr>
-      <td><button class="btn" id="<%= "timestamp-#{timestamps.index(timestamp)}" %>"><%= timestamp.hour %> : <%= timestamp.minute %> : <%= timestamp.second %></button></td>
-      <td><%= timestamp.comment %></td>
-    </tr>
-  </table>
-</div>
+<table>
+  <tr>
+    <td><button class="btn text-nowrap" id="<%= "timestamp-#{timestamps.index(timestamp)}" %>"><%= timestamp.hour %> : <%= timestamp.minute %> : <%= timestamp.second %></button></td>
+    <td><%= timestamp.comment %></td>
+  </tr>
+</table>

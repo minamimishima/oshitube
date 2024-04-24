@@ -180,6 +180,24 @@ a {
   background-color: #CFB497;
 }
 
+/* ブックマーク詳細 */
+.bookmark__bookmark-timestamp-container--pc {
+  display: flex;
+}
+
+.timestamps-list {
+  height: 310px;
+  overflow-y: scroll;
+  flex-grow: 1;
+  border-color: #333333;
+  margin-left: 8px;
+}
+
+.timestamps-list::-webkit-scrollbar {
+  display: none;
+}
+
+
 /* プロフィール */
 .profile-icon {
   width: 150px;

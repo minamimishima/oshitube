@@ -28,7 +28,9 @@
         </div>
 
         <div>
-          <div class="mb-3"><%= @bookmark.description %></div>
+          <div class="mb-3">
+            <%= @bookmark.description %>
+          </div>
           <% if @user.present? && @bookmark.user_id == @user.id %>
             <%= render 'shared/timestamps_new', { timestamp: Timestamp.new, bookmark: @bookmark } %>
             <div class="mt-3">

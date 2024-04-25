@@ -1,7 +1,7 @@
 <div id="bookmark" class="container">
-  <%= render 'shared/error_messages', obj: @timestamp %>
   <div id="bookmark__row" class="row justify-content-center align-items-center">
     <div id="profile-edit__column" class="col-md-8">
+    <%= render 'shared/error_messages', obj: @timestamp %>
       <div class="bookmark__bookmark-timestamp-container--pc">
         <div id="bookmark-video">
           <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= @bookmark.video_id %>" class="youtube-video-player" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>

@@ -4,6 +4,7 @@ class BookmarksController < ApplicationController
   before_action :correct_user, only: [:edit, :update, :destroy]
 
   def index
+    @category = Category.new
   end
 
   def new

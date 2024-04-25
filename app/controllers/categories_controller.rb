@@ -30,7 +30,7 @@ class CategoriesController < ApplicationController
       flash[:notice] = "カテゴリーを編集しました"
       redirect_to category_path(@category)
     else
-      render 'categories/index'
+      render 'bookmarks/index', status: :unprocessable_entity
     end
   end
 

@@ -14,7 +14,6 @@ class CategoriesController < ApplicationController
       flash[:notice] = "カテゴリーを作成しました"
       redirect_to bookmarks_path
     else
-      flash[:notice] = "カテゴリーの作成に失敗しました"
       render 'bookmarks/index', status: :unprocessable_entity
     end
   end

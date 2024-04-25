@@ -29,6 +29,8 @@ ja:
         second: 秒
         start_time: 開始時間
         comment: メモ
+      category:
+        name: カテゴリー名
     errors:
       models:
         bookmark:

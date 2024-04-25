@@ -1,5 +1,6 @@
 <div class="bookmark-container container">
   <h1>ブックマーク一覧</h1>
+  <%= render 'shared/error_messages', obj: @category %>
   <%= render 'shared/categories', { categories: @user.categories } %>
   <%= render 'shared/categories_new', { category: @category, user: @user } %>
   <%= render partial: 'shared/bookmark', collection: @user.bookmarks.order(created_at: :desc).page(params[:page]) %>

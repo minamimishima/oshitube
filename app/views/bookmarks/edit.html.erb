@@ -29,8 +29,8 @@
               <% if Category.where(user_id: @user.id).present? %>
                 <%= f.label :category, "カテゴリー", class: "d-block mb-1" %>
                 <%= f.collection_check_boxes(:category_ids, @user.categories, :id, :name) do |category| %>
-                  <%= category.check_box class: "form-check-input" %>
-                  <%= category.label class: "form-check-label" do %>
+                  <%= category.check_box class: "btn-check" %>
+                  <%= category.label class: "btn" do %>
                     <%= category.text %>
                   <% end %>
                 <% end %>

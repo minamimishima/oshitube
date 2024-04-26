@@ -35,7 +35,11 @@ a {
   border-bottom: 1px solid #E7E7E9;
 }
 
-.btn-check:checked + .btn, :not(.btn-check) + .btn:active, .btn:first-child:active, .btn.active, .btn.show {
+.header .btn-check:checked + .btn,
+.header :not(.btn-check) + .btn:active,
+.header .btn:first-child:active,
+.header .btn.active,
+.header .btn.show {
   background-color: #DFCDBA;
   outline: none;
   box-shadow: none;
@@ -236,6 +240,20 @@ a {
   background-color: #CFB497;
 }
 
+.bookmark-edit__category-edit .btn {
+  --bs-btn-border-color: #E7E7E9;
+}
+
+.bookmark-edit__category-edit .btn-check:checked + .btn,
+.bookmark-edit__category-edit :not(.btn-check) + .btn:active,
+.bookmark-edit__category-edit .btn:first-child:active,
+.bookmark-edit__category-edit .btn.active,
+.bookmark-edit__category-edit .btn.show {
+  background-color: #EFE6DD;
+  outline: none;
+  box-shadow: none;
+  border-color: #EFE6DD;
+}
 
 /* プロフィール */
 .profile-icon {

@@ -216,6 +216,27 @@ a {
   background-color: #CFB497;
 }
 
+/* ブックマーク編集 */
+#bookmark-edit__box {
+  margin-top: 20px;
+  margin-inline: auto;
+  height: fit-content;
+  border-radius: 8px;
+}
+
+#bookmark-edit__form {
+  padding: 20px;
+}
+
+.bookmark-edit__button {
+  background-color: #DFCDBA;
+}
+
+.bookmark-edit__button:hover {
+  background-color: #CFB497;
+}
+
+
 /* プロフィール */
 .profile-icon {
   width: 150px;

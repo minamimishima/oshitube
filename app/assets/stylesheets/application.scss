@@ -220,6 +220,47 @@ a {
   background-color: #CFB497;
 }
 
+/* ブックマーク作成 */
+#bookmark-new__box {
+  margin-top: 20px;
+  margin-inline: auto;
+  height: fit-content;
+  border-radius: 8px;
+}
+
+#bookmark-new__form {
+  padding: 20px;
+}
+
+.bookmark-new__button {
+  background-color: #DFCDBA;
+}
+
+.bookmark-new__button:hover {
+  background-color: #CFB497;
+}
+
+.bookmark-new__category .btn {
+  --bs-btn-border-color: #E7E7E9;
+}
+
+.bookmark-new__category .btn-check:checked + .btn,
+.bookmark-new__category :not(.btn-check) + .btn:active,
+.bookmark-new__category .btn:first-child:active,
+.bookmark-new__category .btn.active,
+.bookmark-new__category .btn.show {
+  background-color: #EFE6DD;
+  outline: none;
+  box-shadow: none;
+  border-color: #EFE6DD;
+}
+
+.bookmark-new__form-group .form-check-input:checked {
+  background-color: #DFCDBA;
+  border-color: #DFCDBA;
+}
+
+
 /* ブックマーク編集 */
 #bookmark-edit__box {
   margin-top: 20px;

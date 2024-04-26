@@ -255,6 +255,11 @@ a {
   border-color: #EFE6DD;
 }
 
+.bookmark-edit__form-group .form-check-input:checked {
+  background-color: #DFCDBA;
+  border-color: #DFCDBA;
+}
+
 /* プロフィール */
 .profile-icon {
   width: 150px;

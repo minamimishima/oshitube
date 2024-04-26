@@ -58,7 +58,7 @@ RSpec.describe "Categories", type: :system do
         expect do
           visit new_bookmark_path
           fill_in "URL", with: "https://www.youtube.com/watch?v=ABCDEFGHIJK"
-          fill_in "動画の説明", with: "動画の説明"
+          fill_in "動画メモ", with: "動画メモ"
           fill_in "カテゴリーを作成する", with: "新しいカテゴリー"
           click_on "登録"
         end.to change { user.categories.count }.by(1)
@@ -68,7 +68,7 @@ RSpec.describe "Categories", type: :system do
         expect do
           visit new_bookmark_path
           fill_in "URL", with: "https://www.youtube.com/watch?v=ABCDEFGHIJK"
-          fill_in "動画の説明", with: "動画の説明"
+          fill_in "動画メモ", with: "動画メモ"
           check category.name
           click_on "登録"
         end.to change { category.bookmarks.count }.by(1)

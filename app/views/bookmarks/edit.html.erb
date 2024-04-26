@@ -85,7 +85,12 @@
             <%= f.hidden_field :user_id, value: @user.id %>
           </div>
 
-          <%= f.submit "登録", class: "bookmark-edit__button btn" %>
+          <%= f.submit "登録", class: "bookmark-edit__button btn mb-5" %>
+
+          <div class="bookmark__back">
+            <%= link_to "戻る", :back %>
+          </div>
+
         <% end %>
       </div>
     </div>

@@ -184,40 +184,9 @@ a {
   background-color: #CFB497;
 }
 
-/* ブックマーク詳細 */
-.bookmark-show__bookmark-timestamp-container--pc {
-  display: flex;
-}
-
-.bookmark-show__timestamps-list {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  height: 310px;
-  overflow-y: scroll;
-  margin-left: 8px;
-}
-
-.accordion {
-  --bs-accordion-active-bg: #EFE6DD;
-  --bs-accordion-border-color: #EFE6DD;
-  --bs-accordion-btn-focus-border-color: #EFE6DD;
-  --bs-accordion-btn-color: #333333;
-  --bs-accordion-active-color: #333333;
-  --bs-accordion-btn-focus-box-shadow: none;
-}
-
-.accordion-button {
-  background-color: #EFE6DD;
-}
-
-/* タイムスタンプ作成 */
-.timestamps-new__button {
-  background-color: #DFCDBA;
-}
-
-.timestamps-new__button:hover {
-  background-color: #CFB497;
+/* ブックマーク一覧 */
+bookmark__list {
+  width: 450;
 }
 
 /* ブックマーク作成 */
@@ -260,6 +229,32 @@ a {
   border-color: #DFCDBA;
 }
 
+/* ブックマーク詳細 */
+.bookmark-show__bookmark-timestamp-container--pc {
+  display: flex;
+}
+
+.bookmark-show__timestamps-list {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  height: 310px;
+  overflow-y: scroll;
+  margin-left: 8px;
+}
+
+.accordion {
+  --bs-accordion-active-bg: #EFE6DD;
+  --bs-accordion-border-color: #EFE6DD;
+  --bs-accordion-btn-focus-border-color: #EFE6DD;
+  --bs-accordion-btn-color: #333333;
+  --bs-accordion-active-color: #333333;
+  --bs-accordion-btn-focus-box-shadow: none;
+}
+
+.accordion-button {
+  background-color: #EFE6DD;
+}
 
 /* ブックマーク編集 */
 #bookmark-edit__box {
@@ -300,6 +295,16 @@ a {
   background-color: #DFCDBA;
   border-color: #DFCDBA;
 }
+
+/* タイムスタンプ作成 */
+.timestamps-new__button {
+  background-color: #DFCDBA;
+}
+
+.timestamps-new__button:hover {
+  background-color: #CFB497;
+}
+
 
 /* プロフィール */
 .profile-icon {

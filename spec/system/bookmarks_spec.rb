@@ -7,8 +7,8 @@ RSpec.describe "Bookmarks", type: :system do
     visit bookmark_path(bookmark)
     aggregate_failures do
       expect(page).to have_selector ".youtube-video-player"
-      expect(page).to have_selector ".bookmark__video-title"
-      expect(page).to have_selector ".bookmark__video-description"
+      expect(page).to have_selector ".bookmark-show__video-title"
+      expect(page).to have_selector ".bookmark-show__video-description"
       expect(page).to have_content bookmark.description
     end
   end

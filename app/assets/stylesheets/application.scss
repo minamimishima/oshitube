@@ -185,11 +185,11 @@ a {
 }
 
 /* ブックマーク詳細 */
-.bookmark__bookmark-timestamp-container--pc {
+.bookmark-show__bookmark-timestamp-container--pc {
   display: flex;
 }
 
-.bookmark__timestamps-list {
+.bookmark-show__timestamps-list {
   display: flex;
   flex-direction: column;
   flex-grow: 1;

@@ -1,10 +1,17 @@
-<div class="bookmark-container container">
-  <h1><%= @category.name %></h1>
-  <%= render 'shared/categories', { categories: @categories } %>
-  <%= link_to "削除", category_path(@category), data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" } %>
-  <%= render 'shared/categories_new', { category: @category, user: @user } %>
-  <% if @category.bookmarks.present? %>
-    <%= render partial: 'shared/bookmark', collection: @category.bookmarks.order(created_at: :desc).page(params[:page]) %>
-    <%= paginate @category.bookmarks.order(created_at: :desc).page(params[:page]), theme: 'bootstrap-5' %>
-  <% end %>
+<div id="category-show" class="container">
+  <h2 class="text-center mb-5"><%= @category.name %></h2>
+  <div id="category-show__row" class="row justify-content-center align-items-center">
+    <div id="category-show__column" class="col-md-10">
+      <%= render 'shared/categories', { categories: @categories } %>
+      <%= link_to "削除", category_path(@category), data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" } %>
+      <%= render 'shared/categories_new', { category: @category, user: @user } %>
+
+      <% if @category.bookmarks.present? %>
+        <div id="bookmark__row" class="row d-flex justify-content-center align-items-start">
+          <%= render partial: 'shared/bookmark', collection: @category.bookmarks.order(created_at: :desc).page(params[:page]) %>
+          <%= paginate @category.bookmarks.order(created_at: :desc).page(params[:page]), theme: 'bootstrap-5' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>

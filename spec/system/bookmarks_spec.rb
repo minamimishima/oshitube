@@ -51,8 +51,8 @@ RSpec.describe "Bookmarks", type: :system do
       it "ブックマーク一覧ページにサムネイル・動画タイトル・メモが表示されること" do
         visit bookmarks_path
         aggregate_failures do
-          expect(page).to have_selector ".video-thumbnail"
-          expect(page).to have_selector ".video-title"
+          expect(page).to have_selector ".bookmark__video-thumbnail"
+          expect(page).to have_selector ".bookmark__video-title"
           expect(page).to have_content bookmark.description
         end
       end

@@ -1,8 +1,10 @@
-<div class="category text-center">
-  <% if categories.present? %>
-    <% categories.each do |category| %>
-      <%= link_to category.name, category_path(category), class: "category__button btn mx-1" %>
+<div id="category__row" class="row justify-content-center">
+  <div id="category__column" class="col-md-6 text-center">
+    <% if categories.present? %>
+      <% categories.each do |category| %>
+        <%= link_to category.name, category_path(category), class: "category__button btn mx-1 my-1" %>
+      <% end %>
     <% end %>
-  <% end %>
-  <%= link_to "すべてのブックマーク", bookmarks_path, class: "category__button btn mx-1" %>
+    <%= link_to "すべてのブックマーク", bookmarks_path, class: "category__button btn mx-1 my-1" %>
+  </div>
 </div>

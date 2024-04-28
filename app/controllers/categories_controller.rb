@@ -9,6 +9,7 @@ class CategoriesController < ApplicationController
 
   def create
     @category = Category.new(category_params)
+    @bookmarks = @user.bookmarks.order(created_at: :desc).page(params[:page]) # リクエストスペックに失敗してしまうため追記
     if @category.valid? && @category.user_id == @user.id
       @category.save
       flash[:notice] = "カテゴリーを作成しました"

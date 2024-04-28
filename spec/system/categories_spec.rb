@@ -40,8 +40,8 @@ RSpec.describe "Categories", type: :system do
         category = create(:category, name: "元のカテゴリー名", user: user)
         visit category_path(category)
         fill_in "カテゴリー名", with: "新しいカテゴリー名"
-        click_on "作成"
-        expect(page).to have_selector "h1", text: "新しいカテゴリー名"
+        click_on "編集"
+        expect(page).to have_selector "h2", text: "新しいカテゴリー名"
       end
 
       it "カテゴリーを削除できること", js: true do

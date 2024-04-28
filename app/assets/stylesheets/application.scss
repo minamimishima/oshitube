@@ -352,6 +352,46 @@ a {
   border-color: #DFCDBA;
 }
 
+/* カテゴリー編集 */
+.categories-edit__button {
+  background-color: #F5EFE8;
+}
+
+.categories-edit__button:hover {
+  background-color: #DFCDBA;
+}
+
+.categories-edit .btn-check:checked + .btn,
+.categories-edit :not(.btn-check) + .btn:active,
+.categories-edit .btn:first-child:active,
+.categories-edit .btn.active,
+.categories-edit .btn.show {
+  background-color: #DFCDBA;
+  outline: none;
+  box-shadow: none;
+  border-color: #DFCDBA;
+}
+
+/* カテゴリー削除 */
+.categories-edit__delete-button {
+  background-color: #E5C0BA;
+}
+
+.categories-edit__delete-button:hover {
+  background-color: #D89E94;
+}
+
+.categories-edit .btn-check:checked + .btn,
+.categories-edit :not(.btn-check) + .btn:active,
+.categories-edit .btn:first-child:active,
+.categories-edit .btn.active,
+.categories-edit .btn.show {
+  background-color: #D89E94;
+  outline: none;
+  box-shadow: none;
+  border-color: #D89E94;
+}
+
 /* プロフィール */
 .profile-icon {
   width: 150px;

@@ -7,10 +7,10 @@
       <%= render 'shared/categories_new', { category: @category, user: @user } %>
 
       <div id="bookmark__row" class="row d-flex justify-content-center align-items-start">
-        <%= render partial: 'shared/bookmark', collection: @user.bookmarks.order(created_at: :desc).page(params[:page]) %>
+        <%= render partial: 'shared/bookmark', collection: @bookmarks %>
       </div>
 
-      <%= paginate @user.bookmarks.order(created_at: :desc).page(params[:page]), theme: 'bootstrap-5' %>
+      <%= paginate @bookmarks, theme: 'bootstrap-5' %>
     </div>
   </div>
 </div>

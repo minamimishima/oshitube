@@ -4,6 +4,7 @@ class BookmarksController < ApplicationController
   before_action :correct_user, only: [:edit, :update, :destroy]
 
   def index
+    @bookmarks = @user.bookmarks.order(created_at: :desc).page(params[:page])
     @category = Category.new
   end
 

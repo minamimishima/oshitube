@@ -3,8 +3,7 @@
   <div id="category-show__row" class="row justify-content-center align-items-center">
     <div id="category-show__column" class="col-md-10">
       <%= render 'shared/categories', { categories: @categories } %>
-      <%= link_to "削除", category_path(@category), data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" } %>
-      <%= render 'shared/categories_new', { category: @category, user: @user } %>
+      <%= render 'shared/categories_edit', { category: @category, user: @user } %>
 
       <% if @category.bookmarks.present? %>
         <div id="bookmark__row" class="row d-flex justify-content-center align-items-start">

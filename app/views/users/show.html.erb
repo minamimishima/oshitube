@@ -1,12 +1,18 @@
-<div class="profile-container container">
-  <% if @user.icon.present? %>
-    <%= image_tag @user.icon, class: "profile-icon" %>
-  <% end %>
-  <p><%= @user.name %></p>
-  <p><%= @user.profile %></p>
-  <% if current_user.present? && @user.id == current_user.id %>
-    <%= link_to "プロフィール編集", profile_edit_path %> / <%= link_to "ユーザー情報変更", edit_user_registration_path %>
-  <% end %>
-  <%= render partial: 'shared/bookmark', collection: @bookmarks, as: :bookmark %>
-  <%= paginate @bookmarks, theme: 'bootstrap-5' %>
+<div id="profile-show" class="container">
+  <div id="profile-show__row" class="row justify-content-center align-items-center">
+    <div id="profile-show__column" class="col-md-10">
+      <% if @user.icon.present? %>
+        <%= image_tag @user.icon, class: "profile-icon" %>
+      <% end %>
+      <p><%= @user.name %></p>
+      <p><%= @user.profile %></p>
+      <% if current_user.present? && @user.id == current_user.id %>
+        <%= link_to "プロフィール編集", profile_edit_path %> / <%= link_to "ユーザー情報変更", edit_user_registration_path %>
+      <% end %>
+      <div id="bookmark__row" class="row d-flex justify-content-center align-items-start">
+        <%= render partial: 'shared/bookmark', collection: @bookmarks, as: :bookmark %>
+        <%= paginate @bookmarks, theme: 'bootstrap-5' %>
+      </div>
+    </div>
+  </div>
 </div>

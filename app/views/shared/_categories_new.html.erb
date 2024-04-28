@@ -1,10 +1,10 @@
-<div>
-  <%= form_with model: category do |f| %>
-    <div class="field">
+<div id="categories-new__row" class="row justify-content-center">
+  <div class="categories-new__form-group text-center col-4">
+    <%= form_with model: category do |f| %>
       <%= f.label :name, "カテゴリー名" %><br />
-      <%= f.text_field :name %>
-    </div> 
-    <%= f.hidden_field :user_id, value: user.id %>
-    <%= f.submit "作成" %>
-  <% end %>
+      <%= f.text_field :name, class: "form-control justify-content-center align-items-center" %>
+      <%= f.hidden_field :user_id, value: user.id %>
+      <%= f.submit "作成", class: "categories-new__button btn mt-1" %>
+    <% end %>
+  </div> 
 </div>

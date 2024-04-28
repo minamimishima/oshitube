@@ -332,6 +332,26 @@ a {
   border-color: #DFCDBA;
 }
 
+/* カテゴリー作成 */
+.categories-new__button {
+  background-color: #F5EFE8;
+}
+
+.categories-new__button:hover {
+  background-color: #DFCDBA;
+}
+
+.categories-new .btn-check:checked + .btn,
+.categories-new :not(.btn-check) + .btn:active,
+.categories-new .btn:first-child:active,
+.categories-new .btn.active,
+.categories-new .btn.show {
+  background-color: #DFCDBA;
+  outline: none;
+  box-shadow: none;
+  border-color: #DFCDBA;
+}
+
 /* プロフィール */
 .profile-icon {
   width: 150px;

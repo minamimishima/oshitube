@@ -313,19 +313,19 @@ a {
 }
 
 /* カテゴリー一覧 */
-.category__button {
+.categories__button {
   background-color: #F5EFE8;
 }
 
-.category__button:hover {
+.categories__button:hover {
   background-color: #DFCDBA;
 }
 
-.category .btn-check:checked + .btn,
-.category :not(.btn-check) + .btn:active,
-.category .btn:first-child:active,
-.category .btn.active,
-.category .btn.show {
+.categories-show .btn-check:checked + .btn,
+.categories-show :not(.btn-check) + .btn:active,
+.categories-show .btn:first-child:active,
+.categories-show .btn.active,
+.categories-show .btn.show {
   background-color: #DFCDBA;
   outline: none;
   box-shadow: none;

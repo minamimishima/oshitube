@@ -24,7 +24,7 @@
                 <%= f.label :category, "カテゴリー", class: "d-block mb-1" %>
                 <%= f.collection_check_boxes(:category_ids, @user.categories, :id, :name) do |category| %>
                   <%= category.check_box class: "btn-check" %>
-                  <%= category.label class: "btn" do %>
+                  <%= category.label class: "bookmark-new__category-button btn" do %>
                     <%= category.text %>
                   <% end %>
                 <% end %>

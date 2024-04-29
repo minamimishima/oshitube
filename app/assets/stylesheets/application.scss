@@ -199,6 +199,58 @@ a {
   background-color: #CFB497;
 }
 
+/* 退会 */
+.user-confirm__text {
+  width: fit-content;
+  margin-inline: auto;
+}
+
+.user-confirm__withdrawal-button {
+  background-color: #E5C0BA;
+}
+
+.user-confirm__withdrawal-button:hover {
+  background-color: #D89E94;
+}
+
+.bookmark-new__category .btn {
+  --bs-btn-border-color: #E5C0BA;
+}
+
+.user-confirm__withdrawal-button .btn-check:checked + .btn,
+.user-confirm__withdrawal-button :not(.btn-check) + .btn:active,
+.user-confirm__withdrawal-button .btn:first-child:active,
+.user-confirm__withdrawal-button .btn.active,
+.user-confirm__withdrawal-button .btn.show {
+  background-color: #D89E94;
+  outline: none;
+  box-shadow: none;
+  border-color: #D89E94;
+}
+
+.user-confirm__back-button {
+  background-color: #F5EFE8;
+}
+
+.user-confirm__back-button:hover {
+  background-color: #EFE6DD;
+}
+
+.bookmark-new__category .btn {
+  --bs-btn-border-color: #F5EFE8;
+}
+
+.user-confirm__back-button .btn-check:checked + .btn,
+.user-confirm__back-button :not(.btn-check) + .btn:active,
+.user-confirm__back-button .btn:first-child:active,
+.user-confirm__back-button .btn.active,
+.user-confirm__back-button .btn.show {
+  background-color: #EFE6DD;
+  outline: none;
+  box-shadow: none;
+  border-color: #EFE6DD;
+}
+
 /* ブックマーク一覧 */
 .bookmark__video-thumbnail {
   max-width: 100%;

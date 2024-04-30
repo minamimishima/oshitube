@@ -37,7 +37,7 @@
               <% end %>
             </div>
 
-            <div class="bookmark-edit__form-group col-6 mb-4">
+            <div class="bookmark-edit__form-group col-lg-6 col-sm-8 mb-4">
               <%= f.fields_for :categories, @bookmark.categories.new do |category| %>
                 <%= category.label :name, "カテゴリーを作成する" %>
                 <%= category.text_field :name, class: "form-control" %>

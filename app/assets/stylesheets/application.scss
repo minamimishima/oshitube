@@ -307,11 +307,27 @@ a {
   display: flex;
 }
 
+#bookmark-video {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  width: 60%;
+  max-width: 560px;
+  max-height: 315px;
+}
+
+#bookmark-video iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
 .bookmark-show__timestamps-list {
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
-  height: 310px;
+  max-width: 40%;
+  max-height: 315px;
   overflow-y: scroll;
   margin-left: 8px;
 }

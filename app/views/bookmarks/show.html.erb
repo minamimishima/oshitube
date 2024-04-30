@@ -4,7 +4,7 @@
     <%= render 'shared/error_messages', obj: @timestamp %>
       <div class="bookmark-show__bookmark-timestamp-container--pc">
         <div id="bookmark-video">
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= @bookmark.video_id %>" class="youtube-video-player" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          <iframe src="https://www.youtube.com/embed/<%= @bookmark.video_id %>" class="youtube-video-player" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </div>
         <div class="bookmark-show__timestamps-list">
           <table>

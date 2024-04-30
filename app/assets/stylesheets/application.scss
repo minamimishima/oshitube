@@ -35,6 +35,19 @@ a {
   border-bottom: 1px solid #E7E7E9;
 }
 
+@media screen and (max-width: 767px) {
+  .header {
+    padding: 0 10px ;
+  }
+
+  .header__registration-button, .header__login-button {
+    --bs-btn-padding-y: 0.25rem;
+    --bs-btn-padding-x: 0.5rem;
+    --bs-btn-font-size: 0.875rem;
+    --bs-btn-border-radius: var(--bs-border-radius-sm);
+  }
+}
+
 .header__dropdown-menu-button {
   --bs-btn-color: #333333;
   --bs-btn-bg: #DFCDBA;

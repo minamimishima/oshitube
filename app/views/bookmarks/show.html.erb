@@ -7,7 +7,9 @@
           <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= @bookmark.video_id %>" class="youtube-video-player" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </div>
         <div class="bookmark-show__timestamps-list">
-          <%= render partial: 'shared/timestamps_list', collection: @bookmark.timestamps.sort_by(&:start_time), as: :timestamp, locals: { timestamps: @bookmark.timestamps.sort_by(&:start_time)} %>
+          <table>
+            <%= render partial: 'shared/timestamps_list', collection: @bookmark.timestamps.sort_by(&:start_time), as: :timestamp, locals: { timestamps: @bookmark.timestamps.sort_by(&:start_time)} %>
+          </table>
         </div>
       </div>
 

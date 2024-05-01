@@ -2,11 +2,11 @@
   <div id="bookmark-show__row" class="row justify-content-center align-items-center">
     <div id="bookmark-show__column" class="col-md-8 mb-4">
     <%= render 'shared/error_messages', obj: @timestamp %>
-      <div class="bookmark-show__bookmark-timestamp-container--pc">
+      <div class="bookmark-show__bookmark-timestamp-container">
         <div id="bookmark-video">
           <iframe src="https://www.youtube.com/embed/<%= @bookmark.video_id %>" class="youtube-video-player" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </div>
-        <div class="bookmark-show__timestamps-list">
+        <div class="bookmark-show__timestamps-list--pc">
           <table>
             <%= render partial: 'shared/timestamps_list', collection: @bookmark.timestamps.sort_by(&:start_time), as: :timestamp, locals: { timestamps: @bookmark.timestamps.sort_by(&:start_time)} %>
           </table>
@@ -28,9 +28,16 @@
         </div>
       </div>
 
-      <div class="bookmark-show__description mb-5">
+      <div class="bookmark-show__description">
         <%= @bookmark.description %>
       </div>
+
+      <div class="bookmark-show__timestamps-list--mobile">
+        <table>
+          <%= render partial: 'shared/timestamps_list', collection: @bookmark.timestamps.sort_by(&:start_time), as: :timestamp, locals: { timestamps: @bookmark.timestamps.sort_by(&:start_time)} %>
+        </table>
+      </div>
+
       <% if @user.present? && @bookmark.user_id == @user.id %>
         <%= render 'shared/timestamps_new', { timestamp: Timestamp.new, bookmark: @bookmark } %>
         <div class="bookmark-show__link mt-2">

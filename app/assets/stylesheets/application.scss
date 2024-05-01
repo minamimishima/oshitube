@@ -325,7 +325,7 @@ a {
 }
 
 /* ブックマーク詳細 */
-.bookmark-show__bookmark-timestamp-container--pc {
+.bookmark-show__bookmark-timestamp-container {
   display: flex;
 }
 
@@ -352,6 +352,41 @@ a {
   max-height: 315px;
   overflow-y: scroll;
   margin-left: 8px;
+}
+
+.bookmark-show__description {
+  margin-bottom: 48px;
+}
+
+@media screen and (min-width: 769px) {
+  .bookmark-show__timestamps-list--mobile {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .bookmark-show__bookmark-timestamp-container {
+    display: block;
+  }
+
+  #bookmark-video {
+    aspect-ratio: 16 / 9;
+    width: 100%;
+    max-width: 560px;
+    max-height: 315px;
+  }
+
+  .bookmark-show__timestamps-list--pc {
+    display: none;
+  }
+
+  .bookmark-show__description {
+    margin-bottom: 10px;
+  }
+
+  .bookmark-show__timestamps-list--mobile {
+    margin-bottom: 24px;
+  }
 }
 
 .accordion {

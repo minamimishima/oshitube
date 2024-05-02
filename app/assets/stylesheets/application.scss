@@ -119,6 +119,16 @@ a {
   list-style: none;
 }
 
+/* エラーメッセージ */
+#error-messages  ul {
+  padding: 0;
+  color: #C16656;
+}
+
+#error-messages li {
+  list-style: none;
+}
+
  /* ファーストビュー */
 .firstview-title {
   text-align: center;

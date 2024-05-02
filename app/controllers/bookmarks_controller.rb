@@ -22,7 +22,6 @@ class BookmarksController < ApplicationController
       flash[:notice] = "登録完了しました"
       redirect_to bookmarks_path
     else
-      flash[:notice] = "登録に失敗しました"
       render 'new', status: :unprocessable_entity
     end
   end

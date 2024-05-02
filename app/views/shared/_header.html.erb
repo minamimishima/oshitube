@@ -9,7 +9,7 @@
         <span>メニュー</span>
       </a>
       <ul class="dropdown-menu">
-        <li><%= link_to "ブックマーク追加", new_bookmark_path %></li>
+        <li><%= link_to "ブックマーク登録", new_bookmark_path %></li>
         <li><%= link_to "ブックマーク一覧", bookmarks_path %></li>
         <li><%= link_to "プロフィール", user_path(@user.id) %></li>
         <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: { turbo_method: :delete } %></li>

@@ -17,10 +17,10 @@ class User < ApplicationRecord
       if: :devise_will_save_change_to_email?,
       allow_blank: true,
     }
-  validates :password, presence: true, if: :password_required?
-  validates :password, confirmation: true, if: :password_required?
-  validates :password, length: { within: 8..30 }, if: :password_required?
-
+  validates :password,
+    presence:{ if: :password_required? },
+    confirmation: { if: :password_required? },
+    length: { within: 8..30 , if: :password_required? }
   validates :name, presence: true
   validates :profile, length: { maximum: 300 }
 

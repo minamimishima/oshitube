@@ -8,11 +8,15 @@ class User < ApplicationRecord
   has_many :categories
   has_one_attached :icon
 
-  validates :email, presence: true, if: :devise_will_save_change_to_email?
-  validates :email, uniqueness: { scope: :is_deleted, if: -> { is_deleted == false } } # rubocop:disable Rails/UniqueValidationWithoutIndex
-  validates :email,
-    format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/, case_sensitive: true, if: :devise_will_save_change_to_email? }
-
+  validates :email, # rubocop:disable Rails/UniqueValidationWithoutIndex
+    presence: { if: :devise_will_save_change_to_email? },
+    uniqueness: { scope: :is_deleted, if: -> { is_deleted == false } },
+    format: {
+      with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/,
+      case_sensitive: true,
+      if: :devise_will_save_change_to_email?,
+      allow_blank: true,
+    }
   validates :password, presence: true, if: :password_required?
   validates :password, confirmation: true, if: :password_required?
   validates :password, length: { within: 8..30 }, if: :password_required?

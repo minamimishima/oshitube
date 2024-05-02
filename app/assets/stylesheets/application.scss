@@ -109,6 +109,16 @@ a {
   margin-inline: auto;
 }
 
+/* devise エラーメッセージ */
+#error_explanation ul {
+  padding: 0;
+  color: #C16656;
+}
+
+#error_explanation li {
+  list-style: none;
+}
+
  /* ファーストビュー */
 .firstview-title {
   text-align: center;

@@ -34,7 +34,7 @@
 
       <div class="bookmark-show__timestamps-list--mobile">
         <table>
-          <%= render partial: 'shared/timestamps_list', collection: @bookmark.timestamps.sort_by(&:start_time), as: :timestamp, locals: { timestamps: @bookmark.timestamps.sort_by(&:start_time)} %>
+          <%= render partial: 'shared/timestamps_list_mobile', collection: @bookmark.timestamps.sort_by(&:start_time), as: :timestamp, locals: { timestamps: @bookmark.timestamps.sort_by(&:start_time)} %>
         </table>
       </div>
 

@@ -2,7 +2,11 @@
 <div id="bookmark-show" class="container">
   <div id="bookmark-show__row" class="row justify-content-center align-items-center">
     <div id="bookmark-show__column" class="col-md-8 mb-4">
-    <%= render 'shared/error_messages', obj: @timestamp %>
+
+      <div class="bookmark-show__error-messages--pc">
+        <%= render 'shared/error_messages', obj: @timestamp %>
+      </div>
+
       <div class="bookmark-show__bookmark-timestamp-container">
         <div id="bookmark-video">
           <iframe src="https://www.youtube.com/embed/<%= @bookmark.video_id %>" class="youtube-video-player" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
@@ -33,19 +37,24 @@
         <div class="bookmark-show__description">
           <%= @bookmark.description %>
         </div>
-  
+
         <div class="bookmark-show__timestamps-list--mobile">
           <table>
             <%= render partial: 'shared/timestamps_list_mobile', collection: @bookmark.timestamps.sort_by(&:start_time), as: :timestamp, locals: { timestamps: @bookmark.timestamps.sort_by(&:start_time)} %>
           </table>
         </div>
-  
+
+        <div class="bookmark-show__error-messages--mobile">
+          <%= render 'shared/error_messages', obj: @timestamp %>
+        </div>
+
         <% if @user.present? && @bookmark.user_id == @user.id %>
           <%= render 'shared/timestamps_new', { timestamp: Timestamp.new, bookmark: @bookmark } %>
           <div class="bookmark-show__link mt-2">
             <%= link_to "編集", edit_bookmark_path(@bookmark) %> / <%= link_to "削除", bookmark_path(@bookmark), data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" } %>
           </div>
         <% end %>
+
         <div class="bookmark-show__back mt-5">
           <%= link_to "戻る", "javascript:history.back()" %>
         </div>

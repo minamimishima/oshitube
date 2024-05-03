@@ -110,22 +110,22 @@ a {
 }
 
 /* devise エラーメッセージ */
-#devise__error-messages  ul {
+.devise__error-messages  ul {
   padding: 0;
   color: #C16656;
 }
 
-#devise__error-messages li {
+.devise__error-messages li {
   list-style: none;
 }
 
 /* エラーメッセージ */
-#error-messages  ul {
+.error-messages  ul {
   padding: 0;
   color: #C16656;
 }
 
-#error-messages li {
+.error-messages li {
   list-style: none;
 }
 

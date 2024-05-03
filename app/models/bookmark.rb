@@ -8,7 +8,7 @@ class Bookmark < ApplicationRecord
   accepts_nested_attributes_for :categories, reject_if: lambda { |attributes| attributes['name'].blank? }
 
   validates :url, presence: true
-  validates :video_id, length: { is: 11 }
+  validates :video_id, length: { is: 11, allow_blank: true }
   validates :description, length: { maximum: 300 }
 
   YOUTUBE_URL_PATTERN = /((?:https:\/\/www\.youtube\.com(?:\/embed\/|\/watch\?v=)|https:\/\/youtu\.be\/|https:\/\/m\.youtube\.com\/watch\?v=)([\w-]{11}))/

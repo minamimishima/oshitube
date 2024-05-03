@@ -15,7 +15,7 @@ ja:
         user_id: ユーザーID
         url: URL
         video_id: ID
-        description: 動画の説明
+        description: 動画メモ
         is_public: 公開設定
       bookmark/timestamps:
         hour: 時間

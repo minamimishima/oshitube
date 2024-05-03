@@ -7,94 +7,95 @@
         <div class="text-center mb-1">
           <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= @bookmark.video_id %>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </div>
-        <h3><%= video_title(@bookmark.video_id) %></h3>
       </div>
 
-      <%= render 'shared/error_messages', obj: @bookmark %>
+      <div class="bookmark-edit__form-link-container">
+        <%= render 'shared/error_messages', obj: @bookmark %>
 
-      <div id="bookmark-edit__box">
-        <%= form_with model: @bookmark, id: "bookmark-edit__form", class: "form mb-1" do |f| %>
+        <div id="bookmark-edit__box">
+          <%= form_with model: @bookmark, id: "bookmark-edit__form", class: "form mb-1" do |f| %>
 
-          <div class="bookmark-edit__form-group mb-3">
-            <%= f.label :url, "URL" %>
-            <%= f.text_field :url, class: "form-control", autofocus: true %>
-          </div>
+            <div class="bookmark-edit__form-group mb-3">
+              <%= f.label :url, "URL" %>
+              <%= f.text_field :url, class: "form-control", autofocus: true %>
+            </div>
 
-          <div class="bookmark-edit__form-group mb-4">
-            <%= f.label :description, "動画メモ" %>
-            <%= f.text_area :description, class: "form-control" %>
-          </div>
+            <div class="bookmark-edit__form-group mb-4">
+              <%= f.label :description, "動画メモ" %>
+              <%= f.text_area :description, class: "form-control" %>
+            </div>
 
-          <div class="bookmark-edit__category-edit">
-            <div class="bookmark-edit__form-group mb-1">
-              <% if Category.where(user_id: @user.id).present? %>
-                <%= f.label :category, "カテゴリー", class: "d-block mb-1" %>
-                <%= f.collection_check_boxes(:category_ids, @user.categories, :id, :name) do |category| %>
-                  <%= category.check_box class: "btn-check" %>
-                  <%= category.label class: "bookmark-edit__category-button btn" do %>
-                    <%= category.text %>
+            <div class="bookmark-edit__category-edit">
+              <div class="bookmark-edit__form-group mb-1">
+                <% if Category.where(user_id: @user.id).present? %>
+                  <%= f.label :category, "カテゴリー", class: "d-block mb-1" %>
+                  <%= f.collection_check_boxes(:category_ids, @user.categories, :id, :name) do |category| %>
+                    <%= category.check_box class: "btn-check" %>
+                    <%= category.label class: "bookmark-edit__category-button btn" do %>
+                      <%= category.text %>
+                    <% end %>
                   <% end %>
                 <% end %>
+              </div>
+
+              <div class="bookmark-edit__form-group col-lg-6 col-sm-8 mb-4">
+                <%= f.fields_for :categories, @bookmark.categories.new do |category| %>
+                  <%= category.label :name, "カテゴリーを作成する" %>
+                  <%= category.text_field :name, class: "form-control" %>
+                  <%= category.hidden_field :user_id, value: @user.id %>
+                <% end %>
+              </div>
+            </div>
+
+            <div class="bookmark-edit__timestamp-edit">
+              <%= f.fields_for :timestamps, @bookmark.timestamps.sort_by(&:start_time) do |timestamp| %>
+                <div class="bookmark-edit__form-group d-flex mb-2">
+                  <div class="col-2 d-flex text-nowrap justify-content-center align-items-center">
+                    <%= timestamp.number_field :hour, class: "form-control me-2" %>
+                    <%= timestamp.label :hour, "時間" %>
+                  </div>
+
+                  <div class="col-2 d-flex text-nowrap justify-content-center align-items-center">
+                    <%= timestamp.number_field :minute, class: "form-control mx-2" %>
+                    <%= timestamp.label :minute, "分" %>
+                  </div>
+
+                  <div class="col-2 d-flex text-nowrap justify-content-center align-items-center">
+                    <%= timestamp.number_field :second, class: "form-control mx-2" %>
+                    <%= timestamp.label :second, "秒" %>
+                  </div>
+                </div>
+
+                <div class="bookmark-edit__form-group justify-content-center align-items-center mb-2">
+                  <%= timestamp.label :comment, "メモ" %>
+                  <%= timestamp.text_field :comment, class: "form-control" %>
+                </div>
+
+                <div class="bookmark-edit__form-group form-check mb-4">
+                  <%= timestamp.label :_destroy, "削除", class: "form-check-label" %>
+                  <%= timestamp.check_box :_destroy, class: "form-check-input" %>
+                </div>
+
+                <%= timestamp.hidden_field :bookmark_id, value: @bookmark.id %>
               <% end %>
             </div>
 
-            <div class="bookmark-edit__form-group col-lg-6 col-sm-8 mb-4">
-              <%= f.fields_for :categories, @bookmark.categories.new do |category| %>
-                <%= category.label :name, "カテゴリーを作成する" %>
-                <%= category.text_field :name, class: "form-control" %>
-                <%= category.hidden_field :user_id, value: @user.id %>
-              <% end %>
+            <div class="bookmark-edit__form-group mb-3">
+              <%= f.label :is_public, "おすすめ動画として公開する", class: "form-check-label" %>
+              <%= f.check_box :is_public, class: "form-check-input" %>
+              <%= f.hidden_field :user_id, value: @user.id %>
             </div>
-          </div>
 
-          <div class="bookmark-edit__timestamp-edit">
-            <%= f.fields_for :timestamps, @bookmark.timestamps.sort_by(&:start_time) do |timestamp| %>
-              <div class="bookmark-edit__form-group d-flex mb-2">
-                <div class="col-2 d-flex text-nowrap justify-content-center align-items-center">
-                  <%= timestamp.number_field :hour, class: "form-control me-2" %>
-                  <%= timestamp.label :hour, "時間" %>
-                </div>
+            <div class="bookmark-edit__form-group-action">
+              <%= f.submit "登録", class: "bookmark-edit__button btn mb-5" %>
+            </div>
 
-                <div class="col-2 d-flex text-nowrap justify-content-center align-items-center">
-                  <%= timestamp.number_field :minute, class: "form-control mx-2" %>
-                  <%= timestamp.label :minute, "分" %>
-                </div>
+            <div class="bookmark__back">
+              <%= link_to "戻る", "javascript:history.back()" %>
+            </div>
 
-                <div class="col-2 d-flex text-nowrap justify-content-center align-items-center">
-                  <%= timestamp.number_field :second, class: "form-control mx-2" %>
-                  <%= timestamp.label :second, "秒" %>
-                </div>
-              </div>
-
-              <div class="bookmark-edit__form-group justify-content-center align-items-center mb-2">
-                <%= timestamp.label :comment, "メモ" %>
-                <%= timestamp.text_field :comment, class: "form-control" %>
-              </div>
-
-              <div class="bookmark-edit__form-group form-check mb-4">
-                <%= timestamp.label :_destroy, "削除", class: "form-check-label" %>
-                <%= timestamp.check_box :_destroy, class: "form-check-input" %>
-              </div>
-
-              <%= timestamp.hidden_field :bookmark_id, value: @bookmark.id %>
-            <% end %>
-          </div>
-
-          <div class="bookmark-edit__form-group mb-3">
-            <%= f.label :is_public, "おすすめ動画として公開する", class: "form-check-label" %>
-            <%= f.check_box :is_public, class: "form-check-input" %>
-            <%= f.hidden_field :user_id, value: @user.id %>
-          </div>
-
-          <div class="bookmark-edit__form-group-action">
-            <%= f.submit "登録", class: "bookmark-edit__button btn mb-5" %>
-          </div>
-
-          <div class="bookmark__back">
-            <%= link_to "戻る", "javascript:history.back()" %>
-          </div>
-
-        <% end %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>

@@ -469,6 +469,12 @@ a {
   --bs-btn-active-border-color: #DFCDBA;
 }
 
+@media screen and (max-width: 768px) {
+  .bookmark-edit__form-link-container {
+    padding-top: #{"min(calc(100vw * 0.5625), 291px)"};  /* vwが何pxか計算できず比較できないバグを解決するための記述 */
+  }
+}
+
 /* タイムスタンプ作成 */
 .timestamps-new__button {
   --bs-btn-color: #333333;

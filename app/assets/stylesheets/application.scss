@@ -49,6 +49,11 @@ a {
     padding-top: 80px;
   }
 
+  .header__dropdown__menu {
+    position: relative;
+    z-index: 10;
+  }
+
   .header__registration-button, .header__login-button {
     --bs-btn-padding-y: 0.25rem;
     --bs-btn-padding-x: 0.5rem;
@@ -397,7 +402,7 @@ a {
     position: fixed;
     left: 50%;
     transform: translateX(-50%);
-    z-index: 100;
+    z-index: 1;
   }
 
   .bookmark-show__timestamps-list--pc {

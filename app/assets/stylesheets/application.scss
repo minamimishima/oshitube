@@ -394,10 +394,19 @@ a {
     width: 100%;
     max-width: 560px;
     max-height: 315px;
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
   }
 
   .bookmark-show__timestamps-list--pc {
     display: none;
+  }
+
+
+  .bookmark-show__description-timestamps-link-container {
+    padding-top: #{"min(calc(100vw * 0.5625), 315px)"};  /* vwが何pxか計算できず比較できないバグを解決するための記述 */
   }
 
   .bookmark-show__description {

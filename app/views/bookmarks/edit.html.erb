@@ -11,6 +11,9 @@
 
       <div class="bookmark-edit__form-link-container">
         <%= render 'shared/error_messages', obj: @bookmark %>
+        <div class="bookmark-edit__flash-message error-messages mt-3 text-center">
+          <%= flash[:edit_error_message] %>
+        </div>
 
         <div id="bookmark-edit__box">
           <%= form_with model: @bookmark, id: "bookmark-edit__form", class: "form mb-1" do |f| %>

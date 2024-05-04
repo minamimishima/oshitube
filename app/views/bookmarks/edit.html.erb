@@ -1,10 +1,9 @@
 <% content_for(:title, "ブックマーク編集") %>
 <div id="bookmark-edit" class="container">
-  <h2 class="text-center mb-4">ブックマーク編集</h2>
   <div id="bookmark-edit__row" class="row justify-content-center align-items-center">
-    <div id="bookmark-edit__column" class="col-md-8">
-      <div id="bookmark-video">
-        <div class="text-center mb-1">
+    <div id="bookmark-edit__column" class="col-md-6">
+      <div class="bookmark-edit__video-container">
+        <div id="bookmark-video">
           <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= @bookmark.video_id %>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </div>
       </div>

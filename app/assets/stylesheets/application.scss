@@ -35,6 +35,38 @@ a {
   border-bottom: 1px solid #E7E7E9;
 }
 
+.header__dropdown-menu-button,
+.header__login-button {
+  --bs-btn-color: #333333;
+  --bs-btn-bg: #DFCDBA;
+  --bs-btn-border-color: #DFCDBA;
+  --bs-btn-hover-color: #333333;
+  --bs-btn-hover-bg: #CFB497;
+  --bs-btn-hover-border-color: #CFB497;
+  --bs-btn-focus-shadow-rgb: #CFB497;
+  --bs-btn-active-color: #333333;
+  --bs-btn-active-bg: #CFB497;
+  --bs-btn-active-border-color: #CFB497;
+}
+
+.header__registration-button {
+  --bs-btn-color: #333333;
+  --bs-btn-bg: #E1B5AD;
+  --bs-btn-border-color: #E1B5AD;
+  --bs-btn-hover-color: #333333;
+  --bs-btn-hover-bg: #D39388;
+  --bs-btn-hover-border-color: #D39388;
+  --bs-btn-focus-shadow-rgb: #D39388;
+  --bs-btn-active-color: #333333;
+  --bs-btn-active-bg: #D39388;
+  --bs-btn-active-border-color: #D39388;
+}
+
+.header__link {
+  display: flex;
+  width: fit-content;
+}
+
 @media screen and (max-width: 767px) {
   .header {
     padding: 0 10px ;
@@ -62,50 +94,6 @@ a {
   }
 }
 
-.header__dropdown-menu-button {
-  --bs-btn-color: #333333;
-  --bs-btn-bg: #DFCDBA;
-  --bs-btn-border-color: #DFCDBA;
-  --bs-btn-hover-color: #333333;
-  --bs-btn-hover-bg: #CFB497;
-  --bs-btn-hover-border-color: #CFB497;
-  --bs-btn-focus-shadow-rgb: #CFB497;
-  --bs-btn-active-color: #333333;
-  --bs-btn-active-bg: #CFB497;
-  --bs-btn-active-border-color: #CFB497;
-}
-
-.header__registration-button {
-  --bs-btn-color: #333333;
-  --bs-btn-bg: #E1B5AD;
-  --bs-btn-border-color: #E1B5AD;
-  --bs-btn-hover-color: #333333;
-  --bs-btn-hover-bg: #D39388;
-  --bs-btn-hover-border-color: #D39388;
-  --bs-btn-focus-shadow-rgb: #D39388;
-  --bs-btn-active-color: #333333;
-  --bs-btn-active-bg: #D39388;
-  --bs-btn-active-border-color: #D39388;
-}
-
-.header__login-button {
-  --bs-btn-color: #333333;
-  --bs-btn-bg: #DFCDBA;
-  --bs-btn-border-color: #DFCDBA;
-  --bs-btn-hover-color: #333333;
-  --bs-btn-hover-bg: #CFB497;
-  --bs-btn-hover-border-color: #CFB497;
-  --bs-btn-focus-shadow-rgb: #CFB497;
-  --bs-btn-active-color: #333333;
-  --bs-btn-active-bg: #CFB497;
-  --bs-btn-active-border-color: #CFB497;
-}
-
-.header__link {
-  display: flex;
-  width: fit-content;
-}
-
  /* フラッシュメッセージ */
 .flashmessage {
   text-align: center;
@@ -114,22 +102,14 @@ a {
   margin-inline: auto;
 }
 
-/* devise エラーメッセージ */
-.devise__error-messages  ul {
+/* deviseエラーメッセージ・エラーメッセージ */
+.devise__error-messages ul,
+.error-messages ul {
   padding: 0;
   color: #C16656;
 }
 
-.devise__error-messages li {
-  list-style: none;
-}
-
-/* エラーメッセージ */
-.error-messages  ul {
-  padding: 0;
-  color: #C16656;
-}
-
+.devise__error-messages li,
 .error-messages li {
   list-style: none;
 }
@@ -139,8 +119,11 @@ a {
   text-align: center;
 }
 
-/* ログイン */
-#login__box {
+/* ログイン・新規登録・プロフィール編集・ユーザー情報変更 */
+#login__box,
+#registration__box,
+#profile-edit__box,
+#user-edit__box {
   margin-top: 20px;
   max-width: 600px;
   margin-inline: auto;
@@ -150,39 +133,17 @@ a {
   background-color: #F0F0F1;
 }
 
-#login__form {
+#login__form,
+#registration__form,
+#profile-edit,
+#user-edit__form {
   padding: 20px;
 }
 
-.login__button {
-  --bs-btn-color: #333333;
-  --bs-btn-bg: #DFCDBA;
-  --bs-btn-border-color: #DFCDBA;
-  --bs-btn-hover-color: #333333;
-  --bs-btn-hover-bg: #CFB497;
-  --bs-btn-hover-border-color: #CFB497;
-  --bs-btn-focus-shadow-rgb: #CFB497;
-  --bs-btn-active-color: #333333;
-  --bs-btn-active-bg: #CFB497;
-  --bs-btn-active-border-color: #CFB497;
-}
-
-/* 新規登録 */
-#registration__box {
-  margin-top: 20px;
-  max-width: 600px;
-  margin-inline: auto;
-  height: fit-content;
-  border: 1px solid #ABA8B1;
-  border-radius: 8px;
-  background-color: #F0F0F1;
-}
-
-#registration__form {
-  padding: 20px;
-}
-
-.registration__button {
+.login__button,
+.registration__button,
+.profile-edit__button,
+.user-edit__button {
   --bs-btn-color: #333333;
   --bs-btn-bg: #DFCDBA;
   --bs-btn-border-color: #DFCDBA;
@@ -208,62 +169,6 @@ a {
 }
 .profile-show__link {
   font-size: 14px;
-}
-
-/* プロフィール編集 */
-#profile-edit__box {
-  margin-top: 20px;
-  max-width: 600px;
-  margin-inline: auto;
-  height: fit-content;
-  border: 1px solid #ABA8B1;
-  border-radius: 8px;
-  background-color: #F0F0F1;
-}
-
-#profile-edit__form {
-  padding: 20px;
-}
-
-.profile-edit__button {
-  --bs-btn-color: #333333;
-  --bs-btn-bg: #DFCDBA;
-  --bs-btn-border-color: #DFCDBA;
-  --bs-btn-hover-color: #333333;
-  --bs-btn-hover-bg: #CFB497;
-  --bs-btn-hover-border-color: #CFB497;
-  --bs-btn-focus-shadow-rgb: #CFB497;
-  --bs-btn-active-color: #333333;
-  --bs-btn-active-bg: #CFB497;
-  --bs-btn-active-border-color: #CFB497;
-}
-
-/* ユーザー情報変更 */
-#user-edit__box {
-  margin-top: 20px;
-  max-width: 600px;
-  margin-inline: auto;
-  height: fit-content;
-  border: 1px solid #ABA8B1;
-  border-radius: 8px;
-  background-color: #F0F0F1;
-}
-
-#user-edit__form {
-  padding: 20px;
-}
-
-.user-edit__button {
-  --bs-btn-color: #333333;
-  --bs-btn-bg: #DFCDBA;
-  --bs-btn-border-color: #DFCDBA;
-  --bs-btn-hover-color: #333333;
-  --bs-btn-hover-bg: #CFB497;
-  --bs-btn-hover-border-color: #CFB497;
-  --bs-btn-focus-shadow-rgb: #CFB497;
-  --bs-btn-active-color: #333333;
-  --bs-btn-active-bg: #CFB497;
-  --bs-btn-active-border-color: #CFB497;
 }
 
 /* 退会 */
@@ -296,8 +201,6 @@ a {
   --bs-btn-active-color: #333333;
   --bs-btn-active-bg: #EFE6DD;
   --bs-btn-active-border-color: #EFE6DD;
-
-  background-color: #F5EFE8;
 }
 
 /* ブックマーク一覧 */
@@ -311,19 +214,22 @@ a {
   border: #EFE6DD;
 }
 
-/* ブックマーク登録 */
-#bookmark-new__box {
+/* ブックマーク登録・編集 */
+#bookmark-new__box,
+#bookmark-edit__box {
   margin-top: 20px;
   margin-inline: auto;
   height: fit-content;
   border-radius: 8px;
 }
 
-#bookmark-new__form {
+#bookmark-new__form,
+#bookmark-edit__form {
   padding: 20px;
 }
 
-.bookmark-new__button {
+.bookmark-new__button,
+.bookmark-edit__button {
   --bs-btn-color: #333333;
   --bs-btn-bg: #DFCDBA;
   --bs-btn-border-color: #DFCDBA;
@@ -336,7 +242,8 @@ a {
   --bs-btn-active-border-color: #CFB497;
 }
 
-.bookmark-new__category-button {
+.bookmark-new__category-button,
+.bookmark-edit__category-button {
   --bs-btn-color: #333333;
   --bs-btn-bg: #fff;
   --bs-btn-border-color: #E7E7E9;
@@ -444,43 +351,6 @@ a {
 }
 
 /* ブックマーク編集 */
-#bookmark-edit__box {
-  margin-top: 20px;
-  margin-inline: auto;
-  height: fit-content;
-  border-radius: 8px;
-}
-
-#bookmark-edit__form {
-  padding: 20px;
-}
-
-.bookmark-edit__button {
-  --bs-btn-color: #333333;
-  --bs-btn-bg: #DFCDBA;
-  --bs-btn-border-color: #DFCDBA;
-  --bs-btn-hover-color: #333333;
-  --bs-btn-hover-bg: #CFB497;
-  --bs-btn-hover-border-color: #CFB497;
-  --bs-btn-focus-shadow-rgb: #CFB497;
-  --bs-btn-active-color: #333333;
-  --bs-btn-active-bg: #CFB497;
-  --bs-btn-active-border-color: #CFB497;
-}
-
-.bookmark-edit__category-button {
-  --bs-btn-color: #333333;
-  --bs-btn-bg: #fff;
-  --bs-btn-border-color: #E7E7E9;
-  --bs-btn-hover-color: #333333;
-  --bs-btn-hover-bg: #DFCDBA;
-  --bs-btn-hover-border-color: #DFCDBA;
-  --bs-btn-focus-shadow-rgb: #DFCDBA;
-  --bs-btn-active-color: #333333;
-  --bs-btn-active-bg: #DFCDBA;
-  --bs-btn-active-border-color: #DFCDBA;
-}
-
 .bookmark-edit__flash-message {
   padding: 0;
   color: #C16656;
@@ -506,35 +376,9 @@ a {
   --bs-btn-active-border-color: #CFB497;
 }
 
-/* カテゴリー一覧 */
-.categories__button {
-  --bs-btn-color: #333333;
-  --bs-btn-bg: #F5EFE8;
-  --bs-btn-border-color: #F5EFE8;
-  --bs-btn-hover-color: #333333;
-  --bs-btn-hover-bg: #DFCDBA;
-  --bs-btn-hover-border-color: #DFCDBA;
-  --bs-btn-focus-shadow-rgb: #DFCDBA;
-  --bs-btn-active-color: #333333;
-  --bs-btn-active-bg: #DFCDBA;
-  --bs-btn-active-border-color: #DFCDBA;
-}
-
-/* カテゴリー作成 */
-.categories-new__button {
-  --bs-btn-color: #333333;
-  --bs-btn-bg: #F5EFE8;
-  --bs-btn-border-color: #F5EFE8;
-  --bs-btn-hover-color: #333333;
-  --bs-btn-hover-bg: #DFCDBA;
-  --bs-btn-hover-border-color: #DFCDBA;
-  --bs-btn-focus-shadow-rgb: #DFCDBA;
-  --bs-btn-active-color: #333333;
-  --bs-btn-active-bg: #DFCDBA;
-  --bs-btn-active-border-color: #DFCDBA;
-}
-
-/* カテゴリー編集 */
+/* カテゴリー一覧・作成・編集 */
+.categories__button,
+.categories-new__button,
 .categories-edit__button {
   --bs-btn-color: #333333;
   --bs-btn-bg: #F5EFE8;

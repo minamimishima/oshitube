@@ -3,7 +3,6 @@
   <h2 class="text-center mb-4">ブックマーク一覧</h2>
   <div id="bookmark-index__row" class="row justify-content-center align-items-center">
     <div id="bookmark-index__column" class="col-md-10">
-      <%= render 'shared/error_messages', obj: @category %>
       <%= render 'shared/categories', { categories: @user.categories } %>
       <%= render 'shared/categories_new', { category: @category, user: @user } %>
 

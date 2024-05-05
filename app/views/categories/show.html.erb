@@ -1,6 +1,6 @@
 <% content_for(:title, @category.name) %>
 <div id="categories-show" class="container">
-  <h2 class="text-center mb-4"><%= @category.name %></h2>
+  <h1 class="text-center mb-4"><%= @category.name %></h1>
   <div id="categories-show__row" class="row justify-content-center align-items-center">
     <div id="categories-show__column" class="col-md-10">
       <%= render 'shared/categories', { categories: @categories } %>

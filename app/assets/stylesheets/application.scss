@@ -71,7 +71,7 @@ h1 {
   width: fit-content;
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 834px) {
   .header {
     padding: 0 10px ;
     top: 0;
@@ -292,7 +292,7 @@ h1 {
   margin-bottom: 48px;
 }
 
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 835px) {
   .bookmark-show__timestamps-list--mobile {
     display: none;
   }
@@ -306,7 +306,7 @@ h1 {
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 834px) {
   .bookmark-show__error-messages--pc {
     display: none;
   }
@@ -377,7 +377,7 @@ h1 {
   width: 100%;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 834px) {
   .bookmark-edit__form-link-container {
     padding-top: 315px;
   }

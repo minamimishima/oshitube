@@ -9,7 +9,7 @@ class User < ApplicationRecord
   has_one_attached :icon
 
   validates :email, # rubocop:disable Rails/UniqueValidationWithoutIndex
-    presence: { if: :devise_will_save_change_to_email? },
+    presence: { if: :email_required? },
     uniqueness: { scope: :is_deleted, if: -> { is_deleted == false } },
     format: {
       with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/,

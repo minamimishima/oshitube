@@ -389,6 +389,20 @@ h1 {
   }
 }
 
+/* タイムスタンプ一覧 */
+.timestamps__button {
+  --bs-btn-color: #333333;
+  --bs-btn-bg: #fff;
+  --bs-btn-border-color: #EFE6DD;
+  --bs-btn-hover-color: #333333;
+  --bs-btn-hover-bg: #EFE6DD;
+  --bs-btn-hover-border-color: #EFE6DD;
+  --bs-btn-focus-shadow-rgb: #EFE6DD;
+  --bs-btn-active-color: #333333;
+  --bs-btn-active-bg: #EFE6DD;
+  --bs-btn-active-border-color: #EFE6DD;
+}
+
 /* タイムスタンプ作成 */
 .timestamps-new__button {
   --bs-btn-color: #333333;

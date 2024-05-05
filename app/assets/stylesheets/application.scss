@@ -369,7 +369,13 @@ a {
 
 @media screen and (max-width: 768px) {
   .bookmark-edit__form-link-container {
-    padding-top: clamp(calc(100vw * 0.5625), calc(100vw * 0.5625), 291px);
+    padding-top: 315px;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .bookmark-edit__form-link-container {
+    padding-top: clamp(calc(100vw * 0.5625), calc(100vw * 0.5625), 315px);
   }
 }
 

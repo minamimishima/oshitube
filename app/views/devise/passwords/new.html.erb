@@ -1,15 +1,23 @@
-<div class="container">
-  <h1>パスワード再設定</h1>
-  <%= form_with model: @user, url: user_password_path do |f| %>
-    <%= render "devise/shared/error_messages", resource: resource %>
+<% content_for(:title, "パスワード再設定") %>
+<div id="password-new" class="container">
+  <h1 class="text-center pt-4">パスワード再設定</h1>
+  <div id="password-new__row" class="row justify-content-center align-items-center">
+    <div id="password-new__column" class="col-md-6">
+      <div id="password-new__box">
 
-    <div class="field">
-      <%= f.label :email, "メールアドレス" %><br />
-      <%= f.email_field :email, autofocus: true %>
-    </div> 
-    
-    <div class="actions">
-      <%= f.submit "パスワード再設定メールを送信" %>
+        <%= form_with model: @user, id: "password-new__form", class: "form", url: user_password_path do |f| %>
+          <%= render "devise/shared/error_messages", resource: resource %>
+      
+          <div class="password-new__form-group mb-3">
+            <%= f.label :email, "メールアドレス" %>
+            <%= f.email_field :email, class: "form-control", autofocus: true %>
+          </div> 
+          
+          <div class="password-new__form-group mb-3">
+            <%= f.submit "パスワード再設定メールを送信", class: "btn mt-2 mb-1 password-new__button" %>
+          </div>
+        <% end %>
+      </div>
     </div>
-  <% end %>
+  </div>
 </div>

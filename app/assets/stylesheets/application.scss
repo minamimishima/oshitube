@@ -119,7 +119,9 @@ h1 {
 #login__box,
 #registration__box,
 #profile-edit__box,
-#user-edit__box {
+#user-edit__box,
+#password-new__box,
+#password-edit__box {
   margin-top: 20px;
   max-width: 600px;
   margin-inline: auto;
@@ -132,14 +134,18 @@ h1 {
 #login__form,
 #registration__form,
 #profile-edit__form,
-#user-edit__form {
+#user-edit__form,
+#password-new__form,
+#password-edit__form {
   padding: 20px;
 }
 
 .login__button,
 .registration__button,
 .profile-edit__button,
-.user-edit__button {
+.user-edit__button,
+.password-new__button,
+.password-edit__button {
   --bs-btn-color: #333333;
   --bs-btn-bg: #DFCDBA;
   --bs-btn-border-color: #DFCDBA;

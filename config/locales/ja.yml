@@ -3,6 +3,7 @@ ja:
     models:
       user: ユーザー
       bookmark: ブックマーク
+      category: カテゴリー
       timestamp: タイムスタンプ
     attributes:
       user: 
@@ -10,11 +11,10 @@ ja:
         email: メールアドレス
         password: パスワード
         profile: プロフィール
-        icon: アイコン
       bookmark:
         user_id: ユーザーID
         url: URL
-        video_id: ID
+        video_id: 動画ID
         description: 動画メモ
         is_public: 公開設定
       bookmark/timestamps:
@@ -23,24 +23,14 @@ ja:
         second: 秒
         start_time: 開始時間
         comment: メモ
+      category:
+        name: カテゴリー名
       timestamp:
         hour: 時間
         minute: 分
         second: 秒
         start_time: 開始時間
         comment: メモ
-      category:
-        name: カテゴリー名
-    errors:
-      models:
-        bookmark:
-          attributes:
-            video_id:
-              format: "指定された%{attribute}の動画は存在しません"
-        timestamp:
-          attributes:
-            start_time:
-              format: "指定された%{attribute}のタイムスタンプはすでに登録されています"
   views:
     pagination:
       first: <i class="bi bi-chevron-double-left"></i>

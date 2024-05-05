@@ -336,20 +336,12 @@ h1 {
   #bookmark-video {
     aspect-ratio: 16 / 9;
     width: 100%;
-    max-width: 516px;
-    max-height: 291px;
-    position: fixed;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 100;
+    max-width: 560px;
+    max-height: 315px;
   }
 
   .bookmark-show__timestamps-list--pc {
     display: none;
-  }
-
-  .bookmark-show__description-timestamps-link-container {
-    padding-top: 291px;
   }
 
   .bookmark-show__description {
@@ -358,12 +350,6 @@ h1 {
 
   .bookmark-show__timestamps-list--mobile {
     margin-bottom: 24px;
-  }
-}
-
-@media screen and (max-width: 518px) {
-  .bookmark-show__description-timestamps-link-container {
-  padding-top: clamp(calc(100vw * 0.5625), calc(100vw * 0.5625), 291px);
   }
 }
 
@@ -389,18 +375,6 @@ h1 {
 .bookmark-edit__video-container #bookmark-video {
   margin-inline: auto;
   width: 100%;
-}
-
-@media screen and (max-width: 834px) {
-  .bookmark-edit__form-link-container {
-    padding-top: 315px;
-  }
-}
-
-@media screen and (max-width: 560px) {
-  .bookmark-edit__form-link-container {
-    padding-top: clamp(calc(100vw * 0.5625), calc(100vw * 0.5625), 315px);
-  }
 }
 
 /* タイムスタンプ一覧 */

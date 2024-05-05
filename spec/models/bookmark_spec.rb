@@ -10,8 +10,12 @@ RSpec.describe Bookmark, type: :model do
       end
 
       it "動画のメモが300文字以内であれば有効であること" do
-        bookmark = build(:bookmark, description: "a" * 300)
-        expect(bookmark).to be_valid
+        bookmark1 = build(:bookmark, description: "a" * 299)
+        bookmark2 = build(:bookmark, description: "a" * 300)
+        aggregate_failures do
+          expect(bookmark1).to be_valid
+          expect(bookmark2).to be_valid
+        end
       end
     end
 

@@ -325,7 +325,7 @@ a {
   }
 
   .bookmark-show__description-timestamps-link-container {
-    padding-top: clamp(calc(100vw * 0.5625), calc(100vw * 0.5625), 291px);
+    padding-top: 291px;
   }
 
   .bookmark-show__description {
@@ -334,6 +334,12 @@ a {
 
   .bookmark-show__timestamps-list--mobile {
     margin-bottom: 24px;
+  }
+}
+
+@media screen and (max-width: 518px) {
+  .bookmark-show__description-timestamps-link-container {
+  padding-top: clamp(calc(100vw * 0.5625), calc(100vw * 0.5625), 291px);
   }
 }
 

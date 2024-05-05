@@ -52,17 +52,17 @@
             <div class="bookmark-edit__timestamp-edit">
               <%= f.fields_for :timestamps, @bookmark.timestamps.sort_by(&:start_time) do |timestamp| %>
                 <div class="bookmark-edit__form-group d-flex mb-2">
-                  <div class="col-2 d-flex text-nowrap justify-content-center align-items-center">
+                  <div class="col-lg-2 col-md-3 d-flex text-nowrap justify-content-center align-items-center">
                     <%= timestamp.number_field :hour, class: "form-control me-2" %>
                     <%= timestamp.label :hour, "時間" %>
                   </div>
 
-                  <div class="col-2 d-flex text-nowrap justify-content-center align-items-center">
+                  <div class="col-lg-2 col-md-3 d-flex text-nowrap justify-content-center align-items-center">
                     <%= timestamp.number_field :minute, class: "form-control mx-2" %>
                     <%= timestamp.label :minute, "分" %>
                   </div>
 
-                  <div class="col-2 d-flex text-nowrap justify-content-center align-items-center">
+                  <div class="col-lg-2 col-md-3 d-flex text-nowrap justify-content-center align-items-center">
                     <%= timestamp.number_field :second, class: "form-control mx-2" %>
                     <%= timestamp.label :second, "秒" %>
                   </div>

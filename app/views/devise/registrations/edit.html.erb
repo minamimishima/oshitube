@@ -2,7 +2,7 @@
 <div id="user-edit" class="container">
   <h1 class="text-center pt-4">ユーザー情報変更</h1>
   <div id="user-edit__row" class="row justify-content-center align-items-center">
-    <div id="user-edit__column" class="col-md-6">
+    <div id="user-edit__column" class="col-lg-6 col-md-8">
       <%= render "devise/shared/error_messages", resource: resource %>
       <div id="user-edit__box">
         <%= form_with model: @user, id: "user-edit__form", url: user_registration_path do |f| %>

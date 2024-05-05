@@ -2,7 +2,7 @@
 <div id="profile-edit" class="container">
   <h1 class="text-center pt-4">プロフィール編集</h1>
   <div id="profile-edit__row" class="row justify-content-center align-items-center">
-    <div id="profile-edit__column" class="col-md-6">
+    <div id="profile-edit__column" class="col-lg-6 col-md-8">
       <% if @user.errors.any? %>
         <ul>
           <% @user.errors.full_messages.each do |message| %>

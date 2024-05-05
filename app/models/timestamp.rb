@@ -6,6 +6,7 @@ class Timestamp < ApplicationRecord
     validates :minute
     validates :second
   end
+  validates :comment, length: { maximum: 150 }
   validate :bookmark_has_ten_or_less_timestamps_create, on: :create
   validate :bookmark_has_ten_or_less_timestamps_update, on: :update
 
@@ -26,4 +27,6 @@ class Timestamp < ApplicationRecord
       errors.add(:base, "登録できるタイムスタンプは10件までです")
     end
   end
+  # タイムスタンプの数が10件より多い場合をエラーとするとcreateの際に11件目のタイムスタンプが作成できてしまうため、
+  # createとupdateでバリデーションメソッドを分けて設定
 end

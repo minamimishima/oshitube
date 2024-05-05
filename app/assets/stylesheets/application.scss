@@ -302,10 +302,18 @@ h1 {
   .bookmark-show__error-messages--mobile {
     display: none;
   }
+
+  .bookmark-show__flash-messages--mobile {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 768px) {
   .bookmark-show__error-messages--pc {
+    display: none;
+  }
+
+  .flash-messages {
     display: none;
   }
 

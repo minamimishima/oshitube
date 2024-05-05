@@ -377,6 +377,15 @@ h1 {
   width: 100%;
 }
 
+/* ブックマーク詳細・編集・ユーザーページ */
+@media screen and (max-width: 834px) {
+  #bookmark-show,
+  #bookmark-edit,
+  #profile-show {
+    margin-top: 10px;
+  }
+}
+
 /* タイムスタンプ一覧 */
 .timestamps__button {
   --bs-btn-color: #333333;

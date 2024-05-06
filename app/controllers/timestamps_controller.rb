@@ -17,9 +17,23 @@ class TimestampsController < ApplicationController
   end
 
   def edit
+    @timestamp = Timestamp.find(params[:id])
   end
 
   def update
+    @timestamp = Timestamp.find(params[:id])
+    @bookmark = @timestamp.bookmark
+    new_params = timestamp_params
+    new_params[:start_time] =
+      new_params[:hour].to_i * 3600 +
+      new_params[:minute].to_i * 60 +
+      new_params[:second].to_i
+    if @timestamp.update(new_params)
+      flash[:notice] = "タイムスタンプを編集しました"
+      redirect_to bookmark_path(@bookmark)
+    else
+      render "bookmarks/show", status: :unprocessable_entity
+    end
   end
 
   def destroy

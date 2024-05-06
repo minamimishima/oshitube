@@ -344,8 +344,9 @@ h1 {
   --bs-btn-active-border-color: #EFE6DD;
 }
 
-/* タイムスタンプ作成 */
-.timestamps-new__button {
+/* タイムスタンプ作成・編集 */
+.timestamps-new__button,
+.timestamps-edit__button {
   --bs-btn-color: #333333;
   --bs-btn-bg: #DFCDBA;
   --bs-btn-border-color: #DFCDBA;

@@ -1,6 +1,6 @@
 <%= turbo_frame_tag @timestamp do %>
   <%= render 'shared/error_messages', obj: @timestamp %>
-  <div class="timestamps-new row align-items-center">
+  <div class="timestamps-edit row align-items-center">
     <%= form_with model: @timestamp, url: timestamp_path(@timestamp), method: :patch do |f| %>
       <div class="d-flex">
         <div class="col-lg-2 col-md-3 d-flex text-nowrap justify-content-center align-items-center">
@@ -25,7 +25,7 @@
       </div>
   
       <%= f.hidden_field :bookmark_id, value: @timestamp.bookmark.id %>
-      <%= f.submit "登録", class: "timestamps-new__button btn my-3" %>
+      <%= f.submit "登録", class: "timestamps-edit__button btn my-3" %>
     <% end %>
   </div>
 <% end %>

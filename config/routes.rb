@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show]
   resources :categories, only: [:new, :create, :show, :update, :destroy]
   resources :bookmarks
-  resources :timestamps, only: [:create]
+  resources :timestamps, only: [:create, :edit, :update, :destroy]
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

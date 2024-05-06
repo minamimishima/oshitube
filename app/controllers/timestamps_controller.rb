@@ -1,6 +1,7 @@
 class TimestampsController < ApplicationController
   before_action :authenticate_user!
   before_action :get_current_user
+  before_action :correct_user, only: [:edit, :update, :destroy]
 
   def create
     @timestamp = Timestamp.new(timestamp_params)
@@ -25,6 +26,13 @@ class TimestampsController < ApplicationController
   end
 
   private
+
+  def correct_user
+    timestamp = Timestamp.find(params[:id])
+    unless timestamp.bookmark.user_id == current_user.id
+      redirect_to root_path
+    end
+  end
 
   def timestamp_params
     params.require(:timestamp).permit(:bookmark_id, :hour, :minute, :second, :start_time, :comment)

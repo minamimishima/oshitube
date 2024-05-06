@@ -32,7 +32,7 @@ class TimestampsController < ApplicationController
       flash[:notice] = "タイムスタンプを編集しました"
       redirect_to bookmark_path(@bookmark)
     else
-      render "bookmarks/show", status: :unprocessable_entity
+      render 'edit', status: :unprocessable_entity
     end
   end
 

@@ -16,6 +16,11 @@ class TimestampsController < ApplicationController
     end
   end
 
+  def show
+    @timestamp = Timestamp.find(params[:id])
+    @timestamps = @timestamp.bookmark.timestamps
+  end
+
   def edit
     @timestamp = Timestamp.find(params[:id])
   end

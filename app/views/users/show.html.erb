@@ -6,8 +6,12 @@
         <% if @user.icon.present? %>
           <%= image_tag @user.icon, class: "profile-show__icon d-block mt-3 mb-1" %>
         <% end %>
-        <span class="profile-show__username d-block mb-1"><%= @user.name %></span>
-        <span class="profile-show__profile d-block mb-2"><%= @user.profile %></span>
+        <span class="profile-show__username d-block mb-1">
+          <%= @user.name %>
+        </span>
+        <span class="profile-show__profile d-block mb-2">
+          <%= simple_format(h(@user.profile)) %>
+        </span>
         <div class="profile-show__link">
           <% if current_user.present? && @user.id == current_user.id %>
             <%= link_to "プロフィール編集", profile_edit_path %> / <%= link_to "ユーザー情報変更", edit_user_registration_path %>

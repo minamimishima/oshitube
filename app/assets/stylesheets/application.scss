@@ -259,16 +259,13 @@ h1 {
 }
 
 /* ブックマーク詳細 */
-.bookmark-show__bookmark-timestamp-container {
-  display: flex;
-}
-
 #bookmark-video {
   position: relative;
   aspect-ratio: 16 / 9;
-  width: 60%;
-  max-width: 560px;
-  max-height: 315px;
+  width: 100%;
+  max-width: 856px;
+  max-height: 482px;
+  margin-inline: auto;
 }
 
 #bookmark-video iframe {
@@ -279,77 +276,12 @@ h1 {
   height: 100%;
 }
 
-.bookmark-show__timestamps-list--pc {
-  display: flex;
-  flex-direction: column;
-  width: 40%;
-  max-height: 315px;
-  overflow-y: scroll;
-  margin-left: 8px;
-}
-
-.bookmark-show__timestamps-list--pc::-webkit-scrollbar {
-  background-color: #fff;
-}
-
-.bookmark-show__timestamps-list--pc::-webkit-scrollbar-thumb {
-  background-color: #fff;
-  border: 1px solid #EFE6DD;
-}
-
-.bookmark-show__timestamps-list--pc::-webkit-scrollbar-thumb:hover {
-  background-color: #EFE6DD;
-  border: 1px solid #EFE6DD;
-}
-
-.bookmark-show__description {
-  margin-bottom: 48px;
-}
-
-@media screen and (min-width: 835px) {
-  .bookmark-show__timestamps-list--mobile {
-    display: none;
-  }
-
-  .bookmark-show__error-messages--mobile {
-    display: none;
-  }
-
-  .bookmark-show__flash-messages--mobile {
-    display: none;
-  }
-}
-
 @media screen and (max-width: 834px) {
-  .bookmark-show__error-messages--pc {
-    display: none;
-  }
-
-  .flash-messages {
-    display: none;
-  }
-
-  .bookmark-show__bookmark-timestamp-container {
-    display: block;
-  }
-
   #bookmark-video {
     aspect-ratio: 16 / 9;
     width: 100%;
     max-width: 560px;
     max-height: 315px;
-  }
-
-  .bookmark-show__timestamps-list--pc {
-    display: none;
-  }
-
-  .bookmark-show__description {
-    margin-bottom: 10px;
-  }
-
-  .bookmark-show__timestamps-list--mobile {
-    margin-bottom: 24px;
   }
 }
 

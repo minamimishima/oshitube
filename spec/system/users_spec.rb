@@ -157,7 +157,7 @@ RSpec.describe "Users", type: :system do
       visit user_session_path
       fill_in "メールアドレス", with: user.email
       fill_in "パスワード", with: user.password
-      within ".actions" do
+      within ".login__form-group-action" do
         click_on "ログイン"
       end
       expect(page).to have_selector ".notice", text: "ログインしました。"
@@ -182,7 +182,7 @@ RSpec.describe "Users", type: :system do
       visit new_user_session_path
       fill_in "メールアドレス", with: user.email
       fill_in "パスワード", with: user.password
-      within ".actions" do
+      within ".login__form-group-action" do
         click_on "ログイン"
       end
       expect(page).to have_content "退会済みです。"

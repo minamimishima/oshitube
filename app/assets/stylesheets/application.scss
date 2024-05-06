@@ -15,22 +15,99 @@
  */
 @import "bootstrap";
 
+body {
+  color: #333333;
+  font-family: sans-serif;
+}
+
+a {
+  color: #333333;
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+
  /* ヘッダー */
-.header-container {
+.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding:0 50px;
-  background-color: #FE5E5E;
-  height: 70px
+  background-color: #fff;
+  height: 70px;
+  border-bottom: 1px solid #E7E7E9;
 }
 
- /* フラッシュメッセージ */
-.flashmessage {
-  text-align: center;
-  display: block;
-  margin: 10px;
-  margin-inline: auto;
+.header__dropdown-menu-button,
+.header__login-button {
+  --bs-btn-color: #333333;
+  --bs-btn-bg: #DFCDBA;
+  --bs-btn-border-color: #DFCDBA;
+  --bs-btn-hover-color: #333333;
+  --bs-btn-hover-bg: #CFB497;
+  --bs-btn-hover-border-color: #CFB497;
+  --bs-btn-focus-shadow-rgb: #CFB497;
+  --bs-btn-active-color: #333333;
+  --bs-btn-active-bg: #CFB497;
+  --bs-btn-active-border-color: #CFB497;
+}
+
+.header__registration-button {
+  --bs-btn-color: #333333;
+  --bs-btn-bg: #E1B5AD;
+  --bs-btn-border-color: #E1B5AD;
+  --bs-btn-hover-color: #333333;
+  --bs-btn-hover-bg: #D39388;
+  --bs-btn-hover-border-color: #D39388;
+  --bs-btn-focus-shadow-rgb: #D39388;
+  --bs-btn-active-color: #333333;
+  --bs-btn-active-bg: #D39388;
+  --bs-btn-active-border-color: #D39388;
+}
+
+.header__link {
+  display: flex;
+  width: fit-content;
+}
+
+@media screen and (max-width: 834px) {
+  .header {
+    padding: 0 10px ;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+    position: fixed;
+  }
+
+  .page__container {
+    padding-top: 70px;
+  }
+
+  .header__dropdown__menu {
+    position: relative;
+    z-index: 9999;
+  }
+
+  .header__registration-button, .header__login-button {
+    --bs-btn-padding-y: 0.25rem;
+    --bs-btn-padding-x: 0.5rem;
+    --bs-btn-font-size: 0.875rem;
+    --bs-btn-border-radius: var(--bs-border-radius-sm);
+  }
+}
+
+/* deviseエラーメッセージ・エラーメッセージ */
+.devise__error-messages ul,
+.error-messages ul {
+  padding: 0;
+  color: #C16656;
+}
+
+.devise__error-messages li,
+.error-messages li {
+  list-style: none;
 }
 
  /* ファーストビュー */
@@ -38,17 +115,265 @@
   text-align: center;
 }
 
- /* 新規登録・ログイン・ユーザー情報変更 */
-.registrations-sessions-container {
+/* ログイン・新規登録・プロフィール編集・ユーザー情報変更 */
+#login__box,
+#registration__box,
+#profile-edit__box,
+#user-edit__box,
+#password-new__box,
+#password-edit__box {
+  margin-top: 20px;
+  max-width: 600px;
   margin-inline: auto;
-  align-items: center;
-  width: fit-content;
+  height: fit-content;
+  border: 1px solid #ABA8B1;
+  border-radius: 8px;
+  background-color: #F0F0F1;
+}
+
+#login__form,
+#registration__form,
+#profile-edit__form,
+#user-edit__form,
+#password-new__form,
+#password-edit__form {
+  padding: 20px;
+}
+
+.login__button,
+.registration__button,
+.profile-edit__button,
+.user-edit__button,
+.password-new__button,
+.password-edit__button {
+  --bs-btn-color: #333333;
+  --bs-btn-bg: #DFCDBA;
+  --bs-btn-border-color: #DFCDBA;
+  --bs-btn-hover-color: #333333;
+  --bs-btn-hover-bg: #CFB497;
+  --bs-btn-hover-border-color: #CFB497;
+  --bs-btn-focus-shadow-rgb: #CFB497;
+  --bs-btn-active-color: #333333;
+  --bs-btn-active-bg: #CFB497;
+  --bs-btn-active-border-color: #CFB497;
 }
 
 /* プロフィール */
-.profile-icon {
+.profile-show__icon {
   width: 150px;
   height: auto;
+  margin-inline: auto;
+}
+
+.profile-show__username {
+  font-size: 20px;
+  font-weight: bold;
+}
+.profile-show__link {
+  font-size: 14px;
+}
+
+/* 退会 */
+.user-confirm__text {
+  width: fit-content;
+  margin-inline: auto;
+}
+
+.user-confirm__withdrawal-button {
+  --bs-btn-color: #333333;
+  --bs-btn-bg: #E5C0BA;
+  --bs-btn-border-color: #E5C0BA;
+  --bs-btn-hover-color: #333333;
+  --bs-btn-hover-bg: #D89E94;
+  --bs-btn-hover-border-color: #D89E94;
+  --bs-btn-focus-shadow-rgb: #D89E94;
+  --bs-btn-active-color: #333333;
+  --bs-btn-active-bg: #D89E94;
+  --bs-btn-active-border-color: #D89E94;
+}
+
+.user-confirm__back-button {
+  --bs-btn-color: #333333;
+  --bs-btn-bg: #F5EFE8;
+  --bs-btn-border-color: #F5EFE8;
+  --bs-btn-hover-color: #333333;
+  --bs-btn-hover-bg: #EFE6DD;
+  --bs-btn-hover-border-color: #EFE6DD;
+  --bs-btn-focus-shadow-rgb: #EFE6DD;
+  --bs-btn-active-color: #333333;
+  --bs-btn-active-bg: #EFE6DD;
+  --bs-btn-active-border-color: #EFE6DD;
+}
+
+/* ブックマーク一覧 */
+.bookmark__video-thumbnail {
+  max-width: 100%;
+  margin-inline: auto;
+}
+
+.bookmark__list .list-group-item {
+  background-color: #EFE6DD;
+  border: #EFE6DD;
+}
+
+/* ブックマーク登録・編集 */
+#bookmark-new__box,
+#bookmark-edit__box {
+  margin-top: 20px;
+  margin-inline: auto;
+  height: fit-content;
+  border-radius: 8px;
+}
+
+#bookmark-new__form,
+#bookmark-edit__form {
+  padding: 20px;
+}
+
+.bookmark-new__button,
+.bookmark-edit__button {
+  --bs-btn-color: #333333;
+  --bs-btn-bg: #DFCDBA;
+  --bs-btn-border-color: #DFCDBA;
+  --bs-btn-hover-color: #333333;
+  --bs-btn-hover-bg: #CFB497;
+  --bs-btn-hover-border-color: #CFB497;
+  --bs-btn-focus-shadow-rgb: #CFB497;
+  --bs-btn-active-color: #333333;
+  --bs-btn-active-bg: #CFB497;
+  --bs-btn-active-border-color: #CFB497;
+}
+
+.bookmark-new__category-button,
+.bookmark-edit__category-button {
+  --bs-btn-color: #333333;
+  --bs-btn-bg: #fff;
+  --bs-btn-border-color: #E7E7E9;
+  --bs-btn-hover-color: #333333;
+  --bs-btn-hover-bg: #DFCDBA;
+  --bs-btn-hover-border-color: #DFCDBA;
+  --bs-btn-focus-shadow-rgb: #DFCDBA;
+  --bs-btn-active-color: #333333;
+  --bs-btn-active-bg: #DFCDBA;
+  --bs-btn-active-border-color: #DFCDBA;
+}
+
+/* ブックマーク詳細 */
+#bookmark-video {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  max-width: 856px;
+  max-height: 482px;
+  margin-inline: auto;
+}
+
+#bookmark-video iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+@media screen and (max-width: 834px) {
+  #bookmark-video {
+    aspect-ratio: 16 / 9;
+    width: 100%;
+    max-width: 560px;
+    max-height: 315px;
+  }
+}
+
+.accordion {
+  --bs-accordion-active-bg: #EFE6DD;
+  --bs-accordion-border-color: #EFE6DD;
+  --bs-accordion-btn-focus-border-color: #EFE6DD;
+  --bs-accordion-btn-color: #333333;
+  --bs-accordion-active-color: #333333;
+  --bs-accordion-btn-focus-box-shadow: none;
+}
+
+.accordion-button {
+  background-color: #EFE6DD;
+}
+
+/* ブックマーク編集 */
+.bookmark-edit__flash-message {
+  padding: 0;
+  color: #C16656;
+}
+
+.bookmark-edit__video-container #bookmark-video {
+  margin-inline: auto;
+  width: 100%;
+}
+
+/* ブックマーク詳細・編集・ユーザーページ */
+@media screen and (max-width: 834px) {
+  #bookmark-show,
+  #bookmark-edit,
+  #profile-show {
+    margin-top: 10px;
+  }
+}
+
+/* タイムスタンプ一覧 */
+.timestamps__button {
+  --bs-btn-color: #333333;
+  --bs-btn-bg: #fff;
+  --bs-btn-border-color: #EFE6DD;
+  --bs-btn-hover-color: #333333;
+  --bs-btn-hover-bg: #EFE6DD;
+  --bs-btn-hover-border-color: #EFE6DD;
+  --bs-btn-focus-shadow-rgb: #EFE6DD;
+  --bs-btn-active-color: #333333;
+  --bs-btn-active-bg: #EFE6DD;
+  --bs-btn-active-border-color: #EFE6DD;
+}
+
+/* タイムスタンプ作成 */
+.timestamps-new__button {
+  --bs-btn-color: #333333;
+  --bs-btn-bg: #DFCDBA;
+  --bs-btn-border-color: #DFCDBA;
+  --bs-btn-hover-color: #333333;
+  --bs-btn-hover-bg: #CFB497;
+  --bs-btn-hover-border-color: #CFB497;
+  --bs-btn-focus-shadow-rgb: #CFB497;
+  --bs-btn-active-color: #333333;
+  --bs-btn-active-bg: #CFB497;
+  --bs-btn-active-border-color: #CFB497;
+}
+
+/* カテゴリー一覧・作成・編集 */
+.categories__button,
+.categories-new__button,
+.categories-edit__button {
+  --bs-btn-color: #333333;
+  --bs-btn-bg: #F5EFE8;
+  --bs-btn-border-color: #F5EFE8;
+  --bs-btn-hover-color: #333333;
+  --bs-btn-hover-bg: #DFCDBA;
+  --bs-btn-hover-border-color: #DFCDBA;
+  --bs-btn-focus-shadow-rgb: #DFCDBA;
+  --bs-btn-active-color: #333333;
+  --bs-btn-active-bg: #DFCDBA;
+  --bs-btn-active-border-color: #DFCDBA;
+}
+
+/* カテゴリー削除 */
+.categories-edit__delete-button {
+  --bs-btn-color: #333333;
+  --bs-btn-bg: #E5C0BA;
+  --bs-btn-border-color: #E5C0BA;
+  --bs-btn-hover-color: #333333;
+  --bs-btn-hover-bg: #D89E94;
+  --bs-btn-hover-border-color: #D89E94;
+  --bs-btn-focus-shadow-rgb: #D89E94;
+  --bs-btn-active-color: #333333;
+  --bs-btn-active-bg: #D89E94;
+  --bs-btn-active-border-color: #D89E94;
 }
 
 /* ページネーション */

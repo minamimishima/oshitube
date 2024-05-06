@@ -1,29 +1,49 @@
-<div class="bookmark-container container">
-  <%= render 'shared/error_messages', obj: Timestamp.new %>
-  <div id="bookmark-video">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= @bookmark.video_id %>" class="youtube-video-player" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-  </div>
-  <div class="accordion video-description" id="accordionExample">
-    <div class="accordion-item">
-      <h2 class="accordion-header">
-        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-          概要欄
-        </button>
-      </h2>
-      <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <%= simple_format(h(video_description(@bookmark.video_id))) %>
+<% content_for(:title, video_title(@bookmark.video_id)) %>
+<div id="bookmark-show" class="container">
+  <div id="bookmark-show__row" class="row justify-content-center align-items-center">
+    <div id="bookmark-show__column" class="col-lg-8 col-md-10 mb-4">
+
+      <%= render 'shared/error_messages', obj: @timestamp %>
+
+      <div id="bookmark-video">
+        <iframe src="https://www.youtube.com/embed/<%= @bookmark.video_id %>" class="youtube-video-player" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </div>
+
+      <div class="accordion mt-1 mb-3" id="accordionExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              <span class="bookmark-show__video-title"><%= video_title(@bookmark.video_id) %></span>
+            </button>
+          </h2>
+          <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <span class="bookmark-show__video-description"><%= simple_format(h(video_description(@bookmark.video_id))) %></span>
+            </div>
+          </div>
         </div>
+      </div>
+
+      <div class="bookmark-show__description">
+        <%= @bookmark.description %>
+      </div>
+
+      <div class="bookmark-show__timestamps-list my-4">
+        <table>
+          <%= render partial: 'shared/timestamps_list', collection: @bookmark.timestamps.sort_by(&:start_time), as: :timestamp, locals: { timestamps: @bookmark.timestamps.sort_by(&:start_time)} %>
+        </table>
+      </div>
+
+      <% if @user.present? && @bookmark.user_id == @user.id %>
+        <%= render 'shared/timestamps_new', { timestamp: Timestamp.new, bookmark: @bookmark } %>
+        <div class="bookmark-show__link mt-2">
+          <%= link_to "編集", edit_bookmark_path(@bookmark) %> / <%= link_to "削除", bookmark_path(@bookmark), data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" } %>
+        </div>
+      <% end %>
+
+      <div class="bookmark-show__back mt-5">
+        <%= link_to "戻る", "javascript:history.back()" %>
       </div>
     </div>
   </div>
-  <div>
-    <h2 class="video-title"><%= video_title(@bookmark.video_id) %></h2>
-    <%= @bookmark.description %>
-    <%= render partial: 'shared/timestamps_list', collection: @bookmark.timestamps.sort_by(&:start_time), as: :timestamp, locals: { timestamps: @bookmark.timestamps.sort_by(&:start_time)} %>
-    <% if @user.present? && @bookmark.user_id == @user.id %>
-      <%= render 'shared/timestamps_new', { timestamp: Timestamp.new, bookmark: @bookmark } %>
-      <%= link_to "編集", edit_bookmark_path(@bookmark) %> / <%= link_to "削除", bookmark_path(@bookmark), data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" } %>
-    <% end %>
-    </div>
 </div>

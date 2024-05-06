@@ -1,19 +1,28 @@
-<div class="timestamps-new">
+<div class="timestamps-new row align-items-center">
   <%= form_with model: timestamp do |f| %>
-    <%= f.label :hour, "時間" %>
-    <%= f.number_field :hour %>
+    <div class="d-flex">
+      <div class="col-lg-2 col-md-3 d-flex text-nowrap justify-content-center align-items-center">
+        <%= f.number_field :hour, class: "form-control me-2" %>
+        <%= f.label :hour, "時間" %>
+      </div>
+
+      <div class="col-lg-2 col-md-3 d-flex text-nowrap justify-content-center align-items-center">
+        <%= f.number_field :minute, class: "form-control mx-2" %>
+        <%= f.label :minute, "分" %>
+      </div>
+
+      <div class="col-lg-2 col-md-3 d-flex text-nowrap justify-content-center align-items-center">
+        <%= f.number_field :second, class: "form-control mx-2" %>
+        <%= f.label :second, "秒" %>
+      </div>
+    </div>
   
-    <%= f.label :minute, "分" %>
-    <%= f.number_field :minute %>
-  
-    <%= f.label :second, "秒" %>
-    <%= f.number_field :second %><br />
-  
-    <%= f.label :comment, "メモ" %>
-    <%= f.text_field :comment %>
-  
+    <div class="col-12 justify-content-center align-items-center">
+      <%= f.label :comment, "メモ" %>
+      <%= f.text_field :comment, class: "form-control me-2" %>
+    </div>
+
     <%= f.hidden_field :bookmark_id, value: bookmark.id %>
-  
-    <%= f.submit "登録" %>
+    <%= f.submit "登録", class: "timestamps-new__button btn my-3" %>
   <% end %>
 </div>

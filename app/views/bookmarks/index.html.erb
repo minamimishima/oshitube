@@ -1,7 +1,16 @@
-<div class="bookmark-container container">
-  <h1>ブックマーク一覧</h1>
-  <%= render 'shared/categories', { categories: @user.categories } %>
-  <%= render 'shared/categories_new', { category: Category.new, user: @user } %>
-  <%= render partial: 'shared/bookmark', collection: @user.bookmarks.order(created_at: :desc).page(params[:page]) %>
-  <%= paginate @user.bookmarks.order(created_at: :desc).page(params[:page]), theme: 'bootstrap-5' %>
+<% content_for(:title, "ブックマーク一覧") %>
+<div id="bookmark-index" class="container">
+  <h1 class="text-center mt-3 mb-4">ブックマーク一覧</h1>
+  <div id="bookmark-index__row" class="row justify-content-center align-items-center">
+    <div id="bookmark-index__column" class="col-md-10">
+      <%= render 'shared/categories', { categories: @user.categories } %>
+      <%= render 'shared/categories_new', { category: @category, user: @user } %>
+
+      <div id="bookmark__row" class="row d-flex justify-content-center align-items-start">
+        <%= render partial: 'shared/bookmark', collection: @bookmarks %>
+      </div>
+
+      <%= paginate @bookmarks, theme: 'bootstrap-5' %>
+    </div>
+  </div>
 </div>

@@ -40,7 +40,7 @@ RSpec.describe "Categories", type: :system do
         category = create(:category, name: "元のカテゴリー名", user: user)
         visit category_path(category)
         fill_in "カテゴリー名", with: "新しいカテゴリー名"
-        click_on "作成"
+        click_on "編集"
         expect(page).to have_selector "h1", text: "新しいカテゴリー名"
       end
 
@@ -58,7 +58,7 @@ RSpec.describe "Categories", type: :system do
         expect do
           visit new_bookmark_path
           fill_in "URL", with: "https://www.youtube.com/watch?v=ABCDEFGHIJK"
-          fill_in "動画の説明", with: "動画の説明"
+          fill_in "動画メモ", with: "動画メモ"
           fill_in "カテゴリーを作成する", with: "新しいカテゴリー"
           click_on "登録"
         end.to change { user.categories.count }.by(1)
@@ -68,7 +68,7 @@ RSpec.describe "Categories", type: :system do
         expect do
           visit new_bookmark_path
           fill_in "URL", with: "https://www.youtube.com/watch?v=ABCDEFGHIJK"
-          fill_in "動画の説明", with: "動画の説明"
+          fill_in "動画メモ", with: "動画メモ"
           check category.name
           click_on "登録"
         end.to change { category.bookmarks.count }.by(1)

@@ -1,21 +1,24 @@
-<div class="header-container">
-  <div class="title">
+<div class="header">
+  <div class="header__title">
     <span><%= link_to "推しTube（仮）", root_path %></span>
   </div>
-  <div class="dropdown">
-    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-      <span>メニュー</span>
-    </a>
-    <ul class="dropdown-menu">
-      <% if user_signed_in? %>
-        <li><%= link_to "ブックマーク追加", new_bookmark_path %></li>
+
+  <% if user_signed_in? %>
+    <div class="header__dropdown dropdown">
+      <a class="btn dropdown-toggle header__dropdown-menu-button" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <span>メニュー</span>
+      </a>
+      <ul class="header__dropdown-menu dropdown-menu">
+        <li><%= link_to "ブックマーク登録", new_bookmark_path %></li>
         <li><%= link_to "ブックマーク一覧", bookmarks_path %></li>
         <li><%= link_to "プロフィール", user_path(@user.id) %></li>
         <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: { turbo_method: :delete } %></li>
-      <% else %>
-        <li><%= link_to "新規登録", new_user_registration_path %></li>
-        <li><%= link_to "ログイン", new_user_session_path %></li>
-      <% end %>
-    </ul>
-  </div>
+      </ul>
+    </div>
+  <% else %>
+    <div class="header__link">
+      <%= link_to "新規登録", new_user_registration_path, class: "btn mx-1 header__registration-button" %>
+      <%= link_to "ログイン", new_user_session_path, class: "btn mx-1 header__login-button" %>
+    </div>
+  <% end %>
 </div>

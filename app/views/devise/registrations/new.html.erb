@@ -1,31 +1,37 @@
-<div class="registrations-sessions-container container">
-  <h2>新規登録</h2>
+<% content_for(:title, "新規登録") %>
+<div id="registration" class="container">
+  <h1 class="text-center pt-4">新規登録</h1>
+  <div id="registration__row" class="row justify-content-center align-items-center">
+    <div id="registration__column" class="col-lg-6 col-md-8">
+      <%= render "devise/shared/error_messages", resource: resource %>
+      <div id="registration__box">
+        <%= form_with model: @user, id: "registration__form", url: user_registration_path do |f| %>
+          <div class="registration__form-group mb-3">
+            <%= f.label :name, "名前" %>
+            <%= f.text_field :name, class: "form-control", autofocus: true %>
+          </div>
 
-  <%= form_with model: @user, url: user_registration_path do |f| %>
-    <%= render "devise/shared/error_messages", resource: resource %>
-  
-    <div class="field">
-      <%= f.label :name, "名前" %><br />
-      <%= f.text_field :name, autofocus: true %>
+          <div class="registration__form-group mb-3">
+            <%= f.label :email, "メールアドレス" %>
+            <%= f.email_field :email, class: "form-control" %>
+          </div>
+
+          <div class="registration__form-group mb-3">
+            <%= f.label :password, "パスワード" %> <span class="registration__password-validation">※8〜30文字</span>
+            <%= f.password_field :password, class: "form-control" %>
+          </div>
+
+          <div class="registration__form-group mb-3">
+            <%= f.label :password_confirmation, "パスワード（確認）" %>
+            <%= f.password_field :password_confirmation, class: "form-control" %>
+          </div>
+
+          <div class="registration__form-group-action">
+            <%= f.submit "登録", class: "btn mt-2 mb-1 registration__button" %>
+          </div>
+        <% end %>
+      </div>
     </div>
-  
-    <div class="field">
-      <%= f.label :email, "メールアドレス" %><br />
-      <%= f.email_field :email %>
-    </div>
-  
-    <div class="field">
-      <%= f.label :password, "パスワード" %><br />
-      <%= f.password_field :password %>
-    </div>
-  
-    <div class="field">
-      <%= f.label :password_confirmation, "パスワード（確認）" %><br />
-      <%= f.password_field :password_confirmation %>
-    </div>
-  
-    <div class="actions">
-      <%= f.submit "登録" %>
-    </div>
-  <% end %>
-</div>  
+  </div>
+</div>
+

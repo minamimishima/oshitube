@@ -3,5 +3,7 @@ class Category < ApplicationRecord
   has_many :category_bookmark, dependent: :destroy
   has_many :bookmarks, through: :category_bookmark
 
-  validates :name, presence: true
+  validates :name,
+    presence: true,
+    length: { maximum: 20 }
 end

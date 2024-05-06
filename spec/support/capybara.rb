@@ -9,7 +9,7 @@ Capybara.register_driver :remote_chrome do |app|
   options.add_argument('disable-gpu')
   options.add_argument('disable-dev-shm-usage')
   options.add_argument('remote-debugging-port=9222')
-  options.add_argument('window-size=950, 800')
+  options.add_argument('window-size=1200, 800')
 
   Capybara::Selenium::Driver.new(app,
                                  browser: :remote,
@@ -29,7 +29,7 @@ RSpec.configure do |config|
       Capybara.server_port = 4444
       Capybara.app_host = "http://#{Capybara.server_host}:#{Capybara.server_port}"
     else
-      driven_by :selenium_chrome_headless
+      driven_by :selenium, using: :headless_chrome, screen_size: [1200, 800]
     end
   end
 

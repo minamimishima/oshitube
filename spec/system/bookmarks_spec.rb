@@ -7,8 +7,8 @@ RSpec.describe "Bookmarks", type: :system do
     visit bookmark_path(bookmark)
     aggregate_failures do
       expect(page).to have_selector ".youtube-video-player"
-      expect(page).to have_selector ".video-description"
-      expect(page).to have_selector ".video-title"
+      expect(page).to have_selector ".bookmark-show__video-title"
+      expect(page).to have_selector ".bookmark-show__video-description"
       expect(page).to have_content bookmark.description
     end
   end
@@ -31,7 +31,7 @@ RSpec.describe "Bookmarks", type: :system do
         visit new_bookmark_path
         expect do
           fill_in "URL", with: "https://www.youtube.com/watch?v=ABCDEFGHIJK"
-          fill_in "動画の説明", with: "動画についてのメモ"
+          fill_in "動画メモ", with: "動画についてのメモ"
           click_on "登録"
         end.to change { user.bookmarks.count }.by(1)
       end
@@ -51,8 +51,8 @@ RSpec.describe "Bookmarks", type: :system do
       it "ブックマーク一覧ページにサムネイル・動画タイトル・メモが表示されること" do
         visit bookmarks_path
         aggregate_failures do
-          expect(page).to have_selector ".video-thumbnail"
-          expect(page).to have_selector ".video-title"
+          expect(page).to have_selector ".bookmark__video-thumbnail"
+          expect(page).to have_selector ".bookmark__video-title"
           expect(page).to have_content bookmark.description
         end
       end
@@ -79,7 +79,7 @@ RSpec.describe "Bookmarks", type: :system do
         )
         visit edit_bookmark_path(bookmark)
         fill_in "URL", with: "https://www.youtube.com/watch?v=ABCDEFGHIJK"
-        fill_in "動画の説明", with: "新しい動画メモ"
+        fill_in "動画メモ", with: "新しい動画メモ"
         click_on "登録"
         aggregate_failures do
           expect(bookmark.reload.url).to eq "https://www.youtube.com/watch?v=ABCDEFGHIJK"

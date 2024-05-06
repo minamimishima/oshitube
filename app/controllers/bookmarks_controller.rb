@@ -4,6 +4,8 @@ class BookmarksController < ApplicationController
   before_action :correct_user, only: [:edit, :update, :destroy]
 
   def index
+    @bookmarks = @user.bookmarks.order(created_at: :desc).page(params[:page])
+    @category = Category.new
   end
 
   def new
@@ -20,7 +22,6 @@ class BookmarksController < ApplicationController
       flash[:notice] = "登録完了しました"
       redirect_to bookmarks_path
     else
-      flash[:notice] = "登録に失敗しました"
       render 'new', status: :unprocessable_entity
     end
   end
@@ -31,11 +32,13 @@ class BookmarksController < ApplicationController
       if @bookmark.user.id != @user.id && @bookmark.is_public == false
         redirect_to root_path
       else
+        @timestamp = Timestamp.new
         gon.video_id = @bookmark.video_id
         gon.start_time_list = @bookmark.timestamps.sort_by(&:start_time).pluck(:start_time)
       end
     else
       if @bookmark.is_public == true
+        @timestamp = Timestamp.new
         gon.video_id = @bookmark.video_id
         gon.start_time_list = @bookmark.timestamps.sort_by(&:start_time).pluck(:start_time)
       else
@@ -55,8 +58,10 @@ class BookmarksController < ApplicationController
       flash[:notice] = "編集完了しました"
       redirect_to bookmark_path(@bookmark.id)
     else
-      flash[:edit_error_message] = "登録内容を確認してください"
+      flash[:edit_error_message] = "入力内容を確認してください"
       @bookmark = Bookmark.find(params[:id])
+      # URLがバリデーションエラーになった場合、extract_video_url, extract_video_idメソッドでURL・動画IDがnilになってしまい
+      # renderされたeditページで動画フレーム・URL入力欄が空欄になってしまって編集しづらいため編集前のデータを設定
       render 'edit', status: :unprocessable_entity
     end
   end

@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @bookmarks = @user.bookmarks.where(is_public: true).sort_by(&:created_at).reverse
+    @bookmarks = @user.bookmarks.where(is_public: true).order(created_at: "DESC").page(params[:page])
   end
 
   def profile_edit

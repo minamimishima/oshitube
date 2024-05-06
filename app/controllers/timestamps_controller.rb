@@ -11,7 +11,6 @@ class TimestampsController < ApplicationController
       flash[:notice] = "登録完了しました"
       redirect_to bookmark_path(@timestamp.bookmark)
     else
-      flash[:notice] = "登録に失敗しました"
       render 'bookmarks/show', status: :unprocessable_entity
     end
   end

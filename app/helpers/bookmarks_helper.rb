@@ -30,7 +30,7 @@ module BookmarksHelper
   def video_thumbnail(video_id)
     if get_video_data(video_id).present?
       thumbnails = get_video_data(video_id).snippet.thumbnails
-      thumbnails_resolutions = [:maxres, :standard, :high, :medium, :default]
+      thumbnails_resolutions = [:standard, :high, :medium, :default]
       thumbnails_resolutions.each do |resolution|
         return thumbnails.send(resolution).url if thumbnails.send(resolution)
       end

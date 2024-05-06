@@ -35,8 +35,8 @@ RSpec.describe BookmarksHelper, type: :helper do
   end
 
   describe "video_thumbnailの検証" do
-    it "渡されたIDを持つ動画が存在する場合に、最も解像度の高いサムネイルのURLを返すこと", :vcr => "youtube_success" do
-      expect(helper.video_thumbnail(valid_id)).to eq "https://i.ytimg.com/vi/HIgvP7B3Hg8/maxresdefault.jpg"
+    it "渡されたIDを持つ動画が存在する場合に、standard以下の中で最も解像度の高いサムネイルのURLを返すこと", :vcr => "youtube_success" do
+      expect(helper.video_thumbnail(valid_id)).to eq "https://i.ytimg.com/vi/HIgvP7B3Hg8/sddefault.jpg"
     end
 
     it "渡されたIDを持つ動画が存在しない場合にnot_found.pngを返すこと", :vcr => "youtube_failure" do

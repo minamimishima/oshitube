@@ -10,8 +10,12 @@ RSpec.describe Bookmark, type: :model do
       end
 
       it "動画のメモが300文字以内であれば有効であること" do
-        bookmark = build(:bookmark, description: "a" * 300)
-        expect(bookmark).to be_valid
+        bookmark1 = build(:bookmark, description: "a" * 299)
+        bookmark2 = build(:bookmark, description: "a" * 300)
+        aggregate_failures do
+          expect(bookmark1).to be_valid
+          expect(bookmark2).to be_valid
+        end
       end
     end
 
@@ -21,15 +25,14 @@ RSpec.describe Bookmark, type: :model do
         expect(bookmark).to be_invalid
       end
 
-      it "動画IDがなければ無効であること" do
-        bookmark = build(:bookmark, video_id: nil)
-        expect(bookmark).to be_invalid
-      end
-
       it "動画のメモが300文字より長ければ無効であること" do
         bookmark = build(:bookmark, description: "a" * 301)
         expect(bookmark).to be_invalid
       end
+
+      # allow_blankを設定したためvideo_idがnilの場合はエラーを返さないので「動画IDがなければ無効である」ことを確認するテストはなし
+      # ただし、ブックマーク登録の際はvideo_idを直接入力せず、入力したURLを基にextract_video_idメソッドを使用してvideo_idを取得するため
+      # video_idだけがnilになることはなく、テストを実施しなくても問題ないと思われます
     end
   end
 

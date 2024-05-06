@@ -1,4 +1,11 @@
-<tr>
-  <td><button class="timestamps__button btn text-nowrap me-2" id="<%= "timestamp-#{timestamps.index(timestamp)}" %>"><%= timestamp.hour %> : <%= timestamp.minute %> : <%= timestamp.second %></button></td>
-  <td><%= timestamp.comment %></td>
-</tr>
+<%= turbo_frame_tag timestamp do %>
+<div class="bookmark-show__timestamps-list my-2">
+  <table>
+    <tr>
+      <td><button class="timestamps__button btn text-nowrap me-2" id="<%= "timestamp-#{timestamps.index(timestamp)}" %>"><%= timestamp.hour %> : <%= timestamp.minute %> : <%= timestamp.second %></button></td>
+      <td><%= timestamp.comment %></td>
+      <td><%= link_to "編集", edit_timestamp_path(timestamp) %></td>
+    </tr>
+  </table>
+</div>
+<% end %>

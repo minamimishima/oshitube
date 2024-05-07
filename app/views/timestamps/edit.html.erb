@@ -26,6 +26,7 @@
   
       <%= f.hidden_field :bookmark_id, value: @timestamp.bookmark.id %>
       <%= f.submit "登録", class: "timestamps-edit__button btn my-3" %>
+      <%= link_to "キャンセル", @timestamp, class: "timestamps-edit__button btn my-3" %>
     <% end %>
   </div>
 <% end %>

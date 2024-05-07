@@ -18,7 +18,7 @@ class TimestampsController < ApplicationController
 
   def show
     @timestamp = Timestamp.find(params[:id])
-    @timestamps = @timestamp.bookmark.timestamps
+    @timestamps = @timestamp.bookmark.timestamps.sort_by(&:start_time)
   end
 
   def edit

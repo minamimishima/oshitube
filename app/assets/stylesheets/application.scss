@@ -344,6 +344,21 @@ h1 {
   --bs-btn-active-border-color: #EFE6DD;
 }
 
+.timestamps-table {
+  width: 100%;
+}
+
+.timestamps__td1 {
+  width: 0;
+  white-space: nowrap;
+}
+
+.timestamps__td3,
+.timestamps__td4 {
+  width: 0;
+  white-space: nowrap;
+}
+
 /* タイムスタンプ作成・編集 */
 .timestamps-new__button,
 .timestamps-edit__button {

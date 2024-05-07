@@ -1,3 +1,3 @@
 <%= turbo_frame_tag @timestamp do %>
-  <%= render 'shared/timestamps_list', timestamp: @timestamp, timestamps: @timestamps %>
+  <%= render 'shared/timestamps_list', timestamp: @timestamp, timestamps: @timestamps, user: @user %>
 <% end %>

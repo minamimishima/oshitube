@@ -29,7 +29,7 @@
         <%= @bookmark.description %>
       </div>
 
-      <%= render partial: 'shared/timestamps_list', collection: @bookmark.timestamps.sort_by(&:start_time), as: :timestamp, locals: { timestamps: @bookmark.timestamps.sort_by(&:start_time)} %>
+      <%= render partial: 'shared/timestamps_list', collection: @bookmark.timestamps.sort_by(&:start_time), as: :timestamp, locals: { timestamps: @bookmark.timestamps.sort_by(&:start_time), user: @user } %>
       
       <% if @user.present? && @bookmark.user_id == @user.id %>
         <%= render 'shared/timestamps_new', { timestamp: @timestamp, bookmark: @bookmark } %>

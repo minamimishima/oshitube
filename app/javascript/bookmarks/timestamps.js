@@ -19,3 +19,9 @@ document.addEventListener('turbo:load', function() {
     jumpToStartTime(i);
   }
 });
+
+document.addEventListener('turbo:frame-render', function() {
+  for (let i = 0; i <= 9; i++) {
+    jumpToStartTime(i);
+  }
+});

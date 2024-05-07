@@ -42,6 +42,10 @@ class TimestampsController < ApplicationController
   end
 
   def destroy
+    @timestamp = Timestamp.find(params[:id])
+    @timestamp.destroy
+    flash[:notice] = "タイムスタンプを削除しました"
+    redirect_to bookmark_path(@timestamp.bookmark), status: :see_other
   end
 
   private

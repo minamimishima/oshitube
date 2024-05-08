@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   patch "users/withdrawal", to: "users#withdrawal"
 
   resources :users, only: [:show]
-  resources :categories, only: [:new, :create, :show, :update, :destroy]
+  resources :categories, only: [:new, :create, :show, :edit, :update, :destroy]
   resources :bookmarks
   resources :timestamps, only: [:create, :show, :edit, :update, :destroy]
 

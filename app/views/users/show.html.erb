@@ -18,10 +18,14 @@
           <% end %>
         </div>
       </div>
-      <div id="bookmark__row" class="row d-flex justify-content-center align-items-start">
-        <%= render partial: 'shared/bookmark', collection: @bookmarks, as: :bookmark %>
-        <%= paginate @bookmarks, theme: 'bootstrap-5' %>
-      </div>
+      <%= turbo_frame_tag "bookmarks-list", autoscroll: true, data: { autoscroll_block: "start" } do %>
+        <% if @user.bookmarks.where(is_public: true).present? %>
+          <div id="bookmark__row" class="row d-flex justify-content-center align-items-start">
+            <%= render partial: 'shared/bookmark', collection: @user.bookmarks.where(is_public: true).order(created_at: "DESC").page(params[:page]), as: :bookmark %>
+            <%= paginate @bookmarks, theme: 'bootstrap-5' %>
+          </div>
+        <% end %>
+      <% end %>
     </div>
   </div>
 </div>

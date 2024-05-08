@@ -6,12 +6,15 @@
       <%= render 'shared/categories', { categories: @categories } %>
       <%= render 'shared/categories_edit', { category: @category, user: @user } %>
 
-      <% if @category.bookmarks.present? %>
-        <div id="bookmark__row" class="row d-flex justify-content-center align-items-start">
-          <%= render partial: 'shared/bookmark', collection: @category.bookmarks.order(created_at: :desc).page(params[:page]) %>
-          <%= paginate @category.bookmarks.order(created_at: :desc).page(params[:page]), theme: 'bootstrap-5' %>
-        </div>
+      <%= turbo_frame_tag "bookmarks-list", autoscroll: true, data: { autoscroll_block: "start" } do %>
+        <% if @category.bookmarks.present? %>
+          <div id="bookmark__row" class="row d-flex justify-content-center align-items-start">
+            <%= render partial: 'shared/bookmark', collection: @category.bookmarks.order(created_at: :desc).page(params[:page]) %>
+            <%= paginate @category.bookmarks.order(created_at: :desc).page(params[:page]), theme: 'bootstrap-5' %>
+          </div>
+        <% end %>
       <% end %>
+
     </div>
   </div>
 </div>

@@ -31,7 +31,7 @@ class CategoriesController < ApplicationController
   def update
     @category = Category.find(params[:id])
     if @category.update(category_params)
-      flash[:notice] = "カテゴリーを編集しました"
+      flash[:notice] = "カテゴリー名を編集しました"
       redirect_to category_path(@category)
     else
       @category = Category.find(params[:id])

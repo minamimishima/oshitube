@@ -1,6 +1,6 @@
 <%= turbo_frame_tag timestamp do %>
   <div class="bookmark-show__timestamps-list my-2">
-    <table class="timestamps-table">
+    <table class="timestamps-table-<%= "#{timestamps.index(timestamp)}" %>">
       <tr>
         <td class="timestamps__td1"><button class="timestamps__button btn text-nowrap me-2" id="<%= "timestamp-#{timestamps.index(timestamp)}" %>"><%= timestamp.hour %> : <%= timestamp.minute %> : <%= timestamp.second %></button></td>
         <td class="timestamps__td2"><%= timestamp.comment %></td>

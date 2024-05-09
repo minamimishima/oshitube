@@ -42,25 +42,35 @@ RSpec.describe "Timestamps", type: :system do
       end
 
       it "タイムスタンプを編集できること" do
-        create(:timestamp, hour: 1, minute: 1, second: 1, start_time: 3661, bookmark: bookmark)
-        visit edit_bookmark_path(bookmark)
-        find("#bookmark_timestamps_attributes_0_hour").fill_in with: 0
-        find("#bookmark_timestamps_attributes_0_minute").fill_in with: 0
-        find("#bookmark_timestamps_attributes_0_second").fill_in with: 0
-        click_on "登録"
+        timestamp = create(:timestamp, hour: 1, minute: 1, second: 1, start_time: 3661, bookmark: bookmark)
+        visit bookmark_path(bookmark)
+        within ".timestamps-table-1" do
+          click_on "編集"
+        end
+        within ".timestamps-edit" do
+          fill_in "時間", with: 2
+          fill_in "分", with: 2
+          fill_in "秒", with: 2
+          click_on "登録"
+        end
         aggregate_failures do
-          expect(bookmark.timestamps[0].reload.hour).to eq 0
-          expect(bookmark.timestamps[0].reload.minute).to eq 0
-          expect(bookmark.timestamps[0].reload.second).to eq 0
-          expect(bookmark.timestamps[0].reload.start_time).to eq 0
+          expect(timestamp.reload.hour).to eq 2
+          expect(timestamp.reload.minute).to eq 2
+          expect(timestamp.reload.second).to eq 2
+          expect(timestamp.reload.start_time).to eq 7322
         end
       end
 
-      it "タイムスタンプを削除できること" do
+      it "タイムスタンプを削除できること", js: true do
+        create(:timestamp, hour: 1, minute: 1, second: 1, start_time: 3661, bookmark: bookmark)
         expect do
-          visit edit_bookmark_path(bookmark)
-          find("#bookmark_timestamps_attributes_0__destroy").check
-          click_on "登録"
+          visit bookmark_path(bookmark)
+          within ".timestamps-table-1" do
+            page.accept_confirm do
+              click_on "削除"
+            end
+          end
+          find ".notice", text: "タイムスタンプを削除しました"
         end.to change { bookmark.timestamps.count }.by(-1)
       end
     end

@@ -4,7 +4,7 @@ class CategoriesController < ApplicationController
   before_action :correct_user, only: [:show, :update, :destroy]
 
   def new
-    @category = Category.new(category_params)
+    @category = Category.new
   end
 
   def create
@@ -15,7 +15,7 @@ class CategoriesController < ApplicationController
       flash[:notice] = "カテゴリーを作成しました"
       redirect_to bookmarks_path
     else
-      render 'bookmarks/index', status: :unprocessable_entity
+      render 'new', status: :unprocessable_entity
     end
   end
 

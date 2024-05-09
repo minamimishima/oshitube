@@ -5,7 +5,10 @@
   <div id="bookmark-index__row" class="row justify-content-center align-items-center">
     <div id="bookmark-index__column" class="col-md-10">
       <%= render 'shared/categories', { categories: @user.categories } %>
-      <%= render 'shared/categories_new', { category: @category, user: @user } %>
+
+      <%= turbo_frame_tag @category do %>
+        <%= link_to "作成", new_category_path, class: "d-block text-center" %>
+      <% end %>
 
       <%= turbo_frame_tag "bookmarks-list", autoscroll: true, data: { autoscroll_block: "start" } do %>
         <div id="bookmark__row" class="row d-flex justify-content-center align-items-start">

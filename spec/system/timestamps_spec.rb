@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.describe "Timestamps", type: :system do
   let(:bookmark) { create(:bookmark, is_public: true) }
-  let!(:timestamp) { create(:timestamp, bookmark: bookmark) }
 
   it "タイムスタンプが正常に作動すること", js: true do
     create(:timestamp, hour: 1, minute: 1, second: 1, start_time: 3661, bookmark: bookmark)
@@ -37,6 +36,7 @@ RSpec.describe "Timestamps", type: :system do
       end
 
       it "タイムスタンプが表示されること" do
+        create(:timestamp, hour: 1, minute: 1, second: 1, start_time: 3661, bookmark: bookmark)
         visit bookmark_path(bookmark)
         expect(page).to have_selector "#timestamp-0"
       end
@@ -44,7 +44,7 @@ RSpec.describe "Timestamps", type: :system do
       it "タイムスタンプを編集できること" do
         timestamp = create(:timestamp, hour: 1, minute: 1, second: 1, start_time: 3661, bookmark: bookmark)
         visit bookmark_path(bookmark)
-        within ".timestamps-table-1" do
+        within ".timestamps-table-0" do
           click_on "編集"
         end
         within ".timestamps-edit" do
@@ -65,7 +65,7 @@ RSpec.describe "Timestamps", type: :system do
         create(:timestamp, hour: 1, minute: 1, second: 1, start_time: 3661, bookmark: bookmark)
         expect do
           visit bookmark_path(bookmark)
-          within ".timestamps-table-1" do
+          within ".timestamps-table-0" do
             page.accept_confirm do
               click_on "削除"
             end
@@ -88,6 +88,7 @@ RSpec.describe "Timestamps", type: :system do
       end
 
       it "タイムスタンプが表示されること" do
+        create(:timestamp, hour: 1, minute: 1, second: 1, start_time: 3661, bookmark: bookmark)
         visit bookmark_path(bookmark)
         expect(page).to have_selector "#timestamp-0"
       end
@@ -103,6 +104,7 @@ RSpec.describe "Timestamps", type: :system do
     end
 
     it "タイムスタンプが表示されること" do
+      create(:timestamp, hour: 1, minute: 1, second: 1, start_time: 3661, bookmark: bookmark)
       visit bookmark_path(bookmark)
       expect(page).to have_selector "#timestamp-0"
     end

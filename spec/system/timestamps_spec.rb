@@ -93,7 +93,17 @@ RSpec.describe "Timestamps", type: :system do
         expect(page).to have_selector "#timestamp-0"
       end
 
-      # タイムスタンプの編集・削除を実行するブックマーク編集ページは表示できないことをspec/system/bookmarks_spec.rbで確認しているためここでは省略
+      it "タイムスタンプの編集リンクが表示されないこと" do
+        create(:timestamp, hour: 1, minute: 1, second: 1, start_time: 3661, bookmark: bookmark)
+        visit bookmark_path(bookmark)
+        expect(page).to_not have_content "編集"
+      end
+
+      it "タイムスタンプの削除リンクが表示されないこと" do
+        create(:timestamp, hour: 1, minute: 1, second: 1, start_time: 3661, bookmark: bookmark)
+        visit bookmark_path(bookmark)
+        expect(page).to_not have_content "削除"
+      end
     end
   end
 
@@ -109,6 +119,16 @@ RSpec.describe "Timestamps", type: :system do
       expect(page).to have_selector "#timestamp-0"
     end
 
-    # タイムスタンプの編集・削除を実行するブックマーク編集ページは表示できないことをspec/system/bookmarks_spec.rbで確認しているためここでは省略
+    it "タイムスタンプの編集リンクが表示されないこと" do
+      create(:timestamp, hour: 1, minute: 1, second: 1, start_time: 3661, bookmark: bookmark)
+      visit bookmark_path(bookmark)
+      expect(page).to_not have_content "編集"
+    end
+
+    it "タイムスタンプの削除リンクが表示されないこと" do
+      create(:timestamp, hour: 1, minute: 1, second: 1, start_time: 3661, bookmark: bookmark)
+      visit bookmark_path(bookmark)
+      expect(page).to_not have_content "削除"
+    end
   end
 end

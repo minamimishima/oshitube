@@ -13,6 +13,7 @@ RSpec.describe "Categories", type: :system do
       it "カテゴリーを作成できること" do
         visit bookmarks_path
         expect do
+          click_on "作成"
           fill_in "カテゴリー名", with: "新しいカテゴリー"
           click_on "作成"
         end.to change { user.categories.count }.by(1)

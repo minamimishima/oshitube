@@ -30,7 +30,7 @@
 
             <div class="bookmark-edit__category-edit">
               <div class="bookmark-edit__form-group mb-1">
-                <% if Category.where(user_id: @user.id).present? %>
+                <% if @user.categories.present? %>
                   <%= f.label :category, "カテゴリー", class: "d-block mb-1" %>
                   <%= f.collection_check_boxes(:category_ids, @user.categories, :id, :name) do |category| %>
                     <%= category.check_box class: "btn-check" %>
@@ -48,39 +48,6 @@
                   <%= category.hidden_field :user_id, value: @user.id %>
                 <% end %>
               </div>
-            </div>
-
-            <div class="bookmark-edit__timestamp-edit">
-              <%= f.fields_for :timestamps, @bookmark.timestamps.sort_by(&:start_time) do |timestamp| %>
-                <div class="bookmark-edit__form-group d-flex mb-2">
-                  <div class="col-lg-2 col-md-3 d-flex text-nowrap justify-content-center align-items-center">
-                    <%= timestamp.number_field :hour, class: "form-control me-2" %>
-                    <%= timestamp.label :hour, "時間" %>
-                  </div>
-
-                  <div class="col-lg-2 col-md-3 d-flex text-nowrap justify-content-center align-items-center">
-                    <%= timestamp.number_field :minute, class: "form-control mx-2" %>
-                    <%= timestamp.label :minute, "分" %>
-                  </div>
-
-                  <div class="col-lg-2 col-md-3 d-flex text-nowrap justify-content-center align-items-center">
-                    <%= timestamp.number_field :second, class: "form-control mx-2" %>
-                    <%= timestamp.label :second, "秒" %>
-                  </div>
-                </div>
-
-                <div class="bookmark-edit__form-group justify-content-center align-items-center mb-2">
-                  <%= timestamp.label :comment, "メモ" %>
-                  <%= timestamp.text_field :comment, class: "form-control" %>
-                </div>
-
-                <div class="bookmark-edit__form-group form-check mb-4">
-                  <%= timestamp.label :_destroy, "削除", class: "form-check-label" %>
-                  <%= timestamp.check_box :_destroy, class: "form-check-input" %>
-                </div>
-
-                <%= timestamp.hidden_field :bookmark_id, value: @bookmark.id %>
-              <% end %>
             </div>
 
             <div class="bookmark-edit__form-group mb-3">

@@ -1,4 +1,5 @@
 <% content_for(:title, video_title(@bookmark.video_id)) %>
+<%= turbo_page_requires_reload %>
 <div id="bookmark-show" class="container">
   <div id="bookmark-show__row" class="row justify-content-center align-items-center">
     <div id="bookmark-show__column" class="col-lg-8 col-md-10 mb-4">
@@ -24,18 +25,14 @@
         </div>
       </div>
 
-      <div class="bookmark-show__description">
+      <div class="bookmark-show__description mb-3">
         <%= @bookmark.description %>
       </div>
 
-      <div class="bookmark-show__timestamps-list my-4">
-        <table>
-          <%= render partial: 'shared/timestamps_list', collection: @bookmark.timestamps.sort_by(&:start_time), as: :timestamp, locals: { timestamps: @bookmark.timestamps.sort_by(&:start_time)} %>
-        </table>
-      </div>
-
+      <%= render partial: 'shared/timestamps_list', collection: @bookmark.timestamps.sort_by(&:start_time), as: :timestamp, locals: { timestamps: @bookmark.timestamps.sort_by(&:start_time), user: @user } %>
+      
       <% if @user.present? && @bookmark.user_id == @user.id %>
-        <%= render 'shared/timestamps_new', { timestamp: Timestamp.new, bookmark: @bookmark } %>
+        <%= render 'shared/timestamps_new', { timestamp: @timestamp, bookmark: @bookmark } %>
         <div class="bookmark-show__link mt-2">
           <%= link_to "編集", edit_bookmark_path(@bookmark) %> / <%= link_to "削除", bookmark_path(@bookmark), data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" } %>
         </div>

@@ -4,7 +4,6 @@ class Bookmark < ApplicationRecord
   has_many :categories, through: :category_bookmark
   has_many :timestamps, dependent: :destroy
 
-  accepts_nested_attributes_for :timestamps, allow_destroy: true
   accepts_nested_attributes_for :categories, reject_if: lambda { |attributes| attributes['name'].blank? }
 
   validates :url, presence: true

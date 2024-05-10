@@ -14,6 +14,7 @@
  *= require_self
  */
 @import "bootstrap";
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css");
 
 body {
   color: #333333;
@@ -26,6 +27,10 @@ a {
 
 h1 {
   font-size: 1.5rem;
+}
+
+.field_with_errors {
+  display: contents;
 }
 
  /* ヘッダー */
@@ -156,6 +161,14 @@ h1 {
   --bs-btn-active-color: #333333;
   --bs-btn-active-bg: #CFB497;
   --bs-btn-active-border-color: #CFB497;
+}
+
+.login__back-link,
+.registration__back-link,
+.profile-edit__back-link,
+.user-edit__back-link,
+.password-new__back-link {
+  margin: 15px 0 0 20px
 }
 
 /* プロフィール */
@@ -332,8 +345,28 @@ h1 {
   --bs-btn-active-border-color: #EFE6DD;
 }
 
-/* タイムスタンプ作成 */
-.timestamps-new__button {
+.timestamps-table {
+  width: 100%;
+}
+
+.timestamps__td1 {
+  width: 0;
+  white-space: nowrap;
+}
+
+.timestamps__td2 {
+  width: 100%;
+}
+
+.timestamps__td3,
+.timestamps__td4 {
+  width: 0;
+  white-space: nowrap;
+}
+
+/* タイムスタンプ作成・編集 */
+.timestamps-new__button,
+.timestamps-edit__button {
   --bs-btn-color: #333333;
   --bs-btn-bg: #DFCDBA;
   --bs-btn-border-color: #DFCDBA;

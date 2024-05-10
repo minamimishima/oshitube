@@ -11,7 +11,7 @@
   </head>
 
   <body>
-    <%= render 'shared/header' %>
+    <%= render 'shared/header', user: @user %>
     <div class="page__container">
       <%= render 'shared/flash_messages' %>
       <%= yield %>

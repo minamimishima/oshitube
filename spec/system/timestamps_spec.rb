@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.describe "Timestamps", type: :system do
   let(:bookmark) { create(:bookmark, is_public: true) }
-  let!(:timestamp) { create(:timestamp, bookmark: bookmark) }
 
   it "タイムスタンプが正常に作動すること", js: true do
     create(:timestamp, hour: 1, minute: 1, second: 1, start_time: 3661, bookmark: bookmark)
@@ -37,30 +36,41 @@ RSpec.describe "Timestamps", type: :system do
       end
 
       it "タイムスタンプが表示されること" do
+        create(:timestamp, hour: 1, minute: 1, second: 1, start_time: 3661, bookmark: bookmark)
         visit bookmark_path(bookmark)
         expect(page).to have_selector "#timestamp-0"
       end
 
       it "タイムスタンプを編集できること" do
-        create(:timestamp, hour: 1, minute: 1, second: 1, start_time: 3661, bookmark: bookmark)
-        visit edit_bookmark_path(bookmark)
-        find("#bookmark_timestamps_attributes_0_hour").fill_in with: 0
-        find("#bookmark_timestamps_attributes_0_minute").fill_in with: 0
-        find("#bookmark_timestamps_attributes_0_second").fill_in with: 0
-        click_on "登録"
+        timestamp = create(:timestamp, hour: 1, minute: 1, second: 1, start_time: 3661, bookmark: bookmark)
+        visit bookmark_path(bookmark)
+        within ".timestamps-table-0" do
+          click_on "編集"
+        end
+        within ".timestamps-edit" do
+          fill_in "時間", with: 2
+          fill_in "分", with: 2
+          fill_in "秒", with: 2
+          click_on "登録"
+        end
         aggregate_failures do
-          expect(bookmark.timestamps[0].reload.hour).to eq 0
-          expect(bookmark.timestamps[0].reload.minute).to eq 0
-          expect(bookmark.timestamps[0].reload.second).to eq 0
-          expect(bookmark.timestamps[0].reload.start_time).to eq 0
+          expect(timestamp.reload.hour).to eq 2
+          expect(timestamp.reload.minute).to eq 2
+          expect(timestamp.reload.second).to eq 2
+          expect(timestamp.reload.start_time).to eq 7322
         end
       end
 
-      it "タイムスタンプを削除できること" do
+      it "タイムスタンプを削除できること", js: true do
+        create(:timestamp, hour: 1, minute: 1, second: 1, start_time: 3661, bookmark: bookmark)
         expect do
-          visit edit_bookmark_path(bookmark)
-          find("#bookmark_timestamps_attributes_0__destroy").check
-          click_on "登録"
+          visit bookmark_path(bookmark)
+          within ".timestamps-table-0" do
+            page.accept_confirm do
+              click_on "削除"
+            end
+          end
+          find ".notice", text: "タイムスタンプを削除しました"
         end.to change { bookmark.timestamps.count }.by(-1)
       end
     end
@@ -78,11 +88,22 @@ RSpec.describe "Timestamps", type: :system do
       end
 
       it "タイムスタンプが表示されること" do
+        create(:timestamp, hour: 1, minute: 1, second: 1, start_time: 3661, bookmark: bookmark)
         visit bookmark_path(bookmark)
         expect(page).to have_selector "#timestamp-0"
       end
 
-      # タイムスタンプの編集・削除を実行するブックマーク編集ページは表示できないことをspec/system/bookmarks_spec.rbで確認しているためここでは省略
+      it "タイムスタンプの編集リンクが表示されないこと" do
+        create(:timestamp, hour: 1, minute: 1, second: 1, start_time: 3661, bookmark: bookmark)
+        visit bookmark_path(bookmark)
+        expect(page).to_not have_content "編集"
+      end
+
+      it "タイムスタンプの削除リンクが表示されないこと" do
+        create(:timestamp, hour: 1, minute: 1, second: 1, start_time: 3661, bookmark: bookmark)
+        visit bookmark_path(bookmark)
+        expect(page).to_not have_content "削除"
+      end
     end
   end
 
@@ -93,10 +114,21 @@ RSpec.describe "Timestamps", type: :system do
     end
 
     it "タイムスタンプが表示されること" do
+      create(:timestamp, hour: 1, minute: 1, second: 1, start_time: 3661, bookmark: bookmark)
       visit bookmark_path(bookmark)
       expect(page).to have_selector "#timestamp-0"
     end
 
-    # タイムスタンプの編集・削除を実行するブックマーク編集ページは表示できないことをspec/system/bookmarks_spec.rbで確認しているためここでは省略
+    it "タイムスタンプの編集リンクが表示されないこと" do
+      create(:timestamp, hour: 1, minute: 1, second: 1, start_time: 3661, bookmark: bookmark)
+      visit bookmark_path(bookmark)
+      expect(page).to_not have_content "編集"
+    end
+
+    it "タイムスタンプの削除リンクが表示されないこと" do
+      create(:timestamp, hour: 1, minute: 1, second: 1, start_time: 3661, bookmark: bookmark)
+      visit bookmark_path(bookmark)
+      expect(page).to_not have_content "削除"
+    end
   end
 end

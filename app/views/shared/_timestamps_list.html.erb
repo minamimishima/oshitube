@@ -1,4 +1,14 @@
-<tr>
-  <td><button class="timestamps__button btn text-nowrap me-2" id="<%= "timestamp-#{timestamps.index(timestamp)}" %>"><%= timestamp.hour %> : <%= timestamp.minute %> : <%= timestamp.second %></button></td>
-  <td><%= timestamp.comment %></td>
-</tr>
+<%= turbo_frame_tag timestamp do %>
+  <div class="bookmark-show__timestamps-list my-2">
+    <table class="timestamps-table timestamps-table-<%= "#{timestamps.index(timestamp)}" %>">
+      <tr>
+        <td class="timestamps__td1"><button class="timestamps__button btn text-nowrap me-2" id="<%= "timestamp-#{timestamps.index(timestamp)}" %>"><%= timestamp.hour %> : <%= timestamp.minute %> : <%= timestamp.second %></button></td>
+        <td class="timestamps__td2"><%= timestamp.comment %></td>
+        <% if user.present? && timestamp.bookmark.user_id == user.id %>
+          <td class="timestamps__td3"><%= link_to "編集", edit_timestamp_path(timestamp) %></td>
+          <td class="timestamps__td4"><%= link_to "削除", timestamp_path(timestamp), data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" }  %></td>
+        <% end %>
+      </tr>
+    </table>
+  </div>
+<% end %>

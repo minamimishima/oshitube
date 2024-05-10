@@ -12,9 +12,9 @@ Rails.application.routes.draw do
   patch "users/withdrawal", to: "users#withdrawal"
 
   resources :users, only: [:show]
-  resources :categories, only: [:new, :create, :show, :update, :destroy]
+  resources :categories, except: [:index]
   resources :bookmarks
-  resources :timestamps, only: [:create]
+  resources :timestamps, only: [:create, :show, :edit, :update, :destroy]
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

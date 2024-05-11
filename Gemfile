@@ -77,6 +77,7 @@ group :development do
 
   gem 'rubocop',  '~> 1.32.0'
   gem 'rubocop-airbnb', '~> 6.0'
+  gem "brakeman"
 end
 
 group :test do

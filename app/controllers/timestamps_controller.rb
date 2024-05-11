@@ -6,8 +6,8 @@ class TimestampsController < ApplicationController
   def create
     @timestamp = Timestamp.new(timestamp_params)
     @bookmark = @timestamp.bookmark
-    if @timestamp.valid? && @timestamp.bookmark.user_id == @user.id
-      @timestamp.start_time = @timestamp.calculate_start_time
+    if @timestamp.valid? && @bookmark.user_id == @user.id
+      @timestamp.start_time = @timestamp.calculate_start_time(timestamp_params)
       @timestamp.save
       flash[:notice] = "登録完了しました"
       redirect_to bookmark_path(@timestamp.bookmark)
@@ -29,10 +29,7 @@ class TimestampsController < ApplicationController
     @timestamp = Timestamp.find(params[:id])
     @bookmark = @timestamp.bookmark
     new_params = timestamp_params
-    new_params[:start_time] =
-      new_params[:hour].to_i * 3600 +
-      new_params[:minute].to_i * 60 +
-      new_params[:second].to_i
+    @timestamp.start_time = @timestamp.calculate_start_time(new_params)
     if @timestamp.update(new_params)
       flash[:notice] = "タイムスタンプを編集しました"
       redirect_to bookmark_path(@bookmark)

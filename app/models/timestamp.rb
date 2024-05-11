@@ -10,8 +10,11 @@ class Timestamp < ApplicationRecord
   validate :bookmark_has_ten_or_less_timestamps_create, on: :create
   validate :bookmark_has_ten_or_less_timestamps_update, on: :update
 
-  def calculate_start_time
-    hour * 3600 + minute * 60 + second
+  def calculate_start_time(params)
+    params[:start_time] =
+      params[:hour].to_i * 3600 +
+      params[:minute].to_i * 60 +
+      params[:second].to_i
   end
 
   private

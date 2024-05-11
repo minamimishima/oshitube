@@ -35,12 +35,14 @@ class BookmarksController < ApplicationController
         @timestamp = Timestamp.new
         gon.video_id = @bookmark.video_id
         gon.start_time_list = @bookmark.timestamps.sort_by(&:start_time).pluck(:start_time)
+        gon.max_index = @bookmark.timestamps.size - 1
       end
     else
       if @bookmark.is_public == true
         @timestamp = Timestamp.new
         gon.video_id = @bookmark.video_id
         gon.start_time_list = @bookmark.timestamps.sort_by(&:start_time).pluck(:start_time)
+        gon.max_index = @bookmark.timestamps.size - 1
       else
         redirect_to root_path
       end

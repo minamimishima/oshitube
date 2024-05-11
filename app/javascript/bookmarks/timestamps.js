@@ -9,19 +9,19 @@ function jumpToStartTime (i) {
 }
 
 document.addEventListener('turbo:render', function() {
-  for (let i = 0; i <= 9; i++) {
+  for (let i = 0; i <= gon.max_index; i++) {
     jumpToStartTime(i);
   }
 });
 
 document.addEventListener('turbo:load', function() {
-  for (let i = 0; i <= 9; i++) {
+  for (let i = 0; i <= gon.max_index; i++) {
     jumpToStartTime(i);
   }
 });
 
 document.addEventListener('turbo:frame-render', function() {
-  for (let i = 0; i <= 9; i++) {
+  for (let i = 0; i <= gon.max_index; i++) {
     jumpToStartTime(i);
   }
 });

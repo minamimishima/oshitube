@@ -67,7 +67,7 @@ RSpec.describe Bookmark, type: :model do
         end
       end
 
-      it "動画URLの動画ID部分が11桁より短い場合はnilを返すこと" do
+      it "動画URLの動画ID部分が11桁より短い場合はURLをそのまま返すこと" do
         urls = [
           "https://www.youtube.com/watch?v=#{video_id.chop}",
           "https://youtu.be/#{video_id.chop}",
@@ -76,14 +76,14 @@ RSpec.describe Bookmark, type: :model do
         ]
         aggregate_failures do
           urls.each do |url|
-            expect(bookmark.extract_video_url(url)).to eq nil
+            expect(bookmark.extract_video_url(url)).to eq url
           end
         end
       end
 
-      it "正規表現と一致しないURLの場合はnilを返すこと" do
+      it "正規表現と一致しないURLの場合はURLをそのまま返すこと" do
         url = Faker::Internet.url
-        expect(bookmark.extract_video_url(url)).to eq nil
+        expect(bookmark.extract_video_url(url)).to eq url
       end
     end
 

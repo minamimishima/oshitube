@@ -58,10 +58,9 @@ class BookmarksController < ApplicationController
       flash[:notice] = "編集完了しました"
       redirect_to bookmark_path(@bookmark.id)
     else
-      flash[:edit_error_message] = "入力内容を確認してください"
-      @bookmark = Bookmark.find(params[:id])
-      # URLがバリデーションエラーになった場合、extract_video_url, extract_video_idメソッドでURL・動画IDがnilになってしまい
-      # renderされたeditページで動画フレーム・URL入力欄が空欄になってしまって編集しづらいため編集前のデータを設定
+      @bookmark.video_id = Bookmark.find(params[:id]).video_id
+      # URLが不正な値の場合、extract_video_methodの返り値がnilになり動画フレームが表示されない
+      # 編集前の動画フレームを表示するためvideo_idの値を設定
       render 'edit', status: :unprocessable_entity
     end
   end

@@ -6,11 +6,12 @@ class Bookmark < ApplicationRecord
 
   accepts_nested_attributes_for :categories, reject_if: lambda { |attributes| attributes['name'].blank? }
 
-  validates :url, presence: true
+  YOUTUBE_URL_PATTERN = /((?:https:\/\/www\.youtube\.com(?:\/embed\/|\/watch\?v=)|https:\/\/youtu\.be\/|https:\/\/m\.youtube\.com\/watch\?v=)([\w-]{11}))/
+  validates :url,
+    presence: true,
+    format: { with: YOUTUBE_URL_PATTERN }
   validates :video_id, length: { is: 11, allow_blank: true }
   validates :description, length: { maximum: 300 }
-
-  YOUTUBE_URL_PATTERN = /((?:https:\/\/www\.youtube\.com(?:\/embed\/|\/watch\?v=)|https:\/\/youtu\.be\/|https:\/\/m\.youtube\.com\/watch\?v=)([\w-]{11}))/
 
   def set_new_params(params)
     new_params = params
@@ -21,7 +22,7 @@ class Bookmark < ApplicationRecord
 
   def extract_video_url(url)
     match = url&.match(YOUTUBE_URL_PATTERN)
-    match ? match[1] : nil
+    match ? match[1] : url
   end
 
   def extract_video_id(url)

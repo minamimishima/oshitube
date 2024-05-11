@@ -135,19 +135,5 @@ RSpec.describe Bookmark, type: :model do
         expect(bookmark.extract_video_id(url)).to eq nil
       end
     end
-
-    describe "calculate_start_timeの検証" do
-      it "timestamps_attributesからstart_timeを計算して返すこと" do
-        params = {
-          url: "https://www.youtube.com/watch?v=#{video_id}",
-          video_id: "#{video_id}",
-          timestamps_attributes: {
-            "0" => { hour: 1, minute: 1, second: 1 },
-          },
-        }
-        new_params = bookmark.calculate_start_time(params)
-        expect(new_params[:timestamps_attributes]["0"][:start_time]).to eq 3661
-      end
-    end
   end
 end

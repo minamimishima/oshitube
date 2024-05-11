@@ -18,9 +18,10 @@ RSpec.describe Timestamp, type: :model do
 
   describe "インスタンスメソッドの検証" do
     describe "calculate_start_timeの検証" do
-      it "登録されたhour, minute, secondの値からstart_timeを正しく計算できること" do
-        timestamp = build(:timestamp, bookmark: bookmark)
-        expect(timestamp.calculate_start_time).to eq 3661
+      it "hour, minute, secondの値からstart_timeを正しく計算できること" do
+        timestamp = build(:timestamp)
+        timestamp_params = { hour: 1, minute: 1, second: 1 }
+        expect(timestamp.calculate_start_time(timestamp_params)).to eq 3661
       end
     end
   end

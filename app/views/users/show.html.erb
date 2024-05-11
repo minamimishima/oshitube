@@ -22,7 +22,7 @@
         <% if @user.bookmarks.where(is_public: true).present? %>
           <div id="bookmark__row" class="row d-flex justify-content-center align-items-start">
             <%= render partial: 'shared/bookmark', collection: @user.bookmarks.where(is_public: true).order(created_at: "DESC").page(params[:page]), as: :bookmark %>
-            <%= paginate @bookmarks, theme: 'bootstrap-5' %>
+            <%= paginate @user.bookmarks.where(is_public: true).order(created_at: "DESC").page(params[:page]), theme: 'bootstrap-5' %>
           </div>
         <% end %>
       <% end %>

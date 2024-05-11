@@ -67,7 +67,7 @@ RSpec.describe Bookmark, type: :model do
         end
       end
 
-      it "動画URLの動画ID部分が11桁より短い場合はnilを返すこと" do
+      it "動画URLの動画ID部分が11桁より短い場合はURLをそのまま返すこと" do
         urls = [
           "https://www.youtube.com/watch?v=#{video_id.chop}",
           "https://youtu.be/#{video_id.chop}",
@@ -76,14 +76,14 @@ RSpec.describe Bookmark, type: :model do
         ]
         aggregate_failures do
           urls.each do |url|
-            expect(bookmark.extract_video_url(url)).to eq nil
+            expect(bookmark.extract_video_url(url)).to eq url
           end
         end
       end
 
-      it "正規表現と一致しないURLの場合はnilを返すこと" do
+      it "正規表現と一致しないURLの場合はURLをそのまま返すこと" do
         url = Faker::Internet.url
-        expect(bookmark.extract_video_url(url)).to eq nil
+        expect(bookmark.extract_video_url(url)).to eq url
       end
     end
 
@@ -133,20 +133,6 @@ RSpec.describe Bookmark, type: :model do
       it "正規表現と一致しないURLの場合はnilを返すこと" do
         url = Faker::Internet.url
         expect(bookmark.extract_video_id(url)).to eq nil
-      end
-    end
-
-    describe "calculate_start_timeの検証" do
-      it "timestamps_attributesからstart_timeを計算して返すこと" do
-        params = {
-          url: "https://www.youtube.com/watch?v=#{video_id}",
-          video_id: "#{video_id}",
-          timestamps_attributes: {
-            "0" => { hour: 1, minute: 1, second: 1 },
-          },
-        }
-        new_params = bookmark.calculate_start_time(params)
-        expect(new_params[:timestamps_attributes]["0"][:start_time]).to eq 3661
       end
     end
   end

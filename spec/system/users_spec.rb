@@ -3,6 +3,16 @@ require 'rails_helper'
 RSpec.describe "Users", type: :system do
   let(:user) { create(:user) }
 
+  it "おすすめ動画として公開している動画のみ表示されること" do
+    bookmark1 = create(:bookmark, is_public: true, user: user)
+    bookmark2 = create(:bookmark, is_public: false, user: user)
+    visit user_path(user)
+    aggregate_failures do
+      expect(page).to have_selector ".bookmark-#{bookmark1.id}"
+      expect(page).to_not have_selector ".bookmark-#{bookmark2.id}"
+    end
+  end
+
   context "ログインしている状態" do
     before do
       login_as(user, :scope => :user)

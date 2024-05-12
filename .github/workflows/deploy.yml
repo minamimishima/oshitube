@@ -88,7 +88,7 @@ jobs:
           gem install bundler
           bundle install 
 
-      - name: Run brakeman
+      - name: Run Brakeman
         run: bundle exec brakeman
 
 
@@ -110,7 +110,7 @@ jobs:
           gem install bundler
           bundle install 
 
-      - name: Run brakeman
+      - name: Run ERB Lint
         run: bundle exec erblint --lint-all
 
 

@@ -4,21 +4,26 @@
   <div id="password-edit__row" class="row justify-content-center align-items-center">
     <div id="password-edit__column" class="col-lg-6 col-md-8">
       <div id="password-edit__box">
-      
-        <%= form_with model: @user, id: "password-edit__form", class: "form", url: user_password_path, method: :patch, data: { turbo: false } do |f| %>
+
+        <%= form_with model: @user,
+                      id: "password-edit__form",
+                      class: "form",
+                      url: user_password_path,
+                      method: :patch,
+                      data: { turbo: false } do |f| %>
           <%= render "devise/shared/error_messages", resource: resource %>
           <%= f.hidden_field :reset_password_token %>
-        
+
           <div class="password-edit__form-group mb-3">
-            <%= f.label :password, "新しいパスワード" %><br />
+            <%= f.label :password, "新しいパスワード" %>
             <%= f.password_field :password, class: "form-control", autofocus: true %>
           </div>
-        
+
           <div class="password-edit__form-group mb-3">
-            <%= f.label :password_confirmation, "パスワード（確認）" %><br />
+            <%= f.label :password_confirmation, "パスワード（確認）" %>
             <%= f.password_field :password_confirmation, class: "form-control" %>
           </div>
-        
+
           <div class="password-edit__form-group mb-3">
             <%= f.submit "パスワードを変更する", class: "btn mt-2 mb-1 password-edit__button" %>
           </div>

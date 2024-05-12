@@ -70,9 +70,53 @@ jobs:
         run: bundle exec rubocop --require rubocop-airbnb
 
 
+  brakeman:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.2.3
+          bundler-cache: true
+
+      - name: Bundler and gem install
+        run: |
+          gem install bundler
+          bundle install 
+
+      - name: Run brakeman
+        run: bundle exec brakeman
+
+
+  erblint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.2.3
+          bundler-cache: true
+
+      - name: Bundler and gem install
+        run: |
+          gem install bundler
+          bundle install 
+
+      - name: Run brakeman
+        run: bundle exec erblint --lint-all
+
+
   deploy:
     runs-on: ubuntu-latest
-    needs: [rspec, rubocop-airbnb]
+    needs: [rspec, rubocop-airbnb, brakeman, erblint]
     steps:
       - name: Checkout code
         uses: actions/checkout@v4

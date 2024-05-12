@@ -6,7 +6,7 @@ class Bookmark < ApplicationRecord
 
   accepts_nested_attributes_for :categories, reject_if: lambda { |attributes| attributes['name'].blank? }
 
-  YOUTUBE_URL_PATTERN = /((?:https:\/\/www\.youtube\.com(?:\/embed\/|\/watch\?v=)|https:\/\/youtu\.be\/|https:\/\/m\.youtube\.com\/watch\?v=)([\w-]{11}))/
+  YOUTUBE_URL_PATTERN = /\A((?:https:\/\/www\.youtube\.com(?:\/embed\/|\/watch\?v=)|https:\/\/youtu\.be\/|https:\/\/m\.youtube\.com\/watch\?v=)([\w-]{11})).*\z/
   validates :url,
     presence: true,
     format: { with: YOUTUBE_URL_PATTERN }

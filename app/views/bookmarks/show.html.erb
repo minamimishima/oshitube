@@ -29,12 +29,17 @@
         <%= @bookmark.description %>
       </div>
 
-      <%= render partial: 'shared/timestamps_list', collection: @bookmark.timestamps.sort_by(&:start_time), as: :timestamp, locals: { timestamps: @bookmark.timestamps.sort_by(&:start_time), user: @user } %>
-      
+      <%= render partial: 'shared/timestamps_list',
+                 collection: @bookmark.timestamps.sort_by(&:start_time),
+                 as: :timestamp,
+                 locals: { timestamps: @bookmark.timestamps.sort_by(&:start_time), user: @user } %>
+
       <% if @user.present? && @bookmark.user_id == @user.id %>
         <%= render 'shared/timestamps_new', { timestamp: @timestamp, bookmark: @bookmark } %>
         <div class="bookmark-show__link mt-2">
-          <%= link_to "編集", edit_bookmark_path(@bookmark) %> / <%= link_to "削除", bookmark_path(@bookmark), data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" } %>
+          <%= link_to "編集", edit_bookmark_path(@bookmark) %> / <%= link_to "削除",
+                                                                     bookmark_path(@bookmark),
+                                                                     data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" } %>
         </div>
       <% end %>
 

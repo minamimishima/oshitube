@@ -1,7 +1,13 @@
 <div id="bookmark__column" class="col-xl-6">
   <ul class="bookmark__list bookmark-<%= bookmark.id %> list-group my-4">
-    <li class="list-group-item text-center pt-4"><%= image_tag video_thumbnail(bookmark.video_id), class: "bookmark__video-thumbnail" %></li>
-    <li class="list-group-item"><%= link_to video_title(bookmark.video_id), bookmark_path(bookmark.id), class: "bookmark__video-title" %></li>
-    <li class="list-group-item pb-4"><%= bookmark.description %></li>
+    <li class="list-group-item text-center pt-4">
+      <%= image_tag video_thumbnail(bookmark.video_id), class: "bookmark__video-thumbnail" %>
+    </li>
+    <li class="list-group-item">
+      <%= link_to video_title(bookmark.video_id), bookmark_path(bookmark.id), class: "bookmark__video-title" %>
+    </li>
+    <li class="list-group-item pb-4">
+      <%= bookmark.description %>
+    </li>
   </ul>
 </div>

@@ -7,12 +7,12 @@
 
         <%= form_with model: @user, id: "password-new__form", class: "form", url: user_password_path do |f| %>
           <%= render "devise/shared/error_messages", resource: resource %>
-      
+
           <div class="password-new__form-group mb-3">
             <%= f.label :email, "メールアドレス" %>
             <%= f.email_field :email, class: "form-control", autofocus: true %>
-          </div> 
-          
+          </div>
+
           <div class="password-new__form-group mb-3">
             <%= f.submit "パスワード再設定メールを送信", class: "btn mt-2 mb-1 password-new__button" %>
           </div>

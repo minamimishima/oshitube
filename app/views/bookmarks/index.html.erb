@@ -1,14 +1,16 @@
 <% content_for(:title, "ブックマーク一覧") %>
 <%= turbo_page_requires_reload %>
 <div id="bookmark-index" class="container">
-  <h1 class="text-center mt-3 mb-4">ブックマーク一覧</h1>
+  <h1 class="text-center mt-3">ブックマーク一覧</h1>
   <div id="bookmark-index__row" class="row justify-content-center align-items-center">
     <div id="bookmark-index__column" class="col-md-10">
-      <%= render 'shared/categories', { categories: @user.categories } %>
-
       <%= turbo_frame_tag @category do %>
-        <%= link_to "作成", new_category_path, class: "d-block text-center" %>
+        <%= link_to new_category_path, class: "d-block text-center mb-4" do %>
+        <i class="bi bi-pencil-fill"></i> カテゴリー作成
+        <% end %>
       <% end %>
+
+      <%= render 'shared/categories', { categories: @user.categories } %>
 
       <%= turbo_frame_tag "bookmarks-list", autoscroll: true, data: { autoscroll_block: "start" } do %>
         <div id="bookmark__row" class="row d-flex justify-content-center align-items-start">

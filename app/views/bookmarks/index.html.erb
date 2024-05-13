@@ -6,7 +6,7 @@
     <div id="bookmark-index__column" class="col-md-10">
       <%= turbo_frame_tag @category do %>
         <%= link_to new_category_path, class: "d-block text-center mb-4" do %>
-        <i class="bi bi-pencil-fill"></i> カテゴリー作成
+        <i class="bi bi-plus-lg" aria-hidden="true"></i> カテゴリー作成
         <% end %>
       <% end %>
 

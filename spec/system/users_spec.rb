@@ -70,7 +70,9 @@ RSpec.describe "Users", type: :system do
 
       it "ログアウトできること" do
         visit root_path
-        click_on "ログアウト"
+        within ".header__dropdown--pc" do
+          click_on "ログアウト"
+        end
         expect(page).to have_selector ".notice", text: "ログアウトしました。"
       end
     end
@@ -101,12 +103,16 @@ RSpec.describe "Users", type: :system do
 
     context "ゲストユーザー自身に関する処理" do
       it "プロフィールを表示できること" do
-        click_on "プロフィール"
+        within ".header__dropdown--pc" do
+          click_on "プロフィール"
+        end
         expect(page).to have_content "ゲスト"
       end
 
       it "プロフィールは編集できないこと" do
-        click_on "プロフィール"
+        within ".header__dropdown--pc" do
+          click_on "プロフィール"
+        end
         click_on "プロフィール編集"
         fill_in "名前", with: "新しい名前"
         fill_in "プロフィール", with: "新しいプロフィール"
@@ -115,9 +121,9 @@ RSpec.describe "Users", type: :system do
       end
 
       it "退会できないこと", js: true do
-        click_on "メニュー"
-        expect(page).to have_content "プロフィール"
-        click_on "プロフィール"
+        within ".header__dropdown--pc" do
+          click_on "プロフィール"
+        end
         click_on "ユーザー情報変更"
         click_on "退会する"
         visit users_confirm_path
@@ -129,7 +135,9 @@ RSpec.describe "Users", type: :system do
 
       it "ログアウトできること" do
         visit root_path
-        click_on "ログアウト"
+        within ".header__dropdown--pc" do
+          click_on "ログアウト"
+        end
         expect(page).to have_selector ".notice", text: "ログアウトしました。"
       end
     end

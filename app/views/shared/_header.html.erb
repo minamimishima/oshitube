@@ -4,7 +4,16 @@
   </div>
 
   <% if user_signed_in? %>
-    <div class="header__dropdown dropdown">
+    <div class="header__dropdown--pc">
+      <%= link_to "ブックマーク登録", new_bookmark_path, class: "btn" %>
+      <%= link_to "ブックマーク一覧", bookmarks_path, class: "btn" %>
+      <%= link_to "プロフィール", user_path(user.id), class: "btn" %>
+      <%= link_to "ログアウト",
+        destroy_user_session_path,
+        method: :delete,
+        data: { turbo_method: :delete }, class: "btn" %>
+    </div>
+    <div class="header__dropdown--mobile dropdown">
       <a class="btn dropdown-toggle header__dropdown-menu-button shadow-sm" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
         <span>メニュー</span>
       </a>

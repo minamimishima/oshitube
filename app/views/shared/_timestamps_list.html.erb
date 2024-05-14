@@ -3,7 +3,7 @@
     <table class="timestamps-table timestamps-table-<%= "#{timestamps.index(timestamp)}" %>">
       <tr>
         <td class="timestamps__td1">
-          <button class="timestamps__button btn text-nowrap me-2" id="<%= "timestamp-#{timestamps.index(timestamp)}" %>">
+          <button class="timestamps__button btn shadow-sm text-nowrap me-2" id="<%= "timestamp-#{timestamps.index(timestamp)}" %>">
             <%= timestamp.hour %> : <%= timestamp.minute %> : <%= timestamp.second %>
           </button>
         </td>

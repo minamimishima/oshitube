@@ -31,7 +31,7 @@
                   <%= f.label :category, "カテゴリー", class: "d-block mb-1" %>
                   <%= f.collection_check_boxes(:category_ids, @user.categories, :id, :name) do |category| %>
                     <%= category.check_box class: "btn-check" %>
-                    <%= category.label class: "bookmark-edit__category-button btn" do %>
+                    <%= category.label class: "bookmark-edit__category-button btn shadow-sm" do %>
                       <%= category.text %>
                     <% end %>
                   <% end %>
@@ -54,7 +54,7 @@
             </div>
 
             <div class="bookmark-edit__form-group-action">
-              <%= f.submit "登録", class: "bookmark-edit__button btn mb-5" %>
+              <%= f.submit "登録", class: "bookmark-edit__button btn shadow-sm mb-5" %>
             </div>
           <% end %>
         </div>

@@ -5,7 +5,7 @@
 
   <% if user_signed_in? %>
     <div class="header__dropdown dropdown">
-      <a class="btn dropdown-toggle header__dropdown-menu-button" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+      <a class="btn dropdown-toggle header__dropdown-menu-button shadow-sm" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
         <span>メニュー</span>
       </a>
       <ul class="header__dropdown-menu dropdown-menu">
@@ -17,8 +17,8 @@
     </div>
   <% else %>
     <div class="header__link">
-      <%= link_to "新規登録", new_user_registration_path, class: "btn mx-1 header__registration-button" %>
-      <%= link_to "ログイン", new_user_session_path, class: "btn mx-1 header__login-button" %>
+      <%= link_to "新規登録", new_user_registration_path, class: "btn shadow-sm mx-1 header__registration-button" %>
+      <%= link_to "ログイン", new_user_session_path, class: "btn shadow-sm mx-1 header__login-button" %>
     </div>
   <% end %>
 </div>

@@ -2,9 +2,9 @@
   <div id="categories__column" class="col-md-6 text-center">
     <% if categories.present? %>
       <% categories.each do |category| %>
-        <%= link_to category.name, category_path(category), class: "categories__button btn mx-1 my-1" %>
+        <%= link_to category.name, category_path(category), class: "categories__button btn shadow-sm mx-1 my-1" %>
       <% end %>
     <% end %>
-    <%= link_to "すべてのブックマーク", bookmarks_path, class: "categories__button btn mx-1 my-1" %>
+    <%= link_to "すべてのブックマーク", bookmarks_path, class: "categories__button btn shadow-sm mx-1 my-1" %>
   </div>
 </div>

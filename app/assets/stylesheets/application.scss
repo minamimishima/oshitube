@@ -80,6 +80,17 @@ h1 {
   width: fit-content;
 }
 
+.dropdown-menu {
+  --bs-dropdown-border-color: #DFCDBA;
+  --bs-dropdown-min-width: 12rem
+}
+
+.dropdown-menu li:hover {
+  background-color: #F5EFE8;
+  border-color: #F5EFE8;
+  border-radius: 8px;
+}
+
 @media screen and (max-width: 834px) {
   .header {
     padding: 0 10px ;

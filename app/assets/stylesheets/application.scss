@@ -109,13 +109,6 @@ h1 {
     position: relative;
     z-index: 9999;
   }
-
-  .header__registration-button, .header__login-button {
-    --bs-btn-padding-y: 0.25rem;
-    --bs-btn-padding-x: 0.5rem;
-    --bs-btn-font-size: 0.875rem;
-    --bs-btn-border-radius: var(--bs-border-radius-sm);
-  }
 }
 
 /* deviseエラーメッセージ・エラーメッセージ */

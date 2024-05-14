@@ -12,12 +12,14 @@
         </td>
         <% if user.present? && timestamp.bookmark.user_id == user.id %>
           <td class="timestamps__td3">
-            <%= link_to edit_timestamp_path(timestamp) do %>
+            <%= link_to edit_timestamp_path(timestamp), class: "timestamp__edit-link" do %>
               <i class="bi bi-pencil-fill mx-1" aria-label="タイムスタンプの編集"></i>
             <% end %>
           </td>
           <td class="timestamps__td4">
-            <%= link_to timestamp_path(timestamp), data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" } do %>
+            <%= link_to timestamp_path(timestamp),
+                        class: "timestamp__delete-link",
+                        data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" } do %>
               <i class="bi bi-trash3-fill mx-1" aria-label="タイムスタンプの削除"></i>
             <% end %>
           </td>

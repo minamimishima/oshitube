@@ -1,0 +1,4 @@
+ja:
+  devise:
+    passwords:
+      send_instructions: "パスワード再設定用のメールを送信しました。"

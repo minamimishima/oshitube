@@ -136,7 +136,17 @@ h1 {
 
  /* ファーストビュー */
 .firstview-title {
-  text-align: center;
+  font-size: 28px;
+}
+
+.firstview__introduction {
+  width: fit-content;
+  margin-inline: auto;
+}
+
+.firstview__introduction .bi::before {
+  font-size: 1.5em;
+  color: #D39388;
 }
 
 /* ログイン・新規登録・プロフィール編集・ユーザー情報変更 */

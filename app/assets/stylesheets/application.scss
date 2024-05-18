@@ -139,12 +139,7 @@ h1 {
   font-size: 28px;
 }
 
-.firstview__introduction {
-  width: fit-content;
-  margin-inline: auto;
-}
-
-.firstview__introduction .bi::before {
+.firstview__introduction-container .bi::before {
   font-size: 1.5em;
   color: #D39388;
 }

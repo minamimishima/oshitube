@@ -144,6 +144,15 @@ h1 {
   color: #D39388;
 }
 
+.firstview__video-title {
+  font-size: 18px;
+}
+
+.firstview__introduction-table {
+  width: fit-content;
+  margin-inline: auto;
+}
+
 /* ログイン・新規登録・プロフィール編集・ユーザー情報変更 */
 #login__box,
 #registration__box,

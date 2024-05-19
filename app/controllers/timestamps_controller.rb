@@ -6,8 +6,8 @@ class TimestampsController < ApplicationController
   def create
     @timestamp = Timestamp.new(timestamp_params)
     @bookmark = @timestamp.bookmark
+    @timestamp.start_time = @timestamp.calculate_start_time(timestamp_params)
     if @timestamp.valid? && @bookmark.user_id == @user.id
-      @timestamp.start_time = @timestamp.calculate_start_time(timestamp_params)
       @timestamp.save
       flash[:notice] = "登録完了しました"
       redirect_to bookmark_path(@timestamp.bookmark)

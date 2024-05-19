@@ -24,43 +24,25 @@ RSpec.describe "Timestamps", type: :request do
     end
 
     it "他のユーザーのタイムスタンプは編集できないこと" do
-      params = {
-        url: bookmark.url,
-        description: bookmark.description,
-        timestamps_attributes: {
-          "0": {
-            id: timestamp.id,
-            bookmark_id: bookmark.id,
-            hour: 0,
-            minute: 0,
-            second: 0,
-            comment: "コメント",
-            _destroy: 0,
-          },
-        },
+      timestamp_params = {
+        bookmark_id: bookmark.id,
+        hour: 9,
+        minute: 9,
+        second: 9,
+        comment: "メモ",
       }
-      patch bookmark_path(bookmark), params: { bookmark: params }
-      expect(timestamp.reload.hour).to_not eq 0
+      patch bookmark_path(bookmark), params: { bookmark: timestamp_params }
+      aggregate_failures do
+        expect(timestamp.reload.hour).to_not eq 9
+        expect(timestamp.reload.second).to_not eq 9
+        expect(timestamp.reload.minute).to_not eq 9
+        expect(timestamp.reload.comment).to_not eq "メモ"
+      end
     end
 
     it "他のユーザーのタイムスタンプは削除できないこと" do
-      params = {
-        url: bookmark.url,
-        description: bookmark.description,
-        timestamps_attributes: {
-          "0": {
-            id: timestamp.id,
-            bookmark_id: bookmark.id,
-            hour: 0,
-            minute: 0,
-            second: 0,
-            comment: "コメント",
-            _destroy: 1,
-          },
-        },
-      }
       expect do
-        patch bookmark_path(bookmark), params: { bookmark: params }
+        delete bookmark_path(bookmark)
       end.to change { bookmark.timestamps.count }.by(0)
     end
   end
@@ -83,43 +65,25 @@ RSpec.describe "Timestamps", type: :request do
     end
 
     it "他のユーザーのタイムスタンプは編集できないこと" do
-      params = {
-        url: bookmark.url,
-        description: bookmark.description,
-        timestamps_attributes: {
-          "0": {
-            id: timestamp.id,
-            bookmark_id: bookmark.id,
-            hour: 0,
-            minute: 0,
-            second: 0,
-            comment: "コメント",
-            _destroy: 0,
-          },
-        },
+      timestamp_params = {
+        bookmark_id: bookmark.id,
+        hour: 9,
+        minute: 9,
+        second: 9,
+        comment: "メモ",
       }
-      patch bookmark_path(bookmark), params: { bookmark: params }
-      expect(timestamp.reload.hour).to_not eq 0
+      patch bookmark_path(bookmark), params: { bookmark: timestamp_params }
+      aggregate_failures do
+        expect(timestamp.reload.hour).to_not eq 9
+        expect(timestamp.reload.second).to_not eq 9
+        expect(timestamp.reload.minute).to_not eq 9
+        expect(timestamp.reload.comment).to_not eq "メモ"
+      end
     end
 
     it "他のユーザーのタイムスタンプは削除できないこと" do
-      params = {
-        url: bookmark.url,
-        description: bookmark.description,
-        timestamps_attributes: {
-          "0": {
-            id: timestamp.id,
-            bookmark_id: bookmark.id,
-            hour: 0,
-            minute: 0,
-            second: 0,
-            comment: "コメント",
-            _destroy: 1,
-          },
-        },
-      }
       expect do
-        patch bookmark_path(bookmark), params: { bookmark: params }
+        delete bookmark_path(bookmark)
       end.to change { bookmark.timestamps.count }.by(0)
     end
   end

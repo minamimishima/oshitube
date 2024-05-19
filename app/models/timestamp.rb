@@ -7,6 +7,7 @@ class Timestamp < ApplicationRecord
     validates :second
   end
   validates :comment, length: { maximum: 150 }
+  validates :start_time, uniqueness: { scope: :bookmark_id, message: "指定した時間のタイムスタンプはすでに登録されています" } # rubocop:disable Rails/UniqueValidationWithoutIndex
   validate :bookmark_has_ten_or_less_timestamps_create, on: :create
   validate :bookmark_has_ten_or_less_timestamps_update, on: :update
 

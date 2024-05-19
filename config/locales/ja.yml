@@ -31,6 +31,12 @@ ja:
         second: 秒
         start_time: 開始時間
         comment: メモ
+    errors:
+      models:
+        timestamp:
+          attributes:
+            start_time:
+              format: "%{message}"
   views:
     pagination:
       first: <i class="bi bi-chevron-double-left"></i>

@@ -1,7 +1,7 @@
 <% content_for(:title, @user.name) %>
 <div id="profile-show" class="container">
   <div id="profile-show__row" class="row justify-content-center align-items-center">
-    <div id="profile-show__column" class="col-md-10">
+    <div id="profile-show__column" class="col-md-10 mb-4">
       <div class="profile-show__user text-center mb-4">
         <% if @user.icon.present? %>
           <%= image_tag @user.icon, class: "profile-show__icon d-block mt-3 mb-1" %>

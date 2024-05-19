@@ -3,7 +3,7 @@
 <div id="categories-show" class="container">
   <h1 class="text-center mt-3"><%= @category.name %></h1>
   <div id="categories-show__row" class="row justify-content-center align-items-center">
-    <div id="categories-show__column" class="col-md-10">
+    <div id="categories-show__column" class="col-md-10 mb-4">
       <%= turbo_frame_tag @category do %>
         <div class="text-center mb-4">
           <%= link_to edit_category_path(@category), class: "category__edit-link" do %>

@@ -3,7 +3,7 @@
 <div id="bookmark-index" class="container">
   <h1 class="text-center mt-3">ブックマーク一覧</h1>
   <div id="bookmark-index__row" class="row justify-content-center align-items-center">
-    <div id="bookmark-index__column" class="col-md-10">
+    <div id="bookmark-index__column" class="col-md-10 mb-4">
       <%= turbo_frame_tag @category do %>
         <%= link_to new_category_path, class: "d-block text-center mb-4" do %>
         <i class="bi bi-plus-lg" aria-hidden="true"></i> カテゴリー作成

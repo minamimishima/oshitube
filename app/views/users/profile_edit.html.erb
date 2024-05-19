@@ -3,14 +3,7 @@
   <h1 class="text-center pt-4">プロフィール編集</h1>
   <div id="profile-edit__row" class="row justify-content-center align-items-center">
     <div id="profile-edit__column" class="col-lg-6 col-md-8">
-      <% if @user.errors.any? %>
-        <ul>
-          <% @user.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-      <% end %>
-
+      <%= render "shared/error_messages", obj: @user %>
       <div id="profile-edit__box">
         <%= form_with(model: @user, id: "profile-edit__form", class: "form", url: profile_edit_path, method: :post) do |f| %>
 

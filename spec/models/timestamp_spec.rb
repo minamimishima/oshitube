@@ -9,6 +9,7 @@ RSpec.describe Timestamp, type: :model do
       timestamp = build(:timestamp, bookmark_id: bookmark.id)
       expect(timestamp).to be_valid
     end
+
     it "既存のタイムスタンプが10件存在する場合は登録できないこと" do
       create_list(:timestamp, 10, bookmark: bookmark)
       timestamp = build(:timestamp, bookmark_id: bookmark.id)

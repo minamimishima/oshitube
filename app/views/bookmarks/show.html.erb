@@ -3,9 +3,6 @@
 <div id="bookmark-show" class="container mb-4">
   <div id="bookmark-show__row" class="row justify-content-center align-items-center">
     <div id="bookmark-show__column" class="col-lg-8 col-md-10 mb-4">
-
-      <%= render 'shared/error_messages', obj: @timestamp %>
-
       <div id="bookmark-video" class="ratio ratio-16x9">
         <iframe src="https://www.youtube.com/embed/<%= @bookmark.video_id %>" class="youtube-video-player" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
       </div>

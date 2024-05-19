@@ -2,7 +2,7 @@
   <div class="devise__error-messages my-3 text-center" data-turbo-cache="false">
     <ul>
       <% resource.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+        <li><i class="bi bi-exclamation-triangle"></i> <%= message %></li>
       <% end %>
     </ul>
   </div>

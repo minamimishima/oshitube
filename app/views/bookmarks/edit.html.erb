@@ -4,8 +4,8 @@
   <div id="bookmark-edit__row" class="row justify-content-center align-items-center">
     <div id="bookmark-edit__column" class="col-lg-8 col-md-10">
       <div class="bookmark-edit__video-container">
-        <div id="bookmark-video">
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= @bookmark.video_id %>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <div id="bookmark-video" class="ratio ratio-16x9">
+          <iframe src="https://www.youtube.com/embed/<%= @bookmark.video_id %>" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </div>
       </div>
 

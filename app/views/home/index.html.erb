@@ -41,13 +41,15 @@
             </table>
           </div>
         </div>
-        <div class="firstview__login d-grid gap-2 d-md-block">
-          <%= link_to "登録せずに使う（ゲストログイン）",
-                      users_guest_sign_in_path,
-                      data: { turbo_method: :post },
-                      class: "btn btn-light shadow-sm mx-2" %>
-          <%= link_to "新規登録", new_user_registration_path, class: "btn shadow-sm mx-1 header__registration-button mx-2" %>
-        </div>
+        <% unless user_signed_in? %>
+          <div class="firstview__login d-grid gap-2 d-md-block">
+            <%= link_to "登録せずに使う（ゲストログイン）",
+                        users_guest_sign_in_path,
+                        data: { turbo_method: :post },
+                        class: "btn btn-light shadow-sm mx-2" %>
+            <%= link_to "新規登録", new_user_registration_path, class: "btn shadow-sm mx-1 header__registration-button mx-2" %>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>

@@ -45,7 +45,7 @@ RSpec.describe "Timestamps", type: :system do
         timestamp = create(:timestamp, hour: 1, minute: 1, second: 1, start_time: 3661, bookmark: bookmark)
         visit bookmark_path(bookmark)
         within ".timestamps-table-0" do
-          click_on "編集"
+          find(".timestamp__edit-link").click
         end
         within ".timestamps-edit" do
           fill_in "時間", with: 2
@@ -67,7 +67,7 @@ RSpec.describe "Timestamps", type: :system do
           visit bookmark_path(bookmark)
           within ".timestamps-table-0" do
             page.accept_confirm do
-              click_on "削除"
+              find("i[aria-label='タイムスタンプの削除']").click
             end
           end
           find ".notice", text: "タイムスタンプを削除しました"

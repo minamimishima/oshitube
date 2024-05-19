@@ -4,3 +4,4 @@
 import "@hotwired/turbo-rails"
 import "controllers"
 import "bookmarks/timestamps"
+import "home/timestamps"

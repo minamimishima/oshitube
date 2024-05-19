@@ -2,16 +2,10 @@
   <div class="categories-edit__form-group text-center col-lg-4 col-sm-6">
     <%= form_with model: category do |f| %>
       <%= f.label :name, "カテゴリー名" %>
-      <div class="bookmark-edit__flash-message error-messages mt-3 text-center">
-        <%= flash[:edit_error_message] %>
-      </div>
+      <%= render 'shared/error_messages', obj: category %>
       <%= f.text_field :name, class: "form-control justify-content-center align-items-center" %>
       <%= f.hidden_field :user_id, value: user.id %>
-      <%= f.submit "編集", class: "categories-edit__button btn mt-1" %>
-      <%= link_to "削除",
-          category_path(category),
-          data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" },
-          class: "categories-edit__delete-button btn mt-1" %>
+      <%= f.submit "編集", class: "categories-edit__button btn shadow-sm mt-1" %>
     <% end %>
   </div>
 </div>

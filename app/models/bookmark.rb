@@ -9,7 +9,7 @@ class Bookmark < ApplicationRecord
   YOUTUBE_URL_PATTERN = /\A((?:https:\/\/www\.youtube\.com(?:\/embed\/|\/watch\?v=)|https:\/\/youtu\.be\/|https:\/\/m\.youtube\.com\/watch\?v=)([\w-]{11})).*\z/
   validates :url,
     presence: true,
-    format: { with: YOUTUBE_URL_PATTERN }
+    format: { with: YOUTUBE_URL_PATTERN, allow_blank: true }
   validates :video_id, length: { is: 11, allow_blank: true }
   validates :description, length: { maximum: 300 }
 

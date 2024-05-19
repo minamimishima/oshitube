@@ -15,10 +15,14 @@
  */
 @import "bootstrap";
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css");
+@import url('https://fonts.googleapis.com/css2?family=Murecho:wght@100..900&display=swap');
 
 body {
   color: #333333;
-  font-family: sans-serif;
+  font-family: "Murecho", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
 }
 
 a {
@@ -76,6 +80,29 @@ h1 {
   width: fit-content;
 }
 
+.dropdown-menu {
+  --bs-dropdown-border-color: #DFCDBA;
+  --bs-dropdown-min-width: 12rem
+}
+
+.dropdown-menu li:hover {
+  background-color: #F5EFE8;
+  border-color: #F5EFE8;
+  border-radius: 8px;
+}
+
+.header__dropdown--pc .btn:hover {
+  background-color: #F5EFE8;
+  border-color: #F5EFE8;
+  border-radius: 8px;
+}
+
+@media screen and (min-width: 835px) {
+  .header__dropdown--mobile {
+    display: none;
+  }
+}
+
 @media screen and (max-width: 834px) {
   .header {
     padding: 0 10px ;
@@ -86,20 +113,12 @@ h1 {
     position: fixed;
   }
 
+  .header__dropdown--pc {
+    display: none;
+  }
+
   .page__container {
     padding-top: 70px;
-  }
-
-  .header__dropdown__menu {
-    position: relative;
-    z-index: 9999;
-  }
-
-  .header__registration-button, .header__login-button {
-    --bs-btn-padding-y: 0.25rem;
-    --bs-btn-padding-x: 0.5rem;
-    --bs-btn-font-size: 0.875rem;
-    --bs-btn-border-radius: var(--bs-border-radius-sm);
   }
 }
 
@@ -117,7 +136,26 @@ h1 {
 
  /* ファーストビュー */
 .firstview-title {
-  text-align: center;
+  font-size: 28px;
+}
+
+.firstview__introduction-container .bi::before {
+  font-size: 1.5em;
+  color: #D39388;
+}
+
+.firstview__video-title {
+  font-size: 18px;
+}
+
+.firstview__introduction-table {
+  width: fit-content;
+  margin-inline: auto;
+}
+
+.firstview__login {
+  display: flex;
+  justify-content: center;
 }
 
 /* ログイン・新規登録・プロフィール編集・ユーザー情報変更 */
@@ -273,26 +311,12 @@ h1 {
 
 /* ブックマーク詳細 */
 #bookmark-video {
-  position: relative;
-  aspect-ratio: 16 / 9;
-  width: 100%;
   max-width: 856px;
   max-height: 482px;
-  margin-inline: auto;
-}
-
-#bookmark-video iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
 }
 
 @media screen and (max-width: 834px) {
   #bookmark-video {
-    aspect-ratio: 16 / 9;
-    width: 100%;
     max-width: 560px;
     max-height: 315px;
   }

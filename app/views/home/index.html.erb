@@ -1,4 +1,56 @@
-<div class="firstview-container container">
-  <h1 class="firstview-title">推しTube（仮）</h1>
-  <%= button_to "ゲストログイン", users_guest_sign_in_path, data: { turbo_method: :post }, class: "btn btn-light" %>
+<div id="firstview" class="container px-4 mb-4">
+  <h1 class="firstview-title text-center mb-5">推しTube</h1>
+  <div id="firstview__row" class="row justify-content-center align-items-center">
+    <div id="firstview__column" class="col-lg-6 col-md-8 mb-4">
+      <div class="firstview__introduction-container text-center lh-base">
+        <div class="firstview__introduction-text mb-5">
+          推しTubeは<span class="fw-semibold">時間指定のできるYouTubeブックマーク</span>です。<br>
+          動画URLと再生を開始したい時間を登録すれば、<br>
+          ボタン1つで見たい時間から何度でも再生できます。<br>
+          <br>
+          <span class="lh-lg">
+            <i class="bi bi-check-lg"></i> 推しのこの瞬間を何度でも見たい！<br>
+            <i class="bi bi-check-lg"></i> この曲のサビの部分を何度でも見たい！<br>
+            <i class="bi bi-check-lg"></i> 勉強中にこの動画のこの部分を何度も見て復習したい！<br>
+          </span>
+          <br>
+          そんなときにぜひご活用ください！
+        </div>
+        <div class="firstview__introduction">
+          <div class="firstview__video-title fw-semibold mb-1">
+            推しTubeの使い方<br>
+            （音量にご注意ください）
+          </div>
+          <div id="firstview-video" class="ratio ratio-16x9 mb-2">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/Tkr-itfalqw?si=FddAGxwCAOJHnSTt" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
+          <div class="firstview__introduction-table mb-5">
+            <table>
+              <tr>
+                <td><button id="firstview-button0" class="btn timestamps__button shadow-sm me-4 my-1">0:0:8</button></td>
+                <td> ブックマーク登録</td>
+              </tr>
+              <tr>
+                <td><button id="firstview-button1" class="btn timestamps__button shadow-sm me-4 my-1">0:0:32</button></td>
+                <td> タイムスタンプ登録</td>
+              </tr>
+              <tr>
+                <td><button id="firstview-button2" class="btn timestamps__button shadow-sm me-4 my-1">0:0:55</button></td>
+                <td> カテゴリー作成・登録</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <% unless user_signed_in? %>
+          <div class="firstview__login d-grid gap-2 d-md-block">
+            <%= link_to "登録せずに使う（ゲストログイン）",
+                        users_guest_sign_in_path,
+                        data: { turbo_method: :post },
+                        class: "btn btn-light shadow-sm mx-2" %>
+            <%= link_to "新規登録", new_user_registration_path, class: "btn shadow-sm mx-1 header__registration-button mx-2" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>

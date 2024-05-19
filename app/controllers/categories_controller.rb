@@ -34,14 +34,7 @@ class CategoriesController < ApplicationController
       flash[:notice] = "カテゴリー名を編集しました"
       redirect_to category_path(@category)
     else
-      @category = Category.find(params[:id])
-      # カテゴリー名がバリデーションエラーになった場合（blankの場合）、renderされたshowページで
-      # カテゴリー名が表示されないため編集前のデータを設定
-      @categories = @user.categories
-      # renderされたshowページでカテゴリー一覧が表示できるようインスタンス変数を設定
-      flash[:edit_error_message] = "カテゴリー名を入力してください"
-      # @categoryを設定したことでエラーメッセージが表示されなくなるためフラッシュメッセージでエラーを通知
-      render 'categories/show', status: :unprocessable_entity
+      render 'edit', status: :unprocessable_entity
     end
   end
 

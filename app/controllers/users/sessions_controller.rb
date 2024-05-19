@@ -4,7 +4,7 @@ class Users::SessionsController < Devise::SessionsController
   def guest_sign_in
     user = User.guest
     sign_in user
-    redirect_to root_path
+    redirect_to bookmarks_path
     flash[:notice] = "ゲストユーザーとしてログインしました"
   end
 
@@ -19,5 +19,9 @@ class Users::SessionsController < Devise::SessionsController
       flash[:notice] = "ユーザーが見つかりません"
       redirect_to new_user_registration_path
     end
+  end
+
+  def after_sign_in_path_for(resource)
+    bookmarks_path
   end
 end

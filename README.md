@@ -1,24 +1,49 @@
-# README
+# 推しTube
+推しTubeは「時間指定のできるYouTubeブックマーク」です。<br>
+動画URLと再生を開始したい時間を登録すればボタン1つで好きなタイミングから何度でも再生できます。
+<br>
+<br>
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# サービスURL
+https://oshitube-d4f71351453c.herokuapp.com
+<br>
+<br>
 
-Things you may want to cover:
+# 開発背景
+私はアイドルやお笑いが好きでよくYouTubeを見るのですが、<br>
+<b>「この曲のこの瞬間が好きで何度でも見たい！」</b><br>
+<b>「○分○秒から好きな芸人さんのネタが始まるからそのタイミングから再生したい！」</b><br>
+と思うことがよくあります。<br>
+<br>
+コメント欄に開始時間を記入すればリンクが作成されるのですが、公開されるものではなく個人的に管理できるサービスがあれば…と以前から感じていました。<br>
+プログラミングの学習を始め、アプリケーションの作成方法を学ぶ中で自分で作ることができるのでは、と思いポートフォリオとして作成することにしました。
+<br>
+<br>
 
-* Ruby version
+# 機能紹介
+- ブックマーク登録機能
+- タイムスタンプ登録機能
+- カテゴリー作成・分類機能
+- ブックマークの公開・非公開の設定
+<br>
 
-* System dependencies
+# 使用技術
+| カテゴリ | 技術 |
+| ---- | ---- |
+| バックエンド | Ruby 3.2.3 / Rails 7.1.3 |
+| フロントエンド | Hotwire / Bootstrap |
+| データベース | PostgreSQL |
+| 環境構築 | Docker |
+| CI/CD | GitHub Actions |
+| インフラ | Heroku / Amazon S3 |
+| コード解析・リンター | Rubocop / ERB Lint / Brakeman |
+| テストフレームワーク | RSpec |
+| 認証 | devise |
+<br>
+<br>
 
-* Configuration
+# ER図
+<br>
+<br>
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# インフラ構成図

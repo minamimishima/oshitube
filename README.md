@@ -33,6 +33,14 @@ https://oshitube-d4f71351453c.herokuapp.com
 - ブックマークの公開・非公開の設定
 <br>
 
+# 使用イメージ<br>
+ブックマーク登録・タイムスタンプ登録の流れです。<br>
+タイムスタンプを登録するとボタンが作成され、クリックすることで指定した時間から動画を再生することができます。<br>
+
+https://github.com/minamimishima/oshitube/assets/146907532/3affc4f6-848b-4ada-bd57-1e1a30503a98
+
+<br>
+
 # 使用技術
 | カテゴリ | 技術 |
 | ---- | ---- |

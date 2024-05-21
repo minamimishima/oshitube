@@ -37,7 +37,7 @@ https://oshitube-d4f71351453c.herokuapp.com
 ブックマーク登録・タイムスタンプ登録の流れです。<br>
 タイムスタンプを登録するとボタンが作成され、クリックすることで指定した時間から動画を再生することができます。<br>
 
-https://github.com/minamimishima/oshitube/assets/146907532/3affc4f6-848b-4ada-bd57-1e1a30503a98
+https://github.com/minamimishima/oshitube/assets/146907532/52209b75-a9f8-4e8f-9a19-22906c8afa7d
 
 <br>
 

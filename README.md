@@ -43,7 +43,9 @@ https://oshitube-d4f71351453c.herokuapp.com
 <br>
 
 # ER図
+![ER図_resize](https://github.com/minamimishima/oshitube/assets/146907532/30a2f0ea-b506-4af2-847a-d2d0b9d84a58)
 <br>
 <br>
 
 # インフラ構成図
+![インフラ構成図_resize](https://github.com/minamimishima/oshitube/assets/146907532/877fb547-e5da-48dc-935c-c12eb26b019a)

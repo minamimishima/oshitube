@@ -38,6 +38,7 @@ https://oshitube-d4f71351453c.herokuapp.com
 | インフラ | Heroku / Amazon S3 |
 | コード解析・リンター | Rubocop / ERB Lint / Brakeman |
 | テストフレームワーク | RSpec |
+| API | YouTube Data API v3 |
 | 認証 | devise |
 <br>
 <br>

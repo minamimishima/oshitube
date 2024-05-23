@@ -17,12 +17,8 @@ ja:
         video_id: 動画ID
         description: 動画メモ
         is_public: 公開設定
-      bookmark/timestamps:
-        hour: 時間
-        minute: 分
-        second: 秒
-        start_time: 開始時間
-        comment: メモ
+      bookmark/categories:
+        name: カテゴリー名
       category:
         name: カテゴリー名
       timestamp:

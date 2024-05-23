@@ -20,7 +20,7 @@ class User < ApplicationRecord
   validates :password,
     presence: { if: :password_required? },
     confirmation: { if: :password_required? },
-    length: { within: 8..30, if: :password_required? }
+    length: { within: 8..30, if: :password_required?, allow_blank: true }
   validates :name, presence: true
   validates :profile, length: { maximum: 300 }
 

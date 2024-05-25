@@ -22,9 +22,17 @@
         </div>
       </div>
 
-      <div class="bookmark-show__description mb-3">
+      <div class="bookmark-show__description mb-2">
         <%= @bookmark.description %>
       </div>
+
+      <% if @user.present? && @bookmark.user_id == @user.id %>
+        <% if @bookmark.is_public == true %>
+          <div class="bookmark-show__recommendation mb-3">
+            <i class="bi bi-chat-heart"></i>おすすめ動画として公開中
+          </div>
+        <% end %>
+      <% end %>
 
       <%= render partial: 'shared/timestamps_list',
                  collection: @bookmark.timestamps.sort_by(&:start_time),

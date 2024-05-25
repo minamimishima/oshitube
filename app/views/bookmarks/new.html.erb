@@ -15,7 +15,7 @@
           </div>
 
           <div class="bookmark-new__form-group mb-3">
-            <%= f.label :description, "動画メモ" %>
+            <%= f.label :description, "動画メモ" %> <span class="validation">※300文字以内</span>
             <%= f.text_area :description, class: "form-control" %>
           </div>
 
@@ -34,7 +34,7 @@
 
           <div class="bookmark-new__form-group col-lg-6 mb-3">
             <%= f.fields_for :categories do |category| %>
-              <%= category.label :name, "カテゴリーを作成する" %>
+              <%= category.label :name, "カテゴリーを作成する" %> <span class="validation">※20文字以内</span>
               <%= category.text_field :name, class: "form-control" %>
               <%= category.hidden_field :user_id, value: @user.id %>
             <% end %>

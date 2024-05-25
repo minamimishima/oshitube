@@ -4,7 +4,7 @@
   <div id="bookmark-show__row" class="row justify-content-center align-items-center">
     <div id="bookmark-show__column" class="col-lg-8 col-md-10 mb-4">
       <div id="bookmark-video" class="ratio ratio-16x9">
-        <iframe src="https://www.youtube.com/embed/<%= @bookmark.video_id %>" class="youtube-video-player" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/<%= @bookmark.video_id %>" class="youtube-video-player" loading="lazy" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
       </div>
 
       <div class="accordion mt-1 mb-3" id="accordionExample">
@@ -26,6 +26,14 @@
         <%= @bookmark.description %>
       </div>
 
+      <% if @user.present? && @bookmark.user_id == @user.id %>
+        <% if @bookmark.is_public == true %>
+          <div class="bookmark-show__recommendation mb-3">
+            <i class="bi bi-chat-heart"></i>おすすめ動画として公開中
+          </div>
+        <% end %>
+      <% end %>
+
       <%= render partial: 'shared/timestamps_list',
                  collection: @bookmark.timestamps.sort_by(&:start_time),
                  as: :timestamp,
@@ -33,12 +41,13 @@
 
       <% if @user.present? && @bookmark.user_id == @user.id %>
         <%= render 'shared/timestamps_new', { timestamp: @timestamp, bookmark: @bookmark } %>
-        <div class="bookmark-show__link mt-2">
+        <div class="bookmark-show__link mt-3">
           <%= link_to edit_bookmark_path(@bookmark) do %>
-            <i class="bi bi-pencil-fill mx-1" aria-label="ブックマークの編集"></i>
+            <i class="bi bi-pencil-fill mx-1" aria-hidden="true"></i> ブックマーク編集
           <% end %>
+          /
           <%= link_to bookmark_path(@bookmark), data: { turbo_method: :delete, turbo_confirm: "ブックマークを削除しますか？" } do %>
-            <i class="bi bi-trash3-fill mx-1" aria-label="ブックマークの削除"></i>
+            <i class="bi bi-trash3-fill mx-1" aria-hidden="true"></i> ブックマーク削除
           <% end %>
         </div>
       <% end %>

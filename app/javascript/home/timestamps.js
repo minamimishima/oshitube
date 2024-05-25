@@ -3,7 +3,7 @@ function jumpToIntroduction0() {
   if(timestamp) {
     timestamp.addEventListener('click', function() {
     let video = document.getElementById('firstview-video');
-    video.innerHTML = '<iframe width="560" height="315" src="https://www.youtube.com/embed/Tkr-itfalqw?start=8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>'
+    video.innerHTML = '<iframe src="https://www.youtube.com/embed/1FGpM4-K7qE?start=8&autoplay=1" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>'
     });
   }
 }
@@ -13,7 +13,7 @@ function jumpToIntroduction1() {
   if(timestamp) {
     timestamp.addEventListener('click', function() {
     let video = document.getElementById('firstview-video');
-    video.innerHTML = '<iframe width="560" height="315" src="https://www.youtube.com/embed/Tkr-itfalqw?start=32" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>'
+    video.innerHTML = '<iframe src="https://www.youtube.com/embed/1FGpM4-K7qE?start=26&autoplay=1" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>'
     });
   }
 }
@@ -23,7 +23,7 @@ function jumpToIntroduction2() {
   if(timestamp) {
     timestamp.addEventListener('click', function() {
     let video = document.getElementById('firstview-video');
-    video.innerHTML = '<iframe width="560" height="315" src="https://www.youtube.com/embed/Tkr-itfalqw?start=55" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>'
+    video.innerHTML = '<iframe src="https://www.youtube.com/embed/1FGpM4-K7qE?start=42&autoplay=1" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>'
     });
   }
 }

@@ -1,7 +1,7 @@
 <%= render 'shared/error_messages', obj: timestamp %>
 <div class="timestamps-edit row align-items-center">
   <%= form_with model: timestamp, url: timestamp_path(timestamp), method: :patch do |f| %>
-    <div class="d-flex">
+    <div class="d-flex mb-1">
       <div class="col-lg-2 col-md-3 d-flex text-nowrap justify-content-center align-items-center">
         <%= f.number_field :hour, class: "form-control me-2" %>
         <%= f.label :hour, "時間" %>
@@ -19,7 +19,7 @@
     </div>
 
     <div class="col-12 justify-content-center align-items-center">
-      <%= f.label :comment, "メモ" %>
+      <%= f.label :comment, "メモ" %> <span class="validation">※150文字以内</span>
       <%= f.text_field :comment, class: "form-control me-2" %>
     </div>
 

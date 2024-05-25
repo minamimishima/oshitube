@@ -37,6 +37,10 @@ h1 {
   display: contents;
 }
 
+.validation {
+  font-size: 0.9em;
+}
+
  /* ヘッダー */
 .header {
   display: flex;
@@ -337,6 +341,10 @@ h1 {
 
 .accordion-button {
   background-color: #EFE6DD;
+}
+
+.bookmark-show__recommendation {
+  font-size: 0.8em;
 }
 
 /* ブックマーク編集 */

@@ -22,6 +22,7 @@ module Oshitube
     # in config/environments, which are processed later.
     #
     # config.eager_load_paths << Rails.root.join("extras")
+    config.action_view.image_loading = 'lazy'
     config.time_zone = 'Asia/Tokyo'
     config.i18n.default_locale = :ja
     config.active_model.i18n_customize_full_message = true

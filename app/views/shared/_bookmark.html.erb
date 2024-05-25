@@ -2,7 +2,9 @@
   <%= link_to bookmark_path(bookmark.id), class: "bookmark" do %>
     <ul class="bookmark__list bookmark-<%= bookmark.id %> list-group my-4">
       <li class="list-group-item text-center pt-4">
-        <%= image_tag video_thumbnail(bookmark.video_id), class: "bookmark__video-thumbnail" %>
+        <%= image_tag video_thumbnail(bookmark.video_id),
+                      class: "bookmark__video-thumbnail",
+                      alt: "ブックマークIDが#{bookmark.id}の動画のサムネイル" %>
       </li>
       <li class="list-group-item">
         <span class="bookmark__video-title"><%= video_title(bookmark.video_id) %></span>

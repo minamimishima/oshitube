@@ -35,8 +35,8 @@ ja:
               format: "%{message}"
   views:
     pagination:
-      first: <i class="bi bi-chevron-double-left"></i>
-      last: <i class="bi bi-chevron-double-right"></i>
-      previous: <i class="bi bi-chevron-left"></i>
-      next: <i class="bi bi-chevron-right"></i>
+      first: <i class="bi bi-chevron-double-left" aria-label="最初のページ"></i>
+      last: <i class="bi bi-chevron-double-right" aria-label="最後のページ"></i>
+      previous: <i class="bi bi-chevron-left" aria-label="前のページ"></i>
+      next: <i class="bi bi-chevron-right" aria-label="次のページ"></i>
       truncate: "..."

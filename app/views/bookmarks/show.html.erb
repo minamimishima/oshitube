@@ -41,12 +41,13 @@
 
       <% if @user.present? && @bookmark.user_id == @user.id %>
         <%= render 'shared/timestamps_new', { timestamp: @timestamp, bookmark: @bookmark } %>
-        <div class="bookmark-show__link mt-2">
+        <div class="bookmark-show__link mt-3">
           <%= link_to edit_bookmark_path(@bookmark) do %>
-            <i class="bi bi-pencil-fill mx-1" aria-label="ブックマークの編集"></i>
+            <i class="bi bi-pencil-fill mx-1" aria-hidden="true"></i> ブックマーク編集
           <% end %>
+          /
           <%= link_to bookmark_path(@bookmark), data: { turbo_method: :delete, turbo_confirm: "ブックマークを削除しますか？" } do %>
-            <i class="bi bi-trash3-fill mx-1" aria-label="ブックマークの削除"></i>
+            <i class="bi bi-trash3-fill mx-1" aria-hidden="true"></i> ブックマーク削除
           <% end %>
         </div>
       <% end %>

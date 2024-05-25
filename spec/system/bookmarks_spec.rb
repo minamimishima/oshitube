@@ -59,7 +59,7 @@ RSpec.describe "Bookmarks", type: :system do
 
       it "編集ページへのリンクが表示されること" do
         visit bookmark_path(bookmark)
-        expect(page).to have_selector "i[aria-label='ブックマークの編集']"
+        expect(page).to have_content "ブックマーク編集"
       end
 
       it "編集ページが表示できること" do
@@ -89,14 +89,14 @@ RSpec.describe "Bookmarks", type: :system do
 
       it "削除リンクが表示されること" do
         visit bookmark_path(bookmark)
-        expect(page).to have_selector "i[aria-label='ブックマークの削除']"
+        expect(page).to have_content "ブックマーク削除"
       end
 
       it "ブックマークを削除できること", js: true do
         expect do
           visit bookmark_path(bookmark)
           page.accept_confirm do
-            find("i[aria-label='ブックマークの削除']").click
+            click_on "ブックマーク削除"
           end
           find ".notice", text: "ブックマークを削除しました"
         end.to change { user.bookmarks.count }.by(-1)

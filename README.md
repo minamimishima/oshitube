@@ -27,7 +27,8 @@ https://oshitube-d4f71351453c.herokuapp.com
 - URLから動画タイトル・概要欄・サムネイルを取得（YouTube Data API v3を使用）
 - タイムスタンプ登録機能
 - カテゴリー作成・分類機能
-- ブックマークの公開・非公開の設定
+- ブックマークの公開・非公開の設定  
+公開ブックマークサンプル：https://oshitube-d4f71351453c.herokuapp.com/bookmarks/23
 <br>
 
 ## 使用イメージ

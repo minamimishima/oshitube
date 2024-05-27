@@ -58,6 +58,11 @@ https://oshitube-d4f71351453c.herokuapp.com
 - タイムスタンプ登録機能
 - カテゴリー作成・分類機能
 - ブックマークの公開・非公開の設定
+
+#### 公開ブックマークサンプル（プロフィールページ）
+- [サンプル①](https://oshitube-d4f71351453c.herokuapp.com/users/5)
+- [サンプル②](https://oshitube-d4f71351453c.herokuapp.com/users/3)
+- [サンプル③](https://oshitube-d4f71351453c.herokuapp.com/users/6)
 <br>
 
 ## 使用イメージ

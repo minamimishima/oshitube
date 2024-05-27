@@ -22,25 +22,31 @@ https://oshitube-d4f71351453c.herokuapp.com
 | トップページ| ブックマーク登録 |
 | ---- | ---- |
 | ![トップページ](https://github.com/minamimishima/oshitube/assets/146907532/358553c4-c89a-45f0-b3a5-9506bbc8b1eb) | ![ブックマーク登録](https://github.com/minamimishima/oshitube/assets/146907532/533537bc-0572-408a-9b9f-572884f4738c) |
+| サービスの紹介と使い方説明動画を表示しています。 | YouTubeの動画URLを登録すると動画タイトル・サムネイル・概要欄を取得します。 |
 
+<br>
 
 | タイムスタンプ作成 | タイムスタンプ機能 |
 | ----| ---- |
 | ![タイムスタンプ作成](https://github.com/minamimishima/oshitube/assets/146907532/2a3da6c2-b5e5-44e4-966e-ad4a8bdd72c2) | ![タイムスタンプ使用イメージ](https://github.com/minamimishima/oshitube/assets/146907532/384a3638-d936-40e4-b170-34967168cb1f) |
+| 再生を開始したい時間を登録するとその時間から再生を開始できるボタンが作成されます。 | 作成されたボタンをクリックすると登録した時間から動画が再生されます。 |
 
+<br>
 
 | カテゴリー作成① | カテゴリー作成② |
 | ---- | ---- |
 | ![カテゴリー作成①](https://github.com/minamimishima/oshitube/assets/146907532/476a8653-f383-4409-9b4c-73b816fb346d) | ![カテゴリー作成②](https://github.com/minamimishima/oshitube/assets/146907532/ab0a93db-fd83-4106-acf4-b4802d40bc30) |
+| ブックマーク一覧ページから新規カテゴリーを作成できます。 | ブックマーク登録画面から新規カテゴリーを作成できます。 |
 
-
-
+<br>
 
 | カテゴリー登録① | カテゴリー登録② |
 | ---- | ----|
 | ![カテゴリー登録①](https://github.com/minamimishima/oshitube/assets/146907532/df98eb18-8dd0-40a1-a666-798ba32aa860) | ![カテゴリー登録②](https://github.com/minamimishima/oshitube/assets/146907532/2321c4eb-dced-4f6c-b2f5-0eb9f74fd732) |
+| ブックマーク登録時にカテゴリーを選択し、登録できます。 | ブックマーク編集画面からカテゴリーを選択し、登録できます。 |
 
-  
+<br>
+
 ### 機能一覧
 - ユーザー登録機能
 - ログイン/ログアウト機能

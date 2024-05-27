@@ -1,28 +1,31 @@
 <% content_for(:title, "新規登録") %>
 <div id="registration" class="container">
-  <h1 class="text-center pt-4">新規登録</h1>
+  <h1 class="text-center pt-4 mb-3">新規登録</h1>
   <div id="registration__row" class="row justify-content-center align-items-center">
+    <div class="text-center">
+      <span class="required">*</span>がついている項目は入力必須です
+    </div>
     <div id="registration__column" class="col-lg-6 col-md-8">
       <%= render "devise/shared/error_messages", resource: resource %>
       <div id="registration__box">
         <%= form_with model: @user, id: "registration__form", url: user_registration_path do |f| %>
           <div class="registration__form-group mb-3">
-            <%= f.label :name, "名前" %>
+            <%= f.label :name, "名前" %><span class="required">*</span>
             <%= f.text_field :name, class: "form-control", autofocus: true %>
           </div>
 
           <div class="registration__form-group mb-3">
-            <%= f.label :email, "メールアドレス" %>
+            <%= f.label :email, "メールアドレス" %><span class="required">*</span>
             <%= f.email_field :email, class: "form-control" %>
           </div>
 
           <div class="registration__form-group mb-3">
-            <%= f.label :password, "パスワード" %> <span class="validation">※8〜30文字</span>
+            <%= f.label :password, "パスワード" %><span class="required">*</span> <span class="validation">※8〜30文字</span>
             <%= f.password_field :password, class: "form-control" %>
           </div>
 
           <div class="registration__form-group mb-3">
-            <%= f.label :password_confirmation, "パスワード（確認）" %>
+            <%= f.label :password_confirmation, "パスワード（確認用）" %><span class="required">*</span>
             <%= f.password_field :password_confirmation, class: "form-control" %>
           </div>
 

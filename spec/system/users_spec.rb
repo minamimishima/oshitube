@@ -51,7 +51,7 @@ RSpec.describe "Users", type: :system do
         visit edit_user_registration_path
         fill_in "メールアドレス", with: new_email
         fill_in "新しいパスワード", with: new_password
-        fill_in "新しいパスワード（確認）", with: new_password
+        fill_in "新しいパスワード（確認用）", with: new_password
         fill_in "現在のパスワード", with: user.password
         click_on "変更"
         aggregate_failures do
@@ -166,7 +166,7 @@ RSpec.describe "Users", type: :system do
       fill_in "名前", with: user.name
       fill_in "メールアドレス", with: user.email
       fill_in "パスワード", with: user.password
-      fill_in "パスワード（確認）", with: user.password
+      fill_in "パスワード（確認用）", with: user.password
       click_button "登録"
       expect(page).to have_selector ".notice", text: "アカウント登録が完了しました。"
     end

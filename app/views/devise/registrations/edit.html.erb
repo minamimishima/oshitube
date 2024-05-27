@@ -1,7 +1,10 @@
 <% content_for(:title, "ユーザー情報変更") %>
 <div id="user-edit" class="container">
-  <h1 class="text-center pt-4">ユーザー情報変更</h1>
+  <h1 class="text-center pt-4 mb-3">ユーザー情報変更</h1>
   <div id="user-edit__row" class="row justify-content-center align-items-center">
+    <div class="text-center">
+      <span class="required">*</span>がついている項目は入力必須です
+    </div>
     <div id="user-edit__column" class="col-lg-6 col-md-8">
       <%= render "devise/shared/error_messages", resource: resource %>
       <div id="user-edit__box">
@@ -18,12 +21,12 @@
           </div>
 
           <div class="user-edit__form-group mb-3">
-            <%= f.label :password_confirmation, "新しいパスワード（確認）" %>
+            <%= f.label :password_confirmation, "新しいパスワード（確認用）" %>
             <%= f.password_field :password_confirmation, class: "form-control" %>
           </div>
 
           <div class="user-edit__form-group mb-3">
-            <%= f.label :current_password, "現在のパスワード" %>
+            <%= f.label :current_password, "現在のパスワード" %><span class="required">*</span>
             <%= f.password_field :current_password, class: "form-control" %>
           </div>
 

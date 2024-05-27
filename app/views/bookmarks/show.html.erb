@@ -23,7 +23,7 @@
       </div>
 
       <div class="bookmark-show__description mb-3">
-        <%= @bookmark.description %>
+        <%= simple_format(h(@bookmark.description)) %>
       </div>
 
       <% if @user.present? && @bookmark.user_id == @user.id %>

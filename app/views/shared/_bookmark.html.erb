@@ -10,7 +10,7 @@
         <span class="bookmark__video-title"><%= video_title(bookmark.video_id) %></span>
       </li>
       <li class="list-group-item pb-4">
-        <%= bookmark.description %>
+        <%= simple_format(h(bookmark.description)) %>
       </li>
     </ul>
   <% end %>

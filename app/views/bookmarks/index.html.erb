@@ -12,15 +12,14 @@
 
       <%= render 'shared/categories', { categories: @user.categories } %>
 
-      <%= turbo_frame_tag "bookmarks-list", autoscroll: true, data: { autoscroll_block: "start" } do %>
-        <div class="bookmark-index__sort-link text-center">
-          <%= link_to "新しい順", bookmarks_path(latest: "true") %> | <%= link_to "古い順", bookmarks_path(oldest: "true") %>
-        </div>
-        <div id="bookmark__row" class="row d-flex justify-content-center align-items-start">
-          <%= render partial: 'shared/bookmark', collection: @bookmarks %>
-          <%= paginate @bookmarks, theme: 'bootstrap-5' %>
-        </div>
-      <% end %>
+      <div class="bookmark-index__sort-link text-center">
+        <%= link_to "新しい順", bookmarks_path(latest: "true") %> | <%= link_to "古い順", bookmarks_path(oldest: "true") %>
+      </div>
+
+      <div id="bookmark__row" class="row d-flex justify-content-center align-items-start">
+        <%= render partial: 'shared/bookmark', collection: @bookmarks %>
+        <%= paginate @bookmarks, theme: 'bootstrap-5' %>
+      </div>
     </div>
   </div>
 </div>

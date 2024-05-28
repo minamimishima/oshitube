@@ -4,7 +4,13 @@ class BookmarksController < ApplicationController
   before_action :correct_user, only: [:edit, :update, :destroy]
 
   def index
-    @bookmarks = @user.bookmarks.order(created_at: :desc).page(params[:page])
+    if params[:latest]
+      @bookmarks = @user.bookmarks.latest.page(params[:page])
+    elsif params[:oldest]
+      @bookmarks = @user.bookmarks.oldest.page(params[:page])
+    else
+      @bookmarks = @user.bookmarks.latest.page(params[:page])
+    end
     @category = Category.new
   end
 

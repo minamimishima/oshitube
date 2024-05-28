@@ -20,9 +20,15 @@
               <%= f.check_box :remember_me %>
               <%= f.label :remember_me, "自動ログイン" %>
             <% end %>
-            <br>
-            <%= f.submit "ログイン", class: "btn shadow-sm mt-3 login__button" %>
           </div>
+
+            <div class="login__login-button mb-3 d-grid gap-2 d-md-flex justify-content-md-between">
+              <%= f.submit "ログイン", class: "btn shadow-sm login__button" %>
+              <%= link_to "登録せずに使う（ゲストログイン）",
+              users_guest_sign_in_path,
+              data: { turbo_method: :post },
+              class: "btn btn-light shadow-sm" %>
+            </div>
 
           <div class="login__link">
             <%= link_to "新規登録", new_user_registration_path %><br>

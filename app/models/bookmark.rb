@@ -13,6 +13,9 @@ class Bookmark < ApplicationRecord
   validates :video_id, length: { is: 11, allow_blank: true }
   validates :description, length: { maximum: 300 }
 
+  scope :latest, -> { order(created_at: :desc) }
+  scope :oldest, -> { order(created_at: :asc) }
+
   def set_new_params(params)
     new_params = params
     new_params[:url] = extract_video_url(params[:url])

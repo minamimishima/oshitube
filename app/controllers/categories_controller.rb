@@ -9,7 +9,7 @@ class CategoriesController < ApplicationController
 
   def create
     @category = Category.new(category_params)
-    @bookmarks = @user.bookmarks.order(created_at: :desc).page(params[:page]) # リクエストスペックに失敗してしまうため追記
+    @bookmarks = @user.bookmarks.latest.page(params[:page]) # リクエストスペックに失敗してしまうため追記
     if @category.valid? && @category.user_id == @user.id
       @category.save
       flash[:notice] = "カテゴリーを作成しました"
@@ -22,6 +22,13 @@ class CategoriesController < ApplicationController
   def show
     @category = Category.find(params[:id])
     @categories = @user.categories
+    if params[:latest]
+      @bookmarks = @category.bookmarks.latest.page(params[:page])
+    elsif params[:oldest]
+      @bookmarks = @category.bookmarks.oldest.page(params[:page])
+    else
+      @bookmarks = @category.bookmarks.latest.page(params[:page])
+    end
   end
 
   def edit

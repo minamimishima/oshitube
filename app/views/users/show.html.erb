@@ -19,13 +19,14 @@
         </div>
       </div>
       <%= turbo_frame_tag "bookmarks-list", autoscroll: true, data: { autoscroll_block: "start" } do %>
-        <% if @user.bookmarks.where(is_public: true).present? %>
+        <% if @bookmarks.present? %>
+          <div class="bookmark-index__sort-link text-center">
+            <%= link_to "新しい順", user_path(@user, latest: "true") %> | <%= link_to "古い順", user_path(@user, oldest: "true") %>
+          </div>
+
           <div id="bookmark__row" class="row d-flex justify-content-center align-items-start">
-            <%= render partial: 'shared/bookmark',
-                       collection: @user.bookmarks.where(is_public: true).order(created_at: "DESC").page(params[:page]),
-                       as: :bookmark %>
-            <%= paginate @user.bookmarks.where(is_public: true).order(created_at: "DESC").page(params[:page]),
-                theme: 'bootstrap-5' %>
+            <%= render partial: 'shared/bookmark', collection: @bookmarks, as: :bookmark %>
+            <%= paginate @bookmarks, theme: 'bootstrap-5' %>
           </div>
         <% end %>
       <% end %>

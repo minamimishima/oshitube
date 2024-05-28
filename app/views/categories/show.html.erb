@@ -20,10 +20,15 @@
       <%= render 'shared/categories', { categories: @categories } %>
 
       <%= turbo_frame_tag "bookmarks-list", autoscroll: true, data: { autoscroll_block: "start" } do %>
+
+        <div class="bookmark-index__sort-link text-center">
+          <%= link_to "新しい順", category_path(@category, latest: "true") %> | <%= link_to "古い順", category_path(@category, oldest: "true") %>
+        </div>
+
         <% if @category.bookmarks.present? %>
           <div id="bookmark__row" class="row d-flex justify-content-center align-items-start">
-            <%= render partial: 'shared/bookmark', collection: @category.bookmarks.order(created_at: :desc).page(params[:page]) %>
-            <%= paginate @category.bookmarks.order(created_at: :desc).page(params[:page]), theme: 'bootstrap-5' %>
+            <%= render partial: 'shared/bookmark', collection: @bookmarks %>
+            <%= paginate @bookmarks, theme: 'bootstrap-5' %>
           </div>
         <% end %>
       <% end %>

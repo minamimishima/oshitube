@@ -6,6 +6,13 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    if params[:latest]
+      @bookmarks = @user.bookmarks.where(is_public: true).latest.page(params[:page])
+    elsif params[:oldest]
+      @bookmarks = @user.bookmarks.where(is_public: true).oldest.page(params[:page])
+    else
+      @bookmarks = @user.bookmarks.where(is_public: true).latest.page(params[:page])
+    end
   end
 
   def profile_edit

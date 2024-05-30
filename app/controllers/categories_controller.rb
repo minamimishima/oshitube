@@ -22,13 +22,8 @@ class CategoriesController < ApplicationController
   def show
     @category = Category.find(params[:id])
     @categories = @user.categories
-    if params[:latest]
-      @bookmarks = @category.bookmarks.latest.page(params[:page])
-    elsif params[:oldest]
-      @bookmarks = @category.bookmarks.oldest.page(params[:page])
-    else
-      @bookmarks = @category.bookmarks.latest.page(params[:page])
-    end
+    @q = @category.bookmarks.ransack(params[:q])
+    @bookmarks = @q.result(distinct: true).latest.page(params[:page])
   end
 
   def edit

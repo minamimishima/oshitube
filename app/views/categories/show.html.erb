@@ -18,6 +18,7 @@
       <% end %>
 
       <%= render 'shared/categories', { categories: @categories } %>
+      <%= render 'shared/search_in_category', { q: @q, category: @category } %>
 
       <div class="bookmark-index__sort-link text-center">
         <%= link_to "新しい順", category_path(@category, latest: "true") %>

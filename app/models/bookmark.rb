@@ -16,6 +16,11 @@ class Bookmark < ApplicationRecord
   scope :latest, -> { order(created_at: :desc) }
   scope :oldest, -> { order(created_at: :asc) }
 
+  def self.ransackable_attributes(auth_object = nil) # rubocop:disable all
+    ["description"]
+  end
+  # キーワード引数にするとArgumentErrorが発生するため上記の記述にしてrubocopを無効化
+
   def set_new_params(params)
     new_params = params
     new_params[:url] = extract_video_url(params[:url])

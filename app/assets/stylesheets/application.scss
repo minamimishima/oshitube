@@ -463,3 +463,17 @@ h1 {
   color: black;
   background-color: #fff;
 }
+
+/* 検索 */
+.search__button {
+  --bs-btn-color: #333333;
+  --bs-btn-bg: #F5EFE8;
+  --bs-btn-border-color: #F5EFE8;
+  --bs-btn-hover-color: #333333;
+  --bs-btn-hover-bg: #DFCDBA;
+  --bs-btn-hover-border-color: #DFCDBA;
+  --bs-btn-focus-shadow-rgb: #DFCDBA;
+  --bs-btn-active-color: #333333;
+  --bs-btn-active-bg: #DFCDBA;
+  --bs-btn-active-border-color: #DFCDBA;
+}

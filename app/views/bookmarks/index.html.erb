@@ -11,6 +11,7 @@
       <% end %>
 
       <%= render 'shared/categories', { categories: @user.categories } %>
+      <%= render 'shared/search', { q: @q } %>
 
       <div class="bookmark-index__sort-link text-center">
         <%= link_to "新しい順", bookmarks_path(latest: "true") %> | <%= link_to "古い順", bookmarks_path(oldest: "true") %>

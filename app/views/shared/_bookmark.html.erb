@@ -7,7 +7,7 @@
                       alt: "ブックマークIDが#{bookmark.id}の動画のサムネイル" %>
       </li>
       <li class="list-group-item">
-        <span class="bookmark__video-title"><%= video_title(bookmark.video_id) %></span>
+        <span class="bookmark__video-title"><%= bookmark.video_title %></span>
       </li>
       <li class="list-group-item pb-4">
         <%= simple_format(h(bookmark.description)) %>

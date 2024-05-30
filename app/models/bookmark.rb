@@ -17,8 +17,14 @@ class Bookmark < ApplicationRecord
   scope :oldest, -> { order(created_at: :asc) }
 
   def self.ransackable_attributes(auth_object = nil) # rubocop:disable all
-    ["description"]
+    ["description", "video_title"]
   end
+
+  def self.ransackable_associations(auth_object = nil) # rubocop:disable all
+    []
+  end
+  # ransackable_attributesにvideo_titleを追加するとActionView::Template::Errorが出てしまう
+  # ransackable_associationsを定義するよう表示されていたため空配列で定義
   # キーワード引数にするとArgumentErrorが発生するため上記の記述にしてrubocopを無効化
 
   def set_new_params(params)

@@ -21,9 +21,9 @@
       <%= render 'shared/search_in_category', { q: @q, category: @category } %>
 
       <div class="bookmark-index__sort-link text-center">
-        <%= link_to "新しい順", category_path(@category, latest: "true") %>
+        <%= link_to "新しい順", category_path(@category, "q" => { "s" => "created_at desc" }) %>
         |
-        <%= link_to "古い順", category_path(@category, oldest: "true") %>
+        <%= link_to "古い順", category_path(@category, "q" => { "s" => "created_at asc" }) %>
       </div>
 
       <% if @category.bookmarks.present? %>

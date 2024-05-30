@@ -17,7 +17,7 @@ class Bookmark < ApplicationRecord
   scope :oldest, -> { order(created_at: :asc) }
 
   def self.ransackable_attributes(auth_object = nil) # rubocop:disable all
-    ["description", "video_title"]
+    ["description", "video_title", "created_at"]
   end
 
   def self.ransackable_associations(auth_object = nil) # rubocop:disable all

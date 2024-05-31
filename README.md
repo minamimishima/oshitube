@@ -59,6 +59,7 @@ https://oshitube-d4f71351453c.herokuapp.com
 - カテゴリー作成・分類機能
 - ブックマークの公開・非公開の設定
 - ブックマークソート機能（新しい順・古い順）
+- 動画タイトル・動画メモからの検索機能（自分のブックマークのみ）
 
 #### 公開ブックマークサンプル（プロフィールページ）
 - [サンプル①](https://oshitube-d4f71351453c.herokuapp.com/users/5)
@@ -92,7 +93,7 @@ https://github.com/minamimishima/oshitube/assets/146907532/4799a421-0c94-4346-ac
 <br>
 
 ## ER図
-![ER図_resize](https://github.com/minamimishima/oshitube/assets/146907532/30a2f0ea-b506-4af2-847a-d2d0b9d84a58)
+![ER図](https://github.com/minamimishima/oshitube/assets/146907532/d71191f0-6e53-47e9-8dcd-f45fdb2f4977)
 <br>
 <br>
 
@@ -117,7 +118,6 @@ RSpecでのテスト作成・Brakemanの使用でプライバシー・セキュ�
 <br>
 ## 今後の課題・実装したい機能
 - Googleアカウントでのログイン機能
-- ブックマークした動画の検索機能
 - SNSでの共有機能
 
 現在は最低限の機能のみ実装しているため、今後はより使いやすいアプリになるよう機能を追加していきたいと考えています。  

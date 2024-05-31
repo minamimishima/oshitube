@@ -355,6 +355,12 @@ h1 {
   font-size: 0.8em;
 }
 
+.bookmark-show__video-description {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: pre-wrap; /* Preserve whitespace and wrap text */
+}
+
 /* ブックマーク編集 */
 .bookmark-edit__flash-message {
   padding: 0;

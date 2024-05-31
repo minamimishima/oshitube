@@ -2,15 +2,11 @@ class BookmarksController < ApplicationController
   before_action :authenticate_user!, except: [:show]
   before_action :get_current_user
   before_action :correct_user, only: [:edit, :update, :destroy]
+  include BookmarksHelper
 
   def index
-    if params[:latest]
-      @bookmarks = @user.bookmarks.latest.page(params[:page])
-    elsif params[:oldest]
-      @bookmarks = @user.bookmarks.oldest.page(params[:page])
-    else
-      @bookmarks = @user.bookmarks.latest.page(params[:page])
-    end
+    @q = @user.bookmarks.ransack(params[:q])
+    @bookmarks = @q.result(distinct: true).latest.page(params[:page])
     @category = Category.new
   end
 
@@ -23,6 +19,7 @@ class BookmarksController < ApplicationController
     @bookmark = Bookmark.new(bookmark_params)
     @bookmark.url = @bookmark.extract_video_url(params[:bookmark][:url])
     @bookmark.video_id = @bookmark.extract_video_id(params[:bookmark][:url])
+    @bookmark.video_title = video_title(@bookmark.video_id)
     if @bookmark.valid? && @bookmark.user_id == @user.id
       @bookmark.save
       flash[:notice] = "登録完了しました"
@@ -97,6 +94,7 @@ class BookmarksController < ApplicationController
       :description,
       :is_public,
       :video_id,
+      :video_title,
       categories_attributes: [:id, :user_id, :name],
       category_ids: [],
     )

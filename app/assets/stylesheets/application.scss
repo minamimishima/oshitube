@@ -186,13 +186,16 @@ h1 {
   background-color: #F0F0F1;
 }
 
-#login__form,
 #registration__form,
 #profile-edit__form,
 #user-edit__form,
 #password-new__form,
 #password-edit__form {
   padding: 20px;
+}
+
+#login__form {
+  padding: 20px 20px 0;
 }
 
 .login__button,
@@ -213,12 +216,8 @@ h1 {
   --bs-btn-active-border-color: #CFB497;
 }
 
-.login__back-link,
-.registration__back-link,
-.profile-edit__back-link,
-.user-edit__back-link,
-.password-new__back-link {
-  margin: 15px 0 0 20px
+.login__link {
+  padding: 0 20px 20px;
 }
 
 /* プロフィール */

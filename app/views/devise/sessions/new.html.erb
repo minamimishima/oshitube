@@ -4,11 +4,7 @@
   <div id="login__row" class="row justify-content-center align-items-center">
     <div id="login__column" class="col-lg-6 col-md-8">
 
-      <% if flash.any? %>
-        <div class="alert-message my-3 text-center">
-          <p class="alert"><i class="bi bi-exclamation-triangle"></i> <%= alert %></p>
-        </div>
-      <% end %>
+      <%= render 'shared/alert_messages' %>
 
       <div id="login__box">
         <%= form_with model: @user, id: "login__form", class: "form", url: user_session_path do |f| %>
@@ -29,19 +25,23 @@
             <% end %>
           </div>
 
-            <div class="login__login-button mb-3 d-grid gap-2 d-md-flex justify-content-md-between">
-              <%= f.submit "ログイン", class: "btn shadow-sm login__button" %>
-              <%= link_to "登録せずに使う（ゲストログイン）",
-              users_guest_sign_in_path,
-              data: { turbo_method: :post },
-              class: "btn btn-light shadow-sm" %>
-            </div>
-
-          <div class="login__link">
-            <%= link_to "新規登録", new_user_registration_path %><br>
-            <%= link_to "パスワードを忘れた場合", new_user_password_path %>
+          <div class="login__login-button d-grid gap-2 d-md-flex justify-content-md-between mb-3">
+            <%= f.submit "ログイン", class: "btn shadow-sm login__button" %>
+            <%= link_to "登録せずに使う（ゲストログイン）",
+            users_guest_sign_in_path,
+            data: { turbo_method: :post },
+            class: "btn btn-light shadow-sm" %>
           </div>
         <% end %>
+
+        <div class="login__link">
+          <%= button_to "Googleでログイン", user_google_oauth2_omniauth_authorize_path,
+                        method: :post,
+                        data: { turbo: "false" },
+                        class: "login__google-login-button btn btn-link mb-4" %>
+          <%= link_to "新規登録", new_user_registration_path %><br>
+          <%= link_to "パスワードを忘れた場合", new_user_password_path %>
+        </div>
       </div>
     </div>
   </div>

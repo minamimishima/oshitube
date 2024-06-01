@@ -2,3 +2,6 @@ ja:
   devise:
     passwords:
       send_instructions: "パスワード再設定用のメールを送信しました。"
+    omniauth_callbacks:
+      failure: "Googleアカウントでのログインに失敗しました。"
+      success: "Googleアカウントでログインしました。"

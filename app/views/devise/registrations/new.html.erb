@@ -6,7 +6,10 @@
       <span class="required">*</span>がついている項目は入力必須です
     </div>
     <div id="registration__column" class="col-lg-6 col-md-8">
+
+      <%= render 'shared/alert_messages' %>
       <%= render "devise/shared/error_messages", resource: resource %>
+
       <div id="registration__box">
         <%= form_with model: @user, id: "registration__form", url: user_registration_path do |f| %>
           <div class="registration__form-group mb-3">

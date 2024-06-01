@@ -38,7 +38,7 @@
           <%= button_to "Googleでログイン", user_google_oauth2_omniauth_authorize_path,
                         method: :post,
                         data: { turbo: "false" },
-                        class: "btn mb-4" %>
+                        class: "login__google-login-button btn btn-link mb-4" %>
           <%= link_to "新規登録", new_user_registration_path %><br>
           <%= link_to "パスワードを忘れた場合", new_user_password_path %>
         </div>

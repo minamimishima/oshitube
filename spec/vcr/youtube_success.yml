@@ -2,19 +2,19 @@
 http_interactions:
 - request:
     method: get
-    uri: https://youtube.googleapis.com/youtube/v3/videos?id=HIgvP7B3Hg8&key=<%= ENV['YOUTUBE_API_KEY'] %>&part=snippet
+    uri: https://youtube.googleapis.com/youtube/v3/videos?id=HIgvP7B3Hg8&key=<%= ENV['YOUTUBE_API_KEY'] %>&part=content_details
     body:
       encoding: UTF-8
       string: ''
     headers:
       User-Agent:
-      - unknown/0.0.0 google-apis-youtube_v3/0.36.0 Mac OS X/14.3.1 (gzip)
+      - unknown/0.0.0 google-apis-youtube_v3/0.36.0 Linux/6.6.26-linuxkit (gzip)
       Accept:
       - "*/*"
       Accept-Encoding:
       - gzip,deflate
       Date:
-      - Thu, 04 Apr 2024 11:20:01 GMT
+      - Sun, 02 Jun 2024 23:02:17 GMT
       X-Goog-Api-Client:
       - gl-ruby/3.2.3 gdcl/1.36.0
       Content-Type:
@@ -33,7 +33,7 @@ http_interactions:
       Content-Encoding:
       - gzip
       Date:
-      - Thu, 04 Apr 2024 11:20:02 GMT
+      - Sun, 02 Jun 2024 23:02:17 GMT
       Server:
       - scaffolding on HTTPServer2
       Cache-Control:
@@ -50,9 +50,9 @@ http_interactions:
       - chunked
     body:
       encoding: UTF-8
-      string: "{\n  \"kind\": \"youtube#videoListResponse\",\n  \"etag\": \"kNs1Xtr5oGCfajJYf9zGpnLMI3w\",\n
+      string: "{\n  \"kind\": \"youtube#videoListResponse\",\n  \"etag\": \"A1s3NIQMqmyPjW-YDMOdVnjVx4w\",\n
         \ \"items\": [\n    {\n      \"kind\": \"youtube#video\",\n      \"etag\":
-        \"oPpG6mW_g3bCnJUD7UyuVYAwivc\",\n      \"id\": \"HIgvP7B3Hg8\",\n      \"snippet\":
+        \"AlwnhSj-Eqo4Noi0ZHSw5w4Z98E\",\n      \"id\": \"HIgvP7B3Hg8\",\n      \"snippet\":
         {\n        \"publishedAt\": \"2020-10-02T17:37:41Z\",\n        \"channelId\":
         \"UCoUM-UJ7rirJYP8CQ0EIaHA\",\n        \"title\": \"Bruno Mars - Runaway Baby
         (Official Lyric Video)\",\n        \"description\": \"The official lyric video
@@ -118,24 +118,27 @@ http_interactions:
         boundaries of pop, R&B, funk, soul, hip-hop, and dance, and remains as influential
         as ever.\\n\\n#BrunoMars #RunawayBaby #DooWopsandHooligans #OfficialLyricVideo
         #AtlanticRecords\"\n        },\n        \"defaultAudioLanguage\": \"en\"\n
-        \     }\n    }\n  ],\n  \"pageInfo\": {\n    \"totalResults\": 1,\n    \"resultsPerPage\":
-        1\n  }\n}\n"
-  recorded_at: Thu, 04 Apr 2024 11:20:01 GMT
+        \     },\n      \"contentDetails\": {\n        \"duration\": \"PT2M28S\",\n
+        \       \"dimension\": \"2d\",\n        \"definition\": \"hd\",\n        \"caption\":
+        \"false\",\n        \"licensedContent\": true,\n        \"contentRating\":
+        {},\n        \"projection\": \"rectangular\"\n      }\n    }\n  ],\n  \"pageInfo\":
+        {\n    \"totalResults\": 1,\n    \"resultsPerPage\": 1\n  }\n}\n"
+  recorded_at: Sun, 02 Jun 2024 23:02:17 GMT
 - request:
     method: get
-    uri: https://youtube.googleapis.com/youtube/v3/videos?id=HIgvP7B3Hg8&key=<%= ENV['YOUTUBE_API_KEY'] %>&part=snippet
+    uri: https://youtube.googleapis.com/youtube/v3/videos?id=HIgvP7B3Hg8&key=<%= ENV['YOUTUBE_API_KEY'] %>&part=content_details
     body:
       encoding: UTF-8
       string: ''
     headers:
       User-Agent:
-      - unknown/0.0.0 google-apis-youtube_v3/0.36.0 Mac OS X/14.3.1 (gzip)
+      - unknown/0.0.0 google-apis-youtube_v3/0.36.0 Linux/6.6.26-linuxkit (gzip)
       Accept:
       - "*/*"
       Accept-Encoding:
       - gzip,deflate
       Date:
-      - Thu, 04 Apr 2024 11:20:02 GMT
+      - Sun, 02 Jun 2024 23:02:17 GMT
       X-Goog-Api-Client:
       - gl-ruby/3.2.3 gdcl/1.36.0
       Content-Type:
@@ -154,7 +157,7 @@ http_interactions:
       Content-Encoding:
       - gzip
       Date:
-      - Thu, 04 Apr 2024 11:20:02 GMT
+      - Sun, 02 Jun 2024 23:02:18 GMT
       Server:
       - scaffolding on HTTPServer2
       Cache-Control:
@@ -171,9 +174,9 @@ http_interactions:
       - chunked
     body:
       encoding: UTF-8
-      string: "{\n  \"kind\": \"youtube#videoListResponse\",\n  \"etag\": \"kNs1Xtr5oGCfajJYf9zGpnLMI3w\",\n
+      string: "{\n  \"kind\": \"youtube#videoListResponse\",\n  \"etag\": \"A1s3NIQMqmyPjW-YDMOdVnjVx4w\",\n
         \ \"items\": [\n    {\n      \"kind\": \"youtube#video\",\n      \"etag\":
-        \"oPpG6mW_g3bCnJUD7UyuVYAwivc\",\n      \"id\": \"HIgvP7B3Hg8\",\n      \"snippet\":
+        \"AlwnhSj-Eqo4Noi0ZHSw5w4Z98E\",\n      \"id\": \"HIgvP7B3Hg8\",\n      \"snippet\":
         {\n        \"publishedAt\": \"2020-10-02T17:37:41Z\",\n        \"channelId\":
         \"UCoUM-UJ7rirJYP8CQ0EIaHA\",\n        \"title\": \"Bruno Mars - Runaway Baby
         (Official Lyric Video)\",\n        \"description\": \"The official lyric video
@@ -239,7 +242,10 @@ http_interactions:
         boundaries of pop, R&B, funk, soul, hip-hop, and dance, and remains as influential
         as ever.\\n\\n#BrunoMars #RunawayBaby #DooWopsandHooligans #OfficialLyricVideo
         #AtlanticRecords\"\n        },\n        \"defaultAudioLanguage\": \"en\"\n
-        \     }\n    }\n  ],\n  \"pageInfo\": {\n    \"totalResults\": 1,\n    \"resultsPerPage\":
-        1\n  }\n}\n"
-  recorded_at: Thu, 04 Apr 2024 11:20:02 GMT
+        \     },\n      \"contentDetails\": {\n        \"duration\": \"PT2M28S\",\n
+        \       \"dimension\": \"2d\",\n        \"definition\": \"hd\",\n        \"caption\":
+        \"false\",\n        \"licensedContent\": true,\n        \"contentRating\":
+        {},\n        \"projection\": \"rectangular\"\n      }\n    }\n  ],\n  \"pageInfo\":
+        {\n    \"totalResults\": 1,\n    \"resultsPerPage\": 1\n  }\n}\n"
+  recorded_at: Sun, 02 Jun 2024 23:02:18 GMT
 recorded_with: VCR 6.2.0

@@ -176,6 +176,8 @@ GEM
     faraday-net_http (3.1.0)
       net-http
     ffi (1.16.3)
+    font-awesome-sass (6.5.2)
+      sassc (~> 2.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
     gon (6.4.0)
@@ -521,6 +523,7 @@ DEPENDENCIES
   erb_lint
   factory_bot_rails
   faker
+  font-awesome-sass
   gon
   google-apis-youtube_v3
   importmap-rails

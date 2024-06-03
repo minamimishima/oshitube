@@ -94,7 +94,7 @@ https://github.com/minamimishima/oshitube/assets/146907532/4799a421-0c94-4346-ac
 <br>
 
 ## ER図
-![ER図_resize](https://github.com/minamimishima/oshitube/assets/146907532/78c47cd8-b80d-4788-b3f7-fc399fb33bfb)
+![ER図_resize](https://github.com/minamimishima/oshitube/assets/146907532/6ae25a3e-05f2-484d-a8c1-fedde5eed353)
 <br>
 <br>
 

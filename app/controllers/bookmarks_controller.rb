@@ -20,7 +20,7 @@ class BookmarksController < ApplicationController
     @bookmark.url = @bookmark.extract_video_url(params[:bookmark][:url])
     @bookmark.video_id = @bookmark.extract_video_id(params[:bookmark][:url])
     @bookmark.video_title = video_title(@bookmark.video_id)
-    @bookmark.duration = get_video_duration(@bookmark.video_id)
+    @bookmark.duration = video_duration(@bookmark.video_id)
     if @bookmark.valid? && @bookmark.user_id == @user.id
       @bookmark.save
       flash[:notice] = "登録完了しました"

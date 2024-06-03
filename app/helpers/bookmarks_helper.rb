@@ -40,7 +40,7 @@ module BookmarksHelper
   end
 
   ISO8601_PATTERN = /PT(?:(?<hour>\d+)H)?(?:(?<minute>\d+)M)?(?<second>\d+)S/
-  def get_video_duration(video_id)
+  def video_duration(video_id)
     video_data = get_video_data(video_id)
     return if video_data.blank?
 

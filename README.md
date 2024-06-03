@@ -89,7 +89,7 @@ https://github.com/minamimishima/oshitube/assets/146907532/4799a421-0c94-4346-ac
 | コード解析・リンター | Rubocop / ERB Lint / Brakeman |
 | テストフレームワーク | RSpec |
 | API | YouTube Data API v3 |
-| 認証 | devise |
+| 認証 | devise, Google OAuth2.0 |
 <br>
 <br>
 

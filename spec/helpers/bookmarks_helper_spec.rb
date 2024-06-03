@@ -43,4 +43,14 @@ RSpec.describe BookmarksHelper, type: :helper do
       expect(helper.video_thumbnail(invalid_id)).to eq "not_found.png"
     end
   end
+
+  describe "video_durationの検証" do
+    it "渡されたIDを持つ動画が存在する場合に動画の長さを秒に変換して返すこと", :vcr => "youtube_success" do
+      expect(helper.video_duration(valid_id)).to eq 148
+    end
+
+    it "渡されたIDを持つ動画が存在しない場合にnilを返すこと", :vcr => "youtube_failure" do
+      expect(helper.video_duration(invalid_id)).to eq nil
+    end
+  end
 end

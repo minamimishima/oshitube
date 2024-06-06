@@ -106,8 +106,17 @@ h1 {
   border-radius: 8px;
 }
 
+.header__logo {
+  height: 60px;
+  width: auto;
+}
+
 @media screen and (min-width: 835px) {
   .header__dropdown--mobile {
+    display: none;
+  }
+
+  .header__logo--mobile {
     display: none;
   }
 }
@@ -128,6 +137,10 @@ h1 {
 
   .page__container {
     padding-top: 70px;
+  }
+
+  .header__logo--pc {
+    display: none;
   }
 }
 

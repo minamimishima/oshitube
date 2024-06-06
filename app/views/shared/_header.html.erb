@@ -1,6 +1,13 @@
 <div class="header shadow-sm">
-  <div class="header__title">
-    <span><%= link_to "推しTube", root_path %></span>
+  <div class="header__logo--pc">
+    <%= link_to root_path do %>
+      <%= image_tag 'header-pc.png', class: "header__logo img-fluid rounded mx-auto d-block" %>
+    <% end %>
+  </div>
+  <div class="header__logo--mobile">
+    <%= link_to root_path do %>
+      <%= image_tag 'header-mobile.png', class: "header__logo img-fluid rounded mx-auto d-block" %>
+    <% end %>
   </div>
 
   <% if user_signed_in? %>

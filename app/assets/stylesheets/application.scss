@@ -125,10 +125,6 @@ h1 {
   .header__dropdown--mobile {
     display: none;
   }
-
-  .header__logo--mobile {
-    display: none;
-  }
 }
 
 @media screen and (max-width: 839px) {
@@ -141,10 +137,6 @@ h1 {
     position: fixed;
   }
 
-  .header__logo--pc {
-    display: none;
-  }
-
   .header__dropdown--pc {
     display: none;
   }
@@ -155,6 +147,18 @@ h1 {
 
   .page__container {
     padding-top: 70px;
+  }
+}
+
+@media screen and (min-width: 415px) {
+  .header__logo--mobile {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 414px) {
+  .header__logo--pc {
+    display: none;
   }
 }
 

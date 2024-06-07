@@ -120,7 +120,7 @@ h1 {
   margin-inline-end: 1.25rem;
 }
 
-@media screen and (min-width: 835px) {
+@media screen and (min-width: 840px) {
   .header__dropdown--mobile {
     display: none;
   }
@@ -130,7 +130,7 @@ h1 {
   }
 }
 
-@media screen and (max-width: 834px) {
+@media screen and (max-width: 839px) {
   .header {
     padding: 0 15px ;
     top: 0;

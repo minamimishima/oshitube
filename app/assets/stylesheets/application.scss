@@ -116,6 +116,10 @@ h1 {
   width: auto;
 }
 
+.header__registration-button {
+  margin-inline-end: 1.25rem;
+}
+
 @media screen and (min-width: 835px) {
   .header__dropdown--mobile {
     display: none;
@@ -136,16 +140,20 @@ h1 {
     position: fixed;
   }
 
+  .header__logo--pc {
+    display: none;
+  }
+
   .header__dropdown--pc {
     display: none;
   }
 
-  .page__container {
-    padding-top: 70px;
+  .header__registration-button {
+    margin-inline-end: 0.75rem;
   }
 
-  .header__logo--pc {
-    display: none;
+  .page__container {
+    padding-top: 70px;
   }
 }
 

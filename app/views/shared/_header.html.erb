@@ -1,43 +1,45 @@
 <div class="header shadow-sm">
-  <div class="header__logo--pc">
-    <%= link_to root_path do %>
-      <%= image_tag 'header-pc.png', class: "header__logo img-fluid rounded mx-auto d-block" %>
-    <% end %>
-  </div>
-  <div class="header__logo--mobile">
-    <%= link_to root_path do %>
-      <%= image_tag 'header-mobile.png', class: "header__logo img-fluid rounded mx-auto d-block" %>
-    <% end %>
-  </div>
+  <div class="header__wrapper">
+    <div class="header__logo--pc">
+      <%= link_to root_path do %>
+        <%= image_tag 'header-pc.png', class: "header__logo img-fluid rounded mx-auto d-block" %>
+      <% end %>
+    </div>
+    <div class="header__logo--mobile">
+      <%= link_to root_path do %>
+        <%= image_tag 'header-mobile.png', class: "header__logo img-fluid rounded mx-auto d-block" %>
+      <% end %>
+    </div>
 
-  <% if user_signed_in? %>
-    <div class="header__dropdown--pc">
-      <%= link_to "ブックマーク登録", new_bookmark_path, class: "btn" %>
-      <%= link_to "ブックマーク一覧", bookmarks_path, class: "btn" %>
-      <%= link_to "プロフィール", user_path(user.id), class: "btn" %>
-      <%= link_to "ログアウト",
-        destroy_user_session_path,
-        method: :delete,
-        data: { turbo_method: :delete }, class: "btn" %>
-    </div>
-    <div class="header__dropdown--mobile dropdown">
-      <a class="btn dropdown-toggle header__dropdown-menu-button shadow-sm" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-        <span>メニュー</span>
-      </a>
-      <ul class="header__dropdown-menu dropdown-menu">
-        <li class="mx-1"><%= link_to "ブックマーク登録", new_bookmark_path, class: "btn" %></li>
-        <li class="mx-1 mb-2"><%= link_to "ブックマーク一覧", bookmarks_path, class: "btn" %></li>
-        <li class="mx-1"><%= link_to "プロフィール", user_path(user.id), class: "btn" %></li>
-        <li class="mx-1"><%= link_to "ログアウト",
-                             destroy_user_session_path,
-                             method: :delete,
-                             data: { turbo_method: :delete }, class: "btn" %></li>
-      </ul>
-    </div>
-  <% else %>
-    <div class="header__link">
-      <%= link_to "新規登録", new_user_registration_path, class: "btn shadow-sm mx-1 header__registration-button" %>
-      <%= link_to "ログイン", new_user_session_path, class: "btn shadow-sm mx-1 header__login-button" %>
-    </div>
-  <% end %>
+    <% if user_signed_in? %>
+      <div class="header__dropdown--pc">
+        <%= link_to "ブックマーク登録", new_bookmark_path, class: "btn" %>
+        <%= link_to "ブックマーク一覧", bookmarks_path, class: "btn" %>
+        <%= link_to "プロフィール", user_path(user.id), class: "btn" %>
+        <%= link_to "ログアウト",
+          destroy_user_session_path,
+          method: :delete,
+          data: { turbo_method: :delete }, class: "btn" %>
+      </div>
+      <div class="header__dropdown--mobile dropdown">
+        <a class="btn dropdown-toggle header__dropdown-menu-button shadow-sm" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <span>メニュー</span>
+        </a>
+        <ul class="header__dropdown-menu dropdown-menu">
+          <li class="mx-1"><%= link_to "ブックマーク登録", new_bookmark_path, class: "btn" %></li>
+          <li class="mx-1 mb-2"><%= link_to "ブックマーク一覧", bookmarks_path, class: "btn" %></li>
+          <li class="mx-1"><%= link_to "プロフィール", user_path(user.id), class: "btn" %></li>
+          <li class="mx-1"><%= link_to "ログアウト",
+                               destroy_user_session_path,
+                               method: :delete,
+                               data: { turbo_method: :delete }, class: "btn" %></li>
+        </ul>
+      </div>
+    <% else %>
+      <div class="header__link">
+        <%= link_to "新規登録", new_user_registration_path, class: "btn shadow-sm header__registration-button" %>
+        <%= link_to "ログイン", new_user_session_path, class: "btn shadow-sm header__login-button" %>
+      </div>
+    <% end %>
+  </div>
 </div>

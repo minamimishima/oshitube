@@ -48,13 +48,19 @@ h1 {
 
  /* ヘッダー */
 .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   padding:0 50px;
   background-color: #fff;
   height: 70px;
   border-bottom: 1px solid #E7E7E9;
+}
+
+.header__wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1280px;
+  height: 70px;
+  margin-inline: auto;
 }
 
 .header__dropdown-menu-button,
@@ -111,19 +117,19 @@ h1 {
   width: auto;
 }
 
-@media screen and (min-width: 835px) {
-  .header__dropdown--mobile {
-    display: none;
-  }
+.header__registration-button {
+  margin-inline-end: 1.25rem;
+}
 
-  .header__logo--mobile {
+@media screen and (min-width: 840px) {
+  .header__dropdown--mobile {
     display: none;
   }
 }
 
-@media screen and (max-width: 834px) {
+@media screen and (max-width: 839px) {
   .header {
-    padding: 0 10px ;
+    padding: 0 15px ;
     top: 0;
     left: 0;
     width: 100%;
@@ -135,10 +141,22 @@ h1 {
     display: none;
   }
 
+  .header__registration-button {
+    margin-inline-end: 0.75rem;
+  }
+
   .page__container {
     padding-top: 70px;
   }
+}
 
+@media screen and (min-width: 415px) {
+  .header__logo--mobile {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 414px) {
   .header__logo--pc {
     display: none;
   }
@@ -344,7 +362,7 @@ h1 {
   max-height: 482px;
 }
 
-@media screen and (max-width: 834px) {
+@media screen and (max-width: 767px) {
   #bookmark-video {
     max-width: 560px;
     max-height: 315px;
@@ -386,7 +404,7 @@ h1 {
 }
 
 /* ブックマーク詳細・編集・ユーザーページ */
-@media screen and (max-width: 834px) {
+@media screen and (max-width: 767px) {
   #bookmark-show,
   #bookmark-edit,
   #profile-show {

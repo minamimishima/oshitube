@@ -362,7 +362,7 @@ h1 {
   max-height: 482px;
 }
 
-@media screen and (max-width: 834px) {
+@media screen and (max-width: 767px) {
   #bookmark-video {
     max-width: 560px;
     max-height: 315px;
@@ -404,7 +404,7 @@ h1 {
 }
 
 /* ブックマーク詳細・編集・ユーザーページ */
-@media screen and (max-width: 834px) {
+@media screen and (max-width: 767px) {
   #bookmark-show,
   #bookmark-edit,
   #profile-show {

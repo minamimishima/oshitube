@@ -4,7 +4,7 @@
 <br>
 
 ## サービスURL
-https://oshitube-d4f71351453c.herokuapp.com  
+https://oshitube.com  
 <br>
 
 ## 開発背景

@@ -3,5 +3,5 @@
 //= require bootstrap-sprockets
 import "@hotwired/turbo-rails"
 import "controllers"
-import "bookmarks/timestamps"
-import "home/timestamps"
+import "custom/bookmark_timestamps"
+import "custom/home_timestamps"

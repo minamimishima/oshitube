@@ -52,7 +52,7 @@ function showUserCurrentPassword() {
   };
 };
 
-document.addEventListener('turbo:load', function() {
+document.addEventListener('DOMContentLoaded', function() {
   showUserPassword();
   showUserPasswordConfirmation();
   showUserCurrentPassword();

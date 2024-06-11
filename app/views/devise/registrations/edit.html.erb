@@ -17,17 +17,26 @@
 
           <div class="user-edit__form-group mb-3">
             <%= f.label :password, "新しいパスワード" %> <span class="validation">※8〜30文字</span>
-            <%= f.password_field :password, class: "form-control" %>
+            <div class="input-group">
+              <%= f.password_field :password, class: "form-control" %>
+              <span class="input-group-text" id="user_password_btn"><i class="bi bi-eye-fill" aria-label="パスワードを表示"></i></span>
+            </div>
           </div>
 
           <div class="user-edit__form-group mb-3">
             <%= f.label :password_confirmation, "新しいパスワード（確認用）" %>
-            <%= f.password_field :password_confirmation, class: "form-control" %>
+            <div class="input-group">
+              <%= f.password_field :password_confirmation, class: "form-control" %>
+              <span class="input-group-text" id="user_password_confirmation_btn"><i class="bi bi-eye-fill" aria-label="パスワードを表示"></i></span>
+            </div>
           </div>
 
           <div class="user-edit__form-group mb-3">
             <%= f.label :current_password, "現在のパスワード" %><span class="required">*</span>
-            <%= f.password_field :current_password, class: "form-control" %>
+            <div class="input-group">
+              <%= f.password_field :current_password, class: "form-control" %>
+              <span class="input-group-text" id="user_current_password_btn"><i class="bi bi-eye-fill" aria-label="パスワードを表示"></i></span>
+            </div>
           </div>
 
           <div class="user-edit__form-group-action justify-content-between align-items-center d-flex">

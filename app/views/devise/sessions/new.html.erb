@@ -15,7 +15,10 @@
 
           <div class="login__form-group mb-3">
             <%= f.label :password, "パスワード" %>
-            <%= f.password_field :password, class: "form-control" %>
+            <div class="input-group">
+              <%= f.password_field :password, class: "form-control" %>
+              <span class="input-group-text" id="user_password_btn"><i class="bi bi-eye-fill" aria-label="パスワードを表示"></i></span>
+            </div>
           </div>
 
           <div class="login__form-group-action mb-3">

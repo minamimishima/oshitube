@@ -24,12 +24,18 @@
 
           <div class="registration__form-group mb-3">
             <%= f.label :password, "パスワード" %><span class="required">*</span> <span class="validation">※8〜30文字</span>
-            <%= f.password_field :password, class: "form-control" %>
+            <div class="input-group">
+              <%= f.password_field :password, class: "form-control" %>
+              <span class="input-group-text" id="user_password_btn"><i class="bi bi-eye-fill" aria-label="パスワードを表示"></i></span>
+            </div>
           </div>
 
           <div class="registration__form-group mb-3">
             <%= f.label :password_confirmation, "パスワード（確認用）" %><span class="required">*</span>
-            <%= f.password_field :password_confirmation, class: "form-control" %>
+            <div class="input-group">
+              <%= f.password_field :password_confirmation, class: "form-control" %>
+              <span class="input-group-text" id="user_password_confirmation_btn"><i class="bi bi-eye-fill" aria-label="パスワードを表示"></i></span>
+            </div>
           </div>
 
           <div class="registration__form-group-action">

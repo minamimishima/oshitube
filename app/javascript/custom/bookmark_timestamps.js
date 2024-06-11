@@ -8,13 +8,13 @@ function jumpToStartTime (i) {
   }
 }
 
-document.addEventListener('turbo:render', function() {
+document.addEventListener('turbo:load', function() {
   for (let i = 0; i <= gon.max_index; i++) {
     jumpToStartTime(i);
   }
 });
 
-document.addEventListener('turbo:load', function() {
+document.addEventListener('turbo:render', function() {
   for (let i = 0; i <= gon.max_index; i++) {
     jumpToStartTime(i);
   }

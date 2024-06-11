@@ -58,6 +58,8 @@ document.addEventListener('turbo:load', function() {
   showUserCurrentPassword();
 });
 
-
-
-
+document.addEventListener('turbo:render', function() {
+  showUserPassword();
+  showUserPasswordConfirmation();
+  showUserCurrentPassword();
+});

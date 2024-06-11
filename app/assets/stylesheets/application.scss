@@ -121,6 +121,10 @@ h1 {
   margin-inline-end: 1.25rem;
 }
 
+.page__container {
+  margin-bottom: calc(env(safe-area-inset-bottom) + 44px);
+}
+
 @media screen and (min-width: 840px) {
   .header__dropdown--mobile {
     display: none;

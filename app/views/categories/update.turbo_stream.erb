@@ -1,0 +1,4 @@
+<%= turbo_stream.replace @category do %>
+  <%= render 'shared/categories_edit_btn' %>
+<% end %>
+<%= turbo_stream.update "categories__row", partial: "shared/categories", locals: { categories: @categories } %>

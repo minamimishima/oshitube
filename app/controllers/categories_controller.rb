@@ -32,9 +32,8 @@ class CategoriesController < ApplicationController
 
   def update
     @category = Category.find(params[:id])
+    @categories = @user.categories
     if @category.update(category_params)
-      flash[:notice] = "カテゴリー名を編集しました"
-      redirect_to category_path(@category)
     else
       render 'edit', status: :unprocessable_entity
     end

@@ -8,5 +8,6 @@ pin_all_from "app/javascript/controllers", under: "controllers"
 pin "custom/bookmark_timestamps"
 pin "custom/home_timestamps"
 pin "custom/password_show"
+pin "custom/content_missing"
 pin "bootstrap", to: "bootstrap.min.js", preload: true
 pin "@popperjs/core", to: "popper.js", preload: true

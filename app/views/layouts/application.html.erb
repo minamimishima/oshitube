@@ -14,7 +14,9 @@
   <body>
     <%= render 'shared/header', user: @user %>
     <div class="page__container">
-      <%= render 'shared/flash_messages' %>
+      <div id="flash-messages" class="flash-messages mt-3 mb-5 text-center">
+        <%= render 'shared/flash_messages' %>
+      </div>
       <%= yield %>
     </div>
   </body>

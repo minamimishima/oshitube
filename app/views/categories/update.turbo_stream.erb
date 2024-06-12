@@ -1,3 +1,4 @@
+<%= turbo_stream.update "flash-messages", partial: "shared/flash_messages" %>
 <%= turbo_stream.replace @category do %>
   <%= render 'shared/categories_edit_btn' %>
 <% end %>

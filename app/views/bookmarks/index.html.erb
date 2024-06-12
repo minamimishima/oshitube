@@ -3,7 +3,7 @@
   <h1 class="text-center mt-3">ブックマーク一覧</h1>
   <div id="bookmark-index__row" class="row justify-content-center align-items-center">
     <div id="bookmark-index__column" class="col-md-10 mb-4">
-      <%= render 'shared/categories_new_btn' %>
+      <%= render partial: 'shared/categories_new_btn', locals: { category: @category } %>
 
       <%= render 'shared/categories', { categories: @user.categories } %>
       <%= render 'shared/search', { q: @q } %>

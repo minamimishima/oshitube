@@ -5,7 +5,7 @@
   </span>
   <div id="categories-show__row" class="row justify-content-center align-items-center">
     <div id="categories-show__column" class="col-md-10 mb-4">
-      <%= render 'shared/categories_edit_btn' %>
+      <%= render partial: 'shared/categories_edit_btn', locals: { category: @category } %>
 
       <%= render 'shared/categories', { categories: @categories } %>
       <%= render 'shared/search_in_category', { q: @q, category: @category } %>

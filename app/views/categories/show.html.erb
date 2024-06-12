@@ -10,19 +10,20 @@
       <%= render 'shared/categories', { categories: @categories } %>
       <%= render 'shared/search_in_category', { q: @q, category: @category } %>
 
-      <div class="bookmark-index__sort-link text-center">
-        <%= link_to "新しい順", category_path(@category, "q" => { "s" => "created_at desc" }) %>
-        |
-        <%= link_to "古い順", category_path(@category, "q" => { "s" => "created_at asc" }) %>
-      </div>
-
-      <% if @category.bookmarks.present? %>
-        <div id="bookmark__row" class="row d-flex justify-content-center align-items-start">
-          <%= render partial: 'shared/bookmark', collection: @bookmarks %>
-          <%= paginate @bookmarks, theme: 'bootstrap-5' %>
+      <%= turbo_frame_tag "bookmarks-list", autoscroll: true, data: { autoscroll_block: "start" } do %>
+        <div class="bookmark-index__sort-link text-center">
+          <%= link_to "新しい順", category_path(@category, "q" => { "s" => "created_at desc" }) %>
+          |
+          <%= link_to "古い順", category_path(@category, "q" => { "s" => "created_at asc" }) %>
         </div>
-      <% end %>
 
+        <% if @category.bookmarks.present? %>
+          <div id="bookmark__row" class="row d-flex justify-content-center align-items-start">
+            <%= render partial: 'shared/bookmark', collection: @bookmarks %>
+            <%= paginate @bookmarks, theme: 'bootstrap-5' %>
+          </div>
+        <% end %>
+      <% end %>
     </div>
   </div>
 </div>

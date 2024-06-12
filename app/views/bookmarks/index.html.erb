@@ -8,16 +8,18 @@
       <%= render 'shared/categories', { categories: @user.categories } %>
       <%= render 'shared/search', { q: @q } %>
 
-      <div class="bookmark-index__sort-link text-center">
-        <%= link_to "新しい順", bookmarks_path("q" => { "s" => "created_at desc" }) %>
-        |
-        <%= link_to "古い順", bookmarks_path("q" => { "s" => "created_at asc" }) %>
-      </div>
+      <%= turbo_frame_tag "bookmarks-list", autoscroll: true, data: { autoscroll_block: "start" } do %>
+        <div class="bookmark-index__sort-link text-center">
+          <%= link_to "新しい順", bookmarks_path("q" => { "s" => "created_at desc" }) %>
+          |
+          <%= link_to "古い順", bookmarks_path("q" => { "s" => "created_at asc" }) %>
+        </div>
 
-      <div id="bookmark__row" class="row d-flex justify-content-center align-items-start">
-        <%= render partial: 'shared/bookmark', collection: @bookmarks %>
-        <%= paginate @bookmarks, theme: 'bootstrap-5' %>
-      </div>
+        <div id="bookmark__row" class="row d-flex justify-content-center align-items-start">
+          <%= render partial: 'shared/bookmark', collection: @bookmarks %>
+          <%= paginate @bookmarks, theme: 'bootstrap-5' %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

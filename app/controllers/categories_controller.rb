@@ -9,11 +9,11 @@ class CategoriesController < ApplicationController
 
   def create
     @category = Category.new(category_params)
+    @categories = @user.categories
     @bookmarks = @user.bookmarks.latest.page(params[:page]) # リクエストスペックに失敗してしまうため追記
     if @category.valid? && @category.user_id == @user.id
       @category.save
-      flash[:notice] = "カテゴリーを作成しました"
-      redirect_to bookmarks_path
+      flash.now.notice = "カテゴリーを作成しました"
     else
       render 'new', status: :unprocessable_entity
     end

@@ -43,6 +43,7 @@ RSpec.describe "Categories", type: :system do
         find(".category__edit-link").click
         fill_in "カテゴリー名", with: "新しいカテゴリー名"
         click_on "編集"
+        visit category_path(category) # 編集ボタンクリック後のbodyがupdate.turbo_stream.erbで認識され、例外が出てしまうためカテゴリーページに遷移し直し
         expect(page).to have_selector "h1", text: "新しいカテゴリー名"
       end
 

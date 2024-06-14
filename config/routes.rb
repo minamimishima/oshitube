@@ -12,13 +12,11 @@ Rails.application.routes.draw do
   post "profile/edit", to: "users#profile_update"
   get "users/confirm", to: "users#confirm"
   patch "users/withdrawal", to: "users#withdrawal"
-  get "categories/new_cancel", to: "categories#new_cancel"
 
   resources :users, only: [:show]
   resources :categories, except: [:index] do
-    member do
-      get "edit_cancel"
-    end
+    get "edit_cancel", on: :member
+    get "new_cancel", on: :collection
   end
   resources :bookmarks
   resources :timestamps, only: [:create, :show, :edit, :update, :destroy]

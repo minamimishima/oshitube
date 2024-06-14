@@ -47,6 +47,14 @@ class CategoriesController < ApplicationController
     redirect_to bookmarks_path, status: :see_other
   end
 
+  def new_cancel
+    @category = Category.new
+  end
+
+  def edit_cancel
+    @category = Category.find(params[:id])
+  end
+
   private
 
   def correct_user

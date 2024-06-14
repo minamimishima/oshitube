@@ -63,9 +63,9 @@ https://oshitube.com
 - X（旧Twitter）での共有機能（公開ブックマークのみ）
 
 #### 公開ブックマークサンプル（プロフィールページ）
-- [サンプル①](https://oshitube-d4f71351453c.herokuapp.com/users/5)
-- [サンプル②](https://oshitube-d4f71351453c.herokuapp.com/users/3)
-- [サンプル③](https://oshitube-d4f71351453c.herokuapp.com/users/6)
+- [サンプル①](https://oshitube.com/users/5)
+- [サンプル②](https://oshitube.com/users/3)
+- [サンプル③](https://oshitube.com/users/6)
 
 <br>
 

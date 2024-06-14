@@ -14,7 +14,7 @@
         </span>
         <div class="profile-show__link">
           <% if current_user.present? && @user.id == current_user.id %>
-            <%= link_to "プロフィール編集", profile_edit_path %> / <%= link_to "ユーザー情報変更", edit_user_registration_path %>
+            <%= link_to "プロフィール編集", profile_edit_users_path %> / <%= link_to "ユーザー情報変更", edit_user_registration_path %>
           <% end %>
         </div>
       </div>

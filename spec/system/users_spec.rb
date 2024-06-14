@@ -61,7 +61,7 @@ RSpec.describe "Users", type: :system do
       end
 
       it "退会できること", js: true do
-        visit users_confirm_path
+        visit confirm_users_path
         page.accept_confirm do
           click_on "退会する"
         end
@@ -126,7 +126,7 @@ RSpec.describe "Users", type: :system do
         end
         click_on "ユーザー情報変更"
         click_on "退会する"
-        visit users_confirm_path
+        visit confirm_users_path
         page.accept_confirm do
           click_on "退会する"
         end

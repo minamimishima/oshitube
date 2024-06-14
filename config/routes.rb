@@ -8,16 +8,20 @@ Rails.application.routes.draw do
     post "users/guest_sign_in", to: "users/sessions#guest_sign_in"
   end
 
-  get "profile/edit", to: "users#profile_edit"
-  post "profile/edit", to: "users#profile_update"
-  get "users/confirm", to: "users#confirm"
-  patch "users/withdrawal", to: "users#withdrawal"
+  resources :users, only: [:show] do
+    collection do
+      get "profile_edit"
+      post "profile_update"
+      get "confirm"
+      patch "withdrawal"
+    end
+  end
 
-  resources :users, only: [:show]
   resources :categories, except: [:index] do
     get "edit_cancel", on: :member
     get "new_cancel", on: :collection
   end
+
   resources :bookmarks
   resources :timestamps, only: [:create, :show, :edit, :update, :destroy]
 

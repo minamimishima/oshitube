@@ -8,7 +8,7 @@
     <div id="profile-edit__column" class="col-lg-6 col-md-8">
       <%= render "shared/error_messages", obj: @user %>
       <div id="profile-edit__box">
-        <%= form_with(model: @user, id: "profile-edit__form", class: "form", url: profile_edit_path, method: :post) do |f| %>
+        <%= form_with(model: @user, id: "profile-edit__form", class: "form", url: profile_update_users_path, method: :post) do |f| %>
 
           <div class="profile-edit__form-group mb-3">
             <%= f.label :name, "名前" %><span class="required">*</span>

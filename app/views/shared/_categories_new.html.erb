@@ -7,7 +7,7 @@
         <%= f.text_field :name, class: "form-control justify-content-center align-items-center" %>
         <%= f.hidden_field :user_id, value: user.id %>
         <%= f.submit "作成", class: "categories-new__button btn shadow-sm mt-1" %>
-        <%= link_to "キャンセル", categories_new_cancel_path, class: "btn btn-light shadow-sm mt-1" %>
+        <%= link_to "キャンセル", new_cancel_categories_path, class: "btn btn-light shadow-sm mt-1" %>
       <% end %>
     </div>
   </div>

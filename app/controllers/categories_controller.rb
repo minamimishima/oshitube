@@ -9,11 +9,11 @@ class CategoriesController < ApplicationController
 
   def create
     @category = Category.new(category_params)
+    @categories = @user.categories
     @bookmarks = @user.bookmarks.latest.page(params[:page]) # リクエストスペックに失敗してしまうため追記
     if @category.valid? && @category.user_id == @user.id
       @category.save
-      flash[:notice] = "カテゴリーを作成しました"
-      redirect_to bookmarks_path
+      flash.now.notice = "カテゴリーを作成しました"
     else
       render 'new', status: :unprocessable_entity
     end
@@ -32,9 +32,9 @@ class CategoriesController < ApplicationController
 
   def update
     @category = Category.find(params[:id])
+    @categories = @user.categories
     if @category.update(category_params)
-      flash[:notice] = "カテゴリー名を編集しました"
-      redirect_to category_path(@category)
+      flash.now.notice = "カテゴリー名を編集しました"
     else
       render 'edit', status: :unprocessable_entity
     end
@@ -45,6 +45,14 @@ class CategoriesController < ApplicationController
     @category.destroy
     flash[:notice] = "カテゴリーを削除しました"
     redirect_to bookmarks_path, status: :see_other
+  end
+
+  def new_cancel
+    @category = Category.new
+  end
+
+  def edit_cancel
+    @category = Category.find(params[:id])
   end
 
   private

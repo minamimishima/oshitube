@@ -37,7 +37,7 @@ RSpec.describe "Categories", type: :system do
         expect(page).to_not have_css ".bookmark-#{bookmark.id}"
       end
 
-      it "カテゴリー名を編集できること" do
+      it "カテゴリー名を編集できること", js: true do
         category = create(:category, name: "元のカテゴリー名", user: user)
         visit category_path(category)
         find(".category__edit-link").click

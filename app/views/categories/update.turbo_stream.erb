@@ -1,0 +1,6 @@
+<%= turbo_stream.update "flash-messages", partial: "shared/flash_messages" %>
+<%= turbo_stream.update "category-name", partial: "shared/category_name", locals: { category: @category }  %>
+<%= turbo_stream.replace @category do %>
+  <%= render partial: 'shared/categories_edit_btn', locals: { category: @category } %>
+<% end %>
+<%= turbo_stream.update "categories__row", partial: "shared/categories", locals: { categories: @categories } %>

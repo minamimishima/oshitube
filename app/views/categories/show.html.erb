@@ -1,38 +1,29 @@
 <% content_for(:title, @category.name) %>
-<%= turbo_page_requires_reload %>
 <div id="categories-show" class="container">
-  <h1 class="text-center mt-3"><%= @category.name %></h1>
+  <span id="category-name">
+    <%= render partial: 'shared/category_name', locals: { category: @category } %>
+  </span>
   <div id="categories-show__row" class="row justify-content-center align-items-center">
     <div id="categories-show__column" class="col-md-10 mb-4">
-      <%= turbo_frame_tag @category do %>
-        <div class="text-center mb-4">
-          <%= link_to edit_category_path(@category), class: "category__edit-link" do %>
-          <i class="bi bi-pencil-fill mx-2" aria-label="カテゴリー名の編集"></i>
-          <% end %>
-          <%= link_to category_path(@category),
-                      class: "category__delete-link",
-                      data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" } do %>
-            <i class="bi bi-trash3-fill mx-2" aria-label="カテゴリーの削除"></i>
-          <% end %>
-        </div>
-      <% end %>
+      <%= render partial: 'shared/categories_edit_btn', locals: { category: @category } %>
 
       <%= render 'shared/categories', { categories: @categories } %>
       <%= render 'shared/search_in_category', { q: @q, category: @category } %>
 
-      <div class="bookmark-index__sort-link text-center">
-        <%= link_to "新しい順", category_path(@category, "q" => { "s" => "created_at desc" }) %>
-        |
-        <%= link_to "古い順", category_path(@category, "q" => { "s" => "created_at asc" }) %>
-      </div>
-
-      <% if @category.bookmarks.present? %>
-        <div id="bookmark__row" class="row d-flex justify-content-center align-items-start">
-          <%= render partial: 'shared/bookmark', collection: @bookmarks %>
-          <%= paginate @bookmarks, theme: 'bootstrap-5' %>
+      <%= turbo_frame_tag "bookmarks-list", autoscroll: true, data: { autoscroll_block: "start" } do %>
+        <div class="bookmark-index__sort-link text-center">
+          <%= link_to "新しい順", category_path(@category, "q" => { "s" => "created_at desc" }) %>
+          |
+          <%= link_to "古い順", category_path(@category, "q" => { "s" => "created_at asc" }) %>
         </div>
-      <% end %>
 
+        <% if @category.bookmarks.present? %>
+          <div id="bookmark__row" class="row d-flex justify-content-center align-items-start">
+            <%= render partial: 'shared/bookmark', collection: @bookmarks %>
+            <%= paginate @bookmarks, theme: 'bootstrap-5' %>
+          </div>
+        <% end %>
+      <% end %>
     </div>
   </div>
 </div>

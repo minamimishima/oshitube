@@ -9,14 +9,12 @@ class Users::SessionsController < Devise::SessionsController
   end
 
   def reject_deleted_user
-    @user = User.find_by(email: params[:user][:email])
-    if @user
-      if @user.valid_password?(params[:user][:password]) && (@user.is_deleted == true)
-        flash[:notice] = "退会済みです。再度登録をしてご利用ください。"
-        redirect_to new_user_registration_path
-      end
-    else
-      flash[:notice] = "ユーザーが見つかりません"
+    user = User.where(email: params[:user][:email])
+    user_status = user.pluck(:is_deleted)
+    if user.blank?
+      return
+    elsif user_status.all? { |is_deleted| is_deleted == true }
+      flash[:alert] = "退会済みです。再度登録をしてご利用ください。"
       redirect_to new_user_registration_path
     end
   end

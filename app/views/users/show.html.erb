@@ -4,7 +4,9 @@
     <div id="profile-show__column" class="col-md-10 mb-4">
       <div class="profile-show__user text-center mb-4">
         <% if @user.icon.present? %>
-          <%= image_tag @user.icon, class: "profile-show__icon d-block mt-3 mb-1" %>
+          <%= image_tag @user.icon, class: "profile-show__icon d-block mb-1" %>
+        <% else %>
+          <%= image_tag "default_icon.png", class: "profile-show__icon d-block mb-1" %>
         <% end %>
         <span class="profile-show__username d-block mb-1">
           <%= @user.name %>

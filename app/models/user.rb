@@ -35,6 +35,12 @@ class User < ApplicationRecord
     super && (is_deleted == false)
   end
 
+  def self.find_for_authentication(tainted_conditions)
+    conditions = devise_parameter_filter.filter(tainted_conditions)
+    conditions[:is_deleted] = false
+    to_adapter.find_first(conditions)
+  end
+
   def self.from_omniauth(auth)
     find_or_create_by(provider: auth.provider, uid: auth.uid) do |user|
       user.email = auth.info.email

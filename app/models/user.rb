@@ -18,12 +18,15 @@ class User < ApplicationRecord
       if: :devise_will_save_change_to_email?,
       allow_blank: true,
     }
+
   validates :password,
     presence: { if: :password_required? },
     confirmation: { if: :password_required? },
     length: { within: 8..30, if: :password_required?, allow_blank: true }
   validates :name, presence: true
   validates :profile, length: { maximum: 300 }
+
+  validate :check_icon_format
 
   def self.guest
     find_or_create_by!(email: "guest@example.com") do |user|
@@ -47,6 +50,19 @@ class User < ApplicationRecord
       user.email = auth.info.email
       user.password = Devise.friendly_token[0, 20]
       user.name = auth.info.name
+    end
+  end
+
+  private
+
+  def image?
+    ["image/jpg", "image/jpeg", "image/gif", "image/png"].include?(icon.content_type)
+  end
+
+  def check_icon_format
+    if icon.present? && !image?
+      icon.purge
+      errors.add(:base, "アップロードできる画像形式はjpg, jpeg, gif, pngのみです")
     end
   end
 

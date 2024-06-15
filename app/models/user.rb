@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :bookmarks
   has_many :categories
   has_one_attached :icon
+  accepts_nested_attributes_for :icon_attachment, allow_destroy: true
 
   validates :email, # rubocop:disable Rails/UniqueValidationWithoutIndex
     presence: { if: :email_required? },

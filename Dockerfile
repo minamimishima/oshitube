@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 FROM ruby:3.2.3
-RUN apt-get update -qq && apt-get install -y nodejs postgresql-client
+RUN apt-get update -qq && apt-get install -y nodejs postgresql-client libvips
 WORKDIR /oshitube
 COPY . /oshitube/
 RUN bundle install

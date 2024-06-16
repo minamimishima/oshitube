@@ -20,9 +20,16 @@
             <%= f.text_area :profile, class: "form-control" %>
           </div>
 
-          <div class="profile-edit__form-group mb-3">
+          <div class="profile-edit__form-group mb-1">
             <%= f.label :icon, "アイコン画像" %>
             <%= f.file_field :icon, class: "form-control" %>
+          </div>
+
+          <div class="profile-edit__form-group mb-4">
+            <%= f.fields_for :icon_attachment do |icon| %>
+              <%= icon.label :_destroy, "画像を削除", class: "form-check-label" %>
+              <%= icon.check_box :_destroy, class: "form-check-input" %>
+            <% end %>
           </div>
 
           <div class="profile-edit__form-group-action">

@@ -4,7 +4,9 @@
     <div id="profile-show__column" class="col-md-10 mb-4">
       <div class="profile-show__user text-center mb-4">
         <% if @user.icon.present? %>
-          <%= image_tag @user.icon, class: "profile-show__icon d-block mt-3 mb-1" %>
+          <%= image_tag @user.icon.variant(resize_to_limit: [150, 150]), class: "profile-show__icon mb-1" %>
+        <% else %>
+          <%= image_tag "default_icon.png", class: "profile-show__icon mb-1" %>
         <% end %>
         <span class="profile-show__username d-block mb-1">
           <%= @user.name %>
@@ -14,7 +16,7 @@
         </span>
         <div class="profile-show__link">
           <% if current_user.present? && @user.id == current_user.id %>
-            <%= link_to "プロフィール編集", profile_edit_users_path %> / <%= link_to "ユーザー情報変更", edit_user_registration_path %>
+            <%= link_to "プロフィール編集", profile_edit_users_path %> | <%= link_to "ユーザー情報変更", edit_user_registration_path %>
           <% end %>
         </div>
       </div>

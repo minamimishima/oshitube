@@ -53,6 +53,11 @@ class UsersController < ApplicationController
   end
 
   def profile_params
-    params.require(:user).permit(:name, :profile, :icon)
+    params.require(:user).permit(
+      :name,
+      :profile,
+      :icon,
+      icon_attachment_attributes: [:id, :_destroy]
+    )
   end
 end

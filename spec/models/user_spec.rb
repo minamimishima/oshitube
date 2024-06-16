@@ -23,6 +23,16 @@ RSpec.describe User, type: :model do
         user = build(:user, profile: "a" * 300)
         expect(user).to be_valid
       end
+
+      it "アイコン画像の拡張子がjpg, jpeg, gif, pngであれば有効であること" do
+        extensions = ["jpg", "jpeg", "gif", "png"]
+        aggregate_failures do
+          extensions.each do |ext|
+            user = build(:user, icon: fixture_file_upload("spec/fixtures/test.#{ext}"))
+            expect(user).to be_valid
+          end
+        end
+      end
     end
 
     context "無効な場合" do
@@ -53,6 +63,11 @@ RSpec.describe User, type: :model do
 
       it "プロフィールが300文字以上であれば無効であること" do
         user = build(:user, profile: "a" * 301)
+        expect(user).to be_invalid
+      end
+
+      it "アイコン画像の拡張子がjpg, jpeg, gif, png以外であれば無効であること" do
+        user = build(:user, icon: fixture_file_upload("spec/fixtures/test.bmp"))
         expect(user).to be_invalid
       end
     end

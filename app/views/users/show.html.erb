@@ -6,7 +6,7 @@
         <% if @user.icon.present? %>
           <%= image_tag @user.icon.variant(resize_to_limit: [150, 150]), class: "profile-show__icon mb-1" %>
         <% else %>
-          <%= image_tag "default_icon.png", class: "profile-show__icon d-block mb-1" %>
+          <%= image_tag "default_icon.png", class: "profile-show__icon mb-1" %>
         <% end %>
         <span class="profile-show__username d-block mb-1">
           <%= @user.name %>

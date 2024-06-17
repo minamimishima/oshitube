@@ -8,13 +8,13 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
-    <%= favicon_link_tag('favicon.ico') %>
+    <%= favicon_link_tag("favicon.ico") %>
   </head>
 
   <body>
-    <%= render 'shared/header', user: @user %>
+    <%= render "shared/header", user: @user %>
     <div class="page__container">
-      <%= render 'shared/flash_messages' %>
+      <%= render "shared/flash_messages" %>
       <%= yield %>
     </div>
   </body>

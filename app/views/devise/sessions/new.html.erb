@@ -4,7 +4,7 @@
   <div id="login__row" class="row justify-content-center align-items-center">
     <div id="login__column" class="col-lg-6 col-md-8">
 
-      <%= render 'shared/alert_messages' %>
+      <%= render "shared/alert_messages" %>
 
       <div id="login__box">
         <%= form_with model: @user, id: "login__form", class: "form", url: user_session_path do |f| %>

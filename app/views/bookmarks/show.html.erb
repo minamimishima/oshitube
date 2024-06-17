@@ -35,8 +35,8 @@
 
             <div class="bookmark-show__x-share mx-2">
               <%= link_to "https://twitter.com/share?url=#{request.url}&text=#{@bookmark.video_title}%20|%20推しTube%0a",
-                          target: '_blank',
-                          rel: 'noopener' do %>
+                          target: "_blank",
+                          rel: "noopener" do %>
                 <i class="fa-brands fa-x-twitter"></i>
               <% end %>
             </div>
@@ -44,13 +44,13 @@
         <% end %>
       <% end %>
 
-      <%= render partial: 'shared/timestamps_list',
+      <%= render partial: "shared/timestamps_list",
                  collection: @bookmark.timestamps.sort_by(&:start_time),
                  as: :timestamp,
                  locals: { timestamps: @bookmark.timestamps.sort_by(&:start_time), user: @user } %>
 
       <% if @user.present? && @bookmark.user_id == @user.id %>
-        <%= render 'shared/timestamps_new', { timestamp: @timestamp, bookmark: @bookmark } %>
+        <%= render "shared/timestamps_new", { timestamp: @timestamp, bookmark: @bookmark } %>
         <div class="bookmark-show__link mt-3">
           <%= link_to edit_bookmark_path(@bookmark) do %>
             <i class="bi bi-pencil-fill mx-1" aria-hidden="true"></i> ブックマーク編集

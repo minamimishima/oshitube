@@ -8,20 +8,12 @@ const jumpToStartTime = (i) => {
   }
 }
 
-document.addEventListener('turbo:load', () => {
+const setTimestamps = () => {
   for (let i = 0; i <= gon.max_index; i++) {
     jumpToStartTime(i);
   }
-});
+}
 
-document.addEventListener('turbo:render', () => {
-  for (let i = 0; i <= gon.max_index; i++) {
-    jumpToStartTime(i);
-  }
-});
-
-document.addEventListener('turbo:frame-render', () => {
-  for (let i = 0; i <= gon.max_index; i++) {
-    jumpToStartTime(i);
-  }
-});
+document.addEventListener('turbo:load', setTimestamps);
+document.addEventListener('turbo:render', setTimestamps);
+document.addEventListener('turbo:frame-render', setTimestamps);

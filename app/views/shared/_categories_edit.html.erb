@@ -6,8 +6,8 @@
         <%= render 'shared/error_messages', obj: category %>
         <%= f.text_field :name, class: "form-control justify-content-center align-items-center" %>
         <%= f.hidden_field :user_id, value: user.id %>
-        <%= f.submit "編集", class: "categories-edit__button btn shadow-sm mt-1" %>
         <%= link_to "キャンセル", edit_cancel_category_path(category), class: "btn btn-light shadow-sm mt-1" %>
+        <%= f.submit "編集", class: "categories-edit__button btn shadow-sm mt-1" %>
       <% end %>
     </div>
   </div>

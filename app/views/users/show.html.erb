@@ -4,9 +4,9 @@
     <div id="profile-show__column" class="col-md-10 mb-4">
       <div class="profile-show__user text-center mb-4">
         <% if @user.icon.present? %>
-          <%= image_tag @user.icon.variant(resize_to_limit: [150, 150]), class: "profile-show__icon mb-1" %>
+          <%= image_tag @user.icon.variant(resize_to_limit: [150, 150]), class: "profile-show__icon mb-1", alt: "アイコン画像" %>
         <% else %>
-          <%= image_tag "default_icon.png", class: "profile-show__icon mb-1" %>
+          <%= image_tag "default_icon.png", class: "profile-show__icon mb-1", alt: "アイコン画像" %>
         <% end %>
         <span class="profile-show__username d-block mb-1">
           <%= @user.name %>

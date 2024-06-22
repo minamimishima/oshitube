@@ -113,7 +113,7 @@ h1 {
   width: auto;
 }
 
-.header__registration-button {
+.header__login-button {
   margin-inline-end: 1.25rem;
 }
 
@@ -141,7 +141,7 @@ h1 {
     display: none;
   }
 
-  .header__registration-button {
+  .header__login-button {
     margin-inline-end: 0.75rem;
   }
 
@@ -188,6 +188,10 @@ h1 {
   color: #D39388;
 }
 
+.firstview__introduction-text {
+  margin-bottom: 80px;
+}
+
 .firstview__video-title {
   font-size: 18px;
 }
@@ -195,6 +199,19 @@ h1 {
 .firstview__introduction-table {
   width: fit-content;
   margin-inline: auto;
+}
+
+.firstview__timestamps-button {
+  --bs-btn-color: #333333;
+  --bs-btn-bg: #fff;
+  --bs-btn-border-color: #EAEBEE;
+  --bs-btn-hover-color: #333333;
+  --bs-btn-hover-bg: #EFE6DD;
+  --bs-btn-hover-border-color: #EFE6DD;
+  --bs-btn-focus-shadow-rgb: #EFE6DD;
+  --bs-btn-active-color: #333333;
+  --bs-btn-active-bg: #EFE6DD;
+  --bs-btn-active-border-color: #EFE6DD;
 }
 
 .firstview__login {

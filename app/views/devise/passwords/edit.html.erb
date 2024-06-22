@@ -1,8 +1,9 @@
 <% content_for(:title, "パスワード再設定") %>
 <div id="password-edit" class="container">
-  <h1 class="text-center pt-4">パスワード再設定</h1>
+  <h1 class="text-center py-4">パスワード再設定</h1>
   <div id="password-edit__row" class="row justify-content-center align-items-center">
     <div id="password-edit__column" class="col-lg-6 col-md-8">
+      <p class="text-center">新しいパスワードを設定してください。</p>
       <div id="password-edit__box">
 
         <%= form_with model: @user,

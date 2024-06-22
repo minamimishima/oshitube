@@ -41,15 +41,19 @@
           <%= button_to user_google_oauth2_omniauth_authorize_path,
               method: :post,
               data: { turbo: "false" },
-              class: "btn btn-link login__google-login-button mb-4" do %>
+              class: "btn btn-link login__google-login-button" do %>
             <%= image_tag "google-button.svg" %>
           <% end %>
         </div>
-
-        <div class="login__link">
-          <%= link_to "新規登録", new_user_registration_path %><br>
-          <%= link_to "パスワードを忘れた場合", new_user_password_path %>
-        </div>
+      </div>
+      <div class="login__link mt-4">
+        <%= link_to new_user_registration_path do %>
+          <i class="bi bi-chevron-double-right"></i>新規登録
+        <% end %>
+        <br>
+        <%= link_to new_user_password_path do %>
+        <i class="bi bi-chevron-double-right"></i>パスワードを忘れた場合
+        <% end %>
       </div>
     </div>
   </div>

@@ -37,7 +37,7 @@ class Timestamp < ApplicationRecord
 
   def start_time_within_duration
     if start_time > bookmark.duration
-      errors.add(:base, "動画の終了時間より後の時間にタイムスタンプは作成できません")
+      errors.add(:base, "タイムスタンプは動画の再生時間内に作成してください")
     end
   end
 end

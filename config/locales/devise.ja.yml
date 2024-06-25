@@ -5,3 +5,6 @@ ja:
     omniauth_callbacks:
       failure: "Googleアカウントでのログインに失敗しました。"
       success: "Googleアカウントでログインしました。"
+  errors:
+    messages:
+      invalid: "が違います"

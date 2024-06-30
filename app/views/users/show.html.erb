@@ -27,8 +27,8 @@
           </div>
 
           <div id="bookmark__row" class="row d-flex justify-content-center align-items-start">
-            <%= render partial: 'shared/bookmark', collection: @bookmarks, as: :bookmark %>
-            <%= paginate @bookmarks, theme: 'bootstrap-5' %>
+            <%= render partial: "shared/bookmark", collection: @bookmarks, as: :bookmark %>
+            <%= paginate @bookmarks, theme: "bootstrap-5" %>
           </div>
         <% end %>
       <% end %>

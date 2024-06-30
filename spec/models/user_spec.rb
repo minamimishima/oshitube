@@ -9,13 +9,17 @@ RSpec.describe User, type: :model do
       end
 
       it "パスワードが8文字以上、30文字以下であれば有効であること" do
-        user1 = build(:user, password: Faker::Internet.password(min_length: 8, max_length: 8))
-        user2 = build(:user, password: Faker::Internet.password(min_length: 9, max_length: 29))
-        user3 = build(:user, password: Faker::Internet.password(min_length: 30, max_length: 30))
+        passwords = [
+          Faker::Internet.password(min_length: 8, max_length: 8),
+          Faker::Internet.password(min_length: 9, max_length: 9),
+          Faker::Internet.password(min_length: 29, max_length: 29),
+          Faker::Internet.password(min_length: 30, max_length: 30),
+        ]
         aggregate_failures do
-          expect(user1). to be_valid
-          expect(user2). to be_valid
-          expect(user3). to be_valid
+          passwords.each do |password|
+            user = build(:user, password: password)
+            expect(user).to be_valid
+          end
         end
       end
 

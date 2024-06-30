@@ -6,6 +6,7 @@ module BookmarksHelper
     youtube.key = ENV['YOUTUBE_API_KEY']
     if video_id.present?
       Rails.cache.fetch("bookmark_#{video_id}", expires_in: 1.days) do
+        # Google APIの割り当てが1日ごとにリセットされるためキャッシュの保存期間を1日に設定
         youtube.list_videos(['snippet', 'content_details'], id: video_id)
       end.items.first
     end

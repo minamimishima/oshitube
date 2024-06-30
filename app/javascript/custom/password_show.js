@@ -1,6 +1,6 @@
-function showUserPassword() {
-  let user_password = document.getElementById("user_password");
-  let user_password_btn = document.getElementById("user_password_btn");
+const showUserPassword = () => {
+  const user_password = document.getElementById("user_password");
+  const user_password_btn = document.getElementById("user_password_btn");
 
   if(user_password) {
     user_password_btn.addEventListener('click', (e) => {
@@ -16,9 +16,9 @@ function showUserPassword() {
   };
 };
 
-function showUserPasswordConfirmation() {
-  let user_password_confirmation = document.getElementById("user_password_confirmation");
-  let user_password_confirmation_btn = document.getElementById("user_password_confirmation_btn");
+const showUserPasswordConfirmation = () => {
+  const user_password_confirmation = document.getElementById("user_password_confirmation");
+  const user_password_confirmation_btn = document.getElementById("user_password_confirmation_btn");
 
   if (user_password_confirmation) {
     user_password_confirmation_btn.addEventListener('click', (e) => {
@@ -34,9 +34,9 @@ function showUserPasswordConfirmation() {
   };
 };
 
-function showUserCurrentPassword() {
-  let user_current_password = document.getElementById("user_current_password");
-  let user_current_password_btn = document.getElementById("user_current_password_btn");
+const showUserCurrentPassword = () => {
+  const user_current_password = document.getElementById("user_current_password");
+  const user_current_password_btn = document.getElementById("user_current_password_btn");
 
   if (user_current_password) {
     user_current_password_btn.addEventListener('click', (e) => {
@@ -52,13 +52,13 @@ function showUserCurrentPassword() {
   };
 };
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', () => {
   showUserPassword();
   showUserPasswordConfirmation();
   showUserCurrentPassword();
 });
 
-document.addEventListener('turbo:render', function() {
+document.addEventListener('turbo:render', () => {
   showUserPassword();
   showUserPasswordConfirmation();
   showUserCurrentPassword();

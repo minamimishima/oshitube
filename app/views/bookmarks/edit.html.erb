@@ -10,7 +10,7 @@
       </div>
 
       <div class="bookmark-edit__form-link-container">
-        <%= render 'shared/error_messages', obj: @bookmark %>
+        <%= render "shared/error_messages", obj: @bookmark %>
 
         <div id="bookmark-edit__box">
           <%= form_with model: @bookmark, id: "bookmark-edit__form", class: "form mb-1" do |f| %>

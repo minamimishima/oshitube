@@ -1,14 +1,14 @@
 <% content_for(:title, @category.name) %>
 <div id="categories-show" class="container">
   <span id="category-name">
-    <%= render partial: 'shared/category_name', locals: { category: @category } %>
+    <%= render partial: "shared/category_name", locals: { category: @category } %>
   </span>
   <div id="categories-show__row" class="row justify-content-center align-items-center">
     <div id="categories-show__column" class="col-md-10 mb-4">
-      <%= render partial: 'shared/categories_edit_btn', locals: { category: @category } %>
+      <%= render partial: "shared/categories_edit_btn", locals: { category: @category } %>
 
-      <%= render 'shared/categories', { categories: @categories } %>
-      <%= render 'shared/search_in_category', { q: @q, category: @category } %>
+      <%= render "shared/categories", { categories: @categories } %>
+      <%= render "shared/search_in_category", { q: @q, category: @category } %>
 
       <%= turbo_frame_tag "bookmarks-list", autoscroll: true, data: { autoscroll_block: "start" } do %>
         <div class="bookmark-index__sort-link text-center">
@@ -19,8 +19,8 @@
 
         <% if @category.bookmarks.present? %>
           <div id="bookmark__row" class="row d-flex justify-content-center align-items-start">
-            <%= render partial: 'shared/bookmark', collection: @bookmarks %>
-            <%= paginate @bookmarks, theme: 'bootstrap-5' %>
+            <%= render partial: "shared/bookmark", collection: @bookmarks %>
+            <%= paginate @bookmarks, theme: "bootstrap-5" %>
           </div>
         <% end %>
       <% end %>

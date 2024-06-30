@@ -35,10 +35,6 @@ class User < ApplicationRecord
     end
   end
 
-  def active_for_authentication?
-    super && (is_deleted == false)
-  end
-
   def self.find_for_authentication(tainted_conditions)
     conditions = devise_parameter_filter.filter(tainted_conditions)
     conditions[:is_deleted] = false

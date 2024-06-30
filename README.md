@@ -1,4 +1,10 @@
 ## 推しTube
+
+<br>
+<div align="center">
+  <img src="https://github.com/minamimishima/oshitube/assets/146907532/85985f43-c8a7-4842-881f-848212c1f532">
+</div>
+
 推しTubeは**時間指定のできるYouTubeブックマーク**です。  
 動画URLと再生開始時間を登録すればボタン1つで好きなタイミングから何度でも再生できます。  
 <br>
